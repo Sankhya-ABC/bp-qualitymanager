@@ -21,7 +21,7 @@ Entidade Java = representacao de tabela do banco. **Limpa** - contem so o mapeam
 | Sem `@GeneratedValue` | Sequencia fica no XML (`sequenceType`/`sequenceField`). |
 | Sem `@Option` / `@Property` | Opcoes ficam no XML (`<fieldOptions>`). |
 | Lombok obrigatorio | `@Data`, `@NoArgsConstructor`, `@AllArgsConstructor`. |
-| Prefixo `Tdc` obrigatorio no `entity` | Ex.: `@JapeEntity(entity = "TdcRegistro", ...)` |
+| Prefixo `Thg` obrigatorio no `entity` | Ex.: `@JapeEntity(entity = "ThgRegistro", ...)` |
 
 ---
 
@@ -54,7 +54,7 @@ br/com/hagious/qualitymanager/<feature>/
 Representa tabela no banco. Tem `@JapeEntity`, `@Id`, `@Column`, opcionalmente relacionamentos.
 
 ```java
-@JapeEntity(entity = "TdcRegistro", table = "TDCQMNCREGISTRO")
+@JapeEntity(entity = "ThgRegistro", table = "THGQMGREGISTRO")
 public class Registro { ... }
 ```
 
@@ -122,8 +122,8 @@ import lombok.*;                                                // 3. Imports Lo
 @NoArgsConstructor
 @AllArgsConstructor
 @JapeEntity(                                                    // 5. Mapeamento: somente entity + table
-    entity = "TdcRegistro",
-    table = "TDCQMNCREGISTRO"
+    entity = "ThgRegistro",
+    table = "THGQMGREGISTRO"
 )
 public class Registro {                                         // 6. Classe plana (sem heranca de metadata)
 
@@ -497,26 +497,26 @@ public void cancelar(Timestamp dataCancelamento) {
 
 ### Cenario: criar nova entidade `Fornecedor` na feature `fornecedor`
 
-Tabela `TDCQMNCFORNECEDOR`, PK simples `CODFORN` (auto), campos `NOME`, `CNPJ`, `ATIVO`, com vinculo para `Parceiro`.
+Tabela `THGQMGFORNECEDOR`, PK simples `CODFORN` (auto), campos `NOME`, `CNPJ`, `ATIVO`, com vinculo para `Parceiro`.
 
 ---
 
 ### Passo 1 - Criar o XML do dicionario de dados
 
-Arquivo `datadictionary/TDCQMNCFORNECEDOR.xml`:
+Arquivo `datadictionary/THGQMGFORNECEDOR.xml`:
 
 ```xml
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <metadados xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:noNamespaceSchemaLocation="../.gradle/metadados.xsd">
 
-    <table name="TDCQMNCFORNECEDOR" sequenceType="A" sequenceField="CODFORN">
+    <table name="THGQMGFORNECEDOR" sequenceType="A" sequenceField="CODFORN">
         <description>Fornecedores</description>
         <primaryKey>
             <field name="CODFORN"/>
         </primaryKey>
         <instances>
-            <instance name="TdcFornecedor">
+            <instance name="ThgFornecedor">
                 <description>Fornecedores</description>
             </instance>
         </instances>
@@ -570,8 +570,8 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @AllArgsConstructor
 @JapeEntity(
-    entity = "TdcFornecedor",
-    table = "TDCQMNCFORNECEDOR"
+    entity = "ThgFornecedor",
+    table = "THGQMGFORNECEDOR"
 )
 public class Fornecedor {
 
@@ -632,7 +632,7 @@ Entidade usa novo enum -> crie em `<feature>/vo/`.
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@JapeEntity(entity = "TdcRegistro", table = "TDCQMNCREGISTRO")
+@JapeEntity(entity = "ThgRegistro", table = "THGQMGREGISTRO")
 public class Registro {
 
     @Id
@@ -655,7 +655,7 @@ public class Registro {
 ```java
 @Data
 @NoArgsConstructor
-@JapeEntity(entity = "TdcRegistroItem", table = "TDCQMNCREGISTROITEM")
+@JapeEntity(entity = "ThgRegistroItem", table = "THGQMGREGISTROITEM")
 public class RegistroItem {
 
     @Id
@@ -687,7 +687,7 @@ public class RegistroItem {
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@JapeEntity(entity = "TdcRegistro", table = "TDCQMNCREGISTRO")
+@JapeEntity(entity = "ThgRegistro", table = "THGQMGREGISTRO")
 public class Registro {
 
     @Id
@@ -714,7 +714,7 @@ public class Registro {
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@JapeEntity(entity = "TdcCabecalhoNota", table = "TGFCAB")
+@JapeEntity(entity = "ThgCabecalhoNota", table = "TGFCAB")
 public class CabecalhoNota {
 
     @Id
@@ -724,7 +724,7 @@ public class CabecalhoNota {
     @Column(name = "TIPMOV")
     private String tipoMovimento;
 
-    @Column(name = "ADC_STATUS")
+    @Column(name = "QMG_STATUS")
     private StatusEnum status;
 
     @OneToOne

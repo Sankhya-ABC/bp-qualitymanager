@@ -20,7 +20,7 @@ Entidade Java (`@JapeEntity`) = classe dominio **limpa** — so `@Column(name = 
 
 **Um XML por tabela/entidade** em `datadictionary/`.
 
-**Convencao:** nome arquivo = nome tabela. Ex: `ADCMINHATABELA.xml` pra tabela `ADCMINHATABELA`.
+**Convencao:** nome arquivo = nome tabela. Ex: `THGQMGMINHATABELA.xml` pra tabela `THGQMGMINHATABELA`.
 
 ---
 
@@ -70,10 +70,10 @@ Entidade Java (`@JapeEntity`) = classe dominio **limpa** — so `@Column(name = 
 
 ```xml
 <!-- AUTO -->
-<table name="ADCPRODUTO" sequenceType="A" sequenceField="CODPRODUTO">
+<table name="THGQMGPRODUTO" sequenceType="A" sequenceField="CODPRODUTO">
 
 <!-- MANUAL -->
-<table name="ADCCONFIG" sequenceType="M">
+<table name="THGQMGCONFIG" sequenceType="M">
 ```
 
 > **Padrao PK sequencial:** nao usar prefixo `ID` na coluna sequencia.
@@ -114,7 +114,7 @@ Define entidade (instancia JAPE) da tabela.
 
 `name` = nome logico entidade (bate com `@JapeEntity(entity = "...")`).
 
-Prefixo `Tdc` obrigatorio nos nomes instancia pra evitar colisao com outros contextos (ex.: `TdcCabecalhoCotacao`, `TdcItemCotacao`).
+Prefixo `Thg` obrigatorio nos nomes instancia pra evitar colisao com outros contextos (ex.: `ThgCabecalhoCotacao`, `ThgItemCotacao`).
 
 ---
 
@@ -252,7 +252,7 @@ Campos que referenciam outra entidade: `dataType="PESQUISA"` + `targetInstance`,
 Estende tabelas Sankhya Om. **Sem** `<primaryKey>` nem `sequenceType`.
 
 - Declare **todos campos usados pela entidade** (nativos + custom).
-- Prefixo exclusivo add-on (ex: `ADC_`) nos custom pra evitar conflito.
+- Prefixo exclusivo add-on (ex: `QMG_`) nos custom pra evitar conflito.
 
 ```xml
 <nativeTable name="TGFTOP">
@@ -268,7 +268,7 @@ Estende tabelas Sankhya Om. **Sem** `<primaryKey>` nem `sequenceType`.
         <field name="DHALTER" dataType="DATA_HORA" order="2" allowSearch="N" visibleOnSearch="N">
             <description>Data e hora alteracao</description>
         </field>
-        <field name="ADC_EMITERECEITUARIO" dataType="CHECKBOX" UITabName="MeuAddon" allowSearch="N" visibleOnSearch="N">
+        <field name="QMG_EMITERECEITUARIO" dataType="CHECKBOX" UITabName="MeuAddon" allowSearch="N" visibleOnSearch="N">
             <description>Emite Receituario</description>
         </field>
     </fields>
@@ -337,7 +337,7 @@ Campos pra entidades com correspondencia em sistemas externos. Inclui ID origem 
 <metadados xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:noNamespaceSchemaLocation="../.gradle/metadados.xsd">
 
-    <table name="ADCPRODUTO" sequenceType="A" sequenceField="CODPRODUTO">
+    <table name="THGQMGPRODUTO" sequenceType="A" sequenceField="CODPRODUTO">
         <description>Produtos</description>
         <primaryKey>
             <field name="CODPRODUTO"/>
@@ -373,7 +373,7 @@ Campos pra entidades com correspondencia em sistemas externos. Inclui ID origem 
 ### Tabela com sequencia MANUAL
 
 ```xml
-<table name="ADCCONFIG" sequenceType="M">
+<table name="THGQMGCONFIG" sequenceType="M">
     <description>Configuracao</description>
     <primaryKey>
         <field name="CODCONF"/>
@@ -395,7 +395,7 @@ Campos pra entidades com correspondencia em sistemas externos. Inclui ID origem 
 ### PK Composta (AUTO)
 
 ```xml
-<table name="ADCRELACAO" sequenceType="A" sequenceField="NURELACAO">
+<table name="THGQMGRELACAO" sequenceType="A" sequenceField="NURELACAO">
     <primaryKey>
         <field name="CODPAI"/>
         <field name="NURELACAO"/>
@@ -407,7 +407,7 @@ Campos pra entidades com correspondencia em sistemas externos. Inclui ID origem 
 ### PK Composta (MANUAL)
 
 ```xml
-<table name="ADCVINCULO" sequenceType="M">
+<table name="THGQMGVINCULO" sequenceType="M">
     <primaryKey>
         <field name="CODPAI"/>
         <field name="CODPROD"/>
@@ -432,7 +432,7 @@ Campos pra entidades com correspondencia em sistemas externos. Inclui ID origem 
         <field name="DHALTER" dataType="DATA_HORA" order="2" allowSearch="N" visibleOnSearch="N">
             <description>Data e hora alteracao</description>
         </field>
-        <field name="ADC_CAMPOCUSTOM" dataType="CHECKBOX" UITabName="MeuAddon" allowSearch="N" visibleOnSearch="N">
+        <field name="QMG_CAMPOCUSTOM" dataType="CHECKBOX" UITabName="MeuAddon" allowSearch="N" visibleOnSearch="N">
             <description>Campo Customizado</description>
         </field>
     </fields>
@@ -544,7 +544,7 @@ Pos-gerar XML, **limpe entidade Java** removendo tudo que foi pro dicionario.
 **ANTES (metadata no Java):**
 
 ```java
-@JapeEntity(entity = "MeuProduto", table = "ADCPRODUTO", description = "Produtos")
+@JapeEntity(entity = "MeuProduto", table = "THGQMGPRODUTO", description = "Produtos")
 public class MeuProduto {
 
     @Id
@@ -562,7 +562,7 @@ public class MeuProduto {
 **DEPOIS (limpo):**
 
 ```java
-@JapeEntity(entity = "MeuProduto", table = "ADCPRODUTO")
+@JapeEntity(entity = "MeuProduto", table = "THGQMGPRODUTO")
 public class MeuProduto {
 
     @Id
@@ -574,7 +574,7 @@ public class MeuProduto {
 }
 ```
 
-Toda metadata (description, dataType, order, readOnly, etc.) fica no `ADCPRODUTO.xml`.
+Toda metadata (description, dataType, order, readOnly, etc.) fica no `THGQMGPRODUTO.xml`.
 
 ---
 
@@ -739,12 +739,12 @@ Nesses casos, `referencedColumnName` = **campo unico na tabela destino** — **n
 
 **Exemplo correto - FK local aponta pra campo unico `CODORIGEM` na destino:**
 ```java
-// Tabela ADCRELACAO possui coluna CODPRODUTO que referencia CODORIGEM de ADCPRODUTO
+// Tabela THGQMGRELACAO possui coluna CODPRODUTO que referencia CODORIGEM de THGQMGPRODUTO
 @OneToOne
 @JoinColumn(name = "CODPRODUTO", referencedColumnName = "CODORIGEM")
 private Produto produto;
 
-// Tabela ADCRELACAO possui coluna CODCULTURA que referencia CODORIGEM de ADCCULTURA
+// Tabela THGQMGRELACAO possui coluna CODCULTURA que referencia CODORIGEM de THGQMGCULTURA
 @OneToOne
 @JoinColumn(name = "CODCULTURA", referencedColumnName = "CODORIGEM")
 private Cultura cultura;
@@ -752,7 +752,7 @@ private Cultura cultura;
 
 **Exemplo errado - `name` e `referencedColumnName` invertidos:**
 ```java
-// NUNCA FAÇA ISSO - CODORIGEM nao é um campo local de ADCRELACAO
+// NUNCA FAÇA ISSO - CODORIGEM nao é um campo local de THGQMGRELACAO
 @JoinColumn(name = "CODORIGEM", referencedColumnName = "CODPRODUTO")
 private Produto produto;
 ```
@@ -791,10 +791,10 @@ Toda entidade tem Lombok minimo:
 
 ## 3.9 Exemplo Completo: XML ? Java
 
-**XML (`ADCCONFIG.xml`):**
+**XML (`THGQMGCONFIG.xml`):**
 
 ```xml
-<table name="ADCCONFIG" sequenceType="M">
+<table name="THGQMGCONFIG" sequenceType="M">
     <primaryKey>
         <field name="CODCONF"/>
     </primaryKey>
@@ -841,7 +841,7 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @JapeEntity(
     entity = "MinhaConfiguracao",
-    table = "ADCCONFIG"
+    table = "THGQMGCONFIG"
 )
 public class MinhaConfiguracao {
 

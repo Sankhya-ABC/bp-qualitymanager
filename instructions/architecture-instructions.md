@@ -88,7 +88,7 @@ Mapeia tabela ou conceito de dominio. Detalhes em `entity-instructions.md`.
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@JapeEntity(entity = "TdcRegistro", table = "TDCQMNCREGISTRO")
+@JapeEntity(entity = "ThgRegistro", table = "THGQMGREGISTRO")
 public class Registro {
 
     @Id
@@ -233,7 +233,7 @@ public interface RegistroMapper {
 Reage a eventos de persistencia do framework.
 
 ```java
-@Listener(instanceNames = "TdcRegistro")
+@Listener(instanceNames = "ThgRegistro")
 public class RegistroListener extends PersistenceEventAdapter {
 
     private final RegistroService service;

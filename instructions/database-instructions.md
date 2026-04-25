@@ -14,11 +14,11 @@ Cada arquivo migração = XML versionamento sequencial estilo **Flyway**:
 
 ```
 dbscripts/
-|-- V001-CREATE_TABLE_ADCMINHATABELA.xml
-|-- V002-CREATE_TABLE_ADCOUTRABELA.xml
+|-- V001-CREATE_TABLE_THGQMGMINHATABELA.xml
+|-- V002-CREATE_TABLE_THGQMGOUTRABELA.xml
 |-- V003-ALTER_TABLE_TABELANATIVA.xml
-|-- V004-ALTER_TABLE_ADCMINHATABELA.xml
-|-- V005-INSERT_DATA_ADCMINHATABELA.xml
+|-- V004-ALTER_TABLE_THGQMGMINHATABELA.xml
+|-- V005-INSERT_DATA_THGQMGMINHATABELA.xml
 |-- V<NNN>-<OPERACAO>_<TABELA>.xml
 ```
 
@@ -32,7 +32,7 @@ dbscripts/
 |:-------------|:--------------------------------------------------------------------|:---------------------------------------------|
 | `V<NNN>`     | Versão sequencial **3 dígitos** (zero-padded), nunca reutilizar     | `V001`, `V002`, `V003`                       |
 | `<OPERACAO>` | Operação principal script                                           | `CREATE_TABLE`, `ALTER_TABLE`, `INSERT_DATA` |
-| `<TABELA>`   | Nome tabela afetada                                                 | `ADCMINHATABELA`, `TGFCAB`                   |
+| `<TABELA>`   | Nome tabela afetada                                                 | `THGQMGMINHATABELA`, `TGFCAB`                   |
 
 ---
 
@@ -103,42 +103,48 @@ CREATE TABLE EXEMPLO (CODEXEMPLO NUMBER(10) NOT NULL, CONSTRAINT PK_EXEMPLO PRIM
 
 **Padrão:** `<PREFIXO_ADDON><ABREVIACAO_ENTIDADE>` — tudo MAIÚSCULO, sem underscores.
 
-### Convencao do setor (aplicavel a qualquer projeto)
+### Convencao Hagious (aplicavel a este projeto)
 
-Projetos setor, nome tabela sempre formato:
+Nome tabela sempre formato:
 
-`TDC<MODULO3><CONTEXTO>`
+`THG<MODULO><CONTEXTO>`
 
 Onde:
 
-- `TDC`: prefixo fixo Tabela DevCenter
-- `<MODULO3>`: sigla modulo 3 caracteres (ex.: `COT`)
+- `THG`: prefixo fixo Tabelas Hagious
+- `<MODULO>`: sigla modulo (ex.: `QMG` para QualityManager)
 - `<CONTEXTO>`: sigla contexto tabela
 
-Exemplo aplicado:
+Exemplo aplicado (modulo QualityManager):
 
-- `TDCCOTCAB`
-    - `TDC` -> Tabela DevCenter
-    - `COT` -> Modulo Cotacao
+- `THGQMGCAB`
+    - `THG` -> Tabelas Hagious
+    - `QMG` -> Modulo QualityManager
     - `CAB` -> Cabecalho
+
+- `THGQMGCONS`
+    - `THG` -> Tabelas Hagious
+    - `QMG` -> Modulo QualityManager
+    - `CONS` -> Consumo
 
 Exemplo generico:
 
-- `TDCABCXYZ`
-    - `TDC` -> Tabela DevCenter
-    - `ABC` -> Modulo (3 caracteres)
+- `THGABCXYZ`
+    - `THG` -> Tabelas Hagious
+    - `ABC` -> Modulo
     - `XYZ` -> Contexto tabela
 
 Componentes:
 
-- **Prefixo addon:** Identifica add-on (definido início projeto). Ex: `ADC` (Addon Compras), `BIL` (Bilhetagem)
+- **Prefixo empresa:** `THG` (Hagious) — fixo para todos os projetos
+- **Sigla modulo:** Identifica modulo do addon. Ex: `QMG` (QualityManager)
 - **Abreviação entidade:** Sigla curta identifica conceito. Ex: `CONS` (consumo), `FAT` (faturamento), `CONF` (configuração)
 
-| Exemplo      | Prefixo | Entidade | Resultado |
-|:-------------|:--------|:---------|:----------|
-| Consumo      | `ADC`   | `CONS`   | `ADCCONS` |
-| Faturamento  | `ADC`   | `FAT`    | `ADCFAT`  |
-| Configuração | `ADC`   | `CONF`   | `ADCCONF` |
+| Exemplo      | Prefixo | Modulo | Entidade | Resultado     |
+|:-------------|:--------|:-------|:---------|:--------------|
+| Consumo      | `THG`   | `QMG`  | `CONS`   | `THGQMGCONS`  |
+| Faturamento  | `THG`   | `QMG`  | `FAT`    | `THGQMGFAT`   |
+| Configuração | `THG`   | `QMG`  | `CONF`   | `THGQMGCONF`  |
 
 > **IMPORTANTE:** Antes criar tabela nova, assistente DEVE perguntar usuário aprovar nome proposto.
 
@@ -147,8 +153,8 @@ Componentes:
 **Padrão:** `PK_<NOME_TABELA>`
 
 ```sql
-CONSTRAINT PK_ADCCONS PRIMARY KEY (CODCONS)
-CONSTRAINT PK_ADCFAT PRIMARY KEY (CODPARC, DTFAT)
+CONSTRAINT PK_THGQMGCONS PRIMARY KEY (CODCONS)
+CONSTRAINT PK_THGQMGFAT PRIMARY KEY (CODPARC, DTFAT)
 ```
 
 ### Nome de Campos
@@ -167,9 +173,9 @@ Abreviações padrão ecossistema Sankhya:
 | `PERC`       | Percentual                          | `PERCMRR`                               |
 | `DESCR`      | Descrição (texto livre)             | `DESCRERRO`, `DESCRPRODUTO`             |
 | `NU`         | Número único movimentos/documentos  | `NUNOTA`, `NUIMP`, `NUPED`              |
-| `<PREFIXO>_` | Coluna customizada tabela nativa    | `ADC_CODRECEITA`, `ADC_STATUS`          |
+| `<PREFIXO>_` | Coluna customizada tabela nativa    | `QMG_CODRECEITA`, `QMG_STATUS`          |
 
-> **Colunas customizadas tabelas nativas** usam prefixo addon + `_` (ex: `ADC_`) para evitar conflito com outros add-ons ou core Sankhya.
+> **Colunas customizadas tabelas nativas** usam prefixo modulo + `_` (ex: `QMG_`) para evitar conflito com outros add-ons ou core Sankhya.
 
 > **Chaves primárias sequenciais:** não usar prefixo `ID` padrão. Para **cadastros**, usar `COD` (ex: `CODCONF`); para **movimentos**, usar `NU` (ex: `NUNOTA`, `NUIMP`).
 
@@ -220,19 +226,19 @@ Script criação contém **exclusivamente** colunas PK + constraint PK.
 
 ```xml
 
-<sql nomeTabela="ADCCONS" ordem="1" executar="SE_NAO_EXISTIR"
-     tipoObjeto="TABLE" nomeObjeto="ADCCONS"
-     descricao="Criacao da tabela ADCCONS">
+<sql nomeTabela="THGQMGCONS" ordem="1" executar="SE_NAO_EXISTIR"
+     tipoObjeto="TABLE" nomeObjeto="THGQMGCONS"
+     descricao="Criacao da tabela THGQMGCONS">
     <mssql>
-        CREATE TABLE ADCCONS (
+        CREATE TABLE THGQMGCONS (
         CODCONS INT NOT NULL,
-        CONSTRAINT PK_ADCCONS PRIMARY KEY (CODCONS)
+        CONSTRAINT PK_THGQMGCONS PRIMARY KEY (CODCONS)
         )
     </mssql>
     <oracle>
-        CREATE TABLE ADCCONS (
+        CREATE TABLE THGQMGCONS (
         CODCONS NUMBER(10) NOT NULL,
-        CONSTRAINT PK_ADCCONS PRIMARY KEY (CODCONS)
+        CONSTRAINT PK_THGQMGCONS PRIMARY KEY (CODCONS)
         )
     </oracle>
 </sql>
@@ -242,21 +248,21 @@ Script criação contém **exclusivamente** colunas PK + constraint PK.
 
 ```xml
 
-<sql nomeTabela="ADCFAT" ordem="1" executar="SE_NAO_EXISTIR"
-     tipoObjeto="TABLE" nomeObjeto="ADCFAT"
-     descricao="Criacao da tabela ADCFAT">
+<sql nomeTabela="THGQMGFAT" ordem="1" executar="SE_NAO_EXISTIR"
+     tipoObjeto="TABLE" nomeObjeto="THGQMGFAT"
+     descricao="Criacao da tabela THGQMGFAT">
     <mssql>
-        CREATE TABLE ADCFAT (
+        CREATE TABLE THGQMGFAT (
         CODPARC INT NOT NULL,
         DTFAT DATETIME NOT NULL,
-        CONSTRAINT PK_ADCFAT PRIMARY KEY (CODPARC, DTFAT)
+        CONSTRAINT PK_THGQMGFAT PRIMARY KEY (CODPARC, DTFAT)
         )
     </mssql>
     <oracle>
-        CREATE TABLE ADCFAT (
+        CREATE TABLE THGQMGFAT (
         CODPARC NUMBER(10) NOT NULL,
         DTFAT DATE NOT NULL,
-        CONSTRAINT PK_ADCFAT PRIMARY KEY (CODPARC, DTFAT)
+        CONSTRAINT PK_THGQMGFAT PRIMARY KEY (CODPARC, DTFAT)
         )
     </oracle>
 </sql>
@@ -268,58 +274,58 @@ Após `CREATE TABLE`, cada coluna adicional criada via `ALTER TABLE ADD` com `ex
 
 ```xml
 
-<sql nomeTabela="ADCCONS" ordem="2" executar="SE_NAO_EXISTIR"
+<sql nomeTabela="THGQMGCONS" ordem="2" executar="SE_NAO_EXISTIR"
      tipoObjeto="COLUMN" nomeObjeto="DESCR"
-     descricao="Adicionar campo DESCR na tabela ADCCONS">
+     descricao="Adicionar campo DESCR na tabela THGQMGCONS">
     <mssql>
-        ALTER TABLE ADCCONS ADD DESCR VARCHAR(200)
+        ALTER TABLE THGQMGCONS ADD DESCR VARCHAR(200)
     </mssql>
     <oracle>
-        ALTER TABLE ADCCONS ADD (DESCR VARCHAR2(200))
+        ALTER TABLE THGQMGCONS ADD (DESCR VARCHAR2(200))
     </oracle>
 </sql>
 
-<sql nomeTabela="ADCCONS" ordem="3" executar="SE_NAO_EXISTIR"
+<sql nomeTabela="THGQMGCONS" ordem="3" executar="SE_NAO_EXISTIR"
      tipoObjeto="COLUMN" nomeObjeto="CODPARC"
-     descricao="Adicionar campo CODPARC na tabela ADCCONS">
+     descricao="Adicionar campo CODPARC na tabela THGQMGCONS">
 <mssql>
-    ALTER TABLE ADCCONS ADD CODPARC INT
+    ALTER TABLE THGQMGCONS ADD CODPARC INT
 </mssql>
 <oracle>
-    ALTER TABLE ADCCONS ADD (CODPARC NUMBER(10))
+    ALTER TABLE THGQMGCONS ADD (CODPARC NUMBER(10))
 </oracle>
 </sql>
 
-<sql nomeTabela="ADCCONS" ordem="4" executar="SE_NAO_EXISTIR"
+<sql nomeTabela="THGQMGCONS" ordem="4" executar="SE_NAO_EXISTIR"
      tipoObjeto="COLUMN" nomeObjeto="VLRTOTAL"
-     descricao="Adicionar campo VLRTOTAL na tabela ADCCONS">
+     descricao="Adicionar campo VLRTOTAL na tabela THGQMGCONS">
 <mssql>
-    ALTER TABLE ADCCONS ADD VLRTOTAL DECIMAL(18,2)
+    ALTER TABLE THGQMGCONS ADD VLRTOTAL DECIMAL(18,2)
 </mssql>
 <oracle>
-    ALTER TABLE ADCCONS ADD (VLRTOTAL NUMBER(18,2))
+    ALTER TABLE THGQMGCONS ADD (VLRTOTAL NUMBER(18,2))
 </oracle>
 </sql>
 
-<sql nomeTabela="ADCCONS" ordem="5" executar="SE_NAO_EXISTIR"
+<sql nomeTabela="THGQMGCONS" ordem="5" executar="SE_NAO_EXISTIR"
      tipoObjeto="COLUMN" nomeObjeto="ATIVO"
-     descricao="Adicionar campo ATIVO na tabela ADCCONS">
+     descricao="Adicionar campo ATIVO na tabela THGQMGCONS">
 <mssql>
-    ALTER TABLE ADCCONS ADD ATIVO CHAR(1)
+    ALTER TABLE THGQMGCONS ADD ATIVO CHAR(1)
 </mssql>
 <oracle>
-    ALTER TABLE ADCCONS ADD (ATIVO CHAR(1))
+    ALTER TABLE THGQMGCONS ADD (ATIVO CHAR(1))
 </oracle>
 </sql>
 
-<sql nomeTabela="ADCCONS" ordem="6" executar="SE_NAO_EXISTIR"
+<sql nomeTabela="THGQMGCONS" ordem="6" executar="SE_NAO_EXISTIR"
      tipoObjeto="COLUMN" nomeObjeto="DHALTER"
-     descricao="Adicionar campo DHALTER na tabela ADCCONS">
+     descricao="Adicionar campo DHALTER na tabela THGQMGCONS">
 <mssql>
-    ALTER TABLE ADCCONS ADD DHALTER DATETIME
+    ALTER TABLE THGQMGCONS ADD DHALTER DATETIME
 </mssql>
 <oracle>
-    ALTER TABLE ADCCONS ADD (DHALTER DATE)
+    ALTER TABLE THGQMGCONS ADD (DHALTER DATE)
 </oracle>
 </sql>
 ```
@@ -328,14 +334,14 @@ Após `CREATE TABLE`, cada coluna adicional criada via `ALTER TABLE ADD` com `ex
 
 ```xml
 
-<sql nomeTabela="ADCCONS" ordem="1" executar="SE_EXISTIR"
+<sql nomeTabela="THGQMGCONS" ordem="1" executar="SE_EXISTIR"
      tipoObjeto="COLUMN" nomeObjeto="DESCR"
-     descricao="Alterar tamanho do campo DESCR na tabela ADCCONS">
+     descricao="Alterar tamanho do campo DESCR na tabela THGQMGCONS">
     <mssql>
-        ALTER TABLE ADCCONS ALTER COLUMN DESCR VARCHAR(500)
+        ALTER TABLE THGQMGCONS ALTER COLUMN DESCR VARCHAR(500)
     </mssql>
     <oracle>
-        ALTER TABLE ADCCONS MODIFY (DESCR VARCHAR2(500))
+        ALTER TABLE THGQMGCONS MODIFY (DESCR VARCHAR2(500))
     </oracle>
 </sql>
 ```
@@ -351,9 +357,9 @@ Tabelas nativas Sankhya (tag `<nativeTable>` no dicionário) **NÃO têm CREATE 
 | Tipo de campo no dicionário                            | Script necessário?          | Motivo                         |
 |:-------------------------------------------------------|:----------------------------|:-------------------------------|
 | Campo nativo (ex: `CODPARC`, `NUNOTA`)                 | ? **Não**                   | Já existe tabela Sankhya       |
-| Campo customizado (ex: `ADC_STATUS`, `ADC_CODRECEITA`) | ? **Sim** — ALTER TABLE ADD | Adicionado pelo add-on         |
+| Campo customizado (ex: `QMG_STATUS`, `QMG_CODRECEITA`) | ? **Sim** — ALTER TABLE ADD | Adicionado pelo add-on         |
 
-> Convenção: prefixo addon + `_` (ex: `ADC_`) em campos customizados para identificação fácil.
+> Convenção: prefixo addon + `_` (ex: `QMG_`) em campos customizados para identificação fácil.
 
 #### Exemplo
 
@@ -364,24 +370,24 @@ Tabelas nativas Sankhya (tag `<nativeTable>` no dicionário) **NÃO têm CREATE 
          xsi:noNamespaceSchemaLocation="../.gradle/scripts.xsd">
 
     <sql nomeTabela="TGFCAB" ordem="1" executar="SE_NAO_EXISTIR"
-         tipoObjeto="COLUMN" nomeObjeto="ADC_CODRECEITA"
-         descricao="Adicionar campo ADC_CODRECEITA na tabela TGFCAB">
+         tipoObjeto="COLUMN" nomeObjeto="QMG_CODRECEITA"
+         descricao="Adicionar campo QMG_CODRECEITA na tabela TGFCAB">
         <mssql>
-            ALTER TABLE TGFCAB ADD ADC_CODRECEITA VARCHAR(100)
+            ALTER TABLE TGFCAB ADD QMG_CODRECEITA VARCHAR(100)
         </mssql>
         <oracle>
-            ALTER TABLE TGFCAB ADD (ADC_CODRECEITA VARCHAR2(100))
+            ALTER TABLE TGFCAB ADD (QMG_CODRECEITA VARCHAR2(100))
         </oracle>
     </sql>
 
     <sql nomeTabela="TGFCAB" ordem="2" executar="SE_NAO_EXISTIR"
-         tipoObjeto="COLUMN" nomeObjeto="ADC_STATUS"
-         descricao="Adicionar campo ADC_STATUS na tabela TGFCAB">
+         tipoObjeto="COLUMN" nomeObjeto="QMG_STATUS"
+         descricao="Adicionar campo QMG_STATUS na tabela TGFCAB">
         <mssql>
-            ALTER TABLE TGFCAB ADD ADC_STATUS VARCHAR(50)
+            ALTER TABLE TGFCAB ADD QMG_STATUS VARCHAR(50)
         </mssql>
         <oracle>
-            ALTER TABLE TGFCAB ADD (ADC_STATUS VARCHAR2(50))
+            ALTER TABLE TGFCAB ADD (QMG_STATUS VARCHAR2(50))
         </oracle>
     </sql>
 
@@ -395,7 +401,7 @@ Tabelas nativas Sankhya (tag `<nativeTable>` no dicionário) **NÃO têm CREATE 
 | Tag no dicionário | CREATE TABLE?                    | ALTER TABLE para colunas?                           | Observação                |
 |:------------------|:---------------------------------|:----------------------------------------------------|:--------------------------|
 | `<table>`         | ? Sim (somente PKs + constraint) | ? Sim (cada coluna não-PK individualmente)          | Tabela criada pelo add-on |
-| `<nativeTable>`   | ? Não                            | ? Somente colunas com prefixo do addon (ex: `ADC_`) | Tabela nativa Sankhya     |
+| `<nativeTable>`   | ? Não                            | ? Somente colunas com prefixo do addon (ex: `QMG_`) | Tabela nativa Sankhya     |
 
 ---
 
@@ -403,17 +409,17 @@ Tabelas nativas Sankhya (tag `<nativeTable>` no dicionário) **NÃO têm CREATE 
 
 ```xml
 
-<sql nomeTabela="ADCCONF" ordem="1" executar="SEMPRE"
+<sql nomeTabela="THGQMGCONF" ordem="1" executar="SEMPRE"
      tipoObjeto="TABLE" nomeObjeto="INSERT_CONFIG"
      descricao="Inserir registro padrao de configuracao">
     <mssql>
-        INSERT INTO ADCCONF (CODCONF)
-        SELECT 1 WHERE NOT EXISTS (SELECT 1 FROM ADCCONF)
+        INSERT INTO THGQMGCONF (CODCONF)
+        SELECT 1 WHERE NOT EXISTS (SELECT 1 FROM THGQMGCONF)
     </mssql>
     <oracle>
-        INSERT INTO ADCCONF (CODCONF)
+        INSERT INTO THGQMGCONF (CODCONF)
         SELECT 1 FROM DUAL
-        WHERE NOT EXISTS (SELECT 1 FROM ADCCONF)
+        WHERE NOT EXISTS (SELECT 1 FROM THGQMGCONF)
     </oracle>
 </sql>
 ```
@@ -492,20 +498,20 @@ CREATE TABLE TABELA (CODCONS NUMBER(10) NOT NULL, CONSTRAINT PK_TABELA PRIMARY K
 ```xml
 <!-- ERRADO ? todas as colunas no CREATE TABLE -->
 <oracle>
-    CREATE TABLE ADCCONS (
+    CREATE TABLE THGQMGCONS (
     CODCONS NUMBER(10) NOT NULL,
     DESCR VARCHAR2(200),
     CODPARC NUMBER(10),
     ATIVO CHAR(1),
-    CONSTRAINT PK_ADCCONS PRIMARY KEY (CODCONS)
+    CONSTRAINT PK_THGQMGCONS PRIMARY KEY (CODCONS)
     )
 </oracle>
 
     <!-- CORRETO | CREATE TABLE só com PK + constraint -->
 <oracle>
-CREATE TABLE ADCCONS (
+CREATE TABLE THGQMGCONS (
 CODCONS NUMBER(10) NOT NULL,
-CONSTRAINT PK_ADCCONS PRIMARY KEY (CODCONS)
+CONSTRAINT PK_THGQMGCONS PRIMARY KEY (CODCONS)
 )
 </oracle>
     <!-- Seguido de ALTER TABLE ADD para cada coluna não-PK -->
@@ -521,7 +527,7 @@ CONSTRAINT PK_ADCCONS PRIMARY KEY (CODCONS)
 
     <!-- CORRETO | apenas ALTER TABLE para colunas customizadas do addon -->
 <oracle>
-ALTER TABLE TGFCAB ADD (ADC_CODRECEITA VARCHAR2(100))
+ALTER TABLE TGFCAB ADD (QMG_CODRECEITA VARCHAR2(100))
 </oracle>
 ```
 
@@ -535,7 +541,7 @@ ALTER TABLE TGFCAB ADD (ADC_CODRECEITA VARCHAR2(100))
 
     <!-- CORRETO | somente colunas customizadas com prefixo do addon -->
 <oracle>
-ALTER TABLE TGFCAB ADD (ADC_CODRECEITA VARCHAR2(100))
+ALTER TABLE TGFCAB ADD (QMG_CODRECEITA VARCHAR2(100))
 </oracle>
 ```
 
@@ -545,7 +551,7 @@ ALTER TABLE TGFCAB ADD (ADC_CODRECEITA VARCHAR2(100))
 
 ### 7. Usar prefixo genérico `AD_`
 
-Usar sempre prefixo específico addon (ex: `ADC_`), nunca `AD_` — causa conflitos com outros add-ons.
+Usar sempre prefixo específico addon (ex: `QMG_`), nunca `AD_` — causa conflitos com outros add-ons.
 
 ### 8. Duplicar `ordem` dentro do mesmo arquivo
 
@@ -568,8 +574,8 @@ V2.xml
 script_tabela.xml
 
 <!-- CORRETO -->
-V001-CREATE_TABLE_ADCCONS.xml
-V002-CREATE_TABLE_ADCFAT.xml
+V001-CREATE_TABLE_THGQMGCONS.xml
+V002-CREATE_TABLE_THGQMGFAT.xml
 V003-ALTER_TABLE_TGFCAB.xml
 ```
 
@@ -599,7 +605,7 @@ V003-ALTER_TABLE_TGFCAB.xml
 
 ## Exemplos Completos
 
-### V001-CREATE_TABLE_ADCCONS.xml | Tabela nova com PK simples
+### V001-CREATE_TABLE_THGQMGCONS.xml | Tabela nova com PK simples
 
 ```xml
 <?xml version="1.0" encoding="ISO-8859-1"?>
@@ -607,105 +613,105 @@ V003-ALTER_TABLE_TGFCAB.xml
          xsi:noNamespaceSchemaLocation="../.gradle/scripts.xsd">
 
     <!-- 1. CREATE TABLE somente com PK e constraint -->
-    <sql nomeTabela="ADCCONS" ordem="1" executar="SE_NAO_EXISTIR"
-         tipoObjeto="TABLE" nomeObjeto="ADCCONS"
-         descricao="Criacao da tabela ADCCONS">
+    <sql nomeTabela="THGQMGCONS" ordem="1" executar="SE_NAO_EXISTIR"
+         tipoObjeto="TABLE" nomeObjeto="THGQMGCONS"
+         descricao="Criacao da tabela THGQMGCONS">
         <mssql>
-            CREATE TABLE ADCCONS (
+            CREATE TABLE THGQMGCONS (
             CODCONS INT NOT NULL,
-            CONSTRAINT PK_ADCCONS PRIMARY KEY (CODCONS)
+            CONSTRAINT PK_THGQMGCONS PRIMARY KEY (CODCONS)
             )
         </mssql>
         <oracle>
-            CREATE TABLE ADCCONS (
+            CREATE TABLE THGQMGCONS (
             CODCONS NUMBER(10) NOT NULL,
-            CONSTRAINT PK_ADCCONS PRIMARY KEY (CODCONS)
+            CONSTRAINT PK_THGQMGCONS PRIMARY KEY (CODCONS)
             )
         </oracle>
     </sql>
 
     <!-- 2. ALTER TABLE para cada coluna não-PK -->
-    <sql nomeTabela="ADCCONS" ordem="2" executar="SE_NAO_EXISTIR"
+    <sql nomeTabela="THGQMGCONS" ordem="2" executar="SE_NAO_EXISTIR"
          tipoObjeto="COLUMN" nomeObjeto="DESCR"
-         descricao="Adicionar campo DESCR na tabela ADCCONS">
+         descricao="Adicionar campo DESCR na tabela THGQMGCONS">
         <mssql>
-            ALTER TABLE ADCCONS ADD DESCR VARCHAR(200)
+            ALTER TABLE THGQMGCONS ADD DESCR VARCHAR(200)
         </mssql>
         <oracle>
-            ALTER TABLE ADCCONS ADD (DESCR VARCHAR2(200))
+            ALTER TABLE THGQMGCONS ADD (DESCR VARCHAR2(200))
         </oracle>
     </sql>
 
-    <sql nomeTabela="ADCCONS" ordem="3" executar="SE_NAO_EXISTIR"
+    <sql nomeTabela="THGQMGCONS" ordem="3" executar="SE_NAO_EXISTIR"
          tipoObjeto="COLUMN" nomeObjeto="CODPARC"
-         descricao="Adicionar campo CODPARC na tabela ADCCONS">
+         descricao="Adicionar campo CODPARC na tabela THGQMGCONS">
         <mssql>
-            ALTER TABLE ADCCONS ADD CODPARC INT
+            ALTER TABLE THGQMGCONS ADD CODPARC INT
         </mssql>
         <oracle>
-            ALTER TABLE ADCCONS ADD (CODPARC NUMBER(10))
+            ALTER TABLE THGQMGCONS ADD (CODPARC NUMBER(10))
         </oracle>
     </sql>
 
-    <sql nomeTabela="ADCCONS" ordem="4" executar="SE_NAO_EXISTIR"
+    <sql nomeTabela="THGQMGCONS" ordem="4" executar="SE_NAO_EXISTIR"
          tipoObjeto="COLUMN" nomeObjeto="VLRTOTAL"
-         descricao="Adicionar campo VLRTOTAL na tabela ADCCONS">
+         descricao="Adicionar campo VLRTOTAL na tabela THGQMGCONS">
         <mssql>
-            ALTER TABLE ADCCONS ADD VLRTOTAL DECIMAL(18,2)
+            ALTER TABLE THGQMGCONS ADD VLRTOTAL DECIMAL(18,2)
         </mssql>
         <oracle>
-            ALTER TABLE ADCCONS ADD (VLRTOTAL NUMBER(18,2))
+            ALTER TABLE THGQMGCONS ADD (VLRTOTAL NUMBER(18,2))
         </oracle>
     </sql>
 
-    <sql nomeTabela="ADCCONS" ordem="5" executar="SE_NAO_EXISTIR"
+    <sql nomeTabela="THGQMGCONS" ordem="5" executar="SE_NAO_EXISTIR"
          tipoObjeto="COLUMN" nomeObjeto="ATIVO"
-         descricao="Adicionar campo ATIVO na tabela ADCCONS">
+         descricao="Adicionar campo ATIVO na tabela THGQMGCONS">
         <mssql>
-            ALTER TABLE ADCCONS ADD ATIVO CHAR(1)
+            ALTER TABLE THGQMGCONS ADD ATIVO CHAR(1)
         </mssql>
         <oracle>
-            ALTER TABLE ADCCONS ADD (ATIVO CHAR(1))
+            ALTER TABLE THGQMGCONS ADD (ATIVO CHAR(1))
         </oracle>
     </sql>
 
-    <sql nomeTabela="ADCCONS" ordem="6" executar="SE_NAO_EXISTIR"
+    <sql nomeTabela="THGQMGCONS" ordem="6" executar="SE_NAO_EXISTIR"
          tipoObjeto="COLUMN" nomeObjeto="CODUSU"
-         descricao="Adicionar campo CODUSU na tabela ADCCONS">
+         descricao="Adicionar campo CODUSU na tabela THGQMGCONS">
         <mssql>
-            ALTER TABLE ADCCONS ADD CODUSU INT
+            ALTER TABLE THGQMGCONS ADD CODUSU INT
         </mssql>
         <oracle>
-            ALTER TABLE ADCCONS ADD (CODUSU NUMBER(10))
+            ALTER TABLE THGQMGCONS ADD (CODUSU NUMBER(10))
         </oracle>
     </sql>
 
-    <sql nomeTabela="ADCCONS" ordem="7" executar="SE_NAO_EXISTIR"
+    <sql nomeTabela="THGQMGCONS" ordem="7" executar="SE_NAO_EXISTIR"
          tipoObjeto="COLUMN" nomeObjeto="DHALTER"
-         descricao="Adicionar campo DHALTER na tabela ADCCONS">
+         descricao="Adicionar campo DHALTER na tabela THGQMGCONS">
         <mssql>
-            ALTER TABLE ADCCONS ADD DHALTER DATETIME
+            ALTER TABLE THGQMGCONS ADD DHALTER DATETIME
         </mssql>
         <oracle>
-            ALTER TABLE ADCCONS ADD (DHALTER DATE)
+            ALTER TABLE THGQMGCONS ADD (DHALTER DATE)
         </oracle>
     </sql>
 
-    <sql nomeTabela="ADCCONS" ordem="8" executar="SE_NAO_EXISTIR"
+    <sql nomeTabela="THGQMGCONS" ordem="8" executar="SE_NAO_EXISTIR"
          tipoObjeto="COLUMN" nomeObjeto="DHCREATE"
-         descricao="Adicionar campo DHCREATE na tabela ADCCONS">
+         descricao="Adicionar campo DHCREATE na tabela THGQMGCONS">
         <mssql>
-            ALTER TABLE ADCCONS ADD DHCREATE DATETIME
+            ALTER TABLE THGQMGCONS ADD DHCREATE DATETIME
         </mssql>
         <oracle>
-            ALTER TABLE ADCCONS ADD (DHCREATE DATE)
+            ALTER TABLE THGQMGCONS ADD (DHCREATE DATE)
         </oracle>
     </sql>
 
 </scripts>
 ```
 
-### V002-CREATE_TABLE_ADCFAT.xml ? Tabela com PK composta
+### V002-CREATE_TABLE_THGQMGFAT.xml ? Tabela com PK composta
 
 ```xml
 <?xml version="1.0" encoding="ISO-8859-1"?>
@@ -713,45 +719,45 @@ V003-ALTER_TABLE_TGFCAB.xml
          xsi:noNamespaceSchemaLocation="../.gradle/scripts.xsd">
 
     <!-- 1. CREATE TABLE com PK composta -->
-    <sql nomeTabela="ADCFAT" ordem="1" executar="SE_NAO_EXISTIR"
-         tipoObjeto="TABLE" nomeObjeto="ADCFAT"
-         descricao="Criacao da tabela ADCFAT">
+    <sql nomeTabela="THGQMGFAT" ordem="1" executar="SE_NAO_EXISTIR"
+         tipoObjeto="TABLE" nomeObjeto="THGQMGFAT"
+         descricao="Criacao da tabela THGQMGFAT">
         <mssql>
-            CREATE TABLE ADCFAT (
+            CREATE TABLE THGQMGFAT (
             CODPARC INT NOT NULL,
             DTFAT DATETIME NOT NULL,
-            CONSTRAINT PK_ADCFAT PRIMARY KEY (CODPARC, DTFAT)
+            CONSTRAINT PK_THGQMGFAT PRIMARY KEY (CODPARC, DTFAT)
             )
         </mssql>
         <oracle>
-            CREATE TABLE ADCFAT (
+            CREATE TABLE THGQMGFAT (
             CODPARC NUMBER(10) NOT NULL,
             DTFAT DATE NOT NULL,
-            CONSTRAINT PK_ADCFAT PRIMARY KEY (CODPARC, DTFAT)
+            CONSTRAINT PK_THGQMGFAT PRIMARY KEY (CODPARC, DTFAT)
             )
         </oracle>
     </sql>
 
     <!-- 2. ALTER TABLE para colunas não-PK -->
-    <sql nomeTabela="ADCFAT" ordem="2" executar="SE_NAO_EXISTIR"
+    <sql nomeTabela="THGQMGFAT" ordem="2" executar="SE_NAO_EXISTIR"
          tipoObjeto="COLUMN" nomeObjeto="VLRTOTAL"
-         descricao="Adicionar campo VLRTOTAL na tabela ADCFAT">
+         descricao="Adicionar campo VLRTOTAL na tabela THGQMGFAT">
         <mssql>
-            ALTER TABLE ADCFAT ADD VLRTOTAL DECIMAL(18,2)
+            ALTER TABLE THGQMGFAT ADD VLRTOTAL DECIMAL(18,2)
         </mssql>
         <oracle>
-            ALTER TABLE ADCFAT ADD (VLRTOTAL NUMBER(18,2))
+            ALTER TABLE THGQMGFAT ADD (VLRTOTAL NUMBER(18,2))
         </oracle>
     </sql>
 
-    <sql nomeTabela="ADCFAT" ordem="3" executar="SE_NAO_EXISTIR"
+    <sql nomeTabela="THGQMGFAT" ordem="3" executar="SE_NAO_EXISTIR"
          tipoObjeto="COLUMN" nomeObjeto="ATIVO"
-         descricao="Adicionar campo ATIVO na tabela ADCFAT">
+         descricao="Adicionar campo ATIVO na tabela THGQMGFAT">
         <mssql>
-            ALTER TABLE ADCFAT ADD ATIVO CHAR(1)
+            ALTER TABLE THGQMGFAT ADD ATIVO CHAR(1)
         </mssql>
         <oracle>
-            ALTER TABLE ADCFAT ADD (ATIVO CHAR(1))
+            ALTER TABLE THGQMGFAT ADD (ATIVO CHAR(1))
         </oracle>
     </sql>
 
@@ -766,24 +772,24 @@ V003-ALTER_TABLE_TGFCAB.xml
          xsi:noNamespaceSchemaLocation="../.gradle/scripts.xsd">
 
     <sql nomeTabela="TGFCAB" ordem="1" executar="SE_NAO_EXISTIR"
-         tipoObjeto="COLUMN" nomeObjeto="ADC_CODRECEITA"
-         descricao="Adicionar campo ADC_CODRECEITA na tabela TGFCAB">
+         tipoObjeto="COLUMN" nomeObjeto="QMG_CODRECEITA"
+         descricao="Adicionar campo QMG_CODRECEITA na tabela TGFCAB">
         <mssql>
-            ALTER TABLE TGFCAB ADD ADC_CODRECEITA VARCHAR(100)
+            ALTER TABLE TGFCAB ADD QMG_CODRECEITA VARCHAR(100)
         </mssql>
         <oracle>
-            ALTER TABLE TGFCAB ADD (ADC_CODRECEITA VARCHAR2(100))
+            ALTER TABLE TGFCAB ADD (QMG_CODRECEITA VARCHAR2(100))
         </oracle>
     </sql>
 
     <sql nomeTabela="TGFCAB" ordem="2" executar="SE_NAO_EXISTIR"
-         tipoObjeto="COLUMN" nomeObjeto="ADC_STATUS"
-         descricao="Adicionar campo ADC_STATUS na tabela TGFCAB">
+         tipoObjeto="COLUMN" nomeObjeto="QMG_STATUS"
+         descricao="Adicionar campo QMG_STATUS na tabela TGFCAB">
         <mssql>
-            ALTER TABLE TGFCAB ADD ADC_STATUS VARCHAR(50)
+            ALTER TABLE TGFCAB ADD QMG_STATUS VARCHAR(50)
         </mssql>
         <oracle>
-            ALTER TABLE TGFCAB ADD (ADC_STATUS VARCHAR2(50))
+            ALTER TABLE TGFCAB ADD (QMG_STATUS VARCHAR2(50))
         </oracle>
     </sql>
 
@@ -797,17 +803,17 @@ V003-ALTER_TABLE_TGFCAB.xml
 <scripts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="../.gradle/scripts.xsd">
 
-    <sql nomeTabela="ADCCONF" ordem="1" executar="SEMPRE"
+    <sql nomeTabela="THGQMGCONF" ordem="1" executar="SEMPRE"
          tipoObjeto="TABLE" nomeObjeto="INSERT_CONFIG"
          descricao="Insere um registro padrao de configuracao">
         <mssql>
-            INSERT INTO ADCCONF (CODCONF)
-            SELECT 1 WHERE NOT EXISTS (SELECT 1 FROM ADCCONF)
+            INSERT INTO THGQMGCONF (CODCONF)
+            SELECT 1 WHERE NOT EXISTS (SELECT 1 FROM THGQMGCONF)
         </mssql>
         <oracle>
-            INSERT INTO ADCCONF (CODCONF)
+            INSERT INTO THGQMGCONF (CODCONF)
             SELECT 1 FROM DUAL
-            WHERE NOT EXISTS (SELECT 1 FROM ADCCONF)
+            WHERE NOT EXISTS (SELECT 1 FROM THGQMGCONF)
         </oracle>
     </sql>
 
@@ -838,7 +844,7 @@ V003-ALTER_TABLE_TGFCAB.xml
 - [ ] Verificar último `V<NNN>-*.xml` existente para definir `N+1` (3 dígitos, zero-padded)
 - [ ] Nomear arquivo `V<NNN>-ALTER_TABLE_<TABELA>.xml`
 - [ ] **NÃO** criar CREATE TABLE
-- [ ] ALTER TABLE ADD **só** para colunas com prefixo addon (ex: `ADC_`)
+- [ ] ALTER TABLE ADD **só** para colunas com prefixo addon (ex: `QMG_`)
 - [ ] Incluir **ambas** tags `<mssql>` e `<oracle>` em cada `<sql>`
 - [ ] Ignorar colunas nativas (sem prefixo addon) — já existem no banco
 - [ ] `ordem` única e sequencial no arquivo

@@ -352,7 +352,7 @@ List<Veiculo> findByPlacaStartingWith(@Parameter("prefix") String prefix);
 
 ```java
 // Entidade (em <feature>/entity/)
-@JapeEntity(entity = "TdcRegistro", table = "TDCQMNCREGISTRO")
+@JapeEntity(entity = "ThgRegistro", table = "THGQMGREGISTRO")
 @Data
 public class Registro {
 
@@ -385,11 +385,11 @@ public interface RegistroRepository extends JapeRepository<Long, Registro> {
     @Criteria(clause = "this.CODPARC = :codigoParceiro")
     List<Registro> findByParceiro(@Parameter("codigoParceiro") Long codigoParceiro);
 
-    @NativeQuery("SELECT CODREGISTRO as codRegistro, VLR as valor FROM TDCQMNCREGISTRO WHERE STATUS = :status")
+    @NativeQuery("SELECT CODREGISTRO as codRegistro, VLR as valor FROM THGQMGREGISTRO WHERE STATUS = :status")
     List<RegistroResumoDTO> findResumoPorStatus(@Parameter("status") String status);
 
     @Modifying
-    @NativeQuery("DELETE FROM TDCQMNCREGISTRO WHERE STATUS = 'R' AND DHALTER < :dataLimite")
+    @NativeQuery("DELETE FROM THGQMGREGISTRO WHERE STATUS = 'R' AND DHALTER < :dataLimite")
     int deleteRascunhosAntigos(@Parameter("dataLimite") LocalDateTime dataLimite);
 }
 
