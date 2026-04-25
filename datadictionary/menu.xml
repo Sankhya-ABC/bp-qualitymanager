@@ -2,22 +2,100 @@
 <metadados xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:noNamespaceSchemaLocation="../.gradle/metadados.xsd">
 
-    <!--
-        Para mais informa��es sobre a cria��o e utiliza��o do Menu,
-        consulte a documenta��o oficial da Sankhya em: https://developer.sankhya.com.br/docs/06_menu
-    -->
+    <menu id="br.com.bpabc.addon.qualitymanager"
+          description="QualityManager"
+          icon="/$ctx/assets/icon.png">
 
-    <menu id="template" description="Addon Template" icon="/$ctx/assets/icon.png">
+        <!-- ═══════════════════════════════════════════════════
+             MÓDULO: Não Conformidades
+             ISO 9001 §8.7 + §10.2
+        ════════════════════════════════════════════════════ -->
+        <folder id="br.com.bpabc.addon.qualitymanager.nc"
+                description="Não Conformidades">
 
-        <folder id="relatorios" description="Relat�rios">
-            <dashboard id="dashboard" file="dashboardAtendimento.xml" description="Dashboard Atendimentos"/>
+            <dynamicForm id="br.com.bpabc.addon.qualitymanager.nc.consulta"
+                         instance="QmNcConsulta"
+                         description="Consulta de NCs"/>
+
+            <dynamicForm id="br.com.bpabc.addon.qualitymanager.nc.registro"
+                         instance="QmNcRegistro"
+                         description="01. Registro de NC"/>
+
+            <dynamicForm id="br.com.bpabc.addon.qualitymanager.nc.acaoimediata"
+                         instance="QmNcAcaoImediata"
+                         description="02. Ações Imediatas"/>
+
+            <dynamicForm id="br.com.bpabc.addon.qualitymanager.nc.causaraiz"
+                         instance="QmNcCausaRaiz"
+                         description="03. Causa Raiz"/>
+
+            <dynamicForm id="br.com.bpabc.addon.qualitymanager.nc.abrangencia"
+                         instance="QmNcAbrangencia"
+                         description="04. Abrangência"/>
+
+            <dynamicForm id="br.com.bpabc.addon.qualitymanager.nc.acaocorretiva"
+                         instance="QmNcAcaoCorretiva"
+                         description="05. Ações Corretivas"/>
+
+            <dynamicForm id="br.com.bpabc.addon.qualitymanager.nc.revisaodoc"
+                         instance="QmNcRevisaoDoc"
+                         description="06. Revisão de Documentos"/>
+
+            <dynamicForm id="br.com.bpabc.addon.qualitymanager.nc.risco"
+                         instance="QmNcRisco"
+                         description="07. Riscos e Oportunidades"/>
+
+            <dynamicForm id="br.com.bpabc.addon.qualitymanager.nc.implementacao"
+                         instance="QmNcImplementacao"
+                         description="08. Implementação"/>
+
+            <dynamicForm id="br.com.bpabc.addon.qualitymanager.nc.liberacao"
+                         instance="QmNcLiberacao"
+                         description="09. Liberação de Produto"/>
+
+            <dynamicForm id="br.com.bpabc.addon.qualitymanager.nc.eficacia"
+                         instance="QmNcEficacia"
+                         description="10. Verificação de Eficácia"/>
+
         </folder>
 
-        <ui id="TMP_ExemploHTML5" url="/$ctx/TMP_ExemploHTML5.xhtml5" description="Exemplo com HTML5"/>
+        <!-- ═══════════════════════════════════════════════════
+             MÓDULO: Fornecedores — Fase 2
+             ISO 9001 §8.4
+        ════════════════════════════════════════════════════ -->
+        <!--
+        <folder id="br.com.bpabc.addon.qualitymanager.forn"
+                description="Fornecedores">
+        </folder>
+        -->
 
-        <dynamicTreeView instance="TMP_HIERARQUICA" id="TMP_HIERARQUICA" description="Tabela Hier�rquica"/>
+        <!-- ═══════════════════════════════════════════════════
+             MÓDULO: Documentos — Fase 3
+             ISO 9001 §7.5
+        ════════════════════════════════════════════════════ -->
+        <!--
+        <folder id="br.com.bpabc.addon.qualitymanager.doc"
+                description="Documentos">
+        </folder>
+        -->
 
-        <dynamicForm instance="TMP_Atendimento" id="TMP_Atendimento"  description="Atendimentos com DynamicForm"/>
+        <!-- ═══════════════════════════════════════════════════
+             MÓDULO: Gestão de Mudanças — Fase 3
+             ISO 9001 §6.3 + §8.5.6
+        ════════════════════════════════════════════════════ -->
+        <!--
+        <folder id="br.com.bpabc.addon.qualitymanager.gm"
+                description="Gestão de Mudanças">
+        </folder>
+        -->
+
+        <!-- ═══════════════════════════════════════════════════
+             Configuração e Parametrização
+        ════════════════════════════════════════════════════ -->
+        <dynamicForm id="br.com.bpabc.addon.qualitymanager.config"
+                     instance="QmConfig"
+                     description="Configuração"/>
 
     </menu>
+
 </metadados>
