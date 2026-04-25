@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<metadados xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="../.gradle/metadados.xsd">
+
+    <table name="THGQMGREG" sequenceType="A" sequenceField="CODRNC">
+        <description>Registro de RNC</description>
+        <primaryKey>
+            <field name="CODRNC"/>
+        </primaryKey>
+        <instances>
+            <instance name="QmNcRegistro">
+                <description>Registro de RNC</description>
+            </instance>
+        </instances>
+        <fields>
+            <field name="CODRNC" dataType="INTEIRO" readOnly="S" order="1" allowSearch="S" visibleOnSearch="S">
+                <description>Cod. RNC</description>
+            </field>
+            <field name="NURNC" dataType="INTEIRO" order="2" allowSearch="S" visibleOnSearch="S" isPresentation="S">
+                <description>Numero RNC</description>
+            </field>
+            <field name="STATUS" dataType="LISTA" size="20" UITabName="__main" order="3" allowSearch="S" visibleOnSearch="S">
+                <description>Status</description>
+                <fieldOptions>
+                    <option value="P">Pendente</option>
+                    <option value="C">Concluido</option>
+                </fieldOptions>
+            </field>
+            <field name="FASEATUAL" dataType="LISTA" size="1" UITabName="__main" order="4" allowSearch="S" visibleOnSearch="S">
+                <description>Fase Atual</description>
+                <fieldOptions>
+                    <option value="0">Inicial</option>
+                    <option value="1">Inicializado</option>
+                    <option value="2">Finalizado</option>
+                </fieldOptions>
+            </field>
+            <field name="ORIGEM" dataType="LISTA" size="1" UITabName="__main" order="5" allowSearch="S" visibleOnSearch="S">
+                <description>Origem</description>
+                <fieldOptions>
+                    <option value="C">Cliente</option>
+                    <option value="F">Fornecedor</option>
+                    <option value="I">Interno</option>
+                    <option value="A">Auditoria</option>
+                    <option value="O">Outro</option>
+                </fieldOptions>
+            </field>
+            <field name="CODPARC" dataType="PESQUISA" targetInstance="Parceiro" targetField="CODPARC" targetType="INTEIRO"
+                   UITabName="__main" order="6" allowSearch="S" visibleOnSearch="S">
+                <description>Cod. Parceiro</description>
+            </field>
+            <field name="ATIVO" dataType="CHECKBOX" UITabName="__main" order="99" allowSearch="N" visibleOnSearch="N">
+                <description>Ativo</description>
+                <expression><![CDATA[if ($col_ATIVO == null) { return "S"; } else { return $col_ATIVO; }]]></expression>
+            </field>
+            <field name="CODUSU" dataType="PESQUISA" targetInstance="Usuario" targetField="CODUSU" targetType="INTEIRO"
+                   readOnly="S" UITabName="Outras Informacoes" order="99" allowSearch="N" visibleOnSearch="N">
+                <description>Cod. Usuario</description>
+                <expression><![CDATA[return $ctx_usuario_logado;]]></expression>
+            </field>
+            <field name="DHALTER" dataType="DATA_HORA" readOnly="S" UITabName="Outras Informacoes" order="99"
+                   allowSearch="N" visibleOnSearch="N">
+                <description>Data/Hora Alteracao</description>
+                <expression><![CDATA[return $ctx_dh_atual;]]></expression>
+            </field>
+            <field name="DHCREATE" dataType="DATA_HORA" readOnly="S" UITabName="Outras Informacoes" order="99"
+                   allowSearch="N" visibleOnSearch="N">
+                <description>Data/Hora Criacao</description>
+                <expression><![CDATA[if ($col_DHCREATE == null) { return $ctx_dh_atual; } else { return $col_DHCREATE; }]]></expression>
+            </field>
+        </fields>
+    </table>
+
+</metadados>
