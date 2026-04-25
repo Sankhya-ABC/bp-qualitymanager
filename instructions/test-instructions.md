@@ -10,7 +10,7 @@ Documento define como desenvolver testes automatizados backend Addon Studio 2.0 
 
 - Garantir comportamento regras negocio.
 - Permitir refator seguro.
-- Reduzir regressao em UseCases, Services, mapeamentos.
+- Reduzir regressao em Services, entities e mapeamentos.
 
 ## Bibliotecas recomendadas
 
@@ -21,25 +21,25 @@ Documento define como desenvolver testes automatizados backend Addon Studio 2.0 
 
 ## Onde testar na arquitetura
 
-Prioridade cobertura:
+Prioridade cobertura (MVC + package by feature):
 
-1. `core/application/usecase` (foco principal)
-2. `core/domain/service`
-3. `core/domain/entity` (metodos regra negocio)
-4. `entrypoint/rest` (so quando houver regra serializacao/contrato relevante)
+1. `<feature>/service/` (foco principal - regra de negocio)
+2. `<feature>/entity/` (metodos de dominio na entidade)
+3. `<feature>/controller/` (so quando houver regra de serializacao/contrato relevante)
+4. `<feature>/mapper/` (geralmente coberto via testes do Service quando relevante)
 
 Regra pratica:
-- Testar unidade negocio isolada.
+- Testar unidade de negocio isolada.
 - Nao testar framework Addon Studio.
-- Nao acoplar teste unitario a banco real, Wildfly, infra externa.
+- Nao acoplar teste unitario a banco real, Wildfly ou infra externa.
 
 ## Estrutura de pastas
 
 Espelhe pacotes em `src/test/java`:
 
 ```text
-src/main/java/com/example/addon/core/application/usecase/ProcessarEntidadeUseCase.java
-src/test/java/com/example/addon/core/application/usecase/ProcessarEntidadeUseCaseTest.java
+src/main/java/br/com/hagious/qualitymanager/<feature>/service/RegistroService.java
+src/test/java/br/com/hagious/qualitymanager/<feature>/service/RegistroServiceTest.java
 ```
 
 Padrao nome:
@@ -116,9 +116,9 @@ test {
 Output visual `test-logger` tema `mocha` similar a Jest:
 
 ```
-br.com.example.addon.core.application.usecase.ProcessarEntidadeUseCaseTest
+br.com.hagious.qualitymanager.registro.service.RegistroServiceTest
 
-  ✔ deveProcessar_quandoGatewayRetornarDados()
+  ✔ deveListarAtivos_quandoExistiremRegistros()
   ✔ deveLancarEntityNotFoundException_quandoEntidadeNaoEncontrada()
   ✘ deveLancarRuntimeException_quandoRepositorioFalhar()
     ...stack trace...
@@ -127,7 +127,7 @@ br.com.example.addon.core.application.usecase.ProcessarEntidadeUseCaseTest
 1 failing
 ```
 
-## Template de teste unitario (UseCase)
+## Template de teste unitario (Service)
 
 ```java
 import org.junit.jupiter.api.Test;
@@ -140,28 +140,26 @@ import static org.mockito.Mockito.*;
 import static org.assertj.core.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
-class ProcessarEntidadeUseCaseTest {
+class RegistroServiceTest {
 
     @Mock
-    private EntidadeRepository entidadeRepository;
-
-    @Mock
-    private EntidadeGateway entidadeGateway;
+    private RegistroRepository registroRepository;
 
     @InjectMocks
-    private ProcessarEntidadeUseCase useCase;
+    private RegistroService service;
 
     @Test
-    void deveProcessarEntidade_quandoGatewayRetornarDados() throws Exception {
+    void deveListarAtivos_quandoExistiremRegistros() throws Exception {
         // arrange
-        when(entidadeGateway.buscarDados()).thenReturn(Arrays.asList(new EntidadeDominio()));
+        when(registroRepository.findByAtivo(Boolean.TRUE))
+            .thenReturn(Arrays.asList(new Registro()));
 
         // act
-        List<EntidadeDominio> resultado = useCase.execute();
+        List<Registro> resultado = service.listarAtivos();
 
         // assert
         assertThat(resultado).hasSize(1);
-        verify(entidadeGateway, times(1)).buscarDados();
+        verify(registroRepository, times(1)).findByAtivo(Boolean.TRUE);
     }
 }
 ```
@@ -270,30 +268,30 @@ Ocorre tipicamente quando metodo auxiliar (`helper mock`) adiciona stubs que so
 seriam invocados no caminho feliz, mas teste cobre caminho erro onde execucao
 para antes.
 
-**Errado — stub de `getDataCancelamento()` nunca chamado quando gateway lanca excecao:**
+**Errado — stub de `getDhAlteracao()` nunca chamado quando repository lanca excecao:**
 ```java
-private Receituario receituarioMock() {
-    Receituario mock = mock(Receituario.class);
-    when(mock.getDataCancelamento()).thenReturn(new Timestamp(...)); // stub extra
+private Registro registroMock() {
+    Registro mock = mock(Registro.class);
+    when(mock.getDhAlteracao()).thenReturn(new Timestamp(...)); // stub extra
     return mock;
 }
 
 @Test
-void deveLancarIntegrationException_quandoGatewayFalhar() throws Exception {
-    Receituario receituario = receituarioMock(); // stub de getDataCancelamento() nao sera usado
-    when(gateway.cancel(receituario)).thenThrow(new IntegrationException("erro"));
-    // gateway lanca antes de getDataCancelamento() ser chamado -> UnnecessaryStubbingException
+void deveLancarRuntimeException_quandoRepositoryFalhar() throws Exception {
+    Registro registro = registroMock(); // stub de getDhAlteracao() nao sera usado
+    when(repository.save(registro)).thenThrow(new RuntimeException("erro"));
+    // repository lanca antes de getDhAlteracao() ser chamado -> UnnecessaryStubbingException
 }
 ```
 
-**Correto — use `mock()` puro quando caminho nao invoca metodos extras:**
+**Correto — use `mock()` puro quando o caminho nao invoca metodos extras:**
 ```java
 @Test
-void deveLancarIntegrationException_quandoGatewayFalhar() throws Exception {
-    Receituario receituario = mock(Receituario.class); // sem stubs desnecessarios
-    when(gateway.cancel(receituario)).thenThrow(new IntegrationException("erro"));
+void deveLancarRuntimeException_quandoRepositoryFalhar() throws Exception {
+    Registro registro = mock(Registro.class); // sem stubs desnecessarios
+    when(repository.save(registro)).thenThrow(new RuntimeException("erro"));
 
-    assertThrows(IntegrationException.class, () -> useCase.execute(cabecalhoNota));
+    assertThrows(RuntimeException.class, () -> service.criar(registro));
 }
 ```
 
@@ -354,8 +352,8 @@ Fluxo dev Addon Studio: rode testes antes de `deployAddon`.
 
 ## Checklist rapido para PR
 
-- [ ] Existe teste pra novo UseCase/Service alterado.
-- [ ] Cenario sucesso + ao menos um cenario erro relevante cobertos.
+- [ ] Existe teste para novo Service criado/alterado.
+- [ ] Cenario de sucesso + ao menos um cenario de erro relevante cobertos.
 - [ ] Sem dependencia externa real em teste unitario.
 - [ ] `./gradlew :<modulo-backend>:test` passando local.
 - [ ] `throws Exception` declarado em metodos que interagem com repositorios.

@@ -7,6 +7,8 @@ applyTo: "**/*Repository.java"
 Padrão **Repository** no SDK Sankhya = abstração simplifica acesso dados. Define interfaces declarativas, SDK gera implementação em compile-time — sem boilerplate, type-safe, protege SQL Injection.
 
 > **Referência complementar:** consulte `entity-instructions.md` para criar entidades correspondentes.
+>
+> **Pacote:** todo repositório vive em `br/com/hagious/qualitymanager/<feature>/repository/`. Interfaces `@NativeQuery.Result` ficam em `<feature>/vo/`.
 
 ---
 
@@ -311,19 +313,19 @@ List<Produto> findAtivosByEmpresa(Long empresa);
 
 // Errado: lógica de negócio dentro do repositório
 @Repository
-public interface PedidoRepository extends JapeRepository<Long, Pedido> {
+public interface RegistroRepository extends JapeRepository<Long, Registro> {
 
-    default void aprovarPedido(Long nunota) { /* ... */ }
+    default void aprovar(Long codRegistro) { /* ... */ }
 }
 
-// Correto: lógica de negócio no serviço
+// Correto: lógica de negócio no Service da feature
 @Component
-public class PedidoService {
+public class RegistroService {
 
     @Transactional
-    public void aprovarPedido(Long nunota) {
-        Pedido pedido = repository.findById(nunota).orElseThrow(...);
-        repository.save(pedido);
+    public void aprovar(Long codRegistro) {
+        Registro registro = repository.findById(codRegistro).orElseThrow(...);
+        repository.save(registro);
     }
 }
 
@@ -349,17 +351,17 @@ List<Veiculo> findByPlacaStartingWith(@Parameter("prefix") String prefix);
 ## 8. Exemplo Completo
 
 ```java
-// Entidade
-@JapeEntity(entity = "CabecalhoNota", table = "TGFCAB")
+// Entidade (em <feature>/entity/)
+@JapeEntity(entity = "TdcRegistro", table = "TDCQMNCREGISTRO")
 @Data
-public class Pedido {
+public class Registro {
 
     @Id
-    @Column(name = "NUNOTA")
-    private Long numero;
+    @Column(name = "CODREGISTRO")
+    private Long codRegistro;
     @Column(name = "CODPARC")
-    private Long codigoCliente;
-    @Column(name = "VLRNOTA")
+    private Long codigoParceiro;
+    @Column(name = "VLR")
     private BigDecimal valor;
     @Column(name = "STATUS")
     private String status;
@@ -367,55 +369,52 @@ public class Pedido {
     private LocalDateTime dataAlteracao;
 }
 
-// DTO de resultado
+// DTO de resultado de NativeQuery (em <feature>/vo/)
 @NativeQuery.Result
-public interface PedidoResumoDTO {
+public interface RegistroResumoDTO {
 
-    Long getNumero();
+    Long getCodRegistro();
 
     BigDecimal getValor();
 }
 
-// Repositório
+// Repository (em <feature>/repository/)
 @Repository
-public interface PedidoRepository extends JapeRepository<Long, Pedido> {
+public interface RegistroRepository extends JapeRepository<Long, Registro> {
 
-    @Criteria(clause = "this.CODPARC = :codigoCliente")
-    List<Pedido> findByCliente(@Parameter("codigoCliente") Long codigoCliente);
+    @Criteria(clause = "this.CODPARC = :codigoParceiro")
+    List<Registro> findByParceiro(@Parameter("codigoParceiro") Long codigoParceiro);
 
-    @NativeQuery("SELECT NUNOTA as numero, VLRNOTA as valor FROM TGFCAB WHERE STATUS = :status AND CODEMP = :empresa")
-    List<PedidoResumoDTO> findResumoPorStatus(
-        @Parameter("status") String status,
-        @Parameter("empresa") Long empresa
-    );
+    @NativeQuery("SELECT CODREGISTRO as codRegistro, VLR as valor FROM TDCQMNCREGISTRO WHERE STATUS = :status")
+    List<RegistroResumoDTO> findResumoPorStatus(@Parameter("status") String status);
 
     @Modifying
-    @NativeQuery("DELETE FROM TGFCAB WHERE STATUS = 'R' AND DHALTER < :dataLimite")
+    @NativeQuery("DELETE FROM TDCQMNCREGISTRO WHERE STATUS = 'R' AND DHALTER < :dataLimite")
     int deleteRascunhosAntigos(@Parameter("dataLimite") LocalDateTime dataLimite);
 }
 
-// Serviço
+// Service (em <feature>/service/)
 @Component
-public class PedidoService {
+public class RegistroService {
 
-    private final PedidoRepository pedidoRepository;
+    private final RegistroRepository registroRepository;
 
     @Inject
-    public PedidoService(PedidoRepository pedidoRepository) {
-        this.pedidoRepository = pedidoRepository;
+    public RegistroService(RegistroRepository registroRepository) {
+        this.registroRepository = registroRepository;
     }
 
     @Transactional
     public void limparRascunhosAntigos() {
         LocalDateTime limite = LocalDateTime.now().minusDays(30);
-        pedidoRepository.deleteRascunhosAntigos(limite);
+        registroRepository.deleteRascunhosAntigos(limite);
     }
 
-    public List<Pedido> buscarPedidosDoCliente(Long codigoCliente) {
-        if (codigoCliente == null) {
-            throw new IllegalArgumentException("Código do cliente é obrigatório.");
+    public List<Registro> buscarPorParceiro(Long codigoParceiro) {
+        if (codigoParceiro == null) {
+            throw new IllegalArgumentException("Código do parceiro é obrigatório.");
         }
-        return pedidoRepository.findByCliente(codigoCliente);
+        return registroRepository.findByParceiro(codigoParceiro);
     }
 }
 ```
@@ -426,13 +425,13 @@ public class PedidoService {
 
 ### Criando um repositório novo
 
-1. — Interface no pacote `core/domain/repository/`.
+1. — Interface no pacote `<feature>/repository/`.
 2. — Extends `JapeRepository<TipoID, TipoEntidade>` (ID primeiro, entidade depois).
 3. — Anotada com `@Repository` de `br.com.sankhya.studio.stereotypes`.
 4. — Métodos `@Criteria` com prefixo `this.` em todos campos da clause.
 5. — Nomes de params do método batem com `:placeholders` da clause.
-6. — `@NativeQuery.Result` em `core/domain/vo/` (não interface interna).
-7. — `@Modifying` sempre com `@Transactional` no serviço chamador.
+6. — `@NativeQuery.Result` em `<feature>/vo/` (não interface interna).
+7. — `@Modifying` sempre com `@Transactional` no Service chamador.
 8. — Queries complexas em arquivo externo com `fromFile = true`.
 9. — `Optional<T>` para métodos que podem não encontrar resultado.
 
@@ -442,7 +441,7 @@ public class PedidoService {
 |:-------------------------------------------------|:---------------------------------------------------|
 | Omitir `this.` na clause do `@Criteria`          | Usar `this.CAMPO = :param` — obrigatório           |
 | Parâmetros invertidos em `JapeRepository<T, ID>` | ID sempre primeiro param                           |
-| `@NativeQuery.Result` como interface interna     | Criar como interface pública em `core/domain/vo/`  |
+| `@NativeQuery.Result` como interface interna     | Criar como interface pública em `<feature>/vo/`    |
 | `@Modifying` sem `@Transactional` no chamador    | Envolver chamada em método `@Transactional`        |
 | Usar Query Methods do Spring Data                | Não suportado — usar `@Criteria` ou `@NativeQuery` |
 | `@Delete` descontinuada                          | Usar `@Modifying` + `@NativeQuery`                 |

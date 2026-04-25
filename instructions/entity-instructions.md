@@ -2,116 +2,110 @@
 applyTo: "**/*.java"
 ---
 
-# Entidade Java (@JapeEntity) ? Addon Studio 2.0
+# Entidade Java (@JapeEntity) - Addon Studio 2.0
 
-Entidade Java = representação domínio de tabela banco. **Limpa** ? contém só mapeamento estrutural mínimo. Metadata UI, tipos, descrições, comportamento fica no **Dicionário de Dados** (XMLs em `datadictionary/`).
+Entidade Java = representacao de tabela do banco. **Limpa** - contem so o mapeamento estrutural minimo. Metadata UI, tipos, descricoes e comportamento de UI ficam no **Dicionario de Dados** (XMLs em `datadictionary/`).
 
-> **Referência complementar:** consulte `datadictionary-instructions.md` para criar XML correspondente à entidade.
+> **Referencia complementar:** consulte `datadictionary-instructions.md` para criar XML correspondente a entidade.
 
 ---
 
 ## 1. Regras Fundamentais
 
-| Regra                                                | Detalhe                                                   |
-|:-----------------------------------------------------|:----------------------------------------------------------|
-| `@Column` só tem `name`                              | `@Column(name = "COLUNA")` ? nenhum outro atributo.       |
-| `@JoinColumn` só tem `name` e `referencedColumnName` | `@JoinColumn(name = "...", referencedColumnName = "...")` |
-| `@JapeEntity` só tem `entity` e `table`              | `@JapeEntity(entity = "...", table = "...")`              |
-| Sem `@Expression`                                    | Expressões ficam no XML (`<expression>`).                 |
-| Sem `@GeneratedValue`                                | Sequência fica no XML (`sequenceType`/`sequenceField`).   |
-| Sem `@Option` / `@Property`                          | Opções ficam no XML (`<fieldOptions>`).                   |
-| Lombok obrigatório                                   | `@Data`, `@NoArgsConstructor`, `@AllArgsConstructor`.     |
-| Prefixo `Tdc` obrigatorio no `entity`               | Ex.: `@JapeEntity(entity = "TdcCabecalhoCotacao", ...)` |
+| Regra | Detalhe |
+|:------|:--------|
+| `@Column` so tem `name` | `@Column(name = "COLUNA")` - nenhum outro atributo. |
+| `@JoinColumn` so tem `name` e `referencedColumnName` | `@JoinColumn(name = "...", referencedColumnName = "...")` |
+| `@JapeEntity` so tem `entity` e `table` | `@JapeEntity(entity = "...", table = "...")` |
+| Sem `@Expression` | Expressoes ficam no XML (`<expression>`). |
+| Sem `@GeneratedValue` | Sequencia fica no XML (`sequenceType`/`sequenceField`). |
+| Sem `@Option` / `@Property` | Opcoes ficam no XML (`<fieldOptions>`). |
+| Lombok obrigatorio | `@Data`, `@NoArgsConstructor`, `@AllArgsConstructor`. |
+| Prefixo `Tdc` obrigatorio no `entity` | Ex.: `@JapeEntity(entity = "TdcRegistro", ...)` |
 
 ---
 
-## 2. Organização de Pacotes
+## 2. Organizacao de Pacotes (Package by Feature)
+
+Entidades vivem dentro do pacote da feature, nao em pacote de dominio global:
 
 ```
-core/domain/
-|-- entity/       - Entidades (@JapeEntity) e classes de domínio puro
+br/com/hagious/qualitymanager/<feature>/
+|-- entity/       - Entidades (@JapeEntity) e classes de dominio puro
 |-- vo/           - Value Objects: @Embeddable (PKs compostas) e Enums
-|-- repository/   - Interfaces de repositório
-|-- service/      - Serviços de domínio
-|-- gateway/      - Interfaces de integração externa
-|-- exception/    - Exceções de domínio
+|-- repository/   - Interfaces de repositorio
+|-- service/      - Service da feature
+|-- ...
 ```
 
-| Tipo de classe                            | Pacote   | Exemplo                                |
-|:------------------------------------------|:---------|:---------------------------------------|
-| Entidade persistida (`@JapeEntity`)       | `entity` | `MeuProduto.java`                      |
-| PK composta (`@Embeddable`)               | `vo`     | `MinhaEntidadeId.java`                 |
-| Enum de domínio                           | `vo`     | `TipoEnum.java`                        |
-| Classe de domínio puro (sem persistência) | `entity` | `Receituario.java`, `AreaTratada.java` |
+| Tipo de classe | Pacote | Exemplo |
+|:---------------|:-------|:--------|
+| Entidade persistida (`@JapeEntity`) | `<feature>/entity/` | `Registro.java` |
+| PK composta (`@Embeddable`) | `<feature>/vo/` | `RegistroItemId.java` |
+| Enum de dominio | `<feature>/vo/` | `StatusEnum.java` |
+| Classe de dominio puro (sem persistencia) | `<feature>/entity/` | `ResultadoConsolidado.java` |
 
 ---
 
-## 3. Tipos de Classe no Domínio
+## 3. Tipos de Classe
 
 ### 3.1 Entidade Persistida (`@JapeEntity`)
 
 Representa tabela no banco. Tem `@JapeEntity`, `@Id`, `@Column`, opcionalmente relacionamentos.
 
 ```java
-
-@JapeEntity(entity = "MeuAlvo", table = "ADCALVO")
-public class MeuAlvo { ...
-}
+@JapeEntity(entity = "TdcRegistro", table = "TDCQMNCREGISTRO")
+public class Registro { ... }
 ```
 
 ### 3.2 PK Composta (`@Embeddable`)
 
-Tabela com PK composta ? classe separada anotada com `@Embeddable`.
+Tabela com PK composta -> classe separada anotada com `@Embeddable`.
 
 ```java
-
 @Embeddable
-public class MinhaEntidadeId { ...
-}
+public class RegistroItemId { ... }
 ```
 
 ### 3.3 Enum (Value Object)
 
-Valores finitos de domínio (listas opções). Usados como tipo campo em entidades. Têm `value` = valor armazenado no banco.
+Valores finitos de dominio (listas de opcoes). Usados como tipo de campo em entidades. Tem `value` = valor armazenado no banco.
 
-**Regras obrigatórias:**
+**Regras obrigatorias:**
 
-| Regra                              | Detalhe                                                          |
-|:-----------------------------------|:-----------------------------------------------------------------|
-| `@Getter` (Lombok)                 | Gera o getter de `value` automaticamente.                        |
-| `@AllArgsConstructor` (Lombok)     | Gera o construtor que recebe `value`.                            |
-| Campo `private final String value` | Valor persistido no banco (código curto).                        |
-| Pacote `vo/`                       | Todo enum de domínio fica em `core/domain/vo/`.                  |
-| Sufixo `Enum`                      | Nome da classe sempre termina com `Enum` (ex: `TipoStatusEnum`). |
+| Regra | Detalhe |
+|:------|:--------|
+| `@Getter` (Lombok) | Gera o getter de `value` automaticamente. |
+| `@AllArgsConstructor` (Lombok) | Gera o construtor que recebe `value`. |
+| Campo `private final String value` | Valor persistido no banco (codigo curto). |
+| Pacote `<feature>/vo/` | Todo enum de dominio fica no pacote `vo/` da feature. |
+| Sufixo `Enum` | Nome da classe sempre termina com `Enum` (ex: `StatusEnum`). |
 
 **Anatomia completa:**
 
 ```java
-package br.com.sankhya.devcenter.{addon}.core.domain.vo;
+package br.com.hagious.qualitymanager.<feature>.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public enum TipoEnum {
-    OPCAO_A("A"),
-    OPCAO_B("B");
+public enum StatusEnum {
+    ATIVO("A"),
+    INATIVO("I");
 
     private final String value;
 }
 ```
 
-### 3.4 Classe de Domínio Puro
+### 3.4 Classe de Dominio Puro
 
-Classes representando conceitos domínio **sem persistência direta**. Sem `@JapeEntity`. Contêm lógica negócio, validações, factory methods.
+Classes que representam conceitos de dominio **sem persistencia direta**. Sem `@JapeEntity`. Contem dados consolidados ou resultados de operacao.
 
 ```java
-public class ResultadoCalculo { ...
-}
-
-public class DadosConsolidados { ...
-}
+public class ResultadoConsolidado { ... }
+public class DadosImportacao { ... }
 ```
 
 ---
@@ -119,99 +113,98 @@ public class DadosConsolidados { ...
 ## 4. Anatomia de uma Entidade
 
 ```java
-package br.com.sankhya.devcenter.{addon}.core.domain.entity;  // 1. Pacote
+package br.com.hagious.qualitymanager.<feature>.entity;        // 1. Pacote da feature
 
-import br.com.sankhya.studio.persistence.*;                    // 2. Imports de persistência
+import br.com.sankhya.studio.persistence.*;                    // 2. Imports de persistencia
 import lombok.*;                                                // 3. Imports Lombok
 
-@Data                                                           // 4. Lombok obrigatório
+@Data                                                           // 4. Lombok obrigatorio
 @NoArgsConstructor
 @AllArgsConstructor
 @JapeEntity(                                                    // 5. Mapeamento: somente entity + table
-    entity = "NomeDaEntidade",
-    table = "NOME_TABELA"
+    entity = "TdcRegistro",
+    table = "TDCQMNCREGISTRO"
 )
-public class NomeDaEntidade {                                   // 6. Classe plana (sem herança de metadata)
+public class Registro {                                         // 6. Classe plana (sem heranca de metadata)
 
-    @Id                                                         // 7. Chave primária
-    @Column(name = "COLUNA_PK")
-    private Integer id;
+    @Id                                                         // 7. Chave primaria
+    @Column(name = "CODREGISTRO")
+    private Integer codRegistro;
 
-    @Column(name = "COLUNA_1")                                  // 8. Campos: somente name
-    private String campo1;
+    @Column(name = "DESCR")                                     // 8. Campos: somente name
+    private String descricao;
 
     @OneToMany(...)                                             // 9. Relacionamentos (se houver)
-    private List<EntidadeFilha> filhos;
+    private List<RegistroItem> itens;
 
-    public void metodoDeNegocio() { ...}                      // 10. Métodos de domínio (se houver)
+    public void inativar() { ... }                              // 10. Metodos de dominio (se houver)
 }
 ```
 
 ---
 
-## 5. Anotações Permitidas
+## 5. Anotacoes Permitidas
 
-### Anotações que DEVEM ser usadas
+### Anotacoes que DEVEM ser usadas
 
-| Anotação                     | Uso                                             | Pacote                              |
-|:-----------------------------|:------------------------------------------------|:------------------------------------|
-| `@JapeEntity(entity, table)` | Toda entidade persistida                        | `br.com.sankhya.studio.persistence` |
-| `@Id`                        | Campo(s) de chave primária                      | `br.com.sankhya.studio.persistence` |
-| `@Column(name)`              | Todo campo persistido                           | `br.com.sankhya.studio.persistence` |
-| `@Embeddable`                | Classe de PK composta                           | `br.com.sankhya.studio.persistence` |
-| `@Data`                      | Getter/Setter/ToString/Equals/Hash              | `lombok`                            |
-| `@NoArgsConstructor`         | Construtor vazio (obrigatório para o framework) | `lombok`                            |
-| `@AllArgsConstructor`        | Construtor com todos os campos                  | `lombok`                            |
+| Anotacao | Uso | Pacote |
+|:---------|:----|:-------|
+| `@JapeEntity(entity, table)` | Toda entidade persistida | `br.com.sankhya.studio.persistence` |
+| `@Id` | Campo(s) de chave primaria | `br.com.sankhya.studio.persistence` |
+| `@Column(name)` | Todo campo persistido | `br.com.sankhya.studio.persistence` |
+| `@Embeddable` | Classe de PK composta | `br.com.sankhya.studio.persistence` |
+| `@Data` | Getter/Setter/ToString/Equals/Hash | `lombok` |
+| `@NoArgsConstructor` | Construtor vazio (obrigatorio para o framework) | `lombok` |
+| `@AllArgsConstructor` | Construtor com todos os campos | `lombok` |
 
-### Anotações opcionais (usar quando necessário)
+### Anotacoes opcionais (usar quando necessario)
 
-| Anotação                                  | Quando usar                                                                  | Pacote                              |
-|:------------------------------------------|:-----------------------------------------------------------------------------|:------------------------------------|
-| `@Builder`                                | Quando a entidade é construída programaticamente no domínio                  | `lombok`                            |
-| `@OneToMany`                              | Relacionamento pai ? filhos                                                  | `br.com.sankhya.studio.persistence` |
-| `@OneToOne`                               | Navegação para entidade referenciada                                         | `br.com.sankhya.studio.persistence` |
-| `@ManyToOne`                              | Navegação inversa filho ? pai                                                | `br.com.sankhya.studio.persistence` |
-| `@JoinColumn(name, referencedColumnName)` | Junto com `@OneToOne` / `@ManyToOne`                                         | `br.com.sankhya.studio.persistence` |
-| `@JoinColumns`                            | Múltiplos `@JoinColumn` (FK composta)                                        | `br.com.sankhya.studio.persistence` |
-| `@Cascade`                                | Dentro de `@OneToMany` para cascatear operações                              | `br.com.sankhya.studio.persistence` |
-| `@Relationship`                           | Dentro de `@OneToMany` para definir campos do vínculo                        | `br.com.sankhya.studio.persistence` |
-| `@SuperBuilder`                           | Quando a entidade herda de classe base de domínio (ex: VO com campos comuns) | `lombok.experimental`               |
-| `@EqualsAndHashCode(callSuper = true)`    | Junto com herança + `@SuperBuilder`                                          | `lombok`                            |
+| Anotacao | Quando usar | Pacote |
+|:---------|:------------|:-------|
+| `@Builder` | Quando a entidade e construida programaticamente | `lombok` |
+| `@OneToMany` | Relacionamento pai -> filhos | `br.com.sankhya.studio.persistence` |
+| `@OneToOne` | Navegacao para entidade referenciada | `br.com.sankhya.studio.persistence` |
+| `@ManyToOne` | Navegacao inversa filho -> pai | `br.com.sankhya.studio.persistence` |
+| `@JoinColumn(name, referencedColumnName)` | Junto com `@OneToOne` / `@ManyToOne` | `br.com.sankhya.studio.persistence` |
+| `@JoinColumns` | Multiplos `@JoinColumn` (FK composta) | `br.com.sankhya.studio.persistence` |
+| `@Cascade` | Dentro de `@OneToMany` para cascatear operacoes | `br.com.sankhya.studio.persistence` |
+| `@Relationship` | Dentro de `@OneToMany` para definir campos do vinculo | `br.com.sankhya.studio.persistence` |
+| `@SuperBuilder` | Quando a entidade herda de classe base | `lombok.experimental` |
+| `@EqualsAndHashCode(callSuper = true)` | Junto com heranca + `@SuperBuilder` | `lombok` |
 
-### Anotações PROIBIDAS na entidade
+### Anotacoes PROIBIDAS na entidade
 
-| Anotação          | Onde fica                          | Motivo                |
-|:------------------|:-----------------------------------|:----------------------|
-| `@Expression`     | XML `<expression>`                 | Metadata do framework |
+| Anotacao | Onde fica | Motivo |
+|:---------|:----------|:-------|
+| `@Expression` | XML `<expression>` | Metadata do framework |
 | `@GeneratedValue` | XML `sequenceType`/`sequenceField` | Metadata do framework |
-| `@Option`         | XML `<fieldOptions>`               | Metadata de UI        |
-| `@Property`       | XML                                | Metadata do framework |
+| `@Option` | XML `<fieldOptions>` | Metadata de UI |
+| `@Property` | XML | Metadata do framework |
 
 ---
 
-## 6. Chave Primária (PK)
+## 6. Chave Primaria (PK)
 
 ### 6.1 PK Simples
 
-Tabela com única coluna como PK:
+Tabela com unica coluna como PK:
 
 ```java
-
 @Id
-@Column(name = "CODENTIDADE")
-private Integer codEntidade;
+@Column(name = "CODREGISTRO")
+private Integer codRegistro;
 ```
 
 > PK sequencial: nao use coluna com prefixo `ID`. Use `COD*` (cadastros) ou `NU*` (movimentos/documentos).
 
 ### 6.2 PK Composta (`@Embeddable`)
 
-Tabela com PK composta ? crie classe separada no pacote `vo`:
+Tabela com PK composta -> crie classe separada no pacote `vo/` da feature:
 
-**Classe `@Embeddable` (em `vo/`):**
+**Classe `@Embeddable` (em `<feature>/vo/`):**
 
 ```java
-package br.com.sankhya.devcenter.{addon}.core.domain.vo;
+package br.com.hagious.qualitymanager.<feature>.vo;
 
 import br.com.sankhya.studio.persistence.Column;
 import br.com.sankhya.studio.persistence.Embeddable;
@@ -223,10 +216,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Embeddable
-public class MinhaEntidadeId {
+public class RegistroItemId {
 
-    @Column(name = "CODPAI")
-    private Integer codPai;
+    @Column(name = "CODREGISTRO")
+    private Integer codRegistro;
 
     @Column(name = "NUITEM")
     private Integer nuItem;
@@ -236,28 +229,27 @@ public class MinhaEntidadeId {
 **Uso na entidade:**
 
 ```java
-
 @Id
-private MinhaEntidadeId embeddedId;
+private RegistroItemId embeddedId;
 ```
 
-### Convenções da PK composta
+### Convencoes da PK composta
 
-| Regra          | Detalhe                                                             |
-|:---------------|:--------------------------------------------------------------------|
-| Nome da classe | `<NomeEntidade>Id` (ex: `MeuProdutoId`)                             |
-| Pacote         | `core.domain.vo`                                                    |
-| Anotações      | `@Data`, `@AllArgsConstructor`, `@NoArgsConstructor`, `@Embeddable` |
-| Campos         | Cada campo com `@Column(name = "...")` ? somente `name`             |
-| Na entidade    | Campo anotado apenas com `@Id` (sem `@Column`)                      |
+| Regra | Detalhe |
+|:------|:--------|
+| Nome da classe | `<NomeEntidade>Id` (ex: `RegistroItemId`) |
+| Pacote | `<feature>/vo/` |
+| Anotacoes | `@Data`, `@AllArgsConstructor`, `@NoArgsConstructor`, `@Embeddable` |
+| Campos | Cada campo com `@Column(name = "...")` - somente `name` |
+| Na entidade | Campo anotado apenas com `@Id` (sem `@Column`) |
 
-### Métodos auxiliares na entidade (opcional)
+### Metodos auxiliares na entidade (opcional)
 
-Facilitar acesso aos campos da PK composta ? crie métodos delegadores:
+Facilitar acesso aos campos da PK composta -> crie metodos delegadores:
 
 ```java
-public Integer getCodPai() {
-    return this.embeddedId.getCodPai();
+public Integer getCodRegistro() {
+    return this.embeddedId.getCodRegistro();
 }
 
 public Integer getNuItem() {
@@ -269,10 +261,9 @@ public Integer getNuItem() {
 
 ## 7. Campos (@Column)
 
-### Regra única
+### Regra unica
 
 ```java
-
 @Column(name = "NOME_COLUNA")
 private TipoJava nomeCampo;
 ```
@@ -281,77 +272,74 @@ Nenhum outro atributo. Ponto.
 
 ### Mapeamento de tipos
 
-| Tipo no banco / XML              | Tipo Java sugerido                     |
-|:---------------------------------|:---------------------------------------|
-| `INTEIRO`                        | `Integer` ou `BigDecimal`              |
-| `TEXTO`                          | `String`                               |
-| `DECIMAL`                        | `BigDecimal`                           |
-| `DATA_HORA`                      | `Timestamp` (`java.sql.Timestamp`)     |
-| `CHECKBOX`                       | `Boolean`                              |
-| `PESQUISA` (FK)                  | `BigDecimal` ou `Integer` (tipo da FK) |
-| Campo com opções (enum no banco) | Enum Java (veja seção 9)               |
+| Tipo no banco / XML | Tipo Java sugerido |
+|:--------------------|:-------------------|
+| `INTEIRO` | `Integer` ou `BigDecimal` |
+| `TEXTO` | `String` |
+| `DECIMAL` | `BigDecimal` |
+| `DATA_HORA` | `Timestamp` (`java.sql.Timestamp`) |
+| `CHECKBOX` | `Boolean` |
+| `PESQUISA` (FK) | `BigDecimal` ou `Integer` (tipo da FK) |
+| Campo com opcoes (enum no banco) | Enum Java (veja secao 9) |
 
 ### Quando usar `Integer` vs `BigDecimal`
 
-| Contexto                                       | Tipo                      | Motivo                           |
-|:-----------------------------------------------|:--------------------------|:---------------------------------|
-| PKs de tabelas do add-on (`COD*`/`NU*`)        | `Integer`                 | Sequenciais do add-on sao inteiros simples |
-| PKs de tabelas nativas (NUNOTA, CODPARC, etc.) | `BigDecimal`              | Padrão do Sankhya Om             |
-| Quantidades, valores monetários                | `BigDecimal`              | Precisão decimal                 |
-| Campos numéricos simples                       | `BigDecimal` ou `Integer` | Conforme necessidade             |
+| Contexto | Tipo | Motivo |
+|:---------|:-----|:-------|
+| PKs de tabelas do add-on (`COD*`/`NU*`) | `Integer` | Sequenciais do add-on sao inteiros simples |
+| PKs de tabelas nativas (NUNOTA, CODPARC, etc.) | `BigDecimal` | Padrao do Sankhya Om |
+| Quantidades, valores monetarios | `BigDecimal` | Precisao decimal |
+| Campos numericos simples | `BigDecimal` ou `Integer` | Conforme necessidade |
 
 ---
 
 ## 8. Relacionamentos
 
-### 8.1 `@OneToMany` ? Pai ? Filhos
+### 8.1 `@OneToMany` - Pai -> Filhos
 
 Entidade com lista de filhos.
 
 ```java
-
 @OneToMany(
     cascade = Cascade.ALL,
     relationship = {
         @Relationship(
-            fromField = "CODPRODUTO",  // Campo da tabela PAI
-            toField = "CODPRODUTO"     // Campo da tabela FILHA
+            fromField = "CODREGISTRO",  // Campo da tabela PAI
+            toField = "CODREGISTRO"     // Campo da tabela FILHA
         )
     }
 )
-private List<VinculoProduto> vinculos;
+private List<RegistroItem> itens;
 ```
 
-| Atributo    | Significado                                       |
-|:------------|:--------------------------------------------------|
-| `cascade`   | `Cascade.ALL` para cascatear insert/update/delete |
-| `fromField` | Nome da **coluna** na tabela pai                  |
-| `toField`   | Nome da **coluna** na tabela filha                |
+| Atributo | Significado |
+|:---------|:------------|
+| `cascade` | `Cascade.ALL` para cascatear insert/update/delete |
+| `fromField` | Nome da **coluna** na tabela pai |
+| `toField` | Nome da **coluna** na tabela filha |
 
 > Tipo do campo sempre `List<EntidadeFilha>`.
 
-### 8.2 `@OneToOne` + `@JoinColumn` ? Navegação para entidade referenciada
+### 8.2 `@OneToOne` + `@JoinColumn` - Navegacao para entidade referenciada
 
-Domínio precisa **navegar** para outra entidade (acessar campos dela).
+Dominio precisa **navegar** para outra entidade (acessar campos dela).
 
 ```java
-
 @OneToOne
 @JoinColumn(name = "CODPARC", referencedColumnName = "CODPARC")
 private Parceiro parceiro;
 ```
 
-| Atributo               | Significado                                                |
-|:-----------------------|:-----------------------------------------------------------|
-| `name`                 | Coluna na **tabela atual** (FK)                            |
-| `referencedColumnName` | Coluna na **tabela referenciada** (PK ou campo de vínculo) |
+| Atributo | Significado |
+|:---------|:------------|
+| `name` | Coluna na **tabela atual** (FK) |
+| `referencedColumnName` | Coluna na **tabela referenciada** (PK ou campo de vinculo) |
 
-### 8.3 `@OneToOne` + `@JoinColumns` ? FK Composta
+### 8.3 `@OneToOne` + `@JoinColumns` - FK Composta
 
-FK aponta para PK composta ? use `@JoinColumns`:
+FK aponta para PK composta -> use `@JoinColumns`:
 
 ```java
-
 @OneToOne
 @JoinColumns({
     @JoinColumn(name = "CODTIPOPER", referencedColumnName = "CODTIPOPER"),
@@ -360,27 +348,26 @@ FK aponta para PK composta ? use `@JoinColumns`:
 private TipoOperacao tipoOperacao;
 ```
 
-### 8.4 `@ManyToOne` + `@JoinColumn` ? Filho ? Pai
+### 8.4 `@ManyToOne` + `@JoinColumn` - Filho -> Pai
 
-Navegação inversa: filho ? pai.
+Navegacao inversa: filho -> pai.
 
 ```java
-
 @ManyToOne
-@JoinColumn(name = "CODORIGEM", referencedColumnName = "CODPRODUTO")
-private MeuProduto produto;
+@JoinColumn(name = "CODREGISTRO", referencedColumnName = "CODREGISTRO")
+private Registro registro;
 ```
 
 ### Quando usar cada relacionamento
 
-| Preciso de...                         | Uso                                                 |
-|:--------------------------------------|:----------------------------------------------------|
-| Lista de filhos na entidade pai       | `@OneToMany`                                        |
-| Acessar campos de outra entidade (FK) | `@OneToOne` + `@JoinColumn`                         |
-| Acessar o pai a partir do filho       | `@ManyToOne` + `@JoinColumn`                        |
-| Apenas armazenar a FK (sem navegar)   | Somente `@Column(name = "FK")` ? sem relacionamento |
+| Preciso de... | Uso |
+|:--------------|:----|
+| Lista de filhos na entidade pai | `@OneToMany` |
+| Acessar campos de outra entidade (FK) | `@OneToOne` + `@JoinColumn` |
+| Acessar o pai a partir do filho | `@ManyToOne` + `@JoinColumn` |
+| Apenas armazenar a FK (sem navegar) | Somente `@Column(name = "FK")` - sem relacionamento |
 
-> **Importante:** Só precisa do valor da FK (ex: `codParceiro`) ? use apenas `@Column`. `@OneToOne`/`@JoinColumn` necessário **somente** quando domínio precisa acessar campos da entidade referenciada.
+> **Importante:** Se so precisar do valor da FK (ex: `codParceiro`), use apenas `@Column`. `@OneToOne`/`@JoinColumn` so quando o codigo precisa acessar campos da entidade referenciada.
 
 ---
 
@@ -388,128 +375,119 @@ private MeuProduto produto;
 
 Enums = valores finitos armazenados no banco como texto curto (geralmente 1 caractere).
 
-### Estrutura padrão
+### Estrutura padrao
 
 ```java
-package br.com.sankhya.devcenter.{addon}.core.domain.vo;
+package br.com.hagious.qualitymanager.<feature>.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
-public enum NomeEnum {
-    OPCAO_UM("V"),
-    OPCAO_DOIS("P");
+public enum StatusEnum {
+    PENDENTE("P"),
+    APROVADO("A"),
+    CANCELADO("C");
 
     private final String value;
 }
 ```
 
-### Convenções
+### Convencoes
 
-| Regra                | Detalhe                                                  |
-|:---------------------|:---------------------------------------------------------|
-| Pacote               | `core.domain.vo`                                         |
-| Anotações            | `@AllArgsConstructor`, `@Getter`                         |
-| Campo `value`        | `private final String value` ? valor armazenado no banco |
-| Nomes das constantes | `UPPER_SNAKE_CASE` descritivo                            |
-| Valores              | Strings curtas (1-2 caracteres, geralmente)              |
+| Regra | Detalhe |
+|:------|:--------|
+| Pacote | `<feature>/vo/` |
+| Anotacoes | `@AllArgsConstructor`, `@Getter` |
+| Campo `value` | `private final String value` - valor armazenado no banco |
+| Nomes das constantes | `UPPER_SNAKE_CASE` descritivo |
+| Valores | Strings curtas (1-2 caracteres, geralmente) |
 
 ### Uso na entidade
 
 ```java
-
-@Column(name = "TIPMOV")
-private TipoMovimento tipoMovimento;
+@Column(name = "STATUS")
+private StatusEnum status;
 ```
 
-Framework converte automaticamente entre valor no banco (`"V"`) e enum Java (`TipoMovimento.VENDA`).
+Framework converte automaticamente entre valor no banco (`"P"`) e enum Java (`StatusEnum.PENDENTE`).
 
 ---
 
-## 10. Classes de Domínio Puro
+## 10. Classes de Dominio Puro
 
-Classes = conceitos de negócio sem mapeamento direto para tabela. Contêm lógica domínio rica.
+Classes = conceitos de negocio sem mapeamento direto para tabela.
 
-### Características
+### Caracteristicas
 
 - **Sem** `@JapeEntity`, `@Id`, `@Column`.
-- Ficam no pacote `entity` (convenção projeto).
-- Usam só `@Data` do Lombok (ou construtor manual).
-- Podem ter factory methods (`create(...)`) com validações.
+- Ficam no pacote `<feature>/entity/` (convencao do projeto).
+- Usam so `@Data` do Lombok (ou construtor manual).
+- Podem ter factory methods (`create(...)`) com validacoes.
 
 ### Exemplo simples
 
 ```java
-
 @Data
-public class ResultadoCalculo {
+public class ResultadoConsolidado {
 
-    private BigDecimal valor;
+    private BigDecimal total;
     private String mensagem;
 }
 ```
 
-### Exemplo com factory method e validação
+### Exemplo com factory method e validacao
 
 ```java
-
 @Data
-public class DocumentoGerado {
+public class DadosImportacao {
 
-    private CabecalhoDocumento cabecalho;
-    private List<ItemDocumento> itens;
+    private RegistroCabecalho cabecalho;
+    private List<RegistroItem> itens;
 
-    private DocumentoGerado(CabecalhoDocumento cabecalho, List<ItemDocumento> itens) {
+    private DadosImportacao(RegistroCabecalho cabecalho, List<RegistroItem> itens) {
         this.cabecalho = cabecalho;
         this.itens = itens;
     }
 
-    public static DocumentoGerado create(CabecalhoDocumento cabecalho, List<ItemDocumento> itens) {
+    public static DadosImportacao create(RegistroCabecalho cabecalho, List<RegistroItem> itens) {
         if (itens == null || itens.isEmpty()) {
-            throw new CreateIssueException("Deve conter ao menos um item.");
+            throw new IllegalArgumentException("Deve conter ao menos um item.");
         }
-        return new DocumentoGerado(cabecalho, itens);
+        return new DadosImportacao(cabecalho, itens);
     }
 }
 ```
 
 ---
 
-## 11. Métodos de Domínio
+## 11. Metodos de Dominio
 
-Entidades podem (e devem) conter **lógica negócio** relacionada ao estado interno.
+Entidades podem (e devem) conter **logica simples** relacionada ao proprio estado.
 
 ### Regras
 
-- Métodos operam sobre campos da própria entidade.
-- Nomes expressam intenção de negócio (não técnica).
-- Não acessam banco, serviços, repositórios ? só próprios dados.
+- Metodos operam sobre campos da propria entidade.
+- Nomes expressam intencao de negocio (nao tecnica).
+- Nao acessam banco, services, repositories - so os proprios dados.
 
 ### Exemplos
 
 ```java
 // Consulta de estado
-public Boolean isVenda() {
-    return this.tipoMovimento == TipoMovimento.PEDIDO_VENDA
-        || this.tipoMovimento == TipoMovimento.VENDA;
+public Boolean isAtivo() {
+    return Boolean.TRUE.equals(this.ativo);
 }
 
-public Boolean estaAtivo() {
-    return this.ativo != null && this.ativo;
+// Mutacao de estado
+public void inativar() {
+    this.ativo = Boolean.FALSE;
 }
 
-// Mutação de estado
 public void cancelar(Timestamp dataCancelamento) {
     this.dhCancelamento = dataCancelamento;
-    this.status = Status.CANCELADO;
-}
-
-// Delegação para entidade relacionada
-public Boolean deveProcessar() {
-    return this.getTipoOperacao() != null
-        && this.getTipoOperacao().deveProcessar();
+    this.status = StatusEnum.CANCELADO;
 }
 ```
 
@@ -517,28 +495,28 @@ public Boolean deveProcessar() {
 
 ## 12. Passo a Passo: Criando uma Entidade do Zero
 
-### Cenário: Criar uma nova entidade `MeuFornecedor`
+### Cenario: criar nova entidade `Fornecedor` na feature `fornecedor`
 
-Tabela `ADCFORNECEDOR`, PK simples `CODFORN` (auto), campos `NOME`, `CNPJ`, `ATIVO`, com vinculo para `Parceiro`.
+Tabela `TDCQMNCFORNECEDOR`, PK simples `CODFORN` (auto), campos `NOME`, `CNPJ`, `ATIVO`, com vinculo para `Parceiro`.
 
 ---
 
-### Passo 1 ? Criar o XML do dicionário de dados
+### Passo 1 - Criar o XML do dicionario de dados
 
-Arquivo `datadictionary/ADCFORNECEDOR.xml`:
+Arquivo `datadictionary/TDCQMNCFORNECEDOR.xml`:
 
 ```xml
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <metadados xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:noNamespaceSchemaLocation="../.gradle/metadados.xsd">
 
-    <table name="ADCFORNECEDOR" sequenceType="A" sequenceField="CODFORN">
+    <table name="TDCQMNCFORNECEDOR" sequenceType="A" sequenceField="CODFORN">
         <description>Fornecedores</description>
         <primaryKey>
             <field name="CODFORN"/>
         </primaryKey>
         <instances>
-            <instance name="MeuFornecedor">
+            <instance name="TdcFornecedor">
                 <description>Fornecedores</description>
             </instance>
         </instances>
@@ -570,12 +548,12 @@ Arquivo `datadictionary/ADCFORNECEDOR.xml`:
 
 ---
 
-### Passo 2 ? Criar a entidade Java
+### Passo 2 - Criar a entidade Java
 
-Arquivo `core/domain/entity/MeuFornecedor.java`:
+Arquivo `model/src/main/java/br/com/hagious/qualitymanager/fornecedor/entity/Fornecedor.java`:
 
 ```java
-package br.com.sankhya.devcenter.{addon}.core.domain.entity;
+package br.com.hagious.qualitymanager.fornecedor.entity;
 
 import br.com.sankhya.studio.persistence.Column;
 import br.com.sankhya.studio.persistence.Id;
@@ -592,10 +570,10 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @AllArgsConstructor
 @JapeEntity(
-    entity = "MeuFornecedor",
-    table = "ADCFORNECEDOR"
+    entity = "TdcFornecedor",
+    table = "TDCQMNCFORNECEDOR"
 )
-public class MeuFornecedor {
+public class Fornecedor {
 
     @Id
     @Column(name = "CODFORN")
@@ -613,7 +591,7 @@ public class MeuFornecedor {
     @Column(name = "ATIVO")
     private Boolean ativo;
 
-    // Navegação para Parceiro (somente se o domínio precisar acessar campos do Parceiro)
+    // Navegacao para Parceiro (somente se o codigo precisar acessar campos do Parceiro)
     @OneToOne
     @JoinColumn(name = "CODPARC", referencedColumnName = "CODPARC")
     private Parceiro parceiro;
@@ -622,27 +600,27 @@ public class MeuFornecedor {
 
 ---
 
-### Passo 3 ? (Se PK composta) Criar a classe `@Embeddable`
+### Passo 3 - (Se PK composta) Criar a classe `@Embeddable`
 
-Entidade com PK composta ? criaria em `core/domain/vo/MeuFornecedorId.java`.
-
----
-
-### Passo 4 ? (Se enum) Criar enum no pacote `vo`
-
-Entidade usa novo enum ? crie em `core/domain/vo/`.
+Entidade com PK composta -> criaria em `fornecedor/vo/FornecedorId.java`.
 
 ---
 
-### Passo 5 ? Validar
+### Passo 4 - (Se enum) Criar enum no pacote `vo`
+
+Entidade usa novo enum -> crie em `<feature>/vo/`.
+
+---
+
+### Passo 5 - Validar
 
 - Entidade tem `@Data`, `@NoArgsConstructor`, `@AllArgsConstructor`?
-- `@JapeEntity` tem só `entity` e `table`?
-- Todos `@Column` têm só `name`?
-- Todos `@JoinColumn` têm só `name` e `referencedColumnName`?
+- `@JapeEntity` tem so `entity` e `table`?
+- Todos os `@Column` tem so `name`?
+- Todos os `@JoinColumn` tem so `name` e `referencedColumnName`?
 - Sem `@Expression`, `@GeneratedValue`, `@Option`, `@Property`?
 - XML em `datadictionary/` criado?
-- XML declara `allowSearch` e `visibleOnSearch` em todos campos?
+- XML declara `allowSearch` e `visibleOnSearch` em todos os campos?
 
 ---
 
@@ -651,16 +629,15 @@ Entidade usa novo enum ? crie em `core/domain/vo/`.
 ### Entidade com PK simples
 
 ```java
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@JapeEntity(entity = "MinhaEntidade", table = "ADCENTIDADE")
-public class MinhaEntidade {
+@JapeEntity(entity = "TdcRegistro", table = "TDCQMNCREGISTRO")
+public class Registro {
 
     @Id
-    @Column(name = "CODENTIDADE")
-    private Integer codEntidade;
+    @Column(name = "CODREGISTRO")
+    private Integer codRegistro;
 
     @Column(name = "DESCR")
     private String descricao;
@@ -676,34 +653,30 @@ public class MinhaEntidade {
 ### Entidade com PK composta + relacionamentos
 
 ```java
-
 @Data
 @NoArgsConstructor
-@JapeEntity(entity = "MinhaRelacao", table = "ADCRELACAO")
-public class MinhaRelacao {
+@JapeEntity(entity = "TdcRegistroItem", table = "TDCQMNCREGISTROITEM")
+public class RegistroItem {
 
     @Id
-    private MinhaRelacaoId embeddedId;
+    private RegistroItemId embeddedId;
 
-    @Column(name = "NUREF")
-    private BigDecimal nuRef;
+    @Column(name = "QTD")
+    private BigDecimal quantidade;
 
-    @Column(name = "QTDMIN")
-    private BigDecimal qtdMinima;
-
-    // Navegação OneToOne
+    // Navegacao OneToOne
     @OneToOne
-    @JoinColumn(name = "CODORIGEM", referencedColumnName = "CODPRODUTO")
-    private MeuProduto produtoOrigem;
+    @JoinColumn(name = "CODPRODUTO", referencedColumnName = "CODPROD")
+    private Produto produto;
 
-    // Navegação ManyToOne
+    // Navegacao ManyToOne
     @ManyToOne
-    @JoinColumn(name = "CODORIGEM", referencedColumnName = "CODPAI")
-    private MeuProduto produto;
+    @JoinColumn(name = "CODREGISTRO", referencedColumnName = "CODREGISTRO")
+    private Registro registro;
 
-    // Métodos auxiliares para PK composta
-    public Integer getCodPai() {
-        return this.embeddedId.getCodPai();
+    // Metodos auxiliares para PK composta
+    public Integer getCodRegistro() {
+        return this.embeddedId.getCodRegistro();
     }
 }
 ```
@@ -711,39 +684,37 @@ public class MinhaRelacao {
 ### Entidade com @OneToMany (pai com filhos)
 
 ```java
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@JapeEntity(entity = "MeuProduto", table = "ADCPRODUTO")
-public class MeuProduto {
+@JapeEntity(entity = "TdcRegistro", table = "TDCQMNCREGISTRO")
+public class Registro {
 
     @Id
-    @Column(name = "CODPRODUTO")
-    private Integer codProduto;
+    @Column(name = "CODREGISTRO")
+    private Integer codRegistro;
 
-    @Column(name = "DESCRPRODUTO")
-    private String nomeProduto;
+    @Column(name = "DESCR")
+    private String descricao;
 
     @OneToMany(
         cascade = Cascade.ALL,
         relationship = {
-            @Relationship(fromField = "CODPRODUTO", toField = "CODPRODUTO")
+            @Relationship(fromField = "CODREGISTRO", toField = "CODREGISTRO")
         }
     )
-    private List<VinculoProduto> vinculos;
+    private List<RegistroItem> itens;
 }
 ```
 
-### Entidade nativa com @Builder e métodos de domínio
+### Entidade nativa com @Builder e metodos de dominio
 
 ```java
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@JapeEntity(entity = "CabecalhoNota", table = "TGFCAB")
+@JapeEntity(entity = "TdcCabecalhoNota", table = "TGFCAB")
 public class CabecalhoNota {
 
     @Id
@@ -751,10 +722,10 @@ public class CabecalhoNota {
     private BigDecimal nuNota;
 
     @Column(name = "TIPMOV")
-    private TipoMovimento tipoMovimento;
+    private String tipoMovimento;
 
     @Column(name = "ADC_STATUS")
-    private StatusProcesso status;
+    private StatusEnum status;
 
     @OneToOne
     @JoinColumn(name = "CODPARC", referencedColumnName = "CODPARC")
@@ -772,64 +743,42 @@ public class CabecalhoNota {
     })
     private List<ItemNota> itens;
 
-    // Métodos de domínio
-    public Boolean isVenda() {
-        return this.tipoMovimento == TipoMovimento.PEDIDO_VENDA
-            || this.tipoMovimento == TipoMovimento.VENDA;
-    }
-
+    // Metodos de dominio
     public void cancelar(Timestamp dataCancelamento) {
         this.dhCancelamento = dataCancelamento;
-        this.status = StatusProcesso.CANCELADO;
+        this.status = StatusEnum.CANCELADO;
     }
-}
-```
-
-### Entidade somente com PK composta (sem campos próprios)
-
-```java
-
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@JapeEntity(entity = "MeuVinculo", table = "ADCVINCULO")
-public class MeuVinculo {
-
-    @Id
-    private MeuVinculoId embeddedId;
-}
-```
-
-### Enum (Value Object)
-
-```java
-
-@AllArgsConstructor
-@Getter
-public enum StatusProcesso {
-    PENDENTE("P"),
-    EMITIDO("E"),
-    CANCELADO("C");
-
-    private final String value;
 }
 ```
 
 ### PK Composta (`@Embeddable`)
 
 ```java
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Embeddable
-public class ItemNotaId {
+public class RegistroItemId {
 
-    @Column(name = "NUNOTA")
-    private BigDecimal nuNota;
+    @Column(name = "CODREGISTRO")
+    private Integer codRegistro;
 
-    @Column(name = "SEQUENCIA")
-    private BigDecimal sequencia;
+    @Column(name = "NUITEM")
+    private Integer nuItem;
+}
+```
+
+### Enum (Value Object)
+
+```java
+@AllArgsConstructor
+@Getter
+public enum StatusEnum {
+    PENDENTE("P"),
+    APROVADO("A"),
+    CANCELADO("C");
+
+    private final String value;
 }
 ```
 
@@ -839,44 +788,45 @@ public class ItemNotaId {
 
 ### Criando uma entidade nova
 
-1. ? Criar XML dicionário em `datadictionary/<TABELA>.xml` (ver `datadictionary-instructions.md`).
-2. ? Criar classe Java no pacote `core.domain.entity`.
-3. ? Anotar com `@Data`, `@NoArgsConstructor`, `@AllArgsConstructor`.
-4. ? Anotar com `@JapeEntity(entity = "...", table = "...")` ? só esses 2 atributos.
-5. ? Definir PK com `@Id` + `@Column(name)` (simples) ou `@Id` + classe `@Embeddable` (composta).
-6. ? Cada campo persistido com `@Column(name = "...")` ? só `name`.
-7. ? Tipo Java correto para cada campo (ver tabela tipos).
-8. ? Relacionamentos só quando necessários no domínio.
-9. ? `@JoinColumn` com só `name` e `referencedColumnName`.
-10. ? Nenhum `@Expression`, `@GeneratedValue`, `@Option`, `@Property`.
-11. ? Imports limpos (só o usado).
+1. [ ] Criar XML do dicionario em `datadictionary/<TABELA>.xml` (ver `datadictionary-instructions.md`).
+2. [ ] Criar classe Java no pacote `<feature>/entity/`.
+3. [ ] Anotar com `@Data`, `@NoArgsConstructor`, `@AllArgsConstructor`.
+4. [ ] Anotar com `@JapeEntity(entity = "...", table = "...")` - so esses 2 atributos.
+5. [ ] Definir PK com `@Id` + `@Column(name)` (simples) ou `@Id` + classe `@Embeddable` (composta).
+6. [ ] Cada campo persistido com `@Column(name = "...")` - so `name`.
+7. [ ] Tipo Java correto para cada campo (ver tabela de tipos).
+8. [ ] Relacionamentos so quando necessarios.
+9. [ ] `@JoinColumn` com so `name` e `referencedColumnName`.
+10. [ ] Nenhum `@Expression`, `@GeneratedValue`, `@Option`, `@Property`.
+11. [ ] Imports limpos (so o usado).
 
 ### Criando um enum
 
-1. ? Criar no pacote `core.domain.vo`.
-2. ? Anotar com `@AllArgsConstructor`, `@Getter`.
-3. ? Campo `private final String value`.
-4. ? Constantes em `UPPER_SNAKE_CASE`.
+1. [ ] Criar no pacote `<feature>/vo/`.
+2. [ ] Anotar com `@AllArgsConstructor`, `@Getter`.
+3. [ ] Campo `private final String value`.
+4. [ ] Constantes em `UPPER_SNAKE_CASE`.
 
 ### Criando uma PK composta
 
-1. ? Criar classe no pacote `core.domain.vo` com nome `<Entidade>Id`.
-2. ? Anotar com `@Data`, `@AllArgsConstructor`, `@NoArgsConstructor`, `@Embeddable`.
-3. ? Cada campo com `@Column(name = "...")` ? só `name`.
-4. ? Na entidade, campo anotado só com `@Id` (sem `@Column`).
+1. [ ] Criar classe no pacote `<feature>/vo/` com nome `<Entidade>Id`.
+2. [ ] Anotar com `@Data`, `@AllArgsConstructor`, `@NoArgsConstructor`, `@Embeddable`.
+3. [ ] Cada campo com `@Column(name = "...")` - so `name`.
+4. [ ] Na entidade, campo anotado so com `@Id` (sem `@Column`).
 
 ---
 
 ## 15. Erros Comuns
 
-| Erro                                                    | Correção                                                  |
-|:--------------------------------------------------------|:----------------------------------------------------------|
-| Colocar `description`, `dataType`, `size` no `@Column`  | Somente `name`. Metadata fica no XML.                     |
-| Colocar `@GeneratedValue` no `@Id`                      | Sequência fica no XML (`sequenceType`/`sequenceField`).   |
-| Colocar `@Expression` no campo                          | Expressões ficam no XML (`<expression>`).                 |
-| Colocar `isNativeTable`, `description` no `@JapeEntity` | Somente `entity` e `table`.                               |
-| Criar `@OneToOne` quando só precisa do valor da FK      | Use `@Column(name = "FK")` se não precisa navegar.        |
-| Esquecer de criar o XML do dicionário                   | Toda entidade **precisa** do XML correspondente.          |
-| Esquecer `@NoArgsConstructor`                           | Obrigatório para o framework instanciar a entidade.       |
-| Usar `String` para campo `CHECKBOX`                     | Use `Boolean` ? o framework converte S/N automaticamente. |
-| Usar `Integer` para PKs nativas (NUNOTA, CODPARC)       | Use `BigDecimal` ? padrão do Sankhya Om.                  |
+| Erro | Correcao |
+|:-----|:---------|
+| Colocar `description`, `dataType`, `size` no `@Column` | Somente `name`. Metadata fica no XML. |
+| Colocar `@GeneratedValue` no `@Id` | Sequencia fica no XML (`sequenceType`/`sequenceField`). |
+| Colocar `@Expression` no campo | Expressoes ficam no XML (`<expression>`). |
+| Colocar `isNativeTable`, `description` no `@JapeEntity` | Somente `entity` e `table`. |
+| Criar `@OneToOne` quando so precisa do valor da FK | Use `@Column(name = "FK")` se nao precisa navegar. |
+| Esquecer de criar o XML do dicionario | Toda entidade **precisa** do XML correspondente. |
+| Esquecer `@NoArgsConstructor` | Obrigatorio para o framework instanciar a entidade. |
+| Usar `String` para campo `CHECKBOX` | Use `Boolean` - o framework converte S/N automaticamente. |
+| Usar `Integer` para PKs nativas (NUNOTA, CODPARC) | Use `BigDecimal` - padrao do Sankhya Om. |
+| Colocar entidade fora do pacote `<feature>/entity/` | Mover para o pacote correto da feature. |

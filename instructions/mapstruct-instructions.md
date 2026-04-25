@@ -2,19 +2,19 @@
 applyTo: "**/*Mapper.java"
 ---
 
-# MapStruct ? Addon Studio 2.0
+# MapStruct - Addon Studio 2.0
 
-MapStruct = biblioteca padrao pra conversao DTO <-> Entidade Dominio. **Nunca** faca mapper manual — use MapStruct.
+MapStruct = biblioteca padrao para conversao DTO <-> Entity. **Nunca** faca mapper manual - use MapStruct.
 
-> **Referencia complementar:** veja `dependency-injection-instructions.md` pra como mappers registram no container Guice.
+> **Referencia complementar:** veja `dependency-injection-instructions.md` para como mappers se registram no container Guice.
 >
-> **Escopo:** arquivo define so regras **genericas** MapStruct. Regras negocio, filtros plataforma, convencoes dominio especificas ficam em `mapstruct-project-instructions.md`.
+> **Pacote:** todo mapper REST de uma feature vive em `br/com/hagious/qualitymanager/<feature>/mapper/`. Mappers auxiliares compartilhados ficam em `shared/mapper/`.
 
 ---
 
 ## 1. Configuracao Global do Projeto
 
-Projeto ja define flags globais compilacao no `build.gradle`:
+Projeto ja define flags globais de compilacao no `build.gradle`:
 
 ```groovy
 dependencies {
@@ -38,74 +38,69 @@ tasks.withType(JavaCompile) {
 
 | Flag | Valor | Efeito |
 |:-----|:------|:-------|
-| `defaultComponentModel` | `jakarta` | MapStruct gera implementacoes com `@Named` pra registro automatico Guice. **NAO sobrescrever** nos mappers. |
-| `unmappedTargetPolicy` | `IGNORE` | Campos target sem mapeamento explicito ignorados sem erro compilacao. |
+| `defaultComponentModel` | `jakarta` | MapStruct gera implementacoes com `@Named` para registro automatico no Guice. **NAO sobrescrever** nos mappers. |
+| `unmappedTargetPolicy` | `IGNORE` | Campos target sem mapeamento explicito sao ignorados sem erro de compilacao. |
 | `lombok-mapstruct-binding` | `0.2.0` | Garante compatibilidade Lombok (getters/setters gerados) com MapStruct (annotation processor). |
 
-> **ATENCAO — Nao confunda `componentModel` com `injectionStrategy`:**
+> **ATENCAO - Nao confunda `componentModel` com `injectionStrategy`:**
 >
 > | Parametro | Configurado globalmente? | Regra |
 > |:----------|:-------------------------|:------|
-> | `componentModel` | **SIM** — `jakarta` no `build.gradle` | **NUNCA** declare no `@Mapper` individual. Declarar sobrescreve global. |
-> | `injectionStrategy` | **NAO** — sem flag global | **SEMPRE** declare `InjectionStrategy.CONSTRUCTOR` em mapper `abstract class` (com `@Inject` repository) ou que use `uses = {...}`. |
-> | repositories em `abstract class` | **N/A** | **SEMPRE** use field injection (`@Inject` no campo). Limitacao MapStruct: processador nao gera `super(...)` com parametros construtor classe abstrata, impossibilita constructor injection pra repositorios. |
+> | `componentModel` | **SIM** - `jakarta` no `build.gradle` | **NUNCA** declare no `@Mapper` individual. Declarar sobrescreve o global. |
+> | `injectionStrategy` | **NAO** - sem flag global | **SEMPRE** declare `InjectionStrategy.CONSTRUCTOR` em mapper que use `uses = {...}` ou que seja `abstract class` com `@Inject`. |
 >
-> **IMPORTANTE — componentModel:** `componentModel` **NUNCA** declare no `@Mapper` individual. Ja global como `jakarta` em `build.gradle`. Declarar — mesmo com mesmo valor `"jakarta"` — sobrescreve global, causa conflitos injecao ou falhas silenciosas no Guice.
+> **componentModel:** **NUNCA** declare no `@Mapper` individual. Ja e global como `jakarta` em `build.gradle`. Declarar - mesmo com mesmo valor `"jakarta"` - sobrescreve o global e causa conflitos.
 >
-> **IMPORTANTE — injectionStrategy:** `injectionStrategy` **NAO** global. Declare explicito como `InjectionStrategy.CONSTRUCTOR` em mapper que:
-> - `abstract class` com `@Inject` (repositorios ou deps), OU
-> - use `uses = {...}` com componentes externos.
->
-> Omitir = field injection Guice sem garantia ordem inicializacao.
+> **injectionStrategy:** declare explicito como `InjectionStrategy.CONSTRUCTOR` em mapper que use `uses = {...}` ou seja `abstract class` com `@Inject`.
 
 ---
 
 ## 2. Tipos de Mapper
 
-**4 configuracoes** mapper no projeto, por contexto:
+Tres configuracoes de mapper relevantes para MVC:
 
 | Tipo | `@Mapper(...)` | Classe | Quando usar |
 |:-----|:---------------|:-------|:------------|
-| **Simples** | `@Mapper` | `interface` | Mappers sem deps externas |
-| **Com `uses`** | `@Mapper(uses = {...}, injectionStrategy = CONSTRUCTOR)` | `interface` | Mappers que usam classes auxiliares `@Component` |
-| **Com `uses` + `builder` desabilitado** | `@Mapper(uses = {...}, injectionStrategy = CONSTRUCTOR, builder = @Builder(disableBuilder = true))` | `abstract class` | Mappers com `@AfterMapping` ou logica custom que exige setters |
-| **Com Repository (create/merge)** | `@Mapper(uses = {...}, injectionStrategy = CONSTRUCTOR, builder = @Builder(disableBuilder = true))` | `abstract class` + `@Inject` field (repository) | Mappers integracao com upsert: busca por chave externa/negocial, atualiza se existe ou cria se nao existe |
+| **Simples** | `@Mapper` | `interface` | Mappers REST sem deps externas |
+| **Com `uses`** | `@Mapper(uses = {...}, injectionStrategy = CONSTRUCTOR)` | `interface` | Mappers que usam classes auxiliares `@Component` (ex: normalizadores) |
+| **Com `uses` + builder desabilitado** | `@Mapper(uses = {...}, injectionStrategy = CONSTRUCTOR, builder = @Builder(disableBuilder = true))` | `abstract class` | Mappers com `@AfterMapping` ou logica custom em metodos concretos |
 
 ---
 
 ## 3. Mapper Simples (`interface`)
 
-Conversoes diretas sem deps externas.
+Conversoes diretas sem deps externas. Cobre 90% dos casos REST.
 
 ```java
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
 @Mapper
-public interface MeuRestMapper {
+public interface RegistroMapper {
 
-    MeuDomainObj toDomain(MeuRequest dto);
+    Registro toEntity(CriarRegistroRequest dto);
 
-    @Mapping(source = "campo1", target = "campoDto1")
-    @Mapping(source = "campo2", target = "campoDto2")
-    MeuResponse toResponse(MeuDomainObj domain);
+    @Mapping(source = "codRegistro", target = "id")
+    RegistroResponse toResponse(Registro entity);
 }
 ```
 
 **Caracteristicas:**
 - `interface`.
 - So `@Mapper` (sem params).
-- Injetavel direto via `@Inject` construtor.
+- Injetavel direto via `@Inject` no construtor.
 
 ---
 
 ## 4. Mapper com `uses` (`interface` + `@Component`)
 
-Mapper precisa classe auxiliar pra transformacoes custom (ex: normalizar strings, parsear datas).
+Mapper precisa de classe auxiliar para transformacoes custom (ex: normalizar strings, parsear datas).
 
 ### Classe auxiliar (`@Component`)
 
 ```java
+package br.com.hagious.qualitymanager.shared.mapper;
+
 import br.com.sankhya.studio.stereotypes.Component;
 
 @Component
@@ -132,48 +127,54 @@ import org.mapstruct.Mapping;
     uses = {StringMappingNormalizer.class},
     injectionStrategy = InjectionStrategy.CONSTRUCTOR
 )
-public interface MeuIntegrationMapper {
+public interface RegistroMapper {
 
-    @Mapping(source = "idExterno", target = "idOrigem")
     @Mapping(source = "nome", target = "descricao")
     @Mapping(target = "ativo", constant = "true")
-    MeuDomainObj toDomain(MeuExternalDTO dto);
+    Registro toEntity(CriarRegistroRequest dto);
 }
 ```
 
 **Regras obrigatorias:**
-- Classe em `uses` **deve** ser `@Component` (pra Guice resolver).
+- Classe em `uses` **deve** ser `@Component` (para o Guice resolver).
 - `injectionStrategy = InjectionStrategy.CONSTRUCTOR` **obrigatorio** com `uses`.
-- MapStruct aplica metodos auto quando tipos entrada/saida batem (ex: `String -> String` usa `normalize`).
+- MapStruct aplica os metodos auto quando os tipos batem (ex: `String -> String` usa `normalize`).
 
 ---
 
 ## 5. Mapper com Builder Desabilitado (`abstract class`)
 
-Mapper precisa `@AfterMapping`, logica custom em metodos concretos, ou target usa Builder e voce precisa setters.
+Use quando o mapper precisa de `@AfterMapping`, logica custom em metodos concretos, ou quando o target usa `@Builder` (Lombok) e voce precisa que o MapStruct use setters.
 
 ```java
+import org.mapstruct.AfterMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
 
 @Mapper(
     uses = {StringMappingNormalizer.class},
     injectionStrategy = org.mapstruct.InjectionStrategy.CONSTRUCTOR,
     builder = @org.mapstruct.Builder(disableBuilder = true)
 )
-public abstract class MeuMapper {
+public abstract class RegistroMapper {
 
-    @Mapping(source = "idExterno", target = "cultura.idOrigem")
-    @Mapping(source = "idAlvo", target = "alvo.idOrigem")
-    @Mapping(source = "doseMin", target = "doseMinima")
-    public abstract MeuDomainObj toDomain(MeuExternalDTO dto);
+    @Mapping(source = "nome", target = "descricao")
+    public abstract Registro toEntity(CriarRegistroRequest dto);
+
+    @AfterMapping
+    protected void posMapeamento(@MappingTarget Registro entity) {
+        if (entity.getDescricao() != null) {
+            entity.setDescricao(entity.getDescricao().toUpperCase());
+        }
+    }
 }
 ```
 
 **Quando usar:**
 - Target tem `@Builder` (Lombok) e MapStruct deve usar setters em vez do Builder.
-- Precisa `@AfterMapping` pra pos-processamento.
-- Classe tem que ser `abstract class` (nao `interface`) pra ter metodos concretos.
+- Precisa de `@AfterMapping` para pos-processamento.
+- Classe tem que ser `abstract class` (nao `interface`) para ter metodos concretos.
 
 ---
 
@@ -182,69 +183,60 @@ public abstract class MeuMapper {
 ### 6.1 Campos com nomes diferentes
 
 ```java
-@Mapping(source = "nomeExterno", target = "nomeInterno")
-MeuDomainObj toDomain(MeuDTO dto);
+@Mapping(source = "nomeRequest", target = "descricao")
+Registro toEntity(CriarRegistroRequest dto);
 ```
 
 ### 6.2 Campos nested (objetos aninhados)
 
-Mapear campo flat DTO pra campo dentro objeto aninhado no dominio:
+Mapear campo flat do DTO para campo dentro de objeto aninhado da entity:
 
 ```java
-// DTO.codProdutorRural -> Domain.produtorRural.idProdutorRural
-@Mapping(source = "codProdutorRural", target = "produtorRural.idProdutorRural")
-@Mapping(source = "codAgronomo", target = "agronomo.idAgronomo")
-MeuExternalObj fromDomain(MeuDomainObj domain);
+@Mapping(source = "codParceiro", target = "parceiro.codParceiro")
+Registro toEntity(CriarRegistroRequest dto);
 ```
 
 Tambem le de nested:
 
 ```java
-// Domain.municipio.ibge -> DTO.codigoIbge
-@Mapping(source = "municipio.ibge", target = "codigoIbge")
-MeuDTO fromDomain(MeuDomainObj domain);
+@Mapping(source = "parceiro.nome", target = "nomeParceiro")
+RegistroResponse toResponse(Registro entity);
 ```
 
 ### 6.3 Ignorar campos target
 
 ```java
-@Mapping(target = "campoIgnorado", ignore = true)
-@Mapping(target = "outroIgnorado", ignore = true)
-MeuDomainObj toDomain(MeuDTO dto);
+@Mapping(target = "codRegistro", ignore = true)
+@Mapping(target = "dhCreate", ignore = true)
+Registro toEntity(CriarRegistroRequest dto);
 ```
 
-> Com `unmappedTargetPolicy=IGNORE` global, campos nao mapeados ja ignorados. Use `ignore = true` quando quiser **explicito** sobre intencao.
+> Com `unmappedTargetPolicy=IGNORE` global, campos nao mapeados ja sao ignorados. Use `ignore = true` quando quiser ser **explicito** sobre a intencao (ex: ignorar PK na criacao).
 
 ### 6.4 Valores constantes
 
 ```java
 @Mapping(target = "ativo", constant = "true")
-MeuDomainObj toDomain(MeuDTO dto);
+Registro toEntity(CriarRegistroRequest dto);
 ```
 
-> Valor sempre `String`. MapStruct converte pro tipo target auto (`"true"` -> `Boolean.TRUE`).
+> Valor sempre como `String`. MapStruct converte para o tipo target automaticamente (`"true"` -> `Boolean.TRUE`).
 
-### 6.5 Mapeamento bidirecional (toDomain + fromDomain)
-
-Integracao converte nos dois sentidos:
+### 6.5 Mapeamento bidirecional (toEntity + toResponse)
 
 ```java
-@Mapper(
-    uses = {StringMappingNormalizer.class},
-    injectionStrategy = InjectionStrategy.CONSTRUCTOR
-)
-public interface MeuMapper {
+@Mapper
+public interface RegistroMapper {
 
-    // API externa -> Dominio
-    @Mapping(source = "idExterno", target = "codInterno")
+    // Request -> Entity
     @Mapping(source = "nome", target = "descricao")
-    MeuDomainObj toDomain(MeuExternalDTO dto);
+    @Mapping(target = "codRegistro", ignore = true)
+    Registro toEntity(CriarRegistroRequest dto);
 
-    // Dominio -> API externa
-    @Mapping(source = "codInterno", target = "idExterno")
+    // Entity -> Response
     @Mapping(source = "descricao", target = "nome")
-    @Mapping(target = "campoSomenteExterno", ignore = true)
-    MeuExternalDTO fromDomain(MeuDomainObj domain);
+    @Mapping(source = "codRegistro", target = "id")
+    RegistroResponse toResponse(Registro entity);
 }
 ```
 
@@ -253,96 +245,36 @@ public interface MeuMapper {
 Source e target com mesmo nome e tipo = mapeamento **automatico**. Sem `@Mapping` necessario.
 
 ```java
-// Se MeuDTO.nome e MeuDomainObj.nome existem com mesmo tipo:
-// NAO precisa: @Mapping(source = "nome", target = "nome")
-MeuDomainObj toDomain(MeuDTO dto);
+// Se Request.descricao e Entity.descricao existem com o mesmo tipo:
+// NAO precisa: @Mapping(source = "descricao", target = "descricao")
+Registro toEntity(CriarRegistroRequest dto);
 ```
 
-> `@Mapping` explicito pra campos mesmo nome **permitido** pra documentar, nao obrigatorio.
+> `@Mapping` explicito para campos de mesmo nome e **permitido** para documentar, mas nao obrigatorio.
 
-### 6.7 Padrao Create/Merge (Upsert) com Repository
+### 6.7 Update de entity existente (`@MappingTarget`)
 
-Mappers integracao podem fazer upsert no `toDomain`, quando fluxo exigir reaproveitar registro existente.
-
-#### Como funciona (generico)
-
-1. Camada chamadora resolve contexto integracao (tenant, origem, ambiente etc.) e chama mapper.
-2. Mapper consulta repository por chave negocio/externa estavel.
-3. Encontrou: aplica `doUpdate`. Nao encontrou: cria com `doMap`.
-
-#### Regras gerais
-
-- Chave externa/negocial **nao e PK interna**.
-- PK interna segue padrao ecossistema (`COD*` cadastros ou `NU*` movimentos/documentos) e gera automatica.
-- Nunca sobrescrever PK interna no mapper (`@Mapping(target = "codEntidade", ignore = true)` ou equivalente).
-
-#### Repository: exemplo generico
+Para atualizar uma entidade ja persistida sem criar nova instancia:
 
 ```java
-import br.com.sankhya.studio.persistence.Criteria;
-import br.com.sankhya.sdk.data.repository.JapeRepository;
-import br.com.sankhya.studio.stereotypes.Repository;
+@Mapper
+public interface RegistroMapper {
 
-import java.util.Optional;
-
-@Repository
-public interface MeuEntityRepository extends JapeRepository<Integer, MeuEntity> {
-
-    @Criteria(clause = "this.CHAVEEXTERNA = :chaveExterna")
-    Optional<MeuEntity> findByChaveExterna(String chaveExterna);
+    @Mapping(source = "nome", target = "descricao")
+    @Mapping(target = "codRegistro", ignore = true)
+    void atualizar(@MappingTarget Registro existente, AtualizarRegistroRequest dto);
 }
 ```
 
-#### Mapper: padrao completo
+Uso no Service:
 
 ```java
-@Mapper(
-    uses = {StringMappingNormalizer.class},
-    injectionStrategy = InjectionStrategy.CONSTRUCTOR,
-    builder = @org.mapstruct.Builder(disableBuilder = true)
-)
-public abstract class MeuIntegrationMapper {
-
-    @Inject
-    protected MeuEntityRepository entityRepository;
-
-    // Concreto: logica de upsert
-    public MeuEntity toDomain(MeuExternalDTO dto) {
-        if (dto.getChaveExterna() == null) {
-            return doMap(dto);
-        }
-
-        return entityRepository
-            .findByChaveExterna(dto.getChaveExterna())
-            .map(existing -> {
-                doUpdate(existing, dto);
-                return existing;
-            })
-            .orElseGet(() -> doMap(dto));
-    }
-
-    // Abstrato: mapeamento para criacao
-    @Mapping(source = "chaveExterna", target = "chaveExterna")
-    @Mapping(source = "nome", target = "descricao")
-    @Mapping(target = "codEntidade", ignore = true)
-    protected abstract MeuEntity doMap(MeuExternalDTO dto);
-
-    // Abstrato: mapeamento para atualizacao (preserva campos internos)
-    @Mapping(source = "chaveExterna", target = "chaveExterna")
-    @Mapping(source = "nome", target = "descricao")
-    @Mapping(target = "codEntidade", ignore = true)
-    @Mapping(target = "campoDominio", ignore = true)
-    protected abstract void doUpdate(@MappingTarget MeuEntity existing, MeuExternalDTO dto);
-
-    // Opcional: direcao inversa
-    @Mapping(source = "chaveExterna", target = "chaveExterna")
-    public abstract MeuExternalDTO fromDomain(MeuEntity domain);
+public Registro atualizar(Integer codRegistro, AtualizarRegistroRequest dto) throws Exception {
+    Registro existente = repository.findByPK(codRegistro);
+    mapper.atualizar(existente, dto);
+    return repository.save(existente);
 }
 ```
-
-> **Por que field injection pro repository?** MapStruct gera classe concreta estendendo mapper abstrato. Com `componentModel=jakarta` (global), classe gerada recebe `@Named`. **Limitacao MapStruct com classes abstratas:** processador anotacoes nao gera construtor na classe filha chamando `super(...)` com parametros do construtor da abstrata — independente de `injectionStrategy = CONSTRUCTOR`. Por isso repositorios em mappers `abstract class` **devem obrigatoriamente** injetar via field (`@Inject` no campo); Guice injeta depois da construcao. Usar `@Inject` no construtor da abstrata = classe gerada nao instancia.
->
-> **Por que `Optional` no `@Criteria`?** `@Criteria` com `Optional` retorna primeiro resultado ou `Optional.empty()`, permite `.map(...).orElseGet(...)` sem null checks manuais.
 
 ---
 
@@ -350,17 +282,15 @@ public abstract class MeuIntegrationMapper {
 
 | Tipo de Mapper | Pacote | Convencao de nome |
 |:---------------|:-------|:------------------|
-| REST (Controller) | `entrypoint/rest/<feature>/mapper/` | `<Feature>RestMapper` |
-| Integracao externa | `infrastructure/integration/<plataforma>/mapper/` | `<Plataforma><Entidade>Mapper` |
-| Classe auxiliar compartilhada | `infrastructure/integration/shared/mapper/` | Nome descritivo (ex: `StringMappingNormalizer`) |
+| Mapper REST da feature | `<feature>/mapper/` | `<Feature>Mapper` |
+| Classe auxiliar compartilhada | `shared/mapper/` | Nome descritivo (ex: `StringMappingNormalizer`) |
 
 ### Exemplos de nomes
 
 ```
-entrypoint/rest/pedido/mapper/PedidoRestMapper.java
-infrastructure/integration/plataformax/mapper/PlataformaXProdutoMapper.java
-infrastructure/integration/plataformax/mapper/PlataformaXClienteMapper.java
-infrastructure/integration/shared/mapper/StringMappingNormalizer.java
+br/com/hagious/qualitymanager/registro/mapper/RegistroMapper.java
+br/com/hagious/qualitymanager/fornecedor/mapper/FornecedorMapper.java
+br/com/hagious/qualitymanager/shared/mapper/StringMappingNormalizer.java
 ```
 
 ---
@@ -369,21 +299,17 @@ infrastructure/integration/shared/mapper/StringMappingNormalizer.java
 
 | Direcao | Nome do metodo | Assinatura |
 |:--------|:---------------|:-----------|
-| DTO externo -> Dominio | `toDomain` | `DomainObj toDomain(ExternalDTO dto)` |
-| Dominio -> DTO externo | `fromDomain` | `ExternalDTO fromDomain(DomainObj domain)` |
-| Request -> Dominio | `to<NomeObj>` | `DomainObj to<NomeObj>(Request dto)` |
-| Dominio -> Response | `to<NomeResponse>` | `Response to<NomeResponse>(DomainObj domain)` |
+| Request -> Entity | `toEntity` ou `to<Entity>` | `Entity toEntity(Request dto)` |
+| Entity -> Response | `toResponse` ou `to<Response>` | `Response toResponse(Entity entity)` |
+| Update Entity | `atualizar` | `void atualizar(@MappingTarget Entity ent, Request dto)` |
 
 ### Exemplos
 
 ```java
-// Integracao: DTO externo <-> Dominio
-Produto toDomain(PlataformaXProduto dto);
-PlataformaXProduto fromDomain(Produto domain);
-
-// REST: Request -> Dominio, Dominio -> Response
-Pedido toPedido(PedidoRequest dto);
-EmitirPedidoResponse toEmitirPedidoResponse(Pedido pedido);
+// REST: Request -> Entity, Entity -> Response
+Registro toEntity(CriarRegistroRequest dto);
+RegistroResponse toResponse(Registro entity);
+void atualizar(@MappingTarget Registro existente, AtualizarRegistroRequest dto);
 ```
 
 ---
@@ -393,76 +319,44 @@ EmitirPedidoResponse toEmitirPedidoResponse(Pedido pedido);
 ### No Controller (via construtor)
 
 ```java
-@Controller(serviceName = "MeuControllerSP", transactionType = EJBTransactionType.Supports)
-public class MeuController {
+@Controller(serviceName = "RegistroControllerSP", transactionType = EJBTransactionType.Supports)
+public class RegistroController {
 
-    private final MeuRestMapper mapper;
+    private final RegistroService service;
+    private final RegistroMapper mapper;
 
     @Inject
-    public MeuController(MeuRestMapper mapper) {
+    public RegistroController(RegistroService service, RegistroMapper mapper) {
+        this.service = service;
         this.mapper = mapper;
     }
 
     @Transactional
-    public ResponseEntity<MeuResponse> executar(MeuRequest request) {
-        MeuDomainObj domain = mapper.toDomain(request);
-        // ... logica ...
-        MeuResponse response = mapper.toResponse(domain);
-        return ResponseEntity.ok(response);
+    public RegistroResponse criar(@Valid CriarRegistroRequest request) throws Exception {
+        Registro entity = mapper.toEntity(request);
+        Registro salvo = service.criar(entity);
+        return mapper.toResponse(salvo);
     }
 }
 ```
 
-### No Gateway de integracao (via construtor)
-
-```java
-public class MeuPlatformGateway implements MeuGateway {
-
-    private final MeuApiClient client;
-    private final RetrofitCallExecutor executor;
-    private final MeuPlatformMapper mapper;
-
-    @Inject
-    public MeuPlatformGateway(MeuApiClient client,
-                               RetrofitCallExecutor executor,
-                               MeuPlatformMapper mapper) {
-        this.client = client;
-        this.executor = executor;
-        this.mapper = mapper;
-    }
-
-    @Override
-    public List<MeuDomainObj> findAll() {
-        MeuApiResponse root = executor.execute(client.buscarTodos());
-        return root.getItens().stream()
-            .map(mapper::toDomain)
-            .collect(Collectors.toList());
-    }
-}
-```
-
-> Mappers injetam como qualquer dep — `@Inject` via construtor. Guice resolve implementacao gerada auto.
+> Mappers sao injetados como qualquer outra dep - `@Inject` via construtor. Guice resolve a implementacao gerada automaticamente.
 
 ---
 
 ## 10. Fluxo de Decisao: Qual tipo de Mapper usar?
 
 ```
-Mapper de integracao com plataforma externa (toDomain precisa de upsert)?
+Precisa de @AfterMapping ou logica custom em metodo concreto?
 |
-+-- SIM --> abstract class + @Inject repository + toDomain concreto com create/merge
++-- SIM --> abstract class
 |           @Mapper(uses={...}, injectionStrategy=CONSTRUCTOR, builder=@Builder(disableBuilder=true))
 |
-+-- NAO --> Precisa de classe auxiliar em `uses`?
++-- NAO --> Precisa de classe auxiliar em uses?
             |
-            +-- NAO --> @Mapper (interface simples)
+            +-- SIM --> @Mapper(uses={...}, injectionStrategy=CONSTRUCTOR) [interface]
             |
-            +-- SIM --> Precisa de @AfterMapping ou logica customizada?
-                        |
-                        +-- NAO --> @Mapper(uses={...}, injectionStrategy=CONSTRUCTOR) [interface]
-                        |
-                        +-- SIM --> @Mapper(uses={...}, injectionStrategy=CONSTRUCTOR,
-                                           builder=@Builder(disableBuilder=true)) [abstract class]
+            +-- NAO --> @Mapper [interface simples]
 ```
 
 ---
@@ -471,38 +365,24 @@ Mapper de integracao com plataforma externa (toDomain precisa de upsert)?
 
 ### Novo mapper
 
-1. Identificar tipo correto (simples, com `uses`, builder desabilitado, ou create/merge com repository).
-2. Mapper integracao com plataforma externa: `abstract class` com `@Inject` repository.
-3. Declarar `interface` (ou `abstract class` se precisar builder desabilitado ou repository).
-4. NAO declarar `componentModel` — ja global como `jakarta` em `build.gradle`. Nem com valor `"jakarta"`.
-5. Se `abstract class` (com `@Inject` repository) OU usar `uses`, declare `injectionStrategy = InjectionStrategy.CONSTRUCTOR`.
-6. Se usar `uses`, garanta classes referenciadas sao `@Component`.
-7. Mapear campos nomes diferentes via `@Mapping(source, target)`.
-8. Usar `target = "nested.field"` pra objetos aninhados.
-9. Usar `ignore = true` pra campos nao mapeaveis.
-10. Usar `constant = "valor"` pra valores fixos.
-11. Pacote correto (`entrypoint/.../mapper/` ou `infrastructure/.../mapper/`).
-12. Injetar via construtor com `@Inject`.
-
-### Mapper de integracao (create/merge)
-
-1. Declarar `abstract class`.
-2. Adicionar `injectionStrategy = InjectionStrategy.CONSTRUCTOR` no `@Mapper` — obrigatorio pra `abstract class` com `@Inject`.
-3. Adicionar `builder = @Builder(disableBuilder = true)` no `@Mapper`.
-3. Injetar repository com `@Inject` como campo protegido — field injection obrigatoria por limitacao MapStruct (nota 6.7).
-5. Implementar `toDomain()` concreto: `findBy<ChaveExterna>()` ? `doUpdate` se existe, `doMap` se nao.
-6. Declarar `doMap(DTO)` `protected abstract` com `@Mapping(target="<pkInterna>", ignore=true)`.
-7. Declarar `doUpdate(@MappingTarget Entity, DTO)` `protected abstract` com `@Mapping(target="<pkInterna>", ignore=true)`.
-8. No `doUpdate`, ignorar campos dominio que origem externa nao deve sobrescrever.
-9. Direcao inversa (export): declare `fromDomain(Entity)` `public abstract`.
+1. [ ] Identificar tipo correto (simples, com `uses`, ou com builder desabilitado).
+2. [ ] Declarar `interface` (ou `abstract class` se precisar `@AfterMapping` ou builder desabilitado).
+3. [ ] **NAO** declarar `componentModel` - ja global como `jakarta` em `build.gradle`. Nem com valor `"jakarta"`.
+4. [ ] Se usar `uses` ou for `abstract class`, declarar `injectionStrategy = InjectionStrategy.CONSTRUCTOR`.
+5. [ ] Se usar `uses`, garantir que classes referenciadas sao `@Component`.
+6. [ ] Mapear campos de nomes diferentes via `@Mapping(source, target)`.
+7. [ ] Usar `target = "nested.field"` para objetos aninhados.
+8. [ ] Usar `ignore = true` para campos nao mapeaveis (incluindo PK na criacao).
+9. [ ] Usar `constant = "valor"` para valores fixos.
+10. [ ] Pacote correto (`<feature>/mapper/`).
+11. [ ] Injetar via construtor com `@Inject`.
 
 ### Revisao de mapper existente
 
-1. Verificar se campos source estao mapeados no target (ou ignorados explicito).
-2. Verificar campos nested (`a.b.c`) corretos.
-3. Verificar `uses` tem `injectionStrategy = CONSTRUCTOR`. Se `abstract class` com `@Inject` repository, tambem tem `injectionStrategy = CONSTRUCTOR`.
-4. Verificar que NAO tem `componentModel` no `@Mapper` (nem `"jakarta"` — ja global).
-5. Mapper integracao: verificar se implementa create/merge com repository.
+1. [ ] Verificar se campos source estao mapeados no target (ou ignorados explicito).
+2. [ ] Verificar campos nested (`a.b.c`) corretos.
+3. [ ] Verificar que `uses` tem `injectionStrategy = CONSTRUCTOR`.
+4. [ ] Verificar que NAO tem `componentModel` no `@Mapper` (nem `"jakarta"` - ja global).
 
 ---
 
@@ -510,14 +390,13 @@ Mapper de integracao com plataforma externa (toDomain precisa de upsert)?
 
 | Erro | Correcao |
 |:-----|:---------|
-| Declarar `componentModel` no `@Mapper` (qualquer valor, incluindo `"jakarta"`) | Remover — ja global como `jakarta` em `build.gradle`. Declarar sobrescreve global. |
+| Declarar `componentModel` no `@Mapper` (qualquer valor, incluindo `"jakarta"`) | Remover - ja global como `jakarta` em `build.gradle`. |
 | Usar `uses` sem `injectionStrategy = CONSTRUCTOR` | Adicionar `injectionStrategy = InjectionStrategy.CONSTRUCTOR`. |
-| `abstract class` com `@Inject` repository sem `injectionStrategy = CONSTRUCTOR` | Adicionar `injectionStrategy = InjectionStrategy.CONSTRUCTOR` — nao e global. |
-| Constructor injection (`@Inject` no construtor da `abstract class`) pra repositorios | Reverter pra field injection (`@Inject` no campo). MapStruct nao gera `super(...)` com params do construtor da abstrata; classe gerada nao instancia. |
 | Classe em `uses` sem `@Component` | Adicionar `@Component` na auxiliar. |
 | `@AfterMapping` nao executado | Adicionar `builder = @Builder(disableBuilder = true)` no `@Mapper` e usar `abstract class`. |
-| Mapper `abstract class` sem `builder = @Builder(disableBuilder = true)` | Adicionar atributo ? sem ele MapStruct pode usar Builder Lombok e ignorar setters. |
-| Mapper manual (`new MeuDTO(); dto.setX(...)`) | Usar MapStruct. Nunca mapper manual. |
-| Campo target nao populado | Verificar se `@Mapping` correto. Mesmo nome = automatico; diferentes precisam `@Mapping` explicito. |
-| Erro compilacao "Ambiguous mapping methods" | Renomear metodos pra evitar conflitos assinatura ou usar `@Named` pra qualificar. |
-| Erro compilacao com Lombok | Verificar `lombok-mapstruct-binding` nas deps do `annotationProcessor`. |
+| Mapper `abstract class` sem `builder = @Builder(disableBuilder = true)` | Adicionar atributo - sem ele MapStruct pode usar Builder Lombok e ignorar setters. |
+| Mapper manual (`new DTO(); dto.setX(...)`) | Usar MapStruct. Nunca mapper manual. |
+| Campo target nao populado | Verificar `@Mapping`. Mesmo nome = automatico; diferentes precisam `@Mapping` explicito. |
+| Erro de compilacao "Ambiguous mapping methods" | Renomear metodos para evitar conflitos de assinatura ou usar `@Named` para qualificar. |
+| Erro de compilacao com Lombok | Verificar `lombok-mapstruct-binding` nas deps do `annotationProcessor`. |
+| Mapper fora do pacote `<feature>/mapper/` | Mover para o pacote correto da feature. |

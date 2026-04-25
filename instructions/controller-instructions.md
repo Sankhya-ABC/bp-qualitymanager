@@ -2,14 +2,14 @@
 applyTo: "**/*Controller.java"
 ---
 
-# Controller (`@Controller`) — Addon Studio 2.0
+# Controller (`@Controller`) - Addon Studio 2.0
 
-`@Controller` marca classes = pontos entrada API interna add-on. Cada metodo publico auto-exposto como endpoint servico. Controllers **orquestram** fluxo requisicao — **nunca** contem logica negocio.
+`@Controller` marca classes = pontos de entrada da API interna do add-on. Cada metodo publico e auto-exposto como endpoint de servico. Controllers **orquestram** o fluxo da requisicao - **nunca** contem regra de negocio.
 
 > **Referencias complementares:**
-> - `architecture-instructions.md` — Camadas e design patterns
-> - `dependency-injection-instructions.md` — Injecao de dependencia (Guice)
-> - `mapstruct-instructions.md` — Mapeamento de objetos (MapStruct)
+> - `architecture-instructions.md` - Camadas e organizacao por feature
+> - `dependency-injection-instructions.md` - Injecao de dependencia (Guice)
+> - `mapstruct-instructions.md` - Mapeamento de objetos (MapStruct)
 
 ---
 
@@ -23,26 +23,26 @@ import com.google.inject.Inject;
 import javax.validation.Valid;
 
 @Controller(
-    serviceName = "MeuFeatureControllerSP",            // Obrigatorio, sufixo "SP"
-    transactionType = EJBTransactionType.Supports       // Opcional (Supports e o padrao)
+    serviceName = "RegistroControllerSP",                // Obrigatorio, sufixo "SP"
+    transactionType = EJBTransactionType.Supports        // Opcional (Supports e o padrao)
 )
-public class MeuFeatureController {
+public class RegistroController {
 
-    private final MeuUseCase meuUseCase;                // Dependencias como final
-    private final MeuRestMapper mapper;
+    private final RegistroService service;               // Service da feature
+    private final RegistroMapper mapper;                 // Mapper da feature
 
-    @Inject                                             // Injecao via construtor
-    public MeuFeatureController(MeuUseCase meuUseCase,
-                                MeuRestMapper mapper) {
-        this.meuUseCase = meuUseCase;
+    @Inject                                              // Injecao via construtor
+    public RegistroController(RegistroService service,
+                              RegistroMapper mapper) {
+        this.service = service;
         this.mapper = mapper;
     }
 
-    @Transactional                                      // Metodos que alteram dados
-    public MeuResponse executar(@Valid MeuRequest request) {
-        MeuDomain domain = mapper.toDomain(request);    // DTO -> Domain
-        MeuDomain resultado = meuUseCase.execute(domain);
-        return mapper.toResponse(resultado);             // Domain -> DTO
+    @Transactional                                       // Metodos que alteram dados
+    public RegistroResponse criar(@Valid CriarRegistroRequest request) throws Exception {
+        Registro entity = mapper.toEntity(request);      // DTO -> Entity
+        Registro salvo = service.criar(entity);          // Delega ao Service
+        return mapper.toResponse(salvo);                 // Entity -> DTO
     }
 }
 ```
@@ -53,30 +53,30 @@ public class MeuFeatureController {
 
 ### `serviceName` (obrigatorio)
 
-Nome servico registrado plataforma. **Deve** terminar sufixo `SP`.
+Nome do servico registrado na plataforma. **Deve** terminar com sufixo `SP`.
 
 ```java
-@Controller(serviceName = "PedidoControllerSP")
+@Controller(serviceName = "RegistroControllerSP")
 ```
 
-> `serviceName` define URL acesso servico. Cada metodo publico exposto como `<serviceName>.<nomeDoMetodo>`.
+> `serviceName` define a URL de acesso ao servico. Cada metodo publico e exposto como `<serviceName>.<nomeDoMetodo>`.
 
 ### `transactionType` (opcional)
 
-Define comportamento transacional **padrao** todos metodos classe.
+Define o comportamento transacional **padrao** de todos os metodos da classe.
 
 | `EJBTransactionType` | Descricao | Quando usar |
 |:---------------------|:----------|:------------|
-| `Supports` | Usa transacao se ja existir; senao, sem. | **Padrao.** Controllers mistura leitura+escrita. |
+| `Supports` | Usa transacao se ja existir; senao, sem. | **Padrao.** Controllers misturam leitura e escrita. |
 | `Required` | Sempre executa em transacao (cria se nao existir). | Controllers 100% escrita. |
-| `NotSupported` | Executa fora transacao (suspende se existir). | Controllers 100% leitura. |
+| `NotSupported` | Executa fora de transacao (suspende se existir). | Controllers 100% leitura. |
 
 ```java
 // Padrao (leitura + escrita com @Transactional granular)
-@Controller(serviceName = "MeuControllerSP", transactionType = EJBTransactionType.Supports)
+@Controller(serviceName = "RegistroControllerSP", transactionType = EJBTransactionType.Supports)
 
 // Somente escrita
-@Controller(serviceName = "MeuControllerSP", transactionType = EJBTransactionType.Required)
+@Controller(serviceName = "RegistroControllerSP", transactionType = EJBTransactionType.Required)
 
 // Somente leitura
 @Controller(serviceName = "ConsultaControllerSP", transactionType = EJBTransactionType.NotSupported)
@@ -86,18 +86,18 @@ Define comportamento transacional **padrao** todos metodos classe.
 
 ## 3. Controle Transacional com `@Transactional`
 
-Anotacao `@Transactional` em metodo **sempre tem precedencia** sobre `transactionType` da classe.
+`@Transactional` em metodo **sempre tem precedencia** sobre `transactionType` da classe.
 
 ```java
-@Controller(serviceName = "MeuControllerSP", transactionType = EJBTransactionType.NotSupported)
-public class MeuController {
+@Controller(serviceName = "RegistroControllerSP", transactionType = EJBTransactionType.NotSupported)
+public class RegistroController {
 
-    // Usa o padrao da classe (NotSupported) — sem transacao
-    public List<MeuDTO> listar() { ... }
+    // Usa o padrao da classe (NotSupported) - sem transacao
+    public List<RegistroResponse> listar() { ... }
 
-    // Sobrepoe o padrao — executa em transacao propria
+    // Sobrepoe o padrao - executa em transacao propria
     @Transactional
-    public MeuDTO criar(@Valid MeuRequest request) { ... }
+    public RegistroResponse criar(@Valid CriarRegistroRequest request) { ... }
 
     // Sobrepoe com transacao nova (isolada)
     @Transactional(Transactional.TxType.REQUIRES_NEW)
@@ -110,27 +110,29 @@ public class MeuController {
 | Operacao | `@Transactional` | Motivo |
 |:---------|:-----------------|:-------|
 | Create / Update / Delete | Sim | Garante atomicidade |
-| Leitura simples | Nao | Sem necessidade transacao |
-| Leitura + escrita mesmo metodo | Sim | Garante consistencia |
+| Leitura simples | Nao | Sem necessidade de transacao |
+| Leitura + escrita no mesmo metodo | Sim | Garante consistencia |
 | Operacao idempotente (sem side effects) | Nao | Desnecessario |
 
 ---
 
 ## 4. DTOs (Request / Response)
 
-Controllers **nunca** expoe entidades dominio diretamente. Use DTOs = contratos entrada/saida.
+Controllers **nunca** expoem entidades diretamente. Use DTOs como contratos de entrada/saida.
 
 ### Organizacao de pacotes
 
 ```
-entrypoint/rest/<feature>/
+br/com/hagious/qualitymanager/<feature>/
+|-- controller/
+|   |-- <Feature>Controller.java
+|-- service/
+|   |-- <Feature>Service.java
 |-- dto/
-|   |-- MeuFeatureRequest.java        # Request DTO (entrada)
-|   |-- MeuFeatureResponse.java       # Response DTO (saida)
-|   |-- OutraOperacaoRequest.java
+|   |-- Criar<Feature>Request.java        # Request DTO (entrada)
+|   |-- <Feature>Response.java            # Response DTO (saida)
 |-- mapper/
-|   |-- MeuFeatureRestMapper.java     # MapStruct mapper
-|-- MeuFeatureController.java         # Controller
+|   |-- <Feature>Mapper.java              # MapStruct mapper
 ```
 
 ### Request DTO
@@ -145,7 +147,7 @@ import javax.validation.constraints.DecimalMin;
 import java.math.BigDecimal;
 
 @Data
-public class CriarPedidoRequest {
+public class CriarRegistroRequest {
 
     @NotNull(message = "O codigo do parceiro e obrigatorio.")
     private BigDecimal codParceiro;
@@ -156,7 +158,7 @@ public class CriarPedidoRequest {
     @DecimalMin(value = "0.01", message = "O valor deve ser maior que zero.")
     private BigDecimal valor;
 
-    private String observacao;   // Opcional — sem validacao
+    private String observacao;   // Opcional - sem validacao
 }
 ```
 
@@ -169,9 +171,10 @@ import lombok.Data;
 import java.math.BigDecimal;
 
 @Data
-public class CriarPedidoResponse {
-    private BigDecimal numeroPedido;
-    private BigDecimal valorTotal;
+public class RegistroResponse {
+    private Integer codRegistro;
+    private String descricao;
+    private BigDecimal valor;
     private String status;
 }
 ```
@@ -187,11 +190,11 @@ public class CriarPedidoResponse {
 | `@Size` | Tamanho min/max de String ou Collection | `@Size(min = 1, max = 200)` |
 | `@Valid` | Validacao em cascata (objetos nested) | `@Valid MeuDTO dto` |
 
-> `@Valid` em parametro metodo controller ativa validacao automatica. Falha = framework retorna erro antes executar metodo.
+> `@Valid` em parametro de metodo de controller ativa a validacao automatica. Falha = framework retorna erro antes de executar o metodo.
 
 ---
 
-## 5. Protocolo HTTP — Request e Response
+## 5. Protocolo HTTP - Request e Response
 
 ### URL de acesso
 
@@ -199,18 +202,18 @@ public class CriarPedidoResponse {
 <dns>/<contexto-addon>/service.sbr?serviceName=<serviceName>.<nomeMetodo>&mgeSession=<jsessionId>
 ```
 
-- `contexto-addon` = valor `rootProject.name` em `settings.gradle`
+- `contexto-addon` = valor de `rootProject.name` em `settings.gradle`
 - `serviceName` = atributo `@Controller`
-- `nomeMetodo` = nome metodo publico controller
+- `nomeMetodo` = nome do metodo publico do controller
 
 **Exemplo:**
 ```
-http://localhost:8080/meu-addon/service.sbr?serviceName=PedidoControllerSP.criarPedido&mgeSession=ABC123
+http://localhost:8080/bp-qualitymanager/service.sbr?serviceName=RegistroControllerSP.criar&mgeSession=ABC123
 ```
 
 ### Autenticacao
 
-Todas requisicoes exigem auth via `mgeSession`. `jsessionId` obtido com `MobileLogin`:
+Todas as requisicoes exigem auth via `mgeSession`. `jsessionId` e obtido com `MobileLogin`:
 
 ```bash
 curl --location 'http://localhost:8080/mge/service.sbr?serviceName=MobileLoginSP.login&outputType=json' \
@@ -223,17 +226,17 @@ curl --location 'http://localhost:8080/mge/service.sbr?serviceName=MobileLoginSP
 }'
 ```
 
-> Ambientes com Gateway Sankhya: auth via `MobileLogin` nao necessaria — Gateway gerencia token.
+> Ambientes com Gateway Sankhya: auth via `MobileLogin` nao e necessaria - o Gateway gerencia o token.
 
 ### Formato da Request (POST)
 
 ```json
 {
-  "serviceName": "PedidoControllerSP.criarPedido",
+  "serviceName": "RegistroControllerSP.criar",
   "requestBody": {
     "request": {
       "codParceiro": 12345,
-      "descricao": "Pedido de teste",
+      "descricao": "Registro de teste",
       "valor": 150.50,
       "observacao": "Entrega urgente"
     }
@@ -242,10 +245,10 @@ curl --location 'http://localhost:8080/mge/service.sbr?serviceName=MobileLoginSP
 ```
 
 **Regras:**
-- `serviceName`: `<serviceName>.<nomeMetodo>` (mesmo valor URL).
-- `requestBody`: Contem argumentos metodo como propriedades nomeadas pelo nome parametro Java.
+- `serviceName`: `<serviceName>.<nomeMetodo>` (mesmo valor da URL).
+- `requestBody`: contem os argumentos do metodo como propriedades nomeadas pelo nome do parametro Java.
 
-> Metodo `criarPedido(CriarPedidoRequest request)` = JSON usa `"request"` como chave. Se fosse `criarPedido(CriarPedidoRequest pedido)`, chave seria `"pedido"`.
+> Metodo `criar(CriarRegistroRequest request)` -> JSON usa `"request"` como chave. Se fosse `criar(CriarRegistroRequest registro)`, a chave seria `"registro"`.
 
 ### Formato da Response
 
@@ -253,13 +256,13 @@ curl --location 'http://localhost:8080/mge/service.sbr?serviceName=MobileLoginSP
 
 ```json
 {
-  "serviceName": "PedidoControllerSP.criarPedido",
+  "serviceName": "RegistroControllerSP.criar",
   "status": "1",
   "pendingPrinting": "false",
   "transactionId": "CB0F625A72C214CF8449F0B18E1FA81A",
   "responseBody": {
-    "numeroPedido": 987654,
-    "valorTotal": 551.00,
+    "codRegistro": 987654,
+    "descricao": "Registro de teste",
     "status": "PENDENTE"
   }
 }
@@ -269,7 +272,7 @@ curl --location 'http://localhost:8080/mge/service.sbr?serviceName=MobileLoginSP
 
 ```json
 {
-  "serviceName": "PedidoControllerSP.criarPedido",
+  "serviceName": "RegistroControllerSP.criar",
   "status": "0",
   "pendingPrinting": "false",
   "transactionId": "CB0F625A72C214CF8449F0B18E1FA81A",
@@ -284,38 +287,39 @@ curl --location 'http://localhost:8080/mge/service.sbr?serviceName=MobileLoginSP
 | `"3"` | Timeout |
 | `"4"` | Cancelado por concorrencia |
 
-> Erro: `responseBody` nao incluido. Mensagem fica em `statusMessage`.
+> Em erro, `responseBody` nao e incluido. A mensagem fica em `statusMessage`.
 
 ---
 
 ## 6. Tipo de Retorno dos Metodos
 
-Tipo retorno cada metodo definido pela regra negocio projeto:
+Tipo de retorno de cada metodo definido pela regra de negocio do projeto:
 
-- Metodos retornam dados = retornam **DTO resposta diretamente**.
-- Metodos sem retorno dados = **`void`**.
+- Metodos que retornam dados = retornam **DTO de resposta diretamente**.
+- Metodos sem retorno de dados = **`void`**.
 
 ```java
 // Com retorno de dados
-public PedidoResponse criarPedido(@Valid CriarPedidoRequest request) {
-    ...
-    return mapper.toResponse(resultado);
+public RegistroResponse criar(@Valid CriarRegistroRequest request) throws Exception {
+    Registro entity = mapper.toEntity(request);
+    Registro salvo = service.criar(entity);
+    return mapper.toResponse(salvo);
 }
 
 // Sem retorno de dados
 @Transactional
-public void cancelar(@Valid CancelarPedidoRequest request) {
-    cancelarPedidoUseCase.execute(request.getNuPedido());
+public void cancelar(@Valid CancelarRegistroRequest request) throws Exception {
+    service.cancelar(request.getCodRegistro());
 }
 ```
 
-Framework serializa auto objeto retornado em `responseBody` da response.
+O framework serializa automaticamente o objeto retornado em `responseBody` da response.
 
 ---
 
 ## 7. Tratamento Global de Excecoes (`@ControllerAdvice`)
 
-Tratamento excecoes centralizado em classe `@ControllerAdvice` no pacote `entrypoint/rest/`.
+Tratamento de excecoes centralizado em classe `@ControllerAdvice` em `shared/exception/` ou em pacote raiz dedicado.
 
 ```java
 import br.com.sankhya.studio.web.ControllerAdvice;
@@ -349,22 +353,18 @@ public class RestExceptionHandler {
 
 **Regras:**
 - Um `@ControllerAdvice` por projeto.
-- Cada `@ExceptionHandler` trata **um tipo** excecao.
+- Cada `@ExceptionHandler` trata **um tipo** de excecao.
 - Ordenar do mais especifico ao mais generico (framework prioriza especifico).
 - Logar excecao com nivel adequado (`INFO`, `WARNING`, `SEVERE`).
-- **Nunca** capturar excecao negocio no controller — deixe `@ControllerAdvice` tratar.
+- **Nunca** capturar excecao de negocio no controller - deixe o `@ControllerAdvice` tratar.
 
-### Mapeamento Excecao — nivel de log sugerido
+### Mapeamento Excecao - nivel de log sugerido
 
 | Excecao | Level de Log |
 |:--------|:-------------|
 | `EntityNotFoundException` | `INFO` |
 | `IllegalArgumentException` | `WARNING` |
-| `DomainValidationException` | `WARNING` |
-| `IntegrationImportException` | `WARNING` |
-| `IntegrationExportException` | `WARNING` |
-| `IntegrationApiException` | `WARNING` |
-| `IntegrationNetworkException` | `WARNING` |
+| Excecoes de negocio da feature | `WARNING` |
 | `RuntimeException` | `SEVERE` |
 | `Exception` | `SEVERE` |
 
@@ -373,24 +373,26 @@ public class RestExceptionHandler {
 ## 8. Fluxo Padrao de um Metodo
 
 ```
-Request DTO —@Valid—> Controller —mapper—> Domain Object
-                        |
-                        |— UseCase.execute(domain)
-                        |       |— (logica no UseCase / DomainService / Entity)
-                        |
-                        |— mapper.toResponse(resultado)
-                        |
-                        |— return response
+Request DTO --@Valid--> Controller --mapper--> Entity
+                          |
+                          |-- Service.acao(entity)
+                          |       |-- valida regra de negocio
+                          |       |-- Repository.save/find/delete
+                          |       |-- return resultado
+                          |
+                          |-- mapper.toResponse(resultado)
+                          |
+                          |-- return Response
 ```
 
 ### Metodo com entrada e saida (CRUD)
 
 ```java
 @Transactional
-public PedidoResponse criarPedido(@Valid CriarPedidoRequest request) {
-    Pedido pedido = mapper.toPedido(request);
-    Pedido resultado = criarPedidoUseCase.execute(pedido);
-    return mapper.toCriarResponse(resultado);
+public RegistroResponse criar(@Valid CriarRegistroRequest request) throws Exception {
+    Registro entity = mapper.toEntity(request);
+    Registro salvo = service.criar(entity);
+    return mapper.toResponse(salvo);
 }
 ```
 
@@ -398,18 +400,17 @@ public PedidoResponse criarPedido(@Valid CriarPedidoRequest request) {
 
 ```java
 @Transactional
-public void cancelar(@Valid CancelarPedidoRequest request) {
-    cancelarPedidoUseCase.execute(request.getNuPedido());
+public void cancelar(@Valid CancelarRegistroRequest request) throws Exception {
+    service.cancelar(request.getCodRegistro());
 }
 ```
 
 ### Metodo somente com saida (consulta)
 
 ```java
-public List<ProdutoDTO> listarProdutos() {
-    List<Produto> produtos = listarProdutosUseCase.execute();
-    return produtos.stream()
-        .map(mapper::toDTO)
+public List<RegistroResponse> listar() {
+    return service.listarAtivos().stream()
+        .map(mapper::toResponse)
         .collect(Collectors.toList());
 }
 ```
@@ -418,8 +419,8 @@ public List<ProdutoDTO> listarProdutos() {
 
 ```java
 @Transactional
-public void sincronizar() {
-    sincronizarUseCase.execute();
+public void sincronizar() throws Exception {
+    service.sincronizar();
 }
 ```
 
@@ -431,21 +432,24 @@ public void sincronizar() {
 
 ```java
 @Controller(
-    serviceName = "AlvoControllerSP",
+    serviceName = "FornecedorControllerSP",
     transactionType = EJBTransactionType.Supports
 )
-public class AlvoController {
+public class FornecedorController {
 
-    private final ImportarAlvoUseCase importarAlvoUseCase;
+    private final FornecedorService service;
+    private final FornecedorMapper mapper;
 
     @Inject
-    public AlvoController(ImportarAlvoUseCase importarAlvoUseCase) {
-        this.importarAlvoUseCase = importarAlvoUseCase;
+    public FornecedorController(FornecedorService service, FornecedorMapper mapper) {
+        this.service = service;
+        this.mapper = mapper;
     }
 
-    @Transactional
-    public List<AlvoDTO> importar() {
-        return importarAlvoUseCase.execute();
+    public List<FornecedorResponse> listar() {
+        return service.listarAtivos().stream()
+            .map(mapper::toResponse)
+            .collect(Collectors.toList());
     }
 }
 ```
@@ -454,53 +458,43 @@ public class AlvoController {
 
 ```java
 @Controller(
-    serviceName = "PedidoControllerSP",
+    serviceName = "RegistroControllerSP",
     transactionType = EJBTransactionType.Supports
 )
-public class PedidoController {
+public class RegistroController {
 
-    private final CriarPedidoUseCase criarPedidoUseCase;
-    private final CancelarPedidoUseCase cancelarPedidoUseCase;
-    private final EmitirPedidoUseCase emitirPedidoUseCase;
-    private final GerarPdfUseCase gerarPdfUseCase;
-    private final PedidoRestMapper mapper;
+    private final RegistroService service;
+    private final RegistroMapper mapper;
 
     @Inject
-    public PedidoController(
-        CriarPedidoUseCase criarPedidoUseCase,
-        CancelarPedidoUseCase cancelarPedidoUseCase,
-        EmitirPedidoUseCase emitirPedidoUseCase,
-        GerarPdfUseCase gerarPdfUseCase,
-        PedidoRestMapper mapper
-    ) {
-        this.criarPedidoUseCase = criarPedidoUseCase;
-        this.cancelarPedidoUseCase = cancelarPedidoUseCase;
-        this.emitirPedidoUseCase = emitirPedidoUseCase;
-        this.gerarPdfUseCase = gerarPdfUseCase;
+    public RegistroController(RegistroService service, RegistroMapper mapper) {
+        this.service = service;
         this.mapper = mapper;
     }
 
     @Transactional
-    public CriarPedidoResponse criar(@Valid CriarPedidoRequest request) {
-        Pedido pedido = mapper.toPedido(request);
-        Pedido resultado = criarPedidoUseCase.execute(pedido);
-        return mapper.toCriarResponse(resultado);
+    public RegistroResponse criar(@Valid CriarRegistroRequest request) throws Exception {
+        Registro entity = mapper.toEntity(request);
+        Registro salvo = service.criar(entity);
+        return mapper.toResponse(salvo);
     }
 
     @Transactional
-    public EmitirPedidoResponse emitir(@Valid EmitirPedidoRequest request) {
-        Resultado resultado = emitirPedidoUseCase.execute(request.getNuPedido());
-        Impressao impressao = gerarPdfUseCase.execute(resultado);
-
-        ServiceContext ctx = ServiceContext.getCurrent();
-        ctx.putHttpSessionAttribute(impressao.getLabel(), impressao.getFile());
-
-        return mapper.toEmitirResponse(resultado);
+    public RegistroResponse atualizar(@Valid AtualizarRegistroRequest request) throws Exception {
+        Registro entity = mapper.toEntity(request);
+        Registro atualizado = service.atualizar(entity);
+        return mapper.toResponse(atualizado);
     }
 
     @Transactional
-    public void cancelar(@Valid CancelarPedidoRequest request) {
-        cancelarPedidoUseCase.execute(request.getNuPedido());
+    public void cancelar(@Valid CancelarRegistroRequest request) throws Exception {
+        service.cancelar(request.getCodRegistro());
+    }
+
+    public List<RegistroResponse> listar() {
+        return service.listarAtivos().stream()
+            .map(mapper::toResponse)
+            .collect(Collectors.toList());
     }
 }
 ```
@@ -511,32 +505,32 @@ public class PedidoController {
 
 | Convencao | Padrao | Exemplo |
 |:----------|:-------|:--------|
-| Nome da classe | `<Feature>Controller` | `PedidoController` |
-| `serviceName` | `<Feature>ControllerSP` | `PedidoControllerSP` |
-| Pacote | `entrypoint/rest/<feature>/` | `entrypoint/rest/pedido/` |
-| DTOs | `entrypoint/rest/<feature>/dto/` | `CriarPedidoRequest.java` |
-| Mapper | `entrypoint/rest/<feature>/mapper/` | `PedidoRestMapper.java` |
-| Nome Request DTO | `<Acao>Request` ou `<Acao><Feature>Request` | `CriarPedidoRequest` |
-| Nome Response DTO | `<Acao>Response` ou `<Acao><Feature>Response` | `EmitirPedidoResponse` |
-| Nome Mapper | `<Feature>RestMapper` | `PedidoRestMapper` |
+| Nome da classe | `<Feature>Controller` | `RegistroController` |
+| `serviceName` | `<Feature>ControllerSP` | `RegistroControllerSP` |
+| Pacote | `br/com/hagious/qualitymanager/<feature>/controller/` | `.../registro/controller/` |
+| DTOs | `<feature>/dto/` | `CriarRegistroRequest.java` |
+| Mapper | `<feature>/mapper/` | `RegistroMapper.java` |
+| Nome Request DTO | `<Acao><Feature>Request` ou `<Acao>Request` | `CriarRegistroRequest` |
+| Nome Response DTO | `<Feature>Response` ou `<Acao>Response` | `RegistroResponse` |
+| Nome Mapper | `<Feature>Mapper` | `RegistroMapper` |
 
 ---
 
 ## 11. Checklist: Novo Controller
 
-1. [ ] Criar classe em pacote `entrypoint/rest/<feature>/`.
+1. [ ] Criar classe em `br/com/hagious/qualitymanager/<feature>/controller/`.
 2. [ ] Anotar com `@Controller(serviceName = "<Feature>ControllerSP")`.
 3. [ ] Definir `transactionType` adequado (ou usar padrao `Supports`).
-4. [ ] Injetar UseCases + Mapper via construtor com `@Inject`.
-5. [ ] Criar Request DTOs com validacao (`@NotNull`, `@NotBlank`, etc.) em `dto/`.
-6. [ ] Criar Response DTOs em `dto/`.
-7. [ ] Criar MapStruct Mapper em `mapper/` (ver `mapstruct-instructions.md`).
+4. [ ] Injetar Service + Mapper via construtor com `@Inject`.
+5. [ ] Criar Request DTOs com validacao (`@NotNull`, `@NotBlank`, etc.) em `<feature>/dto/`.
+6. [ ] Criar Response DTOs em `<feature>/dto/`.
+7. [ ] Criar MapStruct Mapper em `<feature>/mapper/` (ver `mapstruct-instructions.md`).
 8. [ ] Usar `@Valid` em parametro dos metodos que recebem DTOs.
 9. [ ] Usar `@Transactional` em metodos que alteram dados.
-10. [ ] Retornar tipo adequado conforme regra negocio (DTO resposta ou `void`).
-11. [ ] **NAO** colocar logica negocio — delegar UseCases.
-12. [ ] **NAO** capturar excecoes — deixar `@ControllerAdvice` tratar.
-13. [ ] Verificar se `@ControllerAdvice` cobre excecoes dos UseCases.
+10. [ ] Retornar tipo adequado conforme regra de negocio (DTO de resposta ou `void`).
+11. [ ] **NAO** colocar regra de negocio - delegar ao Service.
+12. [ ] **NAO** capturar excecoes - deixar o `@ControllerAdvice` tratar.
+13. [ ] Verificar se `@ControllerAdvice` cobre as excecoes do Service.
 
 ---
 
@@ -544,13 +538,12 @@ public class PedidoController {
 
 | Anti-Pattern | Correcao |
 |:-------------|:---------|
-| Retornar entidade do dominio diretamente | Usar Response DTO + MapStruct |
-| Logica de negocio no controller | Mover para UseCase ou Domain Service |
+| Retornar entidade diretamente | Usar Response DTO + MapStruct |
+| Regra de negocio no controller | Mover para o Service |
 | `try/catch` no controller para excecoes de negocio | Deixar o `@ControllerAdvice` tratar |
-| Controller acessando Repository diretamente | Usar UseCase como intermediario |
-| Controller chamando Gateway diretamente | Usar UseCase como intermediario |
+| Controller acessando Repository diretamente | Sempre via Service |
 | `serviceName` sem sufixo `SP` | Sempre `<Nome>SP` |
 | Esquecer `@Transactional` em metodo de escrita | Adicionar `@Transactional` |
 | Esquecer `@Valid` no parametro | Adicionar `@Valid` para ativar validacao |
-| Adicionar `@Component` no controller | `@Controller` ja e gerenciado — nao misturar |
+| Adicionar `@Component` no controller | `@Controller` ja e gerenciado - nao misturar |
 | Capturar excecao e retornar `null` | Deixar a excecao propagar para o `@ControllerAdvice` |

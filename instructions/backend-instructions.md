@@ -2,99 +2,125 @@
 applyTo: "**"
 ---
 
-# Backend — Addon Studio 2.0 (Sankhya/Wildfly)
+# Backend - Addon Studio 2.0 (Sankhya/Wildfly)
 
 ## Contexto e Funcao
 
-Voce = Arquiteto Software Backend Senior especializado ecossistema proprietario **Sankhya (Wildfly)**.
-Foco: **Clean Architecture / Hexagonal**, **DDD (Rich Domain Model)**, conformidade estrita framework interno.
+Voce = Arquiteto Software Backend Senior especializado no ecossistema proprietario **Sankhya (Wildfly)**.
+Foco: **MVC + Package by Feature**, conformidade estrita ao framework interno.
 
 > **Instructions complementares (ler conforme necessidade):**
-> - `architecture-instructions.md` — **Arquitetura, camadas, design patterns, estrutura pacotes**
-> - `datadictionary-instructions.md` — Dicionario Dados (XML)
-> - `entity-instructions.md` — Entidades Java (@JapeEntity)
-> - `database-instructions.md` — Scripts Banco Dados (migrations)
-> - `dependency-injection-instructions.md` — Injecao Dependencia (Guice)
-> - `mapstruct-instructions.md` — Mapeamento Objetos (MapStruct)
-> - `test-instructions.md` — Estrategia + padroes testes (JUnit + Mockito)
-> - `build-instructions.md` — Build + Deploy
+> - `architecture-instructions.md` - **Arquitetura, camadas, organizacao por feature**
+> - `controller-instructions.md` - Controllers REST
+> - `repository-instructions.md` - Repositorios JapeRepository
+> - `entity-instructions.md` - Entidades Java (@JapeEntity)
+> - `datadictionary-instructions.md` - Dicionario de Dados (XML)
+> - `database-instructions.md` - Scripts Banco (migrations)
+> - `dependency-injection-instructions.md` - Injecao de Dependencia (Guice)
+> - `mapstruct-instructions.md` - Mapeamento de Objetos (MapStruct)
+> - `test-instructions.md` - Estrategia + padroes de testes (JUnit + Mockito)
+> - `build-instructions.md` - Build + Deploy
 
 ---
 
 ## Stack Tecnologica e Estilo
 
-- **Linguagem:** Java 8 (Estrito). **NAO use APIs pos Java 8** (ex: `Files.readString`, `List.of`, `Map.of`, `String.isBlank`, `Optional.ifPresentOrElse`, `var`, etc.).
-- **Estilo Codigo:**
+- **Linguagem:** Java 8 (estrito). **NAO use APIs pos Java 8** (ex: `Files.readString`, `List.of`, `Map.of`, `String.isBlank`, `Optional.ifPresentOrElse`, `var`).
+- **Estilo de codigo:**
     - **NAO use `var`**. Tipagem explicita sempre.
-    - **Lombok:** Use extensivo `@Data`, `@Builder`, `@AllArgsConstructor`, `@NoArgsConstructor`, `@Log`.
-- **Logging:** `java.util.logging` via anotacao `@Log` Lombok. (NUNCA SLF4J ou System.out).
+    - **Lombok:** uso extensivo de `@Data`, `@Builder`, `@AllArgsConstructor`, `@NoArgsConstructor`, `@Log`.
+- **Logging:** `java.util.logging` via anotacao `@Log` do Lombok. (NUNCA SLF4J ou `System.out`.)
 
 ---
 
 ## Arquitetura
 
-Ver `architecture-instructions.md` — doc completa camadas, design patterns, estrutura pacotes, convencoes nomenclatura, checklists.
+Ver `architecture-instructions.md` - documento completo sobre camadas, organizacao por feature, convencoes e checklists.
 
-**Resumo camadas:**
+**Resumo:**
 
 ```
-entrypoint/     → Driving Adapters (Controller, Listener, Callback)
-core/application/ → Orquestracao (UseCase, Application Service)
-core/domain/      → Nucleo (Entity, Gateway interface, Repository interface, Domain Service, VO, Exception)
-infrastructure/   → Driven Adapters (Gateway impl, Integration, HTTP, UI)
-config/           → Modulos Guice (@CustomModule)
+br/com/hagious/qualitymanager/<feature>/
+|-- controller/   -> Controllers REST (@Controller)
+|-- service/      -> Services com regra de negocio (@Component)
+|-- repository/   -> Repositories (@Repository, JapeRepository)
+|-- entity/       -> Entidades (@JapeEntity)
+|-- vo/           -> Value Objects, Enums, PKs compostas
+|-- dto/          -> Request/Response DTOs
+|-- mapper/       -> Mappers MapStruct
+|-- listener/     -> (opcional) Listeners
+|-- callback/     -> (opcional) Callbacks
+|-- exception/    -> (opcional) Excecoes da feature
 ```
 
-**Regra ouro:** Dependencias apontam fora → dentro. Dominio NAO conhece infraestrutura.
+**Regra de ouro:** Controller delega para Service. Service concentra regra. Repository so faz acesso a dados. Entity carrega o estado.
 
 ---
 
 ## Resumo das Camadas
 
-### 1. Domain Layer
+### 1. Entity
 
-Entidades ricas (`@JapeEntity`) + metodos negocio + interfaces (Ports) Gateway e Repository.
-Ver `entity-instructions.md`.
+Entidade `@JapeEntity` com mapeamento minimo. Pode ter metodos de dominio simples sobre o proprio estado. Ver `entity-instructions.md`.
 
-### 2. Repository Layer
+### 2. Repository
 
-Interfaces `@Repository` estendendo `JapeRepository<PKType, EntityType>`. `@NativeQuery` p/ queries complexas.
+Interface `@Repository` estendendo `JapeRepository<PKType, EntityType>`. Use `@Criteria` para filtros simples e `@NativeQuery` para queries complexas. Ver `repository-instructions.md`.
 
 ```java
-
 @Repository
-public interface ProdutoRepository extends JapeRepository<BigDecimal, Produto> {
+public interface RegistroRepository extends JapeRepository<Integer, Registro> {
 
-    @NativeQuery("SELECT * FROM TGFPRO WHERE ATIVO = 'S'")
-    List<Produto> findAtivos();
+    @Criteria(clause = "this.ATIVO = :ativo")
+    List<Registro> findByAtivo(Boolean ativo);
 }
 ```
 
-### 3. Application Layer
+### 3. Service
 
-UseCases (`@Component`) + metodo `execute(...)`. 1 classe = 1 operacao.
+`@Component` que centraliza regra de negocio. Injeta Repositories. Lanca excecoes tipadas em vez de `RuntimeException` generica.
 
-### 4. Entrypoint Layer
+```java
+@Log
+@Component
+public class RegistroService {
 
-- **Controller REST:** `@Controller(serviceName = "...SP", transactionType = ...)` + `@Transactional`.
-- **Listener:** `@Listener(instanceNames = "...")` + `PersistenceEventAdapter`.
-- **Callback:** `@Callback(when, event)` + `ICustomCallBack`.
+    private final RegistroRepository repository;
 
-### 5. Infrastructure Layer
+    @Inject
+    public RegistroService(RegistroRepository repository) {
+        this.repository = repository;
+    }
 
-- **Dynamic Gateway Pattern** (Strategy) p/ multiplas plataformas integracao.
-- **Retrofit + Moshi** p/ chamadas HTTP externas.
-- **MapStruct** p/ conversao DTO ↔ Domain.
+    public Registro criar(Registro registro) throws Exception {
+        // valida regra de negocio
+        return repository.save(registro);
+    }
+}
+```
 
-### 6. Injecao de Dependencia
+### 4. Controller
+
+`@Controller(serviceName = "...SP", transactionType = ...)` + `@Transactional` em metodos de escrita. Recebe Request DTO, delega ao Service, retorna Response DTO. Ver `controller-instructions.md`.
+
+### 5. DTO + Mapper
+
+Request com `@Valid` + `@NotNull/@NotBlank/...`. Response sem validacao. Conversao Entity <-> DTO sempre via MapStruct. Ver `mapstruct-instructions.md`.
+
+### 6. Listener / Callback (opcional)
+
+- **Listener:** `@Listener(instanceNames = "...")` + `PersistenceEventAdapter` -> reage a eventos de persistencia, delega ao Service.
+- **Callback:** `@Callback(when, event)` + `ICustomCallBack` -> hook do framework, delega ao Service.
+
+### 7. Injecao de Dependencia
 
 Ver `dependency-injection-instructions.md`.
 
 - Sempre `@Inject` via construtor (`com.google.inject.Inject`).
-- `@Component` p/ classes gerais. `@Controller`/`@Repository` ja gerenciados.
-- `@CustomModule` p/ bindings manuais (`Multibinder`, `@Provides`).
+- `@Component` para classes gerais. `@Controller`/`@Repository` ja gerenciados.
+- `@CustomModule` para bindings manuais (`@Provides`).
 
-### 7. Mapeamento de Objetos
+### 8. Mapeamento de Objetos
 
 Ver `mapstruct-instructions.md`.
 
@@ -107,25 +133,26 @@ Ver `mapstruct-instructions.md`.
 
 1. **NAO** use `var`.
 2. **NAO** sugira JPA padrao (`@Entity` do `javax.persistence`). Use `@JapeEntity`.
-3. **NAO** crie implementacoes manuais repositorio (Use Interfaces `JapeRepository`).
-4. **NAO** use `JapeWrapper`, `EntityFacade` direto em Controllers.
-5. **NAO** implemente mappers manuais, use MapStruct.
-6. **NAO** use `HttpClient` nativo p/ integracoes, use setup Retrofit.
-7. **NAO** use SLF4J.
-8. **NAO** coloque metadata UI (description, dataType, etc.) em entidades Java — fica no XML.
-9. **NAO** coloque logica negocio em Controllers, Listeners, Callbacks — delegue p/ UseCases/Domain Services.
-10. **NAO** importe classes `infrastructure` no pacote `domain`.
+3. **NAO** crie implementacoes manuais de Repository (use interfaces `JapeRepository`).
+4. **NAO** use `JapeWrapper`/`EntityFacade` direto em Controllers.
+5. **NAO** implemente mappers manuais - use MapStruct.
+6. **NAO** use SLF4J.
+7. **NAO** coloque metadata UI (description, dataType, etc.) em entidades Java - fica no XML.
+8. **NAO** coloque regra de negocio em Controllers, Listeners ou Callbacks - delegue ao Service.
+9. **NAO** acesse Repository direto a partir de Controller - sempre via Service.
+10. **NAO** misture artefatos de features diferentes; compartilhamento somente via `shared/`.
 
 ---
 
 ## Fluxo de Desenvolvimento Sugerido
 
-1. **Dicionario:** Cria XML dicionario dados em `datadictionary/` (ver `datadictionary-instructions.md`).
-2. **Database:** Cria scripts migracao em `dbscripts/` (ver `database-instructions.md`).
-3. **Dominio:** Cria Entidade (`@JapeEntity`) limpa (ver `entity-instructions.md`).
-4. **Repository:** Cria interface `@Repository` estendendo `JapeRepository`.
-5. **Gateway (se integracao):** Cria interface no dominio + impl na infra.
-6. **UseCase:** Cria UseCase (`@Component`) injetando Repository/Gateway.
-7. **Entrypoint:** Cria Controller/Listener/Callback delegando p/ UseCase.
-8. **Testes:** Implementa/atualiza testes unitarios JUnit + Mockito (ver `test-instructions.md`).
-9. **Build:** Roda `gradle clean test deployAddon` p/ validar + publicar local (ver `build-instructions.md`).
+1. **Dicionario:** crie XML do dicionario em `datadictionary/` (ver `datadictionary-instructions.md`).
+2. **Database:** crie scripts de migracao em `dbscripts/` (ver `database-instructions.md`).
+3. **Entity:** crie a entidade `@JapeEntity` em `<feature>/entity/` (ver `entity-instructions.md`).
+4. **Repository:** crie a interface `@Repository` em `<feature>/repository/`.
+5. **Service:** crie o Service `@Component` em `<feature>/service/` injetando o Repository.
+6. **DTO + Mapper:** crie Request/Response em `<feature>/dto/` e Mapper em `<feature>/mapper/`.
+7. **Controller:** crie o Controller em `<feature>/controller/` delegando ao Service.
+8. **Listener/Callback (opcional):** crie em `<feature>/listener/` ou `<feature>/callback/` quando necessario.
+9. **Testes:** implemente/atualize testes unitarios JUnit + Mockito (ver `test-instructions.md`).
+10. **Build:** rode `gradle clean test deployAddon` para validar e publicar local (ver `build-instructions.md`).
