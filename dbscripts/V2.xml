@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<scripts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="../.gradle/scripts.xsd">
+
+    <!--
+        BP QualityManager — Módulo NC
+        DDL das tabelas de Não Conformidades
+        Prefixo: BPQM
+        Dual-DB: Oracle 12c+ e SQL Server
+        Versão: 1.0.0
+    -->
+
+    <!-- ═══════════════════════════════════════════════════════════
+         BPQMNC_FASE — Fases do workflow de NC (1 a 10)
+         Tabela de domínio — criada antes do registro de NC
+    ════════════════════════════════════════════════════════════ -->
+    <sql nomeObjeto="BPQMNC_FASE" tipoObjeto="TABLE"
+         nomeTabela="BPQMNC_FASE" executar="SE_NAO_EXISTIR" ordem="1">
+        <oracle>
+CREATE TABLE BPQMNC_FASE (
+    IDFASE     NUMBER(10,0)  NOT NULL,
+    DESCFASE   VARCHAR2(100) NOT NULL,
+    ATIVO      CHAR(1)       DEFAULT 'S' NOT NULL,
+    CONSTRAINT PK_BPQM_NC_FASE    PRIMARY KEY (IDFASE),
+    CONSTRAINT CK_BPQM_NC_FASE_AT CHECK (ATIVO IN ('S','N'))
+);
+COMMENT ON TABLE  BPQMNC_FASE          IS 'QualityManager: fases do workflow de NC (1 a 10)';
+COMMENT ON COLUMN BPQMNC_FASE.IDFASE   IS '1=Registro, 2=Acoes Imediatas, 3=Causa Raiz, 4=Abrangencia, 5=Acoes Corretivas, 6=Revisao Doc, 7=Riscos, 8=Implementacao, 9=Liberacao, 10=Verificacao Eficacia';
+        </oracle>
+        <mssql>
+CREATE TABLE BPQMNC_FASE (
+    IDFASE     BIGINT       NOT NULL,
+    DESCFASE   VARCHAR(100) NOT NULL,
+    ATIVO      CHAR(1)      DEFAULT 'S' NOT NULL,
+    CONSTRAINT PK_BPQM_NC_FASE    PRIMARY KEY (IDFASE),
+    CONSTRAINT CK_BPQM_NC_FASE_AT CHECK (ATIVO IN ('S','N'))
+);
+        </mssql>
+    </sql>
+
+    <!-- Dados iniciais das fases -->
+    <sql nomeObjeto="INSERT_BPQMNC_FASE" tipoObjeto="PROCEDURE"
+         nomeTabela="BPQMNC_FASE" executar="SEMPRE" ordem="2">
+        <oracle>
+DECLARE v_qtde NUMBER;
+BEGIN
+    SELECT COUNT(*) INTO v_qtde FROM BPQMNC_FASE;
+    IF v_qtde = 0 THEN
+        INSERT INTO BPQMNC_FASE (IDFASE, DESCFASE) VALUES  (1, 'Registro de Nao Conformidade');
+        INSERT INTO BPQMNC_FASE (IDFASE, DESCFASE) VALUES  (2, 'Acoes Imediatas');
+        INSERT INTO BPQMNC_FASE (IDFASE, DESCFASE) VALUES  (3, 'Causa Raiz');
+        INSERT INTO BPQMNC_FASE (IDFASE, DESCFASE) VALUES  (4, 'Abrangencia');
+        INSERT INTO BPQMNC_FASE (IDFASE, DESCFASE) VALUES  (5, 'Acoes Corretivas');
+        INSERT INTO BPQMNC_FASE (IDFASE, DESCFASE) VALUES  (6, 'Revisao de Documentos');
+        INSERT INTO BPQMNC_FASE (IDFASE, DESCFASE) VALUES  (7, 'Riscos e Oportunidades');
+        INSERT INTO BPQMNC_FASE (IDFASE, DESCFASE) VALUES  (8, 'Implementacao');
+        INSERT INTO BPQMNC_FASE (IDFASE, DESCFASE) VALUES  (9, 'Liberacao de Produto');
+        INSERT INTO BPQMNC_FASE (IDFASE, DESCFASE) VALUES (10, 'Verificacao de Eficacia');
+        COMMIT;
+    END IF;
+END;
+        </oracle>
+        <mssql>
+DECLARE @qtde INT = 0;
+SELECT @qtde = COUNT(*) FROM BPQMNC_FASE;
+IF @qtde = 0 BEGIN
+    INSERT INTO BPQMNC_FASE (IDFASE, DESCFASE) VALUES  (1, 'Registro de Nao Conformidade');
+    INSERT INTO BPQMNC_FASE (IDFASE, DESCFASE) VALUES  (2, 'Acoes Imediatas');
+    INSERT INTO BPQMNC_FASE (IDFASE, DESCFASE) VALUES  (3, 'Causa Raiz');
+    INSERT INTO BPQMNC_FASE (IDFASE, DESCFASE) VALUES  (4, 'Abrangencia');
+    INSERT INTO BPQMNC_FASE (IDFASE, DESCFASE) VALUES  (5, 'Acoes Corretivas');
+    INSERT INTO BPQMNC_FASE (IDFASE, DESCFASE) VALUES  (6, 'Revisao de Documentos');
+    INSERT INTO BPQMNC_FASE (IDFASE, DESCFASE) VALUES  (7, 'Riscos e Oportunidades');
+    INSERT INTO BPQMNC_FASE (IDFASE, DESCFASE) VALUES  (8, 'Implementacao');
+    INSERT INTO BPQMNC_FASE (IDFASE, DESCFASE) VALUES  (9, 'Liberacao de Produto');
+    INSERT INTO BPQMNC_FASE (IDFASE, DESCFASE) VALUES (10, 'Verificacao de Eficacia');
+END;
+        </mssql>
+    </sql>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         BPQMNC_REGISTRO — Tabela principal da NC
+    ════════════════════════════════════════════════════════════ -->
+    <sql nomeObjeto="BPQMNC_REGISTRO" tipoObjeto="TABLE"
+         nomeTabela="BPQMNC_REGISTRO" executar="SE_NAO_EXISTIR" ordem="3">
+        <oracle>
+CREATE TABLE BPQMNC_REGISTRO (
+    IDNC              NUMBER(10,0)    NOT NULL,
+    NUMNC             VARCHAR2(20)    NOT NULL,
+    STATUS            CHAR(1)         DEFAULT 'A' NOT NULL,
+    IDFASE            NUMBER(10,0)    DEFAULT 1   NOT NULL,
+    ORIGEM            CHAR(2)         NOT NULL,
+    IDPRIORIDADE      NUMBER(10,0)    NOT NULL,
+    TIPONC            VARCHAR2(2)     NOT NULL,
+    CODPARC           NUMBER(10,0),
+    NUNOTA            NUMBER(10,0),
+    PROCESSO          VARCHAR2(100),
+    DTREGISTRO        DATE            DEFAULT SYSDATE NOT NULL,
+    DTPREVENCERRAR    DATE,
+    DTENCERRAMENTO    DATE,
+    DETALHAMENTO      CLOB            NOT NULL,
+    REINCIDENTE       CHAR(1)         DEFAULT 'N' NOT NULL,
+    NAOPROCEDENTE     CHAR(1)         DEFAULT 'N' NOT NULL,
+    NCVINCULADA       NUMBER(10,0),
+    CODUSU            NUMBER(38,0)    NOT NULL,
+    DTCRIACAO         DATE            DEFAULT SYSDATE NOT NULL,
+    DTALTER           DATE,
+    CODUSU_ALTER      NUMBER(38,0),
+    CONSTRAINT PK_BPQM_NC_REGISTRO         PRIMARY KEY (IDNC),
+    CONSTRAINT UQ_BPQM_NC_REGISTRO_NUM     UNIQUE (NUMNC),
+    CONSTRAINT CK_BPQM_NC_REG_STATUS       CHECK (STATUS       IN ('A','P','E','C','X')),
+    CONSTRAINT CK_BPQM_NC_REG_ORIGEM       CHECK (ORIGEM       IN ('C','F','I','A','O')),
+    CONSTRAINT CK_BPQM_NC_REG_TIPO         CHECK (TIPONC       IN ('P','S','PR','SG')),
+    CONSTRAINT CK_BPQM_NC_REG_REINC        CHECK (REINCIDENTE  IN ('S','N')),
+    CONSTRAINT CK_BPQM_NC_REG_NAOPROC      CHECK (NAOPROCEDENTE IN ('S','N'))
+);
+COMMENT ON TABLE  BPQMNC_REGISTRO              IS 'QualityManager: registro principal de Nao Conformidade — ISO 9001 §8.7 + §10.2';
+COMMENT ON COLUMN BPQMNC_REGISTRO.NUMNC        IS 'Numero legivel gerado automaticamente: NC-YYYY-NNNN';
+COMMENT ON COLUMN BPQMNC_REGISTRO.STATUS       IS 'A=Aberta, P=Em andamento, E=Encerrada, C=Cancelada, X=Nao procedente';
+COMMENT ON COLUMN BPQMNC_REGISTRO.IDFASE       IS 'FK -> BPQMNC_FASE.IDFASE. Fase atual do workflow (1 a 10)';
+COMMENT ON COLUMN BPQMNC_REGISTRO.ORIGEM       IS 'C=Cliente, F=Fornecedor, I=Interno, A=Auditoria, O=Outro';
+COMMENT ON COLUMN BPQMNC_REGISTRO.TIPONC       IS 'P=Produto, S=Servico, PR=Processo, SG=Sistema de Gestao';
+COMMENT ON COLUMN BPQMNC_REGISTRO.CODPARC      IS 'FK opcional -> TGFPAR.CODPARC';
+COMMENT ON COLUMN BPQMNC_REGISTRO.NUNOTA       IS 'FK opcional -> TGFCAB.NUNOTA';
+        </oracle>
+        <mssql>
+CREATE TABLE BPQMNC_REGISTRO (
+    IDNC              BIGINT          NOT NULL,
+    NUMNC             VARCHAR(20)     NOT NULL,
+    STATUS            CHAR(1)         DEFAULT 'A' NOT NULL,
+    IDFASE            BIGINT          DEFAULT 1   NOT NULL,
+    ORIGEM            CHAR(2)         NOT NULL,
+    IDPRIORIDADE      BIGINT          NOT NULL,
+    TIPONC            VARCHAR(2)      NOT NULL,
+    CODPARC           INT,
+    NUNOTA            BIGINT,
+    PROCESSO          VARCHAR(100),
+    DTREGISTRO        DATETIME        DEFAULT GETDATE() NOT NULL,
+    DTPREVENCERRAR    DATETIME,
+    DTENCERRAMENTO    DATETIME,
+    DETALHAMENTO      VARCHAR(MAX)    NOT NULL,
+    REINCIDENTE       CHAR(1)         DEFAULT 'N' NOT NULL,
+    NAOPROCEDENTE     CHAR(1)         DEFAULT 'N' NOT NULL,
+    NCVINCULADA       BIGINT,
+    CODUSU            INT             NOT NULL,
+    DTCRIACAO         DATETIME        DEFAULT GETDATE() NOT NULL,
+    DTALTER           DATETIME,
+    CODUSU_ALTER      INT,
+    CONSTRAINT PK_BPQM_NC_REGISTRO         PRIMARY KEY (IDNC),
+    CONSTRAINT UQ_BPQM_NC_REGISTRO_NUM     UNIQUE (NUMNC),
+    CONSTRAINT CK_BPQM_NC_REG_STATUS       CHECK (STATUS       IN ('A','P','E','C','X')),
+    CONSTRAINT CK_BPQM_NC_REG_ORIGEM       CHECK (ORIGEM       IN ('C','F','I','A','O')),
+    CONSTRAINT CK_BPQM_NC_REG_TIPO         CHECK (TIPONC       IN ('P','S','PR','SG')),
+    CONSTRAINT CK_BPQM_NC_REG_REINC        CHECK (REINCIDENTE  IN ('S','N')),
+    CONSTRAINT CK_BPQM_NC_REG_NAOPROC      CHECK (NAOPROCEDENTE IN ('S','N'))
+);
+        </mssql>
+    </sql>
+
+    <!-- Sequence BPQMNC_REGISTRO -->
+    <sql nomeObjeto="SEQ_BPQM_NC_REGISTRO" tipoObjeto="PROCEDURE"
+         nomeTabela="BPQMNC_REGISTRO" executar="SE_NAO_EXISTIR" ordem="4">
+        <oracle>CREATE SEQUENCE SEQ_BPQM_NC_REGISTRO START WITH 1 INCREMENT BY 1 NOCACHE NOCYCLE;</oracle>
+        <mssql>CREATE SEQUENCE SEQ_BPQM_NC_REGISTRO START WITH 1 INCREMENT BY 1;</mssql>
+    </sql>
+
+    <!-- Índices BPQMNC_REGISTRO -->
+    <sql nomeObjeto="IDX_BPQM_NC_REGISTRO_STATUS" tipoObjeto="INDEX"
+         nomeTabela="BPQMNC_REGISTRO" executar="SE_NAO_EXISTIR" ordem="5">
+        <oracle>CREATE INDEX IDX_BPQM_NC_REGISTRO_STATUS ON BPQMNC_REGISTRO (STATUS);</oracle>
+        <mssql>CREATE INDEX IDX_BPQM_NC_REGISTRO_STATUS ON BPQMNC_REGISTRO (STATUS);</mssql>
+    </sql>
+
+    <sql nomeObjeto="IDX_BPQM_NC_REGISTRO_FASE" tipoObjeto="INDEX"
+         nomeTabela="BPQMNC_REGISTRO" executar="SE_NAO_EXISTIR" ordem="6">
+        <oracle>CREATE INDEX IDX_BPQM_NC_REGISTRO_FASE ON BPQMNC_REGISTRO (IDFASE);</oracle>
+        <mssql>CREATE INDEX IDX_BPQM_NC_REGISTRO_FASE ON BPQMNC_REGISTRO (IDFASE);</mssql>
+    </sql>
+
+    <sql nomeObjeto="IDX_BPQM_NC_REGISTRO_CODPARC" tipoObjeto="INDEX"
+         nomeTabela="BPQMNC_REGISTRO" executar="SE_NAO_EXISTIR" ordem="7">
+        <oracle>CREATE INDEX IDX_BPQM_NC_REGISTRO_CODPARC ON BPQMNC_REGISTRO (CODPARC);</oracle>
+        <mssql>CREATE INDEX IDX_BPQM_NC_REGISTRO_CODPARC ON BPQMNC_REGISTRO (CODPARC);</mssql>
+    </sql>
+
+    <sql nomeObjeto="IDX_BPQM_NC_REGISTRO_DTREGISTRO" tipoObjeto="INDEX"
+         nomeTabela="BPQMNC_REGISTRO" executar="SE_NAO_EXISTIR" ordem="8">
+        <oracle>CREATE INDEX IDX_BPQM_NC_REGISTRO_DTREG ON BPQMNC_REGISTRO (DTREGISTRO);</oracle>
+        <mssql>CREATE INDEX IDX_BPQM_NC_REGISTRO_DTREG ON BPQMNC_REGISTRO (DTREGISTRO);</mssql>
+    </sql>
+
+    <!-- Foreign Keys BPQMNC_REGISTRO -->
+    <sql nomeObjeto="FK_BPQM_NC_REGISTRO_FASE" tipoObjeto="FOREIGN KEY"
+         nomeTabela="BPQMNC_REGISTRO" executar="SE_NAO_EXISTIR" ordem="9">
+        <oracle>
+ALTER TABLE BPQMNC_REGISTRO
+    ADD CONSTRAINT FK_BPQM_NC_REGISTRO_FASE
+    FOREIGN KEY (IDFASE) REFERENCES BPQMNC_FASE (IDFASE);
+        </oracle>
+        <mssql>
+ALTER TABLE BPQMNC_REGISTRO
+    ADD CONSTRAINT FK_BPQM_NC_REGISTRO_FASE
+    FOREIGN KEY (IDFASE) REFERENCES BPQMNC_FASE (IDFASE);
+        </mssql>
+    </sql>
+
+    <sql nomeObjeto="FK_BPQM_NC_REGISTRO_PRIOR" tipoObjeto="FOREIGN KEY"
+         nomeTabela="BPQMNC_REGISTRO" executar="SE_NAO_EXISTIR" ordem="10">
+        <oracle>
+ALTER TABLE BPQMNC_REGISTRO
+    ADD CONSTRAINT FK_BPQM_NC_REGISTRO_PRIOR
+    FOREIGN KEY (IDPRIORIDADE) REFERENCES BPQMDOM_PRIORIDADE (IDPRIORIDADE);
+        </oracle>
+        <mssql>
+ALTER TABLE BPQMNC_REGISTRO
+    ADD CONSTRAINT FK_BPQM_NC_REGISTRO_PRIOR
+    FOREIGN KEY (IDPRIORIDADE) REFERENCES BPQMDOM_PRIORIDADE (IDPRIORIDADE);
+        </mssql>
+    </sql>
+
+    <sql nomeObjeto="FK_BPQM_NC_REGISTRO_PARC" tipoObjeto="FOREIGN KEY"
+         nomeTabela="BPQMNC_REGISTRO" executar="SE_NAO_EXISTIR" ordem="11">
+        <oracle>
+ALTER TABLE BPQMNC_REGISTRO
+    ADD CONSTRAINT FK_BPQM_NC_REGISTRO_PARC
+    FOREIGN KEY (CODPARC) REFERENCES TGFPAR (CODPARC);
+        </oracle>
+        <mssql>
+ALTER TABLE BPQMNC_REGISTRO
+    ADD CONSTRAINT FK_BPQM_NC_REGISTRO_PARC
+    FOREIGN KEY (CODPARC) REFERENCES TGFPAR (CODPARC);
+        </mssql>
+    </sql>
+
+    <!-- Trigger: PK automática + número legível da NC (Oracle) -->
+    <sql nomeObjeto="TRG_BPQM_NC_REGISTRO_BI" tipoObjeto="TRIGGER"
+         nomeTabela="BPQMNC_REGISTRO" executar="SE_NAO_EXISTIR" ordem="12">
+        <oracle>
+CREATE OR REPLACE TRIGGER TRG_BPQM_NC_REGISTRO_BI
+BEFORE INSERT ON BPQMNC_REGISTRO
+FOR EACH ROW
+DECLARE
+    v_ano VARCHAR2(4);
+BEGIN
+    IF :NEW.IDNC IS NULL THEN
+        SELECT SEQ_BPQM_NC_REGISTRO.NEXTVAL INTO :NEW.IDNC FROM DUAL;
+    END IF;
+    IF :NEW.NUMNC IS NULL THEN
+        v_ano := TO_CHAR(SYSDATE, 'YYYY');
+        :NEW.NUMNC := 'NC-' || v_ano || '-' || LPAD(:NEW.IDNC, 4, '0');
+    END IF;
+    :NEW.IDFASE    := 1;
+    :NEW.STATUS    := 'A';
+    :NEW.DTCRIACAO := SYSDATE;
+END;
+        </oracle>
+    </sql>
+
+    <!-- Trigger: PK automática + número legível da NC (SQL Server) -->
+    <sql nomeObjeto="TRG_BPQM_NC_REGISTRO_BI_MSSQL" tipoObjeto="TRIGGER"
+         nomeTabela="BPQMNC_REGISTRO" executar="SE_NAO_EXISTIR" ordem="13">
+        <mssql>
+CREATE TRIGGER TRG_BPQM_NC_REGISTRO_BI
+ON BPQMNC_REGISTRO
+INSTEAD OF INSERT
+AS
+BEGIN
+    DECLARE @IDNC BIGINT;
+    SELECT @IDNC = NEXT VALUE FOR SEQ_BPQM_NC_REGISTRO;
+    INSERT INTO BPQMNC_REGISTRO (
+        IDNC, NUMNC, STATUS, IDFASE, ORIGEM, IDPRIORIDADE, TIPONC,
+        CODPARC, NUNOTA, PROCESSO, DTREGISTRO, DTPREVENCERRAR,
+        DETALHAMENTO, REINCIDENTE, NAOPROCEDENTE, NCVINCULADA,
+        CODUSU, DTCRIACAO
+    )
+    SELECT
+        @IDNC,
+        'NC-' + CAST(YEAR(GETDATE()) AS VARCHAR(4)) + '-' + RIGHT('0000' + CAST(@IDNC AS VARCHAR(4)), 4),
+        'A', 1,
+        ORIGEM, IDPRIORIDADE, TIPONC, CODPARC, NUNOTA, PROCESSO,
+        ISNULL(DTREGISTRO, GETDATE()), DTPREVENCERRAR,
+        DETALHAMENTO,
+        ISNULL(REINCIDENTE, 'N'), ISNULL(NAOPROCEDENTE, 'N'), NCVINCULADA,
+        CODUSU, GETDATE()
+    FROM INSERTED;
+END;
+        </mssql>
+    </sql>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         BPQMNC_REG_FASES — Histórico de transições de fase
+    ════════════════════════════════════════════════════════════ -->
+    <sql nomeObjeto="BPQMNC_REG_FASES" tipoObjeto="TABLE"
+         nomeTabela="BPQMNC_REG_FASES" executar="SE_NAO_EXISTIR" ordem="14">
+        <oracle>
+CREATE TABLE BPQMNC_REG_FASES (
+    IDREGFASE    NUMBER(10,0)  NOT NULL,
+    IDNC         NUMBER(10,0)  NOT NULL,
+    IDFASE       NUMBER(10,0)  NOT NULL,
+    DTFASE       DATE          DEFAULT SYSDATE NOT NULL,
+    CODUSU       NUMBER(38,0)  NOT NULL,
+    CONSTRAINT PK_BPQM_NC_REG_FASES PRIMARY KEY (IDREGFASE)
+);
+COMMENT ON TABLE  BPQMNC_REG_FASES       IS 'QualityManager: historico de transicoes de fase por NC — auditoria ISO 9001';
+COMMENT ON COLUMN BPQMNC_REG_FASES.IDNC  IS 'FK -> BPQMNC_REGISTRO.IDNC';
+        </oracle>
+        <mssql>
+CREATE TABLE BPQMNC_REG_FASES (
+    IDREGFASE    BIGINT       NOT NULL,
+    IDNC         BIGINT       NOT NULL,
+    IDFASE       BIGINT       NOT NULL,
+    DTFASE       DATETIME     DEFAULT GETDATE() NOT NULL,
+    CODUSU       INT          NOT NULL,
+    CONSTRAINT PK_BPQM_NC_REG_FASES PRIMARY KEY (IDREGFASE)
+);
+        </mssql>
+    </sql>
+
+    <sql nomeObjeto="SEQ_BPQM_NC_REG_FASES" tipoObjeto="PROCEDURE"
+         nomeTabela="BPQMNC_REG_FASES" executar="SE_NAO_EXISTIR" ordem="15">
+        <oracle>CREATE SEQUENCE SEQ_BPQM_NC_REG_FASES START WITH 1 INCREMENT BY 1 NOCACHE NOCYCLE;</oracle>
+        <mssql>CREATE SEQUENCE SEQ_BPQM_NC_REG_FASES START WITH 1 INCREMENT BY 1;</mssql>
+    </sql>
+
+    <sql nomeObjeto="FK_BPQM_NC_REG_FASES_NC" tipoObjeto="FOREIGN KEY"
+         nomeTabela="BPQMNC_REG_FASES" executar="SE_NAO_EXISTIR" ordem="16">
+        <oracle>
+ALTER TABLE BPQMNC_REG_FASES
+    ADD CONSTRAINT FK_BPQM_NC_REG_FASES_NC
+    FOREIGN KEY (IDNC) REFERENCES BPQMNC_REGISTRO (IDNC);
+        </oracle>
+        <mssql>
+ALTER TABLE BPQMNC_REG_FASES
+    ADD CONSTRAINT FK_BPQM_NC_REG_FASES_NC
+    FOREIGN KEY (IDNC) REFERENCES BPQMNC_REGISTRO (IDNC);
+        </mssql>
+    </sql>
+
+</scripts>

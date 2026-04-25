@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<metadados xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="../.gradle/metadados.xsd">
+
+    <!--
+        BP QualityManager — Módulo NC
+        Tela 01: Registro de Não Conformidade
+        Tabela : BPQMNC_REGISTRO
+        ISO 9001: §8.7 + §10.2
+    -->
+
+    <table name="BPQMNC_REGISTRO" sequenceType="A" sequenceField="IDNC">
+
+        <description>Registro de Não Conformidade</description>
+
+        <primaryKey>
+            <field name="IDNC"/>
+        </primaryKey>
+
+        <instances>
+
+            <!-- Instância de consulta — visão de lista com filtros -->
+            <instance name="QmNcConsulta">
+                <description>Consulta de NCs</description>
+                <relationShip>
+                    <relation entityName="Parceiro" insert="N" update="N"
+                              relation="OneToOne" removeCascade="N">
+                        <fields>
+                            <field localName="CODPARC" targetName="CODPARC"/>
+                        </fields>
+                    </relation>
+                    <relation entityName="Usuario" insert="N" update="N"
+                              relation="OneToOne" removeCascade="N">
+                        <fields>
+                            <field localName="CODUSU" targetName="CODUSU"/>
+                        </fields>
+                    </relation>
+                </relationShip>
+            </instance>
+
+            <!-- Instância de registro — formulário completo de abertura -->
+            <instance name="QmNcRegistro">
+                <description>Registro de Não Conformidade</description>
+                <relationShip>
+                    <relation entityName="Parceiro" insert="N" update="N"
+                              relation="OneToOne" removeCascade="N">
+                        <fields>
+                            <field localName="CODPARC" targetName="CODPARC"/>
+                        </fields>
+                    </relation>
+                    <relation entityName="Usuario" insert="N" update="N"
+                              relation="OneToOne" removeCascade="N">
+                        <fields>
+                            <field localName="CODUSU" targetName="CODUSU"/>
+                        </fields>
+                    </relation>
+                </relationShip>
+            </instance>
+
+        </instances>
+
+        <fields>
+
+            <!-- ── Identificação ─────────────────────────────────── -->
+
+            <field name="IDNC" dataType="INTEIRO"
+                   allowSearch="S" visibleOnSearch="S" isPresentation="N"
+                   order="0" nullable="N" visible="S" required="N">
+                <description>Nº NC</description>
+                <properties>
+                    <prop name="readOnly">S</prop>
+                    <prop name="UITabName">__main</prop>
+                </properties>
+            </field>
+
+            <field name="NUMNC" dataType="TEXTO"
+                   allowSearch="S" visibleOnSearch="S" isPresentation="S"
+                   order="1" nullable="N" visible="S" required="N">
+                <description>Número NC</description>
+                <properties>
+                    <prop name="readOnly">S</prop>
+                    <prop name="UITabName">__main</prop>
+                </properties>
+            </field>
+
+            <field name="STATUS" dataType="LISTA"
+                   allowSearch="S" visibleOnSearch="S" isPresentation="N"
+                   order="2" nullable="N" visible="S" required="N">
+                <description>Status</description>
+                <fieldOptions>
+                    <option value="A">Aberta</option>
+                    <option value="P">Em andamento</option>
+                    <option value="E">Encerrada</option>
+                    <option value="C">Cancelada</option>
+                    <option value="X">Não procedente</option>
+                </fieldOptions>
+                <properties>
+                    <prop name="UITabName">__main</prop>
+                </properties>
+            </field>
+
+            <field name="IDFASE" dataType="INTEIRO"
+                   allowSearch="S" visibleOnSearch="S" isPresentation="N"
+                   order="3" nullable="N" visible="S" required="N">
+                <description>Fase atual</description>
+                <properties>
+                    <prop name="readOnly">S</prop>
+                    <prop name="UITabName">__main</prop>
+                </properties>
+            </field>
+
+            <!-- ── Origem e classificação ────────────────────────── -->
+
+            <field name="ORIGEM" dataType="LISTA"
+                   allowSearch="S" visibleOnSearch="S" isPresentation="N"
+                   order="4" nullable="N" visible="S" required="N">
+                <description>Origem</description>
+                <fieldOptions>
+                    <option value="C">Cliente</option>
+                    <option value="F">Fornecedor</option>
+                    <option value="I">Interno</option>
+                    <option value="A">Auditoria</option>
+                    <option value="O">Outro</option>
+                </fieldOptions>
+                <properties>
+                    <prop name="UITabName">__main</prop>
+                    <prop name="UIGroupName">Identificação</prop>
+                </properties>
+            </field>
+
+            <field name="IDPRIORIDADE" dataType="PESQUISA"
+                   targetInstance="QmDomPrioridade"
+                   targetField="IDPRIORIDADE" targetType="INTEIRO"
+                   allowSearch="S" visibleOnSearch="S" isPresentation="N"
+                   order="5" nullable="N" visible="S" required="N">
+                <description>Prioridade</description>
+                <properties>
+                    <prop name="UITabName">__main</prop>
+                    <prop name="UIGroupName">Identificação</prop>
+                </properties>
+            </field>
+
+            <field name="TIPONC" dataType="LISTA"
+                   allowSearch="S" visibleOnSearch="S" isPresentation="N"
+                   order="6" nullable="N" visible="S" required="N">
+                <description>Tipo</description>
+                <fieldOptions>
+                    <option value="P">Produto</option>
+                    <option value="S">Serviço</option>
+                    <option value="PR">Processo</option>
+                    <option value="SG">Sistema de Gestão</option>
+                </fieldOptions>
+                <properties>
+                    <prop name="UITabName">__main</prop>
+                    <prop name="UIGroupName">Identificação</prop>
+                </properties>
+            </field>
+
+            <!-- ── Vínculo com ERP ──────────────────────────────── -->
+
+            <field name="CODPARC" dataType="PESQUISA"
+                   targetInstance="Parceiro"
+                   targetField="CODPARC" targetType="INTEIRO"
+                   allowSearch="S" visibleOnSearch="S" isPresentation="N"
+                   order="7" nullable="S" visible="S" required="N">
+                <description>Parceiro / Fornecedor</description>
+                <properties>
+                    <prop name="UITabName">__main</prop>
+                    <prop name="UIGroupName">Identificação</prop>
+                </properties>
+            </field>
+
+            <field name="NUNOTA" dataType="INTEIRO"
+                   allowSearch="S" visibleOnSearch="S" isPresentation="N"
+                   order="8" nullable="S" visible="S" required="N">
+                <description>Nota fiscal / Pedido</description>
+                <properties>
+                    <prop name="UITabName">__main</prop>
+                    <prop name="UIGroupName">Identificação</prop>
+                </properties>
+            </field>
+
+            <field name="PROCESSO" dataType="TEXTO"
+                   allowSearch="S" visibleOnSearch="S" isPresentation="N"
+                   order="9" nullable="S" visible="S" required="N">
+                <description>Processo</description>
+                <properties>
+                    <prop name="UITabName">__main</prop>
+                    <prop name="UIGroupName">Identificação</prop>
+                </properties>
+            </field>
+
+            <!-- ── Datas ─────────────────────────────────────────── -->
+
+            <field name="DTREGISTRO" dataType="DATA_HORA"
+                   allowSearch="S" visibleOnSearch="S" isPresentation="N"
+                   order="10" nullable="N" visible="S" required="N">
+                <description>Data de abertura</description>
+                <expression><![CDATA[return $ctx_dh_atual;]]></expression>
+                <properties>
+                    <prop name="readOnly">S</prop>
+                    <prop name="UITabName">__main</prop>
+                    <prop name="UIGroupName">Datas</prop>
+                </properties>
+            </field>
+
+            <field name="DTPREVENCERRAR" dataType="DATA_HORA"
+                   allowSearch="S" visibleOnSearch="S" isPresentation="N"
+                   order="11" nullable="S" visible="S" required="N">
+                <description>Previsão de encerramento</description>
+                <properties>
+                    <prop name="UITabName">__main</prop>
+                    <prop name="UIGroupName">Datas</prop>
+                </properties>
+            </field>
+
+            <field name="DTENCERRAMENTO" dataType="DATA_HORA"
+                   allowSearch="S" visibleOnSearch="S" isPresentation="N"
+                   order="12" nullable="S" visible="S" required="N">
+                <description>Data de encerramento</description>
+                <properties>
+                    <prop name="readOnly">S</prop>
+                    <prop name="UITabName">__main</prop>
+                    <prop name="UIGroupName">Datas</prop>
+                </properties>
+            </field>
+
+            <!-- ── Detalhamento ──────────────────────────────────── -->
+
+            <field name="DETALHAMENTO" dataType="HTML"
+                   allowSearch="N" visibleOnSearch="N" isPresentation="N"
+                   order="13" nullable="N" visible="S" required="N">
+                <description>Detalhamento da NC</description>
+                <properties>
+                    <prop name="UITabName">Detalhamento</prop>
+                </properties>
+            </field>
+
+            <!-- ── Controle ──────────────────────────────────────── -->
+
+            <field name="REINCIDENTE" dataType="CHECKBOX"
+                   allowSearch="S" visibleOnSearch="S" isPresentation="N"
+                   order="14" nullable="S" visible="S" required="N">
+                <description>Reincidente</description>
+                <properties>
+                    <prop name="readOnly">S</prop>
+                    <prop name="UITabName">__main</prop>
+                </properties>
+            </field>
+
+            <field name="NAOPROCEDENTE" dataType="CHECKBOX"
+                   allowSearch="S" visibleOnSearch="S" isPresentation="N"
+                   order="15" nullable="S" visible="S" required="N">
+                <description>Não procedente</description>
+                <properties>
+                    <prop name="UITabName">__main</prop>
+                </properties>
+            </field>
+
+            <field name="NCVINCULADA" dataType="INTEIRO"
+                   allowSearch="S" visibleOnSearch="S" isPresentation="N"
+                   order="16" nullable="S" visible="S" required="N">
+                <description>NC vinculada</description>
+                <properties>
+                    <prop name="UITabName">__main</prop>
+                </properties>
+            </field>
+
+            <!-- ── Campos automáticos ────────────────────────────── -->
+
+            <field name="CODUSU" dataType="PESQUISA"
+                   targetInstance="Usuario"
+                   targetField="CODUSU" targetType="INTEIRO"
+                   allowSearch="S" visibleOnSearch="S" isPresentation="N"
+                   order="17" nullable="N" visible="S" required="N">
+                <description>Aberto por</description>
+                <expression><![CDATA[return $ctx_usuario_logado;]]></expression>
+                <properties>
+                    <prop name="readOnly">S</prop>
+                    <prop name="UITabName">__main</prop>
+                </properties>
+            </field>
+
+            <field name="DTCRIACAO" dataType="DATA_HORA"
+                   allowSearch="S" visibleOnSearch="S" isPresentation="N"
+                   order="18" nullable="N" visible="S" required="N">
+                <description>Criado em</description>
+                <expression><![CDATA[return $ctx_dh_atual;]]></expression>
+                <properties>
+                    <prop name="readOnly">S</prop>
+                    <prop name="UITabName">__main</prop>
+                    <prop name="visivel">N</prop>
+                </properties>
+            </field>
+
+        </fields>
+    </table>
+
+</metadados>
