@@ -1,11 +1,4 @@
-/*
-    Para mais informações de como efetuar a correta configuração desse arquivo,
-    consulte a documentação oficial da Sankkhya no link abaixo:
-    <a href="https://developer.sankhya.com.br/docs/03_conf_addonstudio"/>
- */
-
 buildscript {
-
     repositories{
         mavenLocal()
         mavenCentral()
@@ -21,31 +14,18 @@ buildscript {
     }
 }
 
-//Substitua o valor inserido em 'group' por seu domínio, por exemplo: 'br.com.suaempresa'.
-group = 'br.com.fabricante.addon'
-//Especifica a versão do addon. É útil para controle de versões, deploys e compatibilidade com o sistema.
+group = 'br.com.hagious'
 version="1.0.0"
-//Define uma breve descrição do addon, explicando sua funcionalidade ou objetivo principal.
 description = "BP - QualityManager"
 
 apply(plugin: "br.com.sankhya.addonstudio")
 snkmodule {
-    //Informe aqui o caminho de instalação do WildFly. Exemplo: C:\\wildfly_producao
-    serverFolder = '${WILDFLY_HOME}'
-    //Informe aqui a versão mínima da plataforma Sankhya que seu add-on suporta.
-    plataformaMinima = "4.28"
+    serverFolder = System.getenv("WILDFLY_HOME")
+    plataformaMinima = "4.35"
 }
 
 addon {
-    /*
-        Ao habilitar o autoDDL, os scripts de criação de tabelas em dbscripts são ignorados,
-        e as tabelas são geradas automaticamente com base nas entidades definidas em datadictionary*.
-        Para usar scripts manuais, defina autoDDL=false. Para mais informações, consulte:
-        <a href="https://developer.sankhya.com.br/docs/02_autoddl">
-    */
-    autoDDL=true
-    //Informe aqui a sua APPKEY. Lembre-se de criar previamente sua solução e componente no Portal do Desenvolvedor.
-    appKey="fa65cc3e-5cfe-4f76-90f6-4b6c8af0770a"
-    //Informe aqui o nome da sua empresa
+//    appKey="fa65cc3e-5cfe-4f76-90f6-4b6c8af0770a"
+    appKey="f79ce430-b8d7-42f8-8f2a-80ae6b02b3af" // APPKEY modelo com SDK liberado
     parceiroNome = "INDUSTRIA DE FRALDAS GBI LTDA"
 }

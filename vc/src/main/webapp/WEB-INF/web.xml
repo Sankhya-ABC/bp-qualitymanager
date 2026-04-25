@@ -65,7 +65,11 @@
         <servlet-class>br.com.sankhya.dwf.controller.servlet.Html5Launcher</servlet-class>
         <load-on-startup>5</load-on-startup>
     </servlet>
-
+    <servlet>
+        <servlet-name>FlexLauncher</servlet-name>
+        <servlet-class>br.com.sankhya.dwf.controller.servlet.FlexLauncher</servlet-class>
+        <load-on-startup>5</load-on-startup>
+    </servlet>
 
     <servlet>
         <servlet-name>HttpServiceBroker</servlet-name>
@@ -74,7 +78,6 @@
             <param-name>service-providers</param-name>
             <param-value>WEB-INF/resources/service-providers.xml</param-value>
         </init-param>
-        <load-on-startup>5</load-on-startup>
     </servlet>
 
 
@@ -94,7 +97,10 @@
         <filter-name>loginFilter</filter-name>
         <url-pattern>*.scmd</url-pattern>
     </filter-mapping>
-
+    <filter-mapping>
+        <filter-name>loginFilter</filter-name>
+        <url-pattern>*.flex</url-pattern>
+    </filter-mapping>
     <filter-mapping>
         <filter-name>loginFilter</filter-name>
         <url-pattern>*.sbr</url-pattern>
@@ -115,7 +121,10 @@
         <servlet-name>Html5Launcher</servlet-name>
         <url-pattern>*.html5</url-pattern>
     </servlet-mapping>
-
+    <servlet-mapping>
+        <servlet-name>FlexLauncher</servlet-name>
+        <url-pattern>*.flex</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Html5Launcher</servlet-name>
         <url-pattern>*.xhtml5</url-pattern>
@@ -129,10 +138,30 @@
         <filter-name>anyURL</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
+    <filter-mapping>
+        <filter-name>checaLogin</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
     <session-config>
         <session-timeout>0</session-timeout>
     </session-config>
+    <servlet>
+        <servlet-name>SankhyaGraphQLServlet</servlet-name>
+        <servlet-class>br.com.sankhya.graphql.servlet.SankhyaGraphQLServlet</servlet-class>
+        <init-param>
+            <param-name>base.package</param-name>
+            <param-value>br.com.sankhya.mge.core.graphql</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SankhyaGraphQLServlet</servlet-name>
+        <url-pattern>/graphql</url-pattern>
+    </servlet-mapping>
 
+    <!-- O listener do SankhyaGraphql deve vir antes de qualquer listener que utilize suas anotacoes -->
+    <listener>
+        <listener-class>br.com.sankhya.graphql.servlet.SankhyaGraphQLServletContextListener</listener-class>
+    </listener>
 
     <!-- EAR -->
 </web-app>

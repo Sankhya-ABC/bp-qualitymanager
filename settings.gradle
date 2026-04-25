@@ -1,26 +1,4 @@
-/*
-    Para mais informações de como efetuar a correta configuração desse arquivo,
-    consulte a documentação oficial da Sankkhya no link abaixo:
-    <a href="https://developer.sankhya.com.br/docs/03_conf_addonstudio"/>
- */
+rootProject.name = 'qualitymanager'
 
-// rootProject.name = 'addon-template'
-// include 'model'
-// include 'vc'
-
-/*
-    BP QualityManager — Add-on Sankhya Om
-    Unidade BP ABC
-    Repositório: bp-qualitymanager
-    Prefixo de tabelas: BPQM
-    Documentação: https://developer.sankhya.com.br/docs/03_conf_addonstudio
-*/
-
-rootProject.name = 'bp-qualitymanager'
-
-include 'qualitymanager-core'
-include 'qualitymanager-nc'
-// include 'qualitymanager-fornecedores'   // Fase 2
-// include 'qualitymanager-documentos'     // Fase 3
-// include 'qualitymanager-mudancas'       // Fase 3
-// include 'qualitymanager-indicadores'    // Fase 4
+include 'model'
+include 'vc'
