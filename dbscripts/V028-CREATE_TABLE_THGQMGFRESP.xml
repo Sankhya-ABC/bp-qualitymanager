@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<scripts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="../.gradle/scripts.xsd">
+
+    <sql nomeTabela="THGQMGFRESP" ordem="1" executar="SE_NAO_EXISTIR" tipoObjeto="TABLE" nomeObjeto="THGQMGFRESP" descricao="Criacao da tabela THGQMGFRESP">
+        <mssql>CREATE TABLE THGQMGFRESP (CODRESPTA INT NOT NULL, CONSTRAINT PK_THGQMGFRESP PRIMARY KEY (CODRESPTA))</mssql>
+        <oracle>CREATE TABLE THGQMGFRESP (CODRESPTA NUMBER(10) NOT NULL, CONSTRAINT PK_THGQMGFRESP PRIMARY KEY (CODRESPTA))</oracle>
+    </sql>
+    <sql nomeTabela="THGQMGFRESP" ordem="2" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODQUAL" descricao="Adicionar campo CODQUAL"><mssql>ALTER TABLE THGQMGFRESP ADD CODQUAL INT</mssql><oracle>ALTER TABLE THGQMGFRESP ADD (CODQUAL NUMBER(10))</oracle></sql>
+    <sql nomeTabela="THGQMGFRESP" ordem="3" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODPERG" descricao="Adicionar campo CODPERG"><mssql>ALTER TABLE THGQMGFRESP ADD CODPERG INT</mssql><oracle>ALTER TABLE THGQMGFRESP ADD (CODPERG NUMBER(10))</oracle></sql>
+    <sql nomeTabela="THGQMGFRESP" ordem="4" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="RESPOSTA" descricao="Adicionar campo RESPOSTA"><mssql>ALTER TABLE THGQMGFRESP ADD RESPOSTA VARCHAR(200)</mssql><oracle>ALTER TABLE THGQMGFRESP ADD (RESPOSTA VARCHAR2(200))</oracle></sql>
+
+</scripts>

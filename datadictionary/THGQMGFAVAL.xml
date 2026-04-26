@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<metadados xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="../.gradle/metadados.xsd">
+
+    <table name="THGQMGFAVAL" sequenceType="A" sequenceField="CODAVAL">
+        <description>Avaliacao de Fornecedor</description>
+        <primaryKey><field name="CODAVAL"/></primaryKey>
+        <instances><instance name="QmFornAvaliacao"><description>Avaliacao de Fornecedor</description></instance></instances>
+        <fields>
+            <field name="CODAVAL" dataType="INTEIRO" readOnly="S" order="1" allowSearch="S" visibleOnSearch="S"><description>Cod. Avaliacao</description></field>
+            <field name="CODQUAL" dataType="INTEIRO" required="S" readOnly="S" UITabName="__main" order="2" allowSearch="S" visibleOnSearch="S"><description>Cod. Qualificacao</description></field>
+            <field name="PERIODO" dataType="TEXTO" size="10" required="S" isPresentation="S" UITabName="__main" order="3" allowSearch="S" visibleOnSearch="S"><description>Periodo (MM/YYYY)</description></field>
+            <field name="NOTA_QUALIDADE" dataType="DECIMAL" nuCasasDecimais="2" UITabName="__main" UIGroupName="Notas" order="4" allowSearch="N" visibleOnSearch="N"><description>Nota Qualidade</description></field>
+            <field name="NOTA_PRAZO" dataType="DECIMAL" nuCasasDecimais="2" UITabName="__main" UIGroupName="Notas" order="5" allowSearch="N" visibleOnSearch="N"><description>Nota Prazo</description></field>
+            <field name="NOTA_TECNICO" dataType="DECIMAL" nuCasasDecimais="2" UITabName="__main" UIGroupName="Notas" order="6" allowSearch="N" visibleOnSearch="N"><description>Nota Tecnico</description></field>
+            <field name="NOTA_SEGURANCA" dataType="DECIMAL" nuCasasDecimais="2" UITabName="__main" UIGroupName="Notas" order="7" allowSearch="N" visibleOnSearch="N"><description>Nota Seguranca</description></field>
+            <field name="SCORE_FINAL" dataType="DECIMAL" nuCasasDecimais="2" readOnly="S" UITabName="__main" order="8" allowSearch="N" visibleOnSearch="N"><description>Score Final</description></field>
+            <field name="OBSERVACOES" dataType="TEXTO" size="4000" UITabName="__main" order="9" allowSearch="N" visibleOnSearch="N"><description>Observacoes</description></field>
+            <field name="CODUSU" dataType="PESQUISA" targetInstance="Usuario" targetField="CODUSU" targetType="INTEIRO" readOnly="S" visible="N" order="10" allowSearch="N" visibleOnSearch="N"><description>Usuario</description><expression><![CDATA[return $ctx_usuario_logado;]]></expression></field>
+            <field name="DHCREATE" dataType="DATA_HORA" readOnly="S" visible="N" order="11" allowSearch="N" visibleOnSearch="N"><description>Data/Hora Criacao</description><expression><![CDATA[if ($col_DHCREATE == null) { return $ctx_dh_atual; } else { return $col_DHCREATE; }]]></expression></field>
+        </fields>
+    </table>
+
+</metadados>

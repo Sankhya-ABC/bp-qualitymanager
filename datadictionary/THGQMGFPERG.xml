@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<metadados xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="../.gradle/metadados.xsd">
+
+    <table name="THGQMGFPERG" sequenceType="A" sequenceField="CODPERG">
+        <description>Perguntas do Questionario</description>
+        <primaryKey><field name="CODPERG"/></primaryKey>
+        <instances><instance name="QmFornPergunta"><description>Perguntas do Questionario</description></instance></instances>
+        <fields>
+            <field name="CODPERG" dataType="INTEIRO" readOnly="S" order="1" allowSearch="S" visibleOnSearch="S"><description>Cod. Pergunta</description></field>
+            <field name="CODQUEST" dataType="INTEIRO" required="S" readOnly="S" UITabName="__main" order="2" allowSearch="S" visibleOnSearch="S"><description>Cod. Questionario</description></field>
+            <field name="PERGUNTA" dataType="TEXTO" size="500" required="S" isPresentation="S" UITabName="__main" order="3" allowSearch="S" visibleOnSearch="S"><description>Pergunta</description></field>
+            <field name="TIPORESPOSTA" dataType="LISTA" size="1" required="S" UITabName="__main" order="4" allowSearch="N" visibleOnSearch="N"><description>Tipo Resposta</description><fieldOptions><option value="S">Sim/Nao</option><option value="N">Numerica (0-100)</option><option value="T">Texto livre</option></fieldOptions></field>
+            <field name="ORDEM" dataType="INTEIRO" UITabName="__main" order="5" allowSearch="N" visibleOnSearch="N"><description>Ordem</description></field>
+        </fields>
+    </table>
+
+</metadados>

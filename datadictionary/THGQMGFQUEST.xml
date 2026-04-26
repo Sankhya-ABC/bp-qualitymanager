@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<metadados xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="../.gradle/metadados.xsd">
+
+    <table name="THGQMGFQUEST" sequenceType="A" sequenceField="CODQUEST">
+        <description>Questionario de Fornecedor</description>
+        <primaryKey><field name="CODQUEST"/></primaryKey>
+        <instances>
+            <instance name="QmFornQuestionario">
+                <description>Questionario de Fornecedor</description>
+                <relationShip><relation entityName="QmFornPergunta"><fields><field localName="CODQUEST" targetName="CODQUEST"/></fields></relation></relationShip>
+            </instance>
+        </instances>
+        <fields>
+            <field name="CODQUEST" dataType="INTEIRO" readOnly="S" order="1" allowSearch="S" visibleOnSearch="S"><description>Cod. Questionario</description></field>
+            <field name="DESCRICAO" dataType="TEXTO" size="200" required="S" isPresentation="S" UITabName="__main" order="2" allowSearch="S" visibleOnSearch="S"><description>Descricao</description></field>
+            <field name="ORIGEM" dataType="LISTA" size="1" required="S" UITabName="__main" order="3" allowSearch="S" visibleOnSearch="S"><description>Origem</description><fieldOptions><option value="1">Qualificacao inicial</option><option value="2">Reavaliacao</option><option value="3">Auditoria fornecedor</option></fieldOptions></field>
+            <field name="ATIVO" dataType="CHECKBOX" UITabName="__main" order="4" allowSearch="N" visibleOnSearch="N"><description>Ativo</description><expression><![CDATA[if ($col_ATIVO == null) { return "S"; } else { return $col_ATIVO; }]]></expression></field>
+        </fields>
+    </table>
+
+</metadados>

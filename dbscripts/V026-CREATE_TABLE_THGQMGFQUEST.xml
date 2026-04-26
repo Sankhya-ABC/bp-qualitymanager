@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<scripts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="../.gradle/scripts.xsd">
+
+    <sql nomeTabela="THGQMGFQUEST" ordem="1" executar="SE_NAO_EXISTIR" tipoObjeto="TABLE" nomeObjeto="THGQMGFQUEST" descricao="Criacao da tabela THGQMGFQUEST">
+        <mssql>CREATE TABLE THGQMGFQUEST (CODQUEST INT NOT NULL, CONSTRAINT PK_THGQMGFQUEST PRIMARY KEY (CODQUEST))</mssql>
+        <oracle>CREATE TABLE THGQMGFQUEST (CODQUEST NUMBER(10) NOT NULL, CONSTRAINT PK_THGQMGFQUEST PRIMARY KEY (CODQUEST))</oracle>
+    </sql>
+    <sql nomeTabela="THGQMGFQUEST" ordem="2" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="DESCRICAO" descricao="Adicionar campo DESCRICAO"><mssql>ALTER TABLE THGQMGFQUEST ADD DESCRICAO VARCHAR(200)</mssql><oracle>ALTER TABLE THGQMGFQUEST ADD (DESCRICAO VARCHAR2(200))</oracle></sql>
+    <sql nomeTabela="THGQMGFQUEST" ordem="3" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="ORIGEM" descricao="Adicionar campo ORIGEM"><mssql>ALTER TABLE THGQMGFQUEST ADD ORIGEM VARCHAR(1)</mssql><oracle>ALTER TABLE THGQMGFQUEST ADD (ORIGEM VARCHAR2(1))</oracle></sql>
+    <sql nomeTabela="THGQMGFQUEST" ordem="4" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="ATIVO" descricao="Adicionar campo ATIVO"><mssql>ALTER TABLE THGQMGFQUEST ADD ATIVO CHAR(1)</mssql><oracle>ALTER TABLE THGQMGFQUEST ADD (ATIVO CHAR(1))</oracle></sql>
+
+</scripts>

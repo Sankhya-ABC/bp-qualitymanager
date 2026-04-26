@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<scripts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="../.gradle/scripts.xsd">
+
+    <sql nomeTabela="THGQMGQUAL" ordem="1" executar="SE_NAO_EXISTIR" tipoObjeto="TABLE" nomeObjeto="THGQMGQUAL" descricao="Criacao da tabela THGQMGQUAL">
+        <mssql>CREATE TABLE THGQMGQUAL (CODQUAL INT NOT NULL, CONSTRAINT PK_THGQMGQUAL PRIMARY KEY (CODQUAL))</mssql>
+        <oracle>CREATE TABLE THGQMGQUAL (CODQUAL NUMBER(10) NOT NULL, CONSTRAINT PK_THGQMGQUAL PRIMARY KEY (CODQUAL))</oracle>
+    </sql>
+    <sql nomeTabela="THGQMGQUAL" ordem="2" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODPARC" descricao="Adicionar campo CODPARC"><mssql>ALTER TABLE THGQMGQUAL ADD CODPARC INT</mssql><oracle>ALTER TABLE THGQMGQUAL ADD (CODPARC NUMBER(10))</oracle></sql>
+    <sql nomeTabela="THGQMGQUAL" ordem="3" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="TIPOFORN" descricao="Adicionar campo TIPOFORN"><mssql>ALTER TABLE THGQMGQUAL ADD TIPOFORN VARCHAR(2)</mssql><oracle>ALTER TABLE THGQMGQUAL ADD (TIPOFORN VARCHAR2(2))</oracle></sql>
+    <sql nomeTabela="THGQMGQUAL" ordem="4" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="STATUS" descricao="Adicionar campo STATUS"><mssql>ALTER TABLE THGQMGQUAL ADD STATUS VARCHAR(1)</mssql><oracle>ALTER TABLE THGQMGQUAL ADD (STATUS VARCHAR2(1))</oracle></sql>
+    <sql nomeTabela="THGQMGQUAL" ordem="5" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="PONTUACAO" descricao="Adicionar campo PONTUACAO"><mssql>ALTER TABLE THGQMGQUAL ADD PONTUACAO DECIMAL(18,2)</mssql><oracle>ALTER TABLE THGQMGQUAL ADD (PONTUACAO NUMBER(18,2))</oracle></sql>
+    <sql nomeTabela="THGQMGQUAL" ordem="6" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="RESULTADOIQF" descricao="Adicionar campo RESULTADOIQF"><mssql>ALTER TABLE THGQMGQUAL ADD RESULTADOIQF VARCHAR(1)</mssql><oracle>ALTER TABLE THGQMGQUAL ADD (RESULTADOIQF VARCHAR2(1))</oracle></sql>
+    <sql nomeTabela="THGQMGQUAL" ordem="7" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="DTQUALIFICACAO" descricao="Adicionar campo DTQUALIFICACAO"><mssql>ALTER TABLE THGQMGQUAL ADD DTQUALIFICACAO DATETIME</mssql><oracle>ALTER TABLE THGQMGQUAL ADD (DTQUALIFICACAO DATE)</oracle></sql>
+    <sql nomeTabela="THGQMGQUAL" ordem="8" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="DTVALIDADE" descricao="Adicionar campo DTVALIDADE"><mssql>ALTER TABLE THGQMGQUAL ADD DTVALIDADE DATETIME</mssql><oracle>ALTER TABLE THGQMGQUAL ADD (DTVALIDADE DATE)</oracle></sql>
+    <sql nomeTabela="THGQMGQUAL" ordem="9" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="DTREAV" descricao="Adicionar campo DTREAV"><mssql>ALTER TABLE THGQMGQUAL ADD DTREAV DATETIME</mssql><oracle>ALTER TABLE THGQMGQUAL ADD (DTREAV DATE)</oracle></sql>
+    <sql nomeTabela="THGQMGQUAL" ordem="10" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="BLOQUEADO" descricao="Adicionar campo BLOQUEADO"><mssql>ALTER TABLE THGQMGQUAL ADD BLOQUEADO CHAR(1)</mssql><oracle>ALTER TABLE THGQMGQUAL ADD (BLOQUEADO CHAR(1))</oracle></sql>
+    <sql nomeTabela="THGQMGQUAL" ordem="11" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="MOTIVOBLOQUEIO" descricao="Adicionar campo MOTIVOBLOQUEIO"><mssql>ALTER TABLE THGQMGQUAL ADD MOTIVOBLOQUEIO VARCHAR(300)</mssql><oracle>ALTER TABLE THGQMGQUAL ADD (MOTIVOBLOQUEIO VARCHAR2(300))</oracle></sql>
+    <sql nomeTabela="THGQMGQUAL" ordem="12" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODUSU" descricao="Adicionar campo CODUSU"><mssql>ALTER TABLE THGQMGQUAL ADD CODUSU INT</mssql><oracle>ALTER TABLE THGQMGQUAL ADD (CODUSU NUMBER(10))</oracle></sql>
+    <sql nomeTabela="THGQMGQUAL" ordem="13" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="DHCREATE" descricao="Adicionar campo DHCREATE"><mssql>ALTER TABLE THGQMGQUAL ADD DHCREATE DATETIME</mssql><oracle>ALTER TABLE THGQMGQUAL ADD (DHCREATE DATE)</oracle></sql>
+
+</scripts>

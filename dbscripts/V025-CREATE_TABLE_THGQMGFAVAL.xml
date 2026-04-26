@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<scripts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="../.gradle/scripts.xsd">
+
+    <sql nomeTabela="THGQMGFAVAL" ordem="1" executar="SE_NAO_EXISTIR" tipoObjeto="TABLE" nomeObjeto="THGQMGFAVAL" descricao="Criacao da tabela THGQMGFAVAL">
+        <mssql>CREATE TABLE THGQMGFAVAL (CODAVAL INT NOT NULL, CONSTRAINT PK_THGQMGFAVAL PRIMARY KEY (CODAVAL))</mssql>
+        <oracle>CREATE TABLE THGQMGFAVAL (CODAVAL NUMBER(10) NOT NULL, CONSTRAINT PK_THGQMGFAVAL PRIMARY KEY (CODAVAL))</oracle>
+    </sql>
+    <sql nomeTabela="THGQMGFAVAL" ordem="2" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODQUAL" descricao="Adicionar campo CODQUAL"><mssql>ALTER TABLE THGQMGFAVAL ADD CODQUAL INT</mssql><oracle>ALTER TABLE THGQMGFAVAL ADD (CODQUAL NUMBER(10))</oracle></sql>
+    <sql nomeTabela="THGQMGFAVAL" ordem="3" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="PERIODO" descricao="Adicionar campo PERIODO"><mssql>ALTER TABLE THGQMGFAVAL ADD PERIODO VARCHAR(10)</mssql><oracle>ALTER TABLE THGQMGFAVAL ADD (PERIODO VARCHAR2(10))</oracle></sql>
+    <sql nomeTabela="THGQMGFAVAL" ordem="4" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="NOTA_QUALIDADE" descricao="Adicionar campo NOTA_QUALIDADE"><mssql>ALTER TABLE THGQMGFAVAL ADD NOTA_QUALIDADE DECIMAL(18,2)</mssql><oracle>ALTER TABLE THGQMGFAVAL ADD (NOTA_QUALIDADE NUMBER(18,2))</oracle></sql>
+    <sql nomeTabela="THGQMGFAVAL" ordem="5" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="NOTA_PRAZO" descricao="Adicionar campo NOTA_PRAZO"><mssql>ALTER TABLE THGQMGFAVAL ADD NOTA_PRAZO DECIMAL(18,2)</mssql><oracle>ALTER TABLE THGQMGFAVAL ADD (NOTA_PRAZO NUMBER(18,2))</oracle></sql>
+    <sql nomeTabela="THGQMGFAVAL" ordem="6" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="NOTA_TECNICO" descricao="Adicionar campo NOTA_TECNICO"><mssql>ALTER TABLE THGQMGFAVAL ADD NOTA_TECNICO DECIMAL(18,2)</mssql><oracle>ALTER TABLE THGQMGFAVAL ADD (NOTA_TECNICO NUMBER(18,2))</oracle></sql>
+    <sql nomeTabela="THGQMGFAVAL" ordem="7" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="NOTA_SEGURANCA" descricao="Adicionar campo NOTA_SEGURANCA"><mssql>ALTER TABLE THGQMGFAVAL ADD NOTA_SEGURANCA DECIMAL(18,2)</mssql><oracle>ALTER TABLE THGQMGFAVAL ADD (NOTA_SEGURANCA NUMBER(18,2))</oracle></sql>
+    <sql nomeTabela="THGQMGFAVAL" ordem="8" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="SCORE_FINAL" descricao="Adicionar campo SCORE_FINAL"><mssql>ALTER TABLE THGQMGFAVAL ADD SCORE_FINAL DECIMAL(18,2)</mssql><oracle>ALTER TABLE THGQMGFAVAL ADD (SCORE_FINAL NUMBER(18,2))</oracle></sql>
+    <sql nomeTabela="THGQMGFAVAL" ordem="9" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="OBSERVACOES" descricao="Adicionar campo OBSERVACOES"><mssql>ALTER TABLE THGQMGFAVAL ADD OBSERVACOES VARCHAR(4000)</mssql><oracle>ALTER TABLE THGQMGFAVAL ADD (OBSERVACOES VARCHAR2(4000))</oracle></sql>
+    <sql nomeTabela="THGQMGFAVAL" ordem="10" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODUSU" descricao="Adicionar campo CODUSU"><mssql>ALTER TABLE THGQMGFAVAL ADD CODUSU INT</mssql><oracle>ALTER TABLE THGQMGFAVAL ADD (CODUSU NUMBER(10))</oracle></sql>
+    <sql nomeTabela="THGQMGFAVAL" ordem="11" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="DHCREATE" descricao="Adicionar campo DHCREATE"><mssql>ALTER TABLE THGQMGFAVAL ADD DHCREATE DATETIME</mssql><oracle>ALTER TABLE THGQMGFAVAL ADD (DHCREATE DATE)</oracle></sql>
+
+</scripts>

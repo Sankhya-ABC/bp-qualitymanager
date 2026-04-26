@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<scripts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="../.gradle/scripts.xsd">
+
+    <sql nomeTabela="THGQMGFPERG" ordem="1" executar="SE_NAO_EXISTIR" tipoObjeto="TABLE" nomeObjeto="THGQMGFPERG" descricao="Criacao da tabela THGQMGFPERG">
+        <mssql>CREATE TABLE THGQMGFPERG (CODPERG INT NOT NULL, CONSTRAINT PK_THGQMGFPERG PRIMARY KEY (CODPERG))</mssql>
+        <oracle>CREATE TABLE THGQMGFPERG (CODPERG NUMBER(10) NOT NULL, CONSTRAINT PK_THGQMGFPERG PRIMARY KEY (CODPERG))</oracle>
+    </sql>
+    <sql nomeTabela="THGQMGFPERG" ordem="2" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODQUEST" descricao="Adicionar campo CODQUEST"><mssql>ALTER TABLE THGQMGFPERG ADD CODQUEST INT</mssql><oracle>ALTER TABLE THGQMGFPERG ADD (CODQUEST NUMBER(10))</oracle></sql>
+    <sql nomeTabela="THGQMGFPERG" ordem="3" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="PERGUNTA" descricao="Adicionar campo PERGUNTA"><mssql>ALTER TABLE THGQMGFPERG ADD PERGUNTA VARCHAR(500)</mssql><oracle>ALTER TABLE THGQMGFPERG ADD (PERGUNTA VARCHAR2(500))</oracle></sql>
+    <sql nomeTabela="THGQMGFPERG" ordem="4" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="TIPORESPOSTA" descricao="Adicionar campo TIPORESPOSTA"><mssql>ALTER TABLE THGQMGFPERG ADD TIPORESPOSTA VARCHAR(1)</mssql><oracle>ALTER TABLE THGQMGFPERG ADD (TIPORESPOSTA VARCHAR2(1))</oracle></sql>
+    <sql nomeTabela="THGQMGFPERG" ordem="5" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="ORDEM" descricao="Adicionar campo ORDEM"><mssql>ALTER TABLE THGQMGFPERG ADD ORDEM INT</mssql><oracle>ALTER TABLE THGQMGFPERG ADD (ORDEM NUMBER(10))</oracle></sql>
+
+</scripts>

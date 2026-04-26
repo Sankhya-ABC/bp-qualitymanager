@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<scripts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="../.gradle/scripts.xsd">
+
+    <sql nomeTabela="THGQMGCRIT" ordem="1" executar="SE_NAO_EXISTIR" tipoObjeto="TABLE" nomeObjeto="THGQMGCRIT" descricao="Criacao da tabela THGQMGCRIT">
+        <mssql>CREATE TABLE THGQMGCRIT (CODCRIT INT NOT NULL, CONSTRAINT PK_THGQMGCRIT PRIMARY KEY (CODCRIT))</mssql>
+        <oracle>CREATE TABLE THGQMGCRIT (CODCRIT NUMBER(10) NOT NULL, CONSTRAINT PK_THGQMGCRIT PRIMARY KEY (CODCRIT))</oracle>
+    </sql>
+    <sql nomeTabela="THGQMGCRIT" ordem="2" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="DESCRICAO" descricao="Adicionar campo DESCRICAO"><mssql>ALTER TABLE THGQMGCRIT ADD DESCRICAO VARCHAR(100)</mssql><oracle>ALTER TABLE THGQMGCRIT ADD (DESCRICAO VARCHAR2(100))</oracle></sql>
+    <sql nomeTabela="THGQMGCRIT" ordem="3" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="PESO" descricao="Adicionar campo PESO"><mssql>ALTER TABLE THGQMGCRIT ADD PESO DECIMAL(18,2)</mssql><oracle>ALTER TABLE THGQMGCRIT ADD (PESO NUMBER(18,2))</oracle></sql>
+    <sql nomeTabela="THGQMGCRIT" ordem="4" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="ATIVO" descricao="Adicionar campo ATIVO"><mssql>ALTER TABLE THGQMGCRIT ADD ATIVO CHAR(1)</mssql><oracle>ALTER TABLE THGQMGCRIT ADD (ATIVO CHAR(1))</oracle></sql>
+
+</scripts>

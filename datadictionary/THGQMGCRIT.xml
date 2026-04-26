@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<metadados xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="../.gradle/metadados.xsd">
+
+    <table name="THGQMGCRIT" sequenceType="A" sequenceField="CODCRIT">
+        <description>Criterios de Avaliacao</description>
+        <primaryKey><field name="CODCRIT"/></primaryKey>
+        <instances>
+            <instance name="QmFornCriterio"><description>Criterios de Avaliacao</description></instance>
+        </instances>
+        <fields>
+            <field name="CODCRIT" dataType="INTEIRO" readOnly="S" order="1" allowSearch="S" visibleOnSearch="S"><description>Cod. Criterio</description></field>
+            <field name="DESCRICAO" dataType="TEXTO" size="100" required="S" isPresentation="S" UITabName="__main" order="2" allowSearch="S" visibleOnSearch="S"><description>Descricao</description></field>
+            <field name="PESO" dataType="DECIMAL" nuCasasDecimais="2" required="S" UITabName="__main" order="3" allowSearch="N" visibleOnSearch="N"><description>Peso (%)</description></field>
+            <field name="ATIVO" dataType="CHECKBOX" UITabName="__main" order="4" allowSearch="N" visibleOnSearch="N"><description>Ativo</description><expression><![CDATA[if ($col_ATIVO == null) { return "S"; } else { return $col_ATIVO; }]]></expression></field>
+        </fields>
+    </table>
+
+</metadados>

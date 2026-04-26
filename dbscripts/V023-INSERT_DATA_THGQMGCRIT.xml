@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<scripts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="../.gradle/scripts.xsd">
+
+    <sql nomeTabela="THGQMGCRIT" ordem="1" executar="SEMPRE" tipoObjeto="TABLE" nomeObjeto="INSERT_THGQMGCRIT_1" descricao="Inserir criterio Qualidade">
+        <mssql>INSERT INTO THGQMGCRIT (CODCRIT, DESCRICAO, PESO, ATIVO) SELECT 1, 'Qualidade', 40, 'S' WHERE NOT EXISTS (SELECT 1 FROM THGQMGCRIT WHERE CODCRIT = 1)</mssql>
+        <oracle>INSERT INTO THGQMGCRIT (CODCRIT, DESCRICAO, PESO, ATIVO) SELECT 1, 'Qualidade', 40, 'S' FROM DUAL WHERE NOT EXISTS (SELECT 1 FROM THGQMGCRIT WHERE CODCRIT = 1)</oracle>
+    </sql>
+    <sql nomeTabela="THGQMGCRIT" ordem="2" executar="SEMPRE" tipoObjeto="TABLE" nomeObjeto="INSERT_THGQMGCRIT_2" descricao="Inserir criterio Tecnico">
+        <mssql>INSERT INTO THGQMGCRIT (CODCRIT, DESCRICAO, PESO, ATIVO) SELECT 2, 'Tecnico', 30, 'S' WHERE NOT EXISTS (SELECT 1 FROM THGQMGCRIT WHERE CODCRIT = 2)</mssql>
+        <oracle>INSERT INTO THGQMGCRIT (CODCRIT, DESCRICAO, PESO, ATIVO) SELECT 2, 'Tecnico', 30, 'S' FROM DUAL WHERE NOT EXISTS (SELECT 1 FROM THGQMGCRIT WHERE CODCRIT = 2)</oracle>
+    </sql>
+    <sql nomeTabela="THGQMGCRIT" ordem="3" executar="SEMPRE" tipoObjeto="TABLE" nomeObjeto="INSERT_THGQMGCRIT_3" descricao="Inserir criterio Prazo">
+        <mssql>INSERT INTO THGQMGCRIT (CODCRIT, DESCRICAO, PESO, ATIVO) SELECT 3, 'Prazo', 20, 'S' WHERE NOT EXISTS (SELECT 1 FROM THGQMGCRIT WHERE CODCRIT = 3)</mssql>
+        <oracle>INSERT INTO THGQMGCRIT (CODCRIT, DESCRICAO, PESO, ATIVO) SELECT 3, 'Prazo', 20, 'S' FROM DUAL WHERE NOT EXISTS (SELECT 1 FROM THGQMGCRIT WHERE CODCRIT = 3)</oracle>
+    </sql>
+    <sql nomeTabela="THGQMGCRIT" ordem="4" executar="SEMPRE" tipoObjeto="TABLE" nomeObjeto="INSERT_THGQMGCRIT_4" descricao="Inserir criterio Seguranca">
+        <mssql>INSERT INTO THGQMGCRIT (CODCRIT, DESCRICAO, PESO, ATIVO) SELECT 4, 'Seguranca', 10, 'S' WHERE NOT EXISTS (SELECT 1 FROM THGQMGCRIT WHERE CODCRIT = 4)</mssql>
+        <oracle>INSERT INTO THGQMGCRIT (CODCRIT, DESCRICAO, PESO, ATIVO) SELECT 4, 'Seguranca', 10, 'S' FROM DUAL WHERE NOT EXISTS (SELECT 1 FROM THGQMGCRIT WHERE CODCRIT = 4)</oracle>
+    </sql>
+
+</scripts>
