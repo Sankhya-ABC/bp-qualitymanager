@@ -57,7 +57,7 @@ SE proximaFase = 10 E resultado da eficacia = 'E':
 ### RncReincidenciaListener.java (em listeners/)
 
 ```
-instanceName: "QmRncRegistro"  <- copiar EXATAMENTE do XML
+instanceName: "ThgRncRegistro"  <- copiar EXATAMENTE do XML
 Evento: afterInsert
 Logica: busca RNCs anteriores com mesma ORIGEM+PROCESSO nao encerradas (STATUS != 'E' e != 'C')
         Se encontrar: REINCIDENTE='S', NCVINCULADA=CODRNC da mais recente anterior

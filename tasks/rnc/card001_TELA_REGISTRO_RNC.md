@@ -16,15 +16,15 @@
 | Atributo  | Valor                |
 |:----------|:---------------------|
 | Nome      | `THGQMGREG`    |
-| Instancia | `QmRncRegistro`       |
+| Instancia | `ThgRncRegistro`       |
 | Sequencia | AUTO (`CODRNC`)        |
 | Dual-DB   | Oracle + SQL Server  |
 
 ### Instancias da tela
 | Instancia      | Tipo       | Descricao                                              |
 |:---------------|:-----------|:-------------------------------------------------------|
-| `QmRncConsulta` | Lista/Grid | Visao de consulta com filtros por status, prioridade, responsavel, periodo |
-| `QmRncRegistro` | Formulario | Formulario completo de abertura da RNC                 |
+| `ThgRncConsulta` | Lista/Grid | Visao de consulta com filtros por status, prioridade, responsavel, periodo |
+| `ThgRncRegistro` | Formulario | Formulario completo de abertura da RNC                 |
 
 ---
 
@@ -60,8 +60,8 @@
 
 | Tabela filha           | Instancia filha     | Vinculo FK | Descricao                                        |
 |:-----------------------|:--------------------|:-----------|:-------------------------------------------------|
-| `THGQMGRESP`   | `QmRncResponsavel`   | `CODRNC`     | Responsaveis da RNC por fase — aparece como grid |
-| `THGQMGEVID`     | `QmRncEvidencia`     | `CODRNC`     | Arquivos/fotos vinculados a RNC                  |
+| `THGQMGRESP`   | `ThgRncResponsavel`   | `CODRNC`     | Responsaveis da RNC por fase — aparece como grid |
+| `THGQMGEVID`     | `ThgRncEvidencia`     | `CODRNC`     | Arquivos/fotos vinculados a RNC                  |
 
 ---
 
@@ -69,9 +69,9 @@
 
 | Botao              | Classe Java                       | Instancia           | Transacao | Descricao                                          |
 |:-------------------|:----------------------------------|:--------------------|:----------|:---------------------------------------------------|
-| Mudar Fase         | `MudarFaseRegistroActionButton`   | `QmRncRegistro`      | AUTOMATIC | Avanca para Fase 2 (Acoes Imediatas)               |
-| Cancelar RNC       | `CancelarRncRegistroActionButton` | `QmRncRegistro`      | AUTOMATIC | Marca STATUS='C', encerra workflow                 |
-| Enviar Notificacao | `NotificarRncActionButton`        | `QmRncResponsavel`   | AUTOMATIC | Envia e-mail ao responsavel via MSDFilaMensagem    |
+| Mudar Fase         | `MudarFaseRegistroActionButton`   | `ThgRncRegistro`      | AUTOMATIC | Avanca para Fase 2 (Acoes Imediatas)               |
+| Cancelar RNC       | `CancelarRncRegistroActionButton` | `ThgRncRegistro`      | AUTOMATIC | Marca STATUS='C', encerra workflow                 |
+| Enviar Notificacao | `NotificarRncActionButton`        | `ThgRncResponsavel`   | AUTOMATIC | Envia e-mail ao responsavel via MSDFilaMensagem    |
 
 ---
 
@@ -111,7 +111,7 @@
 - [x] `dbscripts/V1.xml` — DDL THGQMGREG Oracle+SQL Server, Listener BI/BIU, indices, sequence
 
 ### Dicionario de Dados
-- [x] `datadictionary/THGQMGREG.xml` — instancias QmRncConsulta e QmRncRegistro, todos os campos, relacionamentos
+- [x] `datadictionary/THGQMGREG.xml` — instancias ThgRncConsulta e ThgRncRegistro, todos os campos, relacionamentos
 
 ### Backend Java
 - [ ] `model/.../actionButtons/MudarFaseRegistroActionButton.java`
@@ -121,7 +121,7 @@
 - [ ] `model/.../listeners/RncReincidenciaListener.java`
 
 ### Menu
-- [x] `datadictionary/menu.xml` — instancias QmRncConsulta e QmRncRegistro ja registradas
+- [x] `datadictionary/menu.xml` — instancias ThgRncConsulta e ThgRncRegistro ja registradas
 
 ---
 

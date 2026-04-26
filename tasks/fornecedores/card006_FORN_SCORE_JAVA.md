@@ -32,7 +32,7 @@ automatico do score (IQF) do fornecedor apos o recebimento das respostas ao ques
 ### QualificacaoScoreListener.java
 
 ```
-instanceName: "QmFornResposta"   <- copiar EXATAMENTE do XML de THGQMGFRESP.xml
+instanceName: "ThgFornResposta"   <- copiar EXATAMENTE do XML de THGQMGFRESP.xml
 Evento: afterInsert
 Logica:
   1. Buscar CODQUAL da resposta inserida
@@ -67,7 +67,7 @@ score    = scoreRaw.setScale(2, HALF_UP)
 ## Regras Criticas de Implementacao
 
 1. BigDecimal.divide() SEMPRE com escala e RoundingMode.HALF_UP — bug critico do produto legado
-2. instanceName `QmFornResposta` deve ser copiado do XML — nunca digitado manualmente
+2. instanceName `ThgFornResposta` deve ser copiado do XML — nunca digitado manualmente
 3. Listener nao deve lancar excecao que interrompa o INSERT da resposta — catch e log
 4. AuditLogService.registrar() deve ser chamado ao final do calculo
 

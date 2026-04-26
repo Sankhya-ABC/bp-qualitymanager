@@ -6,7 +6,7 @@ import br.com.sankhya.studio.persistence.PersistenceEventAdapter;
 import br.com.sankhya.studio.stereotypes.Component;
 import lombok.Log;
 
-import javax.inject.Inject;
+import com.google.inject.Inject;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -23,7 +23,7 @@ public class RncReincidenciaListener extends PersistenceEventAdapter {
 
     @Override
     public String getInstanceName() {
-        return "QmRncRegistro";
+        return "ThgRncRegistro";
     }
 
     @Override

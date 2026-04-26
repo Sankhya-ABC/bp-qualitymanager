@@ -16,15 +16,15 @@
 | Atributo   | Valor             |
 |:-----------|:------------------|
 | Nome       | `THGQMG___`         |
-| Instancia  | `QmXxxNome`       |
+| Instancia  | `ThgXxxNome`       |
 | Sequencia  | AUTO (`CODXXX`)    |
 | Dual-DB    | Oracle + SQL Server |
 
 ### Instancias da tela
 | Instancia       | Tipo       | Descricao                        |
 |:----------------|:-----------|:---------------------------------|
-| `QmXxxConsulta` | Lista/Grid | Visao de consulta com filtros    |
-| `QmXxxRegistro` | Formulario | Formulario completo de cadastro  |
+| `ThgXxxConsulta` | Lista/Grid | Visao de consulta com filtros    |
+| `ThgXxxRegistro` | Formulario | Formulario completo de cadastro  |
 
 ---
 
@@ -52,7 +52,7 @@
 
 | Tabela filha       | Instancia filha  | Vinculo FK     | Descricao              |
 |:-------------------|:-----------------|:---------------|:-----------------------|
-| `THGQMG___`          | `QmXxxFilha`     | `CODXXX`        | Descricao do grid      |
+| `THGQMG___`          | `ThgXxxFilha`     | `CODXXX`        | Descricao do grid      |
 
 ---
 
@@ -60,9 +60,9 @@
 
 | Botao              | Classe Java                  | Instancia alvo  | Transacao  | Descricao                        |
 |:-------------------|:-----------------------------|:----------------|:-----------|:---------------------------------|
-| Mudar Fase         | `MudarFaseXxxActionButton`   | `QmXxxNome`     | AUTOMATIC  | Avanca para proxima fase         |
-| Voltar Fase        | `VoltarFaseXxxActionButton`  | `QmXxxNome`     | AUTOMATIC  | Retorna fase anterior            |
-| Enviar Notificacao | `NotificarXxxActionButton`   | `QmXxxNome`     | AUTOMATIC  | Envia e-mail ao responsavel      |
+| Mudar Fase         | `MudarFaseXxxActionButton`   | `ThgXxxNome`     | AUTOMATIC  | Avanca para proxima fase         |
+| Voltar Fase        | `VoltarFaseXxxActionButton`  | `ThgXxxNome`     | AUTOMATIC  | Retorna fase anterior            |
+| Enviar Notificacao | `NotificarXxxActionButton`   | `ThgXxxNome`     | AUTOMATIC  | Envia e-mail ao responsavel      |
 
 ---
 

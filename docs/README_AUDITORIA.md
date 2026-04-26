@@ -17,14 +17,14 @@ ISO 9001 clausula 9.2 (Auditoria interna).
 
 | Tabela | Instance | Descricao |
 |:-------|:---------|:----------|
-| THGQMGAUDTOR | QmAudAuditor | Cadastro de auditores |
-| THGQMGAUDPROG | QmAudPrograma | Programa anual de auditoria |
-| THGQMGAUD | QmAudRegistro | Registro da auditoria |
-| THGQMGAUDPLAN | QmAudPlano | Plano de auditoria (atividades) |
-| THGQMGAUDCHK | QmAudChecklist | Checklist por clausula |
-| THGQMGAUDCON | QmAudConstatacao | Constatacoes (NC Maior/Menor/OM) |
-| THGQMGAUDEVID | QmAudEvidencia | Evidencias (foto/doc/registro) |
-| THGQMGAUDPART | QmAudParticipante | Participantes (abertura/encerramento) |
+| THGQMGAUDTOR | ThgAudAuditor | Cadastro de auditores |
+| THGQMGAUDPROG | ThgAudPrograma | Programa anual de auditoria |
+| THGQMGAUD | ThgAudRegistro | Registro da auditoria |
+| THGQMGAUDPLAN | ThgAudPlano | Plano de auditoria (atividades) |
+| THGQMGAUDCHK | ThgAudChecklist | Checklist por clausula |
+| THGQMGAUDCON | ThgAudConstatacao | Constatacoes (NC Maior/Menor/OM) |
+| THGQMGAUDEVID | ThgAudEvidencia | Evidencias (foto/doc/registro) |
+| THGQMGAUDPART | ThgAudParticipante | Participantes (abertura/encerramento) |
 
 ## Tipos de Auditoria
 

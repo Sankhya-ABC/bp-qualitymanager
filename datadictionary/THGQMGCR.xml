@@ -8,7 +8,7 @@
             <field name="CODCR"/>
         </primaryKey>
         <instances>
-            <instance name="QmRncCausaRaiz">
+            <instance name="ThgRncCausaRaiz">
                 <description>Causa Raiz</description>
             </instance>
         </instances>

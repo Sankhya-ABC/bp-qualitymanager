@@ -5,7 +5,7 @@
     <table name="THGQMGHIST" sequenceType="A" sequenceField="CODHIST">
         <description>Historico Documento</description>
         <primaryKey><field name="CODHIST"/></primaryKey>
-        <instances><instance name="QmDocHistorico"><description>Historico Documento</description></instance></instances>
+        <instances><instance name="ThgDocHistorico"><description>Historico Documento</description></instance></instances>
         <fields>
             <field name="CODHIST" dataType="INTEIRO" readOnly="S" order="1" allowSearch="S" visibleOnSearch="S"><description>Cod. Hist</description></field>
             <field name="CODDOC" dataType="INTEIRO" required="S" readOnly="S" UITabName="__main" order="2" allowSearch="S" visibleOnSearch="S"><description>Cod. Doc</description></field>

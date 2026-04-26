@@ -5,7 +5,7 @@
     <table name="THGQMGFRESP" sequenceType="A" sequenceField="CODRESPTA">
         <description>Respostas do Questionario</description>
         <primaryKey><field name="CODRESPTA"/></primaryKey>
-        <instances><instance name="QmFornResposta"><description>Respostas do Questionario</description></instance></instances>
+        <instances><instance name="ThgFornResposta"><description>Respostas do Questionario</description></instance></instances>
         <fields>
             <field name="CODRESPTA" dataType="INTEIRO" readOnly="S" order="1" allowSearch="S" visibleOnSearch="S"><description>Cod. Resposta</description></field>
             <field name="CODQUAL" dataType="INTEIRO" required="S" UITabName="__main" order="2" allowSearch="S" visibleOnSearch="S"><description>Cod. Qualificacao</description></field>

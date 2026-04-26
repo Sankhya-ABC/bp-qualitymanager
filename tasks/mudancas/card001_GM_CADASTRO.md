@@ -16,15 +16,15 @@
 | Atributo  | Valor               |
 |:----------|:--------------------|
 | Nome      | `THGQMGGM`     |
-| Instancia | `QmGmCadastro`      |
+| Instancia | `ThgGmCadastro`      |
 | Sequencia | AUTO (`CODGM`)   |
 | Dual-DB   | Oracle + SQL Server |
 
 ### Instancias da tela
 | Instancia      | Tipo       | Descricao                                      |
 |:---------------|:-----------|:-----------------------------------------------|
-| `QmGmConsulta` | Lista/Grid | Visao de todas as mudancas com filtros         |
-| `QmGmCadastro` | Formulario | Formulario completo de registro da mudanca     |
+| `ThgGmConsulta` | Lista/Grid | Visao de todas as mudancas com filtros         |
+| `ThgGmCadastro` | Formulario | Formulario completo de registro da mudanca     |
 
 ---
 
@@ -53,9 +53,9 @@
 
 | Tabela filha          | Instancia filha     | Vinculo FK  | Descricao                                      |
 |:----------------------|:--------------------|:------------|:-----------------------------------------------|
-| `THGQMGGMACAO`         | `QmGmAcao`          | `CODGM`  | Acoes 5W2H — card GM-03                        |
-| `THGQMGGMRESP`  | `QmGmResponsavel`   | `CODGM`  | Aprovadores — card GM-06                       |
-| `THGQMGGMQUEST` | `QmGmQuestionario`  | `CODGM`  | Questionarios criados automaticamente — GM-04  |
+| `THGQMGGMACAO`         | `ThgGmAcao`          | `CODGM`  | Acoes 5W2H — card GM-03                        |
+| `THGQMGGMRESP`  | `ThgGmResponsavel`   | `CODGM`  | Aprovadores — card GM-06                       |
+| `THGQMGGMQUEST` | `ThgGmQuestionario`  | `CODGM`  | Questionarios criados automaticamente — GM-04  |
 
 ---
 
@@ -63,8 +63,8 @@
 
 | Botao        | Classe Java                    | Instancia      | Transacao | Descricao                                            |
 |:-------------|:-------------------------------|:---------------|:----------|:-----------------------------------------------------|
-| Mudar Fase   | `MudarFaseGmActionButton`      | `QmGmCadastro` | AUTOMATIC | Avanca para proxima fase. Cria questionarios auto nas fases 2, 4 e 5 |
-| Cancelar GM  | `CancelarGmActionButton`       | `QmGmCadastro` | AUTOMATIC | STATUS='X', encerra workflow, audit log              |
+| Mudar Fase   | `MudarFaseGmActionButton`      | `ThgGmCadastro` | AUTOMATIC | Avanca para proxima fase. Cria questionarios auto nas fases 2, 4 e 5 |
+| Cancelar GM  | `CancelarGmActionButton`       | `ThgGmCadastro` | AUTOMATIC | STATUS='X', encerra workflow, audit log              |
 
 ---
 
@@ -92,4 +92,4 @@
 - [ ] `model/.../services/FaseGmBusinessService.java`
 
 ### Menu
-- [ ] `datadictionary/menu.xml` — instancias QmGmConsulta e QmGmCadastro em pasta Gestao de Mudancas
+- [ ] `datadictionary/menu.xml` — instancias ThgGmConsulta e ThgGmCadastro em pasta Gestao de Mudancas

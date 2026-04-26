@@ -16,7 +16,7 @@
 | Atributo  | Valor                  |
 |:----------|:-----------------------|
 | Nome      | `THGQMGFORNDOC`   |
-| Instancia | `QmFornDocumento`      |
+| Instancia | `ThgFornDocumento`      |
 | Sequencia | AUTO (`CODDOCFORN`)     |
 | Dual-DB   | Oracle + SQL Server    |
 
@@ -42,7 +42,7 @@
 
 1. STATUS='E' quando DTVALIDADE < data atual — atualizado pelo ValidacaoFornecedoresJob diario
 2. Job envia notificacao via TSIAVI quando vencimento < DIASAVISO_DOC de THGQMGCFG
-3. Tabela e aba filha de QmFornQualificacao (card FORN-01)
+3. Tabela e aba filha de ThgFornQualificacao (card FORN-01)
 
 ---
 

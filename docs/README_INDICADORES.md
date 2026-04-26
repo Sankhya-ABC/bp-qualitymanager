@@ -14,12 +14,12 @@ ISO 9001 clausulas 9.1 (Monitoramento, medicao, analise e avaliacao) e 9.3 (Anal
 
 | Tabela | Instance | Descricao |
 |:-------|:---------|:----------|
-| THGQMGIND | QmIndIndicador | Cadastro de indicadores |
-| THGQMGMETA | QmIndMeta | Metas por periodo |
-| THGQMGMED | QmIndMedicao | Medicoes realizadas |
-| THGQMGATA | QmAcrAta | Ata de analise critica |
-| THGQMGENT | QmAcrEntrada | Entradas da analise critica |
-| THGQMGSAI | QmAcrSaida | Saidas/decisoes da analise critica |
+| THGQMGIND | ThgIndIndicador | Cadastro de indicadores |
+| THGQMGMETA | ThgIndMeta | Metas por periodo |
+| THGQMGMED | ThgIndMedicao | Medicoes realizadas |
+| THGQMGATA | ThgAcrAta | Ata de analise critica |
+| THGQMGENT | ThgAcrEntrada | Entradas da analise critica |
+| THGQMGSAI | ThgAcrSaida | Saidas/decisoes da analise critica |
 
 ## Tipos de Indicador
 

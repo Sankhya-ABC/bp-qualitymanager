@@ -15,15 +15,15 @@
 | Atributo  | Valor                  |
 |:----------|:-----------------------|
 | Nome      | `THGQMGIND`    |
-| Instancia | `QmIndIndicador`       |
+| Instancia | `ThgIndIndicador`       |
 | Sequencia | AUTO (`CODIND`)   |
 | Dual-DB   | Oracle + SQL Server    |
 
 ## Instancias
 | Instancia         | Tipo       | Descricao                                     |
 |:------------------|:-----------|:----------------------------------------------|
-| `QmIndConsulta`   | Lista/Grid | Visao de todos os indicadores cadastrados     |
-| `QmIndIndicador`  | Formulario | Formulario de cadastro e configuracao         |
+| `ThgIndConsulta`   | Lista/Grid | Visao de todos os indicadores cadastrados     |
+| `ThgIndIndicador`  | Formulario | Formulario de cadastro e configuracao         |
 
 ---
 
@@ -51,10 +51,10 @@
 ## Tabelas Filhas
 | Tabela              | Instancia filha  | Vinculo FK     | Descricao                            |
 |:--------------------|:-----------------|:---------------|:-------------------------------------|
-| `THGQMGMETA`      | `QmIndMeta`      | `CODIND`  | Metas por periodo — card IND-02      |
-| `THGQMGMED`   | `QmIndMedicao`   | `CODIND`  | Medicoes periodicas — card IND-03    |
+| `THGQMGMETA`      | `ThgIndMeta`      | `CODIND`  | Metas por periodo — card IND-02      |
+| `THGQMGMED`   | `ThgIndMedicao`   | `CODIND`  | Medicoes periodicas — card IND-03    |
 
 ## Artefatos
 - [ ] `datadictionary/THGQMGIND.xml` — 2 instancias, grupos Identificacao e Medicao
 - [ ] `dbscripts/V1.xml` — DDL THGQMGIND, Listener BI, sequence
-- [ ] `datadictionary/menu.xml` — QmIndConsulta e QmIndIndicador em pasta Indicadores
+- [ ] `datadictionary/menu.xml` — ThgIndConsulta e ThgIndIndicador em pasta Indicadores

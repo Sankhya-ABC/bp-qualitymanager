@@ -16,14 +16,14 @@
 | Atributo  | Valor                  |
 |:----------|:-----------------------|
 | Nome      | `THGQMGLOG`    |
-| Instancia | `QmLogAuditoria`       |
+| Instancia | `ThgLogAuditoria`       |
 | Sequencia | AUTO (`CODLOG`)         |
 | Dual-DB   | Oracle + SQL Server    |
 
 ### Instancias da tela
 | Instancia        | Tipo       | Descricao                                        |
 |:-----------------|:-----------|:-------------------------------------------------|
-| `QmLogAuditoria` | Lista/Grid | Consulta de eventos — somente leitura, sem edicao |
+| `ThgLogAuditoria` | Lista/Grid | Consulta de eventos — somente leitura, sem edicao |
 
 ---
 
@@ -82,13 +82,13 @@ Nenhum — tabela INSERT ONLY. Nenhuma acao do usuario e permitida.
 - [x] `dbscripts/V1.xml` — DDL THGQMGLOG, Listener BI, trigger TRG_THGQMGLOG_READONLY (bloqueia UPDATE/DELETE), sequence
 
 ### Dicionario de Dados
-- [x] `datadictionary/THGQMGLOG.xml` — instancia QmLogAuditoria, todos campos readOnly, aba Detalhe para valores
+- [x] `datadictionary/THGQMGLOG.xml` — instancia ThgLogAuditoria, todos campos readOnly, aba Detalhe para valores
 
 ### Backend Java
 - [ ] `model/.../services/AuditLogService.java` — service central: metodo registrar(modulo, entidade, idEntidade, acao, campoAlt, valAnt, valNovo, descricao)
 
 ### Menu
-- [ ] `datadictionary/menu.xml` — adicionar entrada QmLogAuditoria em pasta Configuracao (acesso restrito)
+- [ ] `datadictionary/menu.xml` — adicionar entrada ThgLogAuditoria em pasta Configuracao (acesso restrito)
 
 ---
 
@@ -96,5 +96,5 @@ Nenhum — tabela INSERT ONLY. Nenhuma acao do usuario e permitida.
 
 - Trigger TRG_THGQMGLOG_READONLY bloqueia UPDATE e DELETE com mensagem: `THGQMGLOG e INSERT ONLY`
 - AuditLogService deve ser injetado (@Inject) em todos os BusinessService do produto
-- instanceName: `QmLogAuditoria` — copiar exatamente do XML
+- instanceName: `ThgLogAuditoria` — copiar exatamente do XML
 - Evidencia direta da ISO 9001 clausula 7.5.3 — rastreabilidade de informacao documentada

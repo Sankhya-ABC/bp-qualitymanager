@@ -16,14 +16,14 @@
 | Atributo  | Valor                   |
 |:----------|:------------------------|
 | Nome      | `THGQMGPRIO`    |
-| Instancia | `QmDomPrioridade`       |
+| Instancia | `ThgDomPrioridade`       |
 | Sequencia | MANUAL (`CODPRIO`) |
 | Dual-DB   | Oracle + SQL Server     |
 
 ### Instancias da tela
 | Instancia          | Tipo       | Descricao                                  |
 |:-------------------|:-----------|:-------------------------------------------|
-| `QmDomPrioridade`  | Formulario | Cadastro de prioridades com prazo em dias  |
+| `ThgDomPrioridade`  | Formulario | Cadastro de prioridades com prazo em dias  |
 
 ---
 
@@ -64,10 +64,10 @@
 - [ ] `dbscripts/V1.xml` — DDL THGQMGPRIO + INSERT dados iniciais (executar=SEMPRE)
 
 ### Dicionario de Dados
-- [ ] `datadictionary/THGQMGPRIO.xml` — instancia QmDomPrioridade
+- [ ] `datadictionary/THGQMGPRIO.xml` — instancia ThgDomPrioridade
 
 ### Menu
-- [ ] `datadictionary/menu.xml` — adicionar QmDomPrioridade em pasta Configuracao
+- [ ] `datadictionary/menu.xml` — adicionar ThgDomPrioridade em pasta Configuracao
 
 ---
 
@@ -75,4 +75,4 @@
 
 - sequenceType=M (manual) — PK definida nos dados iniciais, nao gerada automaticamente
 - Referenciada em THGQMGREG via campo PRIORIDADE (LISTA com opcoes 1/2/3)
-- instanceName: `QmDomPrioridade` — copiar exatamente do XML
+- instanceName: `ThgDomPrioridade` — copiar exatamente do XML

@@ -16,12 +16,12 @@ ISO 9001 clausula 7.5 (Informacao documentada).
 
 | Tabela | Instance | Descricao |
 |:-------|:---------|:----------|
-| THGQMGDOC | QmDocControle | Documento principal |
-| THGQMGARQ | QmDocArquivo | Arquivos por versao |
-| THGQMGHIST | QmDocHistorico | Historico de status (read-only) |
-| THGQMGIMP | QmDocImpresso | Copias impressas |
-| THGQMGUSIMPR | QmDocUsuImpresso | Usuarios com copia impressa |
-| THGQMGPERM | QmDocPermissao | Permissoes por parceiro |
+| THGQMGDOC | ThgDocControle | Documento principal |
+| THGQMGARQ | ThgDocArquivo | Arquivos por versao |
+| THGQMGHIST | ThgDocHistorico | Historico de status (read-only) |
+| THGQMGIMP | ThgDocImpresso | Copias impressas |
+| THGQMGUSIMPR | ThgDocUsuImpresso | Usuarios com copia impressa |
+| THGQMGPERM | ThgDocPermissao | Permissoes por parceiro |
 
 ## Status do Documento
 

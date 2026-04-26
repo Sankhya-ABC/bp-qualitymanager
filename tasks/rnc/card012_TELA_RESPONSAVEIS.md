@@ -16,7 +16,7 @@
 | Atributo  | Valor                   |
 |:----------|:------------------------|
 | Nome      | `THGQMGRESP`    |
-| Instancia | `QmRncResponsavel`       |
+| Instancia | `ThgRncResponsavel`       |
 | Sequencia | AUTO (`CODRESP`)  |
 | Dual-DB   | Oracle + SQL Server     |
 
@@ -38,7 +38,7 @@
 
 | Botao              | Classe Java                    | Instancia          | Transacao | Descricao                                         |
 |:-------------------|:-------------------------------|:-------------------|:----------|:--------------------------------------------------|
-| Enviar Notificacao | `NotificarRncActionButton`     | `QmRncResponsavel`  | AUTOMATIC | Envia e-mail ao parceiro. Usa EMAIL de TGFPAR     |
+| Enviar Notificacao | `NotificarRncActionButton`     | `ThgRncResponsavel`  | AUTOMATIC | Envia e-mail ao parceiro. Usa EMAIL de TGFPAR     |
 
 ---
 
@@ -73,7 +73,7 @@
 - [ ] `dbscripts/V1.xml` — DDL THGQMGRESP, Listener BI, sequence
 
 ### Dicionario de Dados
-- [ ] `datadictionary/THGQMGRESP.xml` — instancia QmRncResponsavel, relacao com Parceiro
+- [ ] `datadictionary/THGQMGRESP.xml` — instancia ThgRncResponsavel, relacao com Parceiro
 
 ### Backend Java
 - [ ] `model/.../actionButtons/NotificarRncActionButton.java`

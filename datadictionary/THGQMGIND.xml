@@ -5,7 +5,7 @@
     <table name="THGQMGIND" sequenceType="A" sequenceField="CODIND">
         <description>Indicadores</description>
         <primaryKey><field name="CODIND"/></primaryKey>
-        <instances><instance name="QmIndIndicador"><description>Indicadores</description></instance></instances>
+        <instances><instance name="ThgIndIndicador"><description>Indicadores</description></instance></instances>
         <fields>
             <field name="CODIND" dataType="INTEIRO" readOnly="S" order="1" allowSearch="S" visibleOnSearch="S"><description>Cod.</description></field>
             <field name="CODIGO" dataType="TEXTO" size="20" UITabName="__main" order="2" allowSearch="S" visibleOnSearch="S"><description>Codigo</description></field>

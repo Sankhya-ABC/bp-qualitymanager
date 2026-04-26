@@ -13,7 +13,7 @@ import java.sql.Timestamp;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@JapeEntity(entity = "QmIndMeta", table = "THGQMGMETA")
+@JapeEntity(entity = "ThgIndMeta", table = "THGQMGMETA")
 public class MetaIndicador {
 
     @Id

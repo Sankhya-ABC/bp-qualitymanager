@@ -15,13 +15,13 @@ ISO 9001 clausula 8.4 (Controle de processos, produtos e servicos providos exter
 
 | Tabela | Instance | Descricao |
 |:-------|:---------|:----------|
-| THGQMGQUAL | QmFornQualificacao | Qualificacao do fornecedor (master) |
-| THGQMGCRIT | QmFornCriterio | Criterios de avaliacao (Qualidade 40%, Tecnico 30%, Prazo 20%, Seguranca 10%) |
-| THGQMGFORNDOC | QmFornDocumento | Certificados e documentos do fornecedor |
-| THGQMGFAVAL | QmFornAvaliacao | Avaliacoes periodicas com notas |
-| THGQMGFQUEST | QmFornQuestionario | Questionarios de qualificacao |
-| THGQMGFPERG | QmFornPergunta | Perguntas do questionario |
-| THGQMGFRESP | QmFornResposta | Respostas do fornecedor |
+| THGQMGQUAL | ThgFornQualificacao | Qualificacao do fornecedor (master) |
+| THGQMGCRIT | ThgFornCriterio | Criterios de avaliacao (Qualidade 40%, Tecnico 30%, Prazo 20%, Seguranca 10%) |
+| THGQMGFORNDOC | ThgFornDocumento | Certificados e documentos do fornecedor |
+| THGQMGFAVAL | ThgFornAvaliacao | Avaliacoes periodicas com notas |
+| THGQMGFQUEST | ThgFornQuestionario | Questionarios de qualificacao |
+| THGQMGFPERG | ThgFornPergunta | Perguntas do questionario |
+| THGQMGFRESP | ThgFornResposta | Respostas do fornecedor |
 
 **Extensao nativa:** TGFPAR + campo `QM_EMAILQUESTIONARIO` (e-mail especifico qualidade)
 

@@ -5,7 +5,7 @@
     <table name="THGQMGDOC" sequenceType="A" sequenceField="CODDOC">
         <description>Controle de Documentos</description>
         <primaryKey><field name="CODDOC"/></primaryKey>
-        <instances><instance name="QmDocControle"><description>Controle de Documentos</description></instance></instances>
+        <instances><instance name="ThgDocControle"><description>Controle de Documentos</description></instance></instances>
         <fields>
             <field name="CODDOC" dataType="INTEIRO" readOnly="S" order="1" allowSearch="S" visibleOnSearch="S"><description>Cod. Documento</description></field>
             <field name="CODIGODOC" dataType="TEXTO" size="50" UITabName="__main" order="2" allowSearch="S" visibleOnSearch="S"><description>Codigo</description></field>

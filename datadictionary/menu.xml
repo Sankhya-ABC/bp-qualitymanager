@@ -14,47 +14,47 @@
                 description="Registro de Nao Conformidades">
 
             <dynamicForm id="hagious.qualitymanager.rnc.consulta"
-                         instance="QmRncConsulta"
+                         instance="ThgRncConsulta"
                          description="Consulta de NCs"/>
 
             <dynamicForm id="hagious.qualitymanager.rnc.registro"
-                         instance="QmRncRegistro"
+                         instance="ThgRncRegistro"
                          description="01. Registro de NC"/>
 
             <dynamicForm id="hagious.qualitymanager.rnc.acaoimediata"
-                         instance="QmRncAcaoImediata"
+                         instance="ThgRncAcaoImediata"
                          description="02. Acoes Imediatas"/>
 
             <dynamicForm id="hagious.qualitymanager.rnc.causaraiz"
-                         instance="QmRncCausaRaiz"
+                         instance="ThgRncCausaRaiz"
                          description="03. Causa Raiz"/>
 
             <dynamicForm id="hagious.qualitymanager.rnc.abrangencia"
-                         instance="QmRncAbrangencia"
+                         instance="ThgRncAbrangencia"
                          description="04. Abrangencia"/>
 
             <dynamicForm id="hagious.qualitymanager.rnc.acaocorretiva"
-                         instance="QmRncAcaoCorretiva"
+                         instance="ThgRncAcaoCorretiva"
                          description="05. Acoes Corretivas"/>
 
             <dynamicForm id="hagious.qualitymanager.rnc.revisaodoc"
-                         instance="QmRncRevisaoDoc"
+                         instance="ThgRncRevisaoDoc"
                          description="06. Revisao de Documentos"/>
 
             <dynamicForm id="hagious.qualitymanager.rnc.risco"
-                         instance="QmRncRisco"
+                         instance="ThgRncRisco"
                          description="07. Riscos e Oportunidades"/>
 
             <dynamicForm id="hagious.qualitymanager.rnc.implementacao"
-                         instance="QmRncImplementacao"
+                         instance="ThgRncImplementacao"
                          description="08. Implementacao"/>
 
             <dynamicForm id="hagious.qualitymanager.rnc.liberacao"
-                         instance="QmRncLiberacao"
+                         instance="ThgRncLiberacao"
                          description="09. Liberacao de Produto"/>
 
             <dynamicForm id="hagious.qualitymanager.rnc.eficacia"
-                         instance="QmRncEficacia"
+                         instance="ThgRncEficacia"
                          description="10. Verificacao de Eficacia"/>
 
         </folder>
@@ -67,19 +67,19 @@
                 description="Fornecedores">
 
             <dynamicForm id="hagious.qualitymanager.forn.consulta"
-                         instance="QmFornConsulta"
+                         instance="ThgFornConsulta"
                          description="Consulta de Fornecedores"/>
 
             <dynamicForm id="hagious.qualitymanager.forn.qualificacao"
-                         instance="QmFornQualificacao"
+                         instance="ThgFornQualificacao"
                          description="Qualificacao"/>
 
             <dynamicForm id="hagious.qualitymanager.forn.criterios"
-                         instance="QmFornCriterio"
+                         instance="ThgFornCriterio"
                          description="Criterios de Avaliacao"/>
 
             <dynamicForm id="hagious.qualitymanager.forn.questionario"
-                         instance="QmFornQuestionario"
+                         instance="ThgFornQuestionario"
                          description="Questionarios"/>
 
         </folder>
@@ -92,7 +92,7 @@
                 description="Documentos">
 
             <dynamicForm id="hagious.qualitymanager.doc.controle"
-                         instance="QmDocControle"
+                         instance="ThgDocControle"
                          description="Controle de Documentos"/>
 
         </folder>
@@ -105,7 +105,7 @@
                 description="Gestao de Mudancas">
 
             <dynamicForm id="hagious.qualitymanager.gm.cadastro"
-                         instance="QmGmCadastro"
+                         instance="ThgGmCadastro"
                          description="Cadastro de Mudancas"/>
 
         </folder>
@@ -118,15 +118,15 @@
                 description="Auditoria">
 
             <dynamicForm id="hagious.qualitymanager.aud.programa"
-                         instance="QmAudPrograma"
+                         instance="ThgAudPrograma"
                          description="Programa de Auditoria"/>
 
             <dynamicForm id="hagious.qualitymanager.aud.registro"
-                         instance="QmAudRegistro"
+                         instance="ThgAudRegistro"
                          description="Registro de Auditoria"/>
 
             <dynamicForm id="hagious.qualitymanager.aud.auditores"
-                         instance="QmAudAuditor"
+                         instance="ThgAudAuditor"
                          description="Auditores"/>
 
         </folder>
@@ -139,11 +139,11 @@
                 description="Indicadores">
 
             <dynamicForm id="hagious.qualitymanager.ind.indicador"
-                         instance="QmIndIndicador"
+                         instance="ThgIndIndicador"
                          description="Indicadores"/>
 
             <dynamicForm id="hagious.qualitymanager.ind.ata"
-                         instance="QmAcrAta"
+                         instance="ThgAcrAta"
                          description="Analise Critica"/>
 
         </folder>
@@ -155,19 +155,19 @@
                 description="Configuracao">
 
             <dynamicForm id="hagious.qualitymanager.config.parametros"
-                         instance="QmConfig"
+                         instance="ThgConfig"
                          description="Configuracao"/>
 
             <dynamicForm id="hagious.qualitymanager.config.prioridades"
-                         instance="QmDomPrioridade"
+                         instance="ThgDomPrioridade"
                          description="Prioridades"/>
 
             <dynamicForm id="hagious.qualitymanager.config.fases"
-                         instance="QmRncFase"
+                         instance="ThgRncFase"
                          description="Fases RNC"/>
 
             <dynamicForm id="hagious.qualitymanager.config.log"
-                         instance="QmLogAuditoria"
+                         instance="ThgLogAuditoria"
                          description="Log de Auditoria"/>
 
         </folder>

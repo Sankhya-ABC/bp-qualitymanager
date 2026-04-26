@@ -5,7 +5,7 @@
     <table name="THGQMGSAI" sequenceType="A" sequenceField="CODSAIDA">
         <description>Saida ACR</description>
         <primaryKey><field name="CODSAIDA"/></primaryKey>
-        <instances><instance name="QmAcrSaida"><description>Saida ACR</description></instance></instances>
+        <instances><instance name="ThgAcrSaida"><description>Saida ACR</description></instance></instances>
         <fields>
             <field name="CODSAIDA" dataType="INTEIRO" readOnly="S" order="1" allowSearch="S" visibleOnSearch="S"><description>Cod.</description></field>
             <field name="CODACR" dataType="INTEIRO" required="S" readOnly="S" UITabName="__main" order="2" allowSearch="S" visibleOnSearch="S"><description>Cod. Ata</description></field>

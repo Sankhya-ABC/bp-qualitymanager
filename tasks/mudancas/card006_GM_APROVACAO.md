@@ -13,7 +13,7 @@
 | Atributo  | Valor                   |
 |:----------|:------------------------|
 | Nome      | `THGQMGGMRESP`    |
-| Instancia | `QmGmAprovacao`         |
+| Instancia | `ThgGmAprovacao`         |
 | Sequencia | AUTO (`CODRESPGM`)       |
 | Dual-DB   | Oracle + SQL Server     |
 
@@ -30,8 +30,8 @@
 ## Action Buttons
 | Botao      | Classe Java                              | Instancia       | Descricao                                  |
 |:-----------|:-----------------------------------------|:----------------|:-------------------------------------------|
-| Mudar Fase | `MudarFaseAprovacaoFinalActionButton`    | `QmGmAprovacao` | Todos aprovados -> STATUS GM='C', DTIMPL   |
-| Voltar Fase| `VoltarFaseAprovacaoFinalActionButton`   | `QmGmAprovacao` | Retorna para Fase 4 (Avaliacao Riscos)     |
+| Mudar Fase | `MudarFaseAprovacaoFinalActionButton`    | `ThgGmAprovacao` | Todos aprovados -> STATUS GM='C', DTIMPL   |
+| Voltar Fase| `VoltarFaseAprovacaoFinalActionButton`   | `ThgGmAprovacao` | Retorna para Fase 4 (Avaliacao Riscos)     |
 
 ## Regras de Negocio
 1. Multiplos aprovadores — TODOS devem ter STATUS='C' para a mudanca ser aprovada

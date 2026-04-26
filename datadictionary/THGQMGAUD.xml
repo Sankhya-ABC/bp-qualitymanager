@@ -5,7 +5,7 @@
     <table name="THGQMGAUD" sequenceType="A" sequenceField="CODAUD">
         <description>Registro Auditoria</description>
         <primaryKey><field name="CODAUD"/></primaryKey>
-        <instances><instance name="QmAudRegistro"><description>Registro Auditoria</description></instance></instances>
+        <instances><instance name="ThgAudRegistro"><description>Registro Auditoria</description></instance></instances>
         <fields>
             <field name="CODAUD" dataType="INTEIRO" readOnly="S" order="1" allowSearch="S" visibleOnSearch="S"><description>Cod.</description></field>
             <field name="NUMAUDITORIA" dataType="TEXTO" size="20" readOnly="S" isPresentation="S" UITabName="__main" order="2" allowSearch="S" visibleOnSearch="S"><description>Numero</description></field>

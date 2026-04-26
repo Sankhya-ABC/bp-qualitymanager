@@ -6,7 +6,7 @@ import br.com.sankhya.studio.persistence.PersistenceEventAdapter;
 import br.com.sankhya.studio.stereotypes.Component;
 import lombok.Log;
 
-import javax.inject.Inject;
+import com.google.inject.Inject;
 
 @Log
 @Component
@@ -21,7 +21,7 @@ public class QualificacaoScoreListener extends PersistenceEventAdapter {
 
     @Override
     public String getInstanceName() {
-        return "QmFornResposta";
+        return "ThgFornResposta";
     }
 
     @Override

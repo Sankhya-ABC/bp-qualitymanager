@@ -6,7 +6,7 @@
         <description>Criterios de Avaliacao</description>
         <primaryKey><field name="CODCRIT"/></primaryKey>
         <instances>
-            <instance name="QmFornCriterio"><description>Criterios de Avaliacao</description></instance>
+            <instance name="ThgFornCriterio"><description>Criterios de Avaliacao</description></instance>
         </instances>
         <fields>
             <field name="CODCRIT" dataType="INTEIRO" readOnly="S" order="1" allowSearch="S" visibleOnSearch="S"><description>Cod. Criterio</description></field>

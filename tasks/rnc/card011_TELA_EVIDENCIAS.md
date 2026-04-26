@@ -16,7 +16,7 @@
 | Atributo  | Valor                |
 |:----------|:---------------------|
 | Nome      | `THGQMGEVID`   |
-| Instancia | `QmRncEvidencia`      |
+| Instancia | `ThgRncEvidencia`      |
 | Sequencia | AUTO (`CODEVID`) |
 | Dual-DB   | Oracle + SQL Server  |
 

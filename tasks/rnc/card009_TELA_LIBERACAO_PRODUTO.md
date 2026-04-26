@@ -16,7 +16,7 @@
 | Atributo  | Valor                |
 |:----------|:---------------------|
 | Nome      | `THGQMGLIB`   |
-| Instancia | `QmRncLiberacao`      |
+| Instancia | `ThgRncLiberacao`      |
 | Sequencia | AUTO (`CODLIB`) |
 | Dual-DB   | Oracle + SQL Server  |
 
@@ -45,9 +45,9 @@
 
 | Botao        | Classe Java                        | Instancia        | Transacao | Descricao                                     |
 |:-------------|:-----------------------------------|:-----------------|:----------|:----------------------------------------------|
-| Mudar Fase   | `MudarFaseLiberacaoActionButton`   | `QmRncLiberacao`  | AUTOMATIC | Avanca RNC para Fase 10 (Verificacao Eficacia) |
-| Voltar Fase  | `VoltarFaseLiberacaoActionButton`  | `QmRncLiberacao`  | AUTOMATIC | Retorna RNC para Fase 8 (Implementacao)        |
-| Cancelar RNC | `CancelarRncLiberacaoActionButton` | `QmRncLiberacao`  | AUTOMATIC | Cancela a RNC (STATUS='C')                     |
+| Mudar Fase   | `MudarFaseLiberacaoActionButton`   | `ThgRncLiberacao`  | AUTOMATIC | Avanca RNC para Fase 10 (Verificacao Eficacia) |
+| Voltar Fase  | `VoltarFaseLiberacaoActionButton`  | `ThgRncLiberacao`  | AUTOMATIC | Retorna RNC para Fase 8 (Implementacao)        |
+| Cancelar RNC | `CancelarRncLiberacaoActionButton` | `ThgRncLiberacao`  | AUTOMATIC | Cancela a RNC (STATUS='C')                     |
 
 ---
 
@@ -75,4 +75,4 @@
 - [ ] `model/.../actionButtons/CancelarRncLiberacaoActionButton.java`
 
 ### Menu
-- [x] `datadictionary/menu.xml` — instancia QmRncLiberacao ja registrada como item 09
+- [x] `datadictionary/menu.xml` — instancia ThgRncLiberacao ja registrada como item 09

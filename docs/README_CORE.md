@@ -19,7 +19,7 @@ Tabelas transversais que suportam todos os modulos do QualityManager.
 | DIASAVISO_DOC | INTEIRO | Dias aviso doc a vencer (default 30) |
 | DIASRESP_FORN | INTEIRO | Prazo resposta fornecedor (default 10) |
 
-**Instance:** `QmConfig`
+**Instance:** `ThgConfig`
 
 ### THGQMGLOG — Log de Auditoria (INSERT ONLY)
 | Campo | Tipo | Descricao |
@@ -35,7 +35,7 @@ Tabelas transversais que suportam todos os modulos do QualityManager.
 | VALOR_NOVO | TEXTO(2000) | Valor depois |
 | DESCRICAO | TEXTO(500) | Contexto legivel |
 
-**Instance:** `QmLogAuditoria` — somente leitura, INSERT via `AuditLogService`
+**Instance:** `ThgLogAuditoria` — somente leitura, INSERT via `AuditLogService`
 
 ### THGQMGPRIO — Prioridades (Dominio)
 | CODPRIO | DESCRICAO | PRAZODIAS |
@@ -44,12 +44,12 @@ Tabelas transversais que suportam todos os modulos do QualityManager.
 | 2 | Prioritario | 15 dias |
 | 3 | Critico | 5 dias |
 
-**Instance:** `QmDomPrioridade` — sequenceType=M (manual)
+**Instance:** `ThgDomPrioridade` — sequenceType=M (manual)
 
 ### THGQMGRNCFASE — Fases RNC (Dominio)
 10 fases do workflow RNC: Registro, Acoes Imediatas, Causa Raiz, Abrangencia, Acoes Corretivas, Revisao Documentos, Riscos/Oportunidades, Implementacao, Liberacao Produto, Verificacao Eficacia.
 
-**Instance:** `QmRncFase` — sequenceType=M (manual), fases desativaveis (ATIVO=N)
+**Instance:** `ThgRncFase` — sequenceType=M (manual), fases desativaveis (ATIVO=N)
 
 ## Services
 

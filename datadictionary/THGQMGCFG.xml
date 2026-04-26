@@ -8,7 +8,7 @@
             <field name="CODCFG"/>
         </primaryKey>
         <instances>
-            <instance name="QmConfig">
+            <instance name="ThgConfig">
                 <description>Configuracao</description>
             </instance>
         </instances>

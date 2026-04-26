@@ -6,13 +6,13 @@
         <description>Qualificacao de Fornecedor</description>
         <primaryKey><field name="CODQUAL"/></primaryKey>
         <instances>
-            <instance name="QmFornConsulta"><description>Consulta de Fornecedores</description></instance>
-            <instance name="QmFornQualificacao">
+            <instance name="ThgFornConsulta"><description>Consulta de Fornecedores</description></instance>
+            <instance name="ThgFornQualificacao">
                 <description>Qualificacao de Fornecedor</description>
                 <relationShip>
-                    <relation entityName="QmFornDocumento"><fields><field localName="CODQUAL" targetName="CODQUAL"/></fields></relation>
-                    <relation entityName="QmFornAvaliacao"><fields><field localName="CODQUAL" targetName="CODQUAL"/></fields></relation>
-                    <relation entityName="QmFornResposta"><fields><field localName="CODQUAL" targetName="CODQUAL"/></fields></relation>
+                    <relation entityName="ThgFornDocumento"><fields><field localName="CODQUAL" targetName="CODQUAL"/></fields></relation>
+                    <relation entityName="ThgFornAvaliacao"><fields><field localName="CODQUAL" targetName="CODQUAL"/></fields></relation>
+                    <relation entityName="ThgFornResposta"><fields><field localName="CODQUAL" targetName="CODQUAL"/></fields></relation>
                 </relationShip>
             </instance>
         </instances>

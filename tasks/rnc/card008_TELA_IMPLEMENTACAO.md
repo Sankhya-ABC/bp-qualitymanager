@@ -16,7 +16,7 @@
 | Atributo  | Valor                   |
 |:----------|:------------------------|
 | Nome      | `THGQMGIMPL`  |
-| Instancia | `QmRncImplementacao`     |
+| Instancia | `ThgRncImplementacao`     |
 | Sequencia | AUTO (`CODIMPL`)|
 | Dual-DB   | Oracle + SQL Server     |
 
@@ -42,7 +42,7 @@
 
 | Tabela filha     | Instancia filha   | Vinculo FK        | Descricao                                            |
 |:-----------------|:------------------|:------------------|:-----------------------------------------------------|
-| `THGQMGEVID`| `QmRncEvidencia`  | `CODRNC` + ORIGEM=2 | Evidencias de implementacao (ORIGEM=2 nesta fase)    |
+| `THGQMGEVID`| `ThgRncEvidencia`  | `CODRNC` + ORIGEM=2 | Evidencias de implementacao (ORIGEM=2 nesta fase)    |
 
 ---
 
@@ -50,10 +50,10 @@
 
 | Botao              | Classe Java                           | Instancia           | Transacao | Descricao                                       |
 |:-------------------|:--------------------------------------|:--------------------|:----------|:------------------------------------------------|
-| Mudar Fase         | `MudarFaseImplementacaoActionButton`  | `QmRncImplementacao` | AUTOMATIC | Avanca RNC para Fase 9 (Liberacao de Produto)   |
-| Voltar Fase        | `VoltarFaseImplementacaoActionButton` | `QmRncImplementacao` | AUTOMATIC | Retorna RNC para Fase 7 (Riscos)                |
-| Cancelar RNC       | `CancelarRncImplementacaoActionButton`| `QmRncImplementacao` | AUTOMATIC | Cancela a RNC (STATUS='C')                      |
-| Enviar Notificacao | `NotificarImplementacaoActionButton`  | `QmRncImplementacao` | AUTOMATIC | Envia e-mail ao responsavel                     |
+| Mudar Fase         | `MudarFaseImplementacaoActionButton`  | `ThgRncImplementacao` | AUTOMATIC | Avanca RNC para Fase 9 (Liberacao de Produto)   |
+| Voltar Fase        | `VoltarFaseImplementacaoActionButton` | `ThgRncImplementacao` | AUTOMATIC | Retorna RNC para Fase 7 (Riscos)                |
+| Cancelar RNC       | `CancelarRncImplementacaoActionButton`| `ThgRncImplementacao` | AUTOMATIC | Cancela a RNC (STATUS='C')                      |
+| Enviar Notificacao | `NotificarImplementacaoActionButton`  | `ThgRncImplementacao` | AUTOMATIC | Envia e-mail ao responsavel                     |
 
 ---
 
@@ -81,4 +81,4 @@
 - [ ] `model/.../actionButtons/NotificarImplementacaoActionButton.java`
 
 ### Menu
-- [x] `datadictionary/menu.xml` — instancia QmRncImplementacao ja registrada como item 08
+- [x] `datadictionary/menu.xml` — instancia ThgRncImplementacao ja registrada como item 08

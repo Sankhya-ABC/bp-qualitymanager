@@ -5,7 +5,7 @@
     <table name="THGQMGAUDEVID" sequenceType="A" sequenceField="CODEVAUD">
         <description>Evidencia Aud</description>
         <primaryKey><field name="CODEVAUD"/></primaryKey>
-        <instances><instance name="QmAudEvidencia"><description>Evidencia Aud</description></instance></instances>
+        <instances><instance name="ThgAudEvidencia"><description>Evidencia Aud</description></instance></instances>
         <fields>
             <field name="CODEVAUD" dataType="INTEIRO" readOnly="S" order="1" allowSearch="S" visibleOnSearch="S"><description>Cod.</description></field>
             <field name="CODAUD" dataType="INTEIRO" required="S" readOnly="S" UITabName="__main" order="2" allowSearch="S" visibleOnSearch="S"><description>Cod. Aud</description></field>

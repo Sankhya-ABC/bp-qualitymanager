@@ -8,7 +8,7 @@
             <field name="CODLOG"/>
         </primaryKey>
         <instances>
-            <instance name="QmLogAuditoria">
+            <instance name="ThgLogAuditoria">
                 <description>Log de Auditoria</description>
             </instance>
         </instances>

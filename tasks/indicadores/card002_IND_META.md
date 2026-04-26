@@ -13,7 +13,7 @@
 | Atributo  | Valor               |
 |:----------|:--------------------|
 | Nome      | `THGQMGMETA`      |
-| Instancia | `QmIndMeta`         |
+| Instancia | `ThgIndMeta`         |
 | Sequencia | AUTO (`CODMETA`)     |
 | Dual-DB   | Oracle + SQL Server |
 
@@ -39,4 +39,4 @@
 ## Artefatos
 - [ ] `datadictionary/THGQMGMETA.xml`
 - [ ] `dbscripts/V1.xml` — DDL THGQMGMETA
-- [ ] `model/.../listeners/MedicaoIndicadorListener.java` — instanceName: `QmIndMedicao`
+- [ ] `model/.../listeners/MedicaoIndicadorListener.java` — instanceName: `ThgIndMedicao`

@@ -5,7 +5,7 @@
     <table name="THGQMGIMP" sequenceType="A" sequenceField="CODIMP">
         <description>Copia Impressa</description>
         <primaryKey><field name="CODIMP"/></primaryKey>
-        <instances><instance name="QmDocImpresso"><description>Copia Impressa</description></instance></instances>
+        <instances><instance name="ThgDocImpresso"><description>Copia Impressa</description></instance></instances>
         <fields>
             <field name="CODIMP" dataType="INTEIRO" readOnly="S" order="1" allowSearch="S" visibleOnSearch="S"><description>Cod. Imp</description></field>
             <field name="CODDOC" dataType="INTEIRO" required="S" readOnly="S" UITabName="__main" order="2" allowSearch="S" visibleOnSearch="S"><description>Cod. Doc</description></field>

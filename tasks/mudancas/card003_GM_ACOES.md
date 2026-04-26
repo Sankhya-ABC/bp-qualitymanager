@@ -12,8 +12,8 @@
 ## Tabelas
 | Tabela         | Instancia    | Sequencia    | Descricao                           |
 |:---------------|:-------------|:-------------|:------------------------------------|
-| `THGQMGGMACAO`  | `QmGmAcao`   | `CODACAOGM`   | Acao 5W2H necessaria para a mudanca |
-| `THGQMGGMQUEM`  | `QmGmQuem`   | `CODQUEMGM`   | Responsaveis da acao                |
+| `THGQMGGMACAO`  | `ThgGmAcao`   | `CODACAOGM`   | Acao 5W2H necessaria para a mudanca |
+| `THGQMGGMQUEM`  | `ThgGmQuem`   | `CODQUEMGM`   | Responsaveis da acao                |
 
 ## Campos — THGQMGGMACAO
 | # | Rotulo        | Coluna       | Tipo      | Tam | Obrig | Opcoes                                          |
@@ -40,8 +40,8 @@
 ## Action Buttons
 | Botao      | Classe Java                          | Instancia  | Descricao                               |
 |:-----------|:-------------------------------------|:-----------|:----------------------------------------|
-| Mudar Fase | `MudarFaseAcoesMudancaActionButton`  | `QmGmAcao` | Avanca GM para Fase 4 (Avaliacao Riscos)|
-| Voltar Fase| `VoltarFaseAcoesMudancaActionButton` | `QmGmAcao` | Retorna GM para Fase 2                  |
+| Mudar Fase | `MudarFaseAcoesMudancaActionButton`  | `ThgGmAcao` | Avanca GM para Fase 4 (Avaliacao Riscos)|
+| Voltar Fase| `VoltarFaseAcoesMudancaActionButton` | `ThgGmAcao` | Retorna GM para Fase 2                  |
 
 ## Artefatos
 - [ ] `datadictionary/THGQMGGMACAO.xml`

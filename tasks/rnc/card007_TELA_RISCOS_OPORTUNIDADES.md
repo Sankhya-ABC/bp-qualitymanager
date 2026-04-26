@@ -16,7 +16,7 @@
 | Atributo  | Valor               |
 |:----------|:--------------------|
 | Nome      | `THGQMGRISCO`      |
-| Instancia | `QmRncRisco`         |
+| Instancia | `ThgRncRisco`         |
 | Sequencia | AUTO (`CODRISCO`)    |
 | Dual-DB   | Oracle + SQL Server |
 
@@ -46,9 +46,9 @@
 
 | Botao        | Classe Java                         | Instancia   | Transacao | Descricao                                |
 |:-------------|:------------------------------------|:------------|:----------|:-----------------------------------------|
-| Mudar Fase   | `MudarFaseRiscoActionButton`        | `QmRncRisco` | AUTOMATIC | Avanca RNC para Fase 8 (Implementacao)   |
-| Voltar Fase  | `VoltarFaseRiscoActionButton`       | `QmRncRisco` | AUTOMATIC | Retorna RNC para Fase 6 (Revisao Doc)    |
-| Cancelar RNC | `CancelarRncRiscoActionButton`      | `QmRncRisco` | AUTOMATIC | Cancela a RNC (STATUS='C')               |
+| Mudar Fase   | `MudarFaseRiscoActionButton`        | `ThgRncRisco` | AUTOMATIC | Avanca RNC para Fase 8 (Implementacao)   |
+| Voltar Fase  | `VoltarFaseRiscoActionButton`       | `ThgRncRisco` | AUTOMATIC | Retorna RNC para Fase 6 (Revisao Doc)    |
+| Cancelar RNC | `CancelarRncRiscoActionButton`      | `ThgRncRisco` | AUTOMATIC | Cancela a RNC (STATUS='C')               |
 
 ---
 
@@ -76,4 +76,4 @@
 - [ ] `model/.../actionButtons/CancelarRncRiscoActionButton.java`
 
 ### Menu
-- [x] `datadictionary/menu.xml` — instancia QmRncRisco ja registrada como item 07
+- [x] `datadictionary/menu.xml` — instancia ThgRncRisco ja registrada como item 07

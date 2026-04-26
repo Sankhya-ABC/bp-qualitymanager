@@ -5,7 +5,7 @@
     <table name="THGQMGMETA" sequenceType="A" sequenceField="CODMETA">
         <description>Meta</description>
         <primaryKey><field name="CODMETA"/></primaryKey>
-        <instances><instance name="QmIndMeta"><description>Meta</description></instance></instances>
+        <instances><instance name="ThgIndMeta"><description>Meta</description></instance></instances>
         <fields>
             <field name="CODMETA" dataType="INTEIRO" readOnly="S" order="1" allowSearch="S" visibleOnSearch="S"><description>Cod.</description></field>
             <field name="CODIND" dataType="INTEIRO" required="S" readOnly="S" UITabName="__main" order="2" allowSearch="S" visibleOnSearch="S"><description>Cod. Ind</description></field>

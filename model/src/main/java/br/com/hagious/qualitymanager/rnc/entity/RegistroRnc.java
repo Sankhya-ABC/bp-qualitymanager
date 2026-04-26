@@ -17,7 +17,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@JapeEntity(entity = "QmRncRegistro", table = "THGQMGREG")
+@JapeEntity(entity = "ThgRncRegistro", table = "THGQMGREG")
 public class RegistroRnc {
 
     @Id

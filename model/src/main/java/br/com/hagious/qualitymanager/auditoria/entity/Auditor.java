@@ -13,7 +13,7 @@ import java.sql.Timestamp;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@JapeEntity(entity = "QmAudAuditor", table = "THGQMGAUDTOR")
+@JapeEntity(entity = "ThgAudAuditor", table = "THGQMGAUDTOR")
 public class Auditor {
 
     @Id

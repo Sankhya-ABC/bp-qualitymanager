@@ -13,7 +13,7 @@
 | Atributo  | Valor               |
 |:----------|:--------------------|
 | Nome      | `THGQMGGMFASE`       |
-| Instancia | `QmGmFase`          |
+| Instancia | `ThgGmFase`          |
 | Sequencia | MANUAL (`CODFASEGM`) |
 | Dual-DB   | Oracle + SQL Server |
 

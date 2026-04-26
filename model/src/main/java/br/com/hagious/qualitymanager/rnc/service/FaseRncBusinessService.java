@@ -11,7 +11,7 @@ import br.com.hagious.qualitymanager.rnc.repository.RegistroRncRepository;
 import br.com.sankhya.studio.stereotypes.Component;
 import lombok.Log;
 
-import javax.inject.Inject;
+import com.google.inject.Inject;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.List;

@@ -13,15 +13,15 @@
 | Atributo  | Valor                  |
 |:----------|:-----------------------|
 | Nome      | `THGQMGAUD`    |
-| Instancia | `QmAudRegistro`        |
+| Instancia | `ThgAudRegistro`        |
 | Sequencia | AUTO (`CODAUD`)   |
 | Dual-DB   | Oracle + SQL Server    |
 
 ## Instancias
 | Instancia        | Tipo       | Descricao                                    |
 |:-----------------|:-----------|:---------------------------------------------|
-| `QmAudConsulta`  | Lista/Grid | Visao de todas as auditorias                 |
-| `QmAudRegistro`  | Formulario | Formulario completo da auditoria             |
+| `ThgAudConsulta`  | Lista/Grid | Visao de todas as auditorias                 |
+| `ThgAudRegistro`  | Formulario | Formulario completo da auditoria             |
 
 ## Campos
 | # | Rotulo           | Coluna          | Tipo      | Tam | Obrig | Aba    | Grupo | Opcoes / Comportamento                                              |
@@ -33,7 +33,7 @@
 | 5 | Escopo           | `ESCOPO`        | TEXTO     | 500 | Sim   | __main | -     | Descricao do escopo                                                 |
 | 6 | Processo         | `PROCESSO`      | TEXTO     | 200 | Sim   | __main | -     | Processo ou area sendo auditada                                     |
 | 7 | Status           | `STATUS`        | LISTA     | 1   | Nao   | __main | -     | readOnly. P=Planejada, A=Em andamento, C=Concluida, X=Cancelada     |
-| 8 | Auditor Lider    | `CODAUDTOR`     | PESQUISA  | -   | Sim   | __main | -     | targetInstance=QmAudAuditor                                         |
+| 8 | Auditor Lider    | `CODAUDTOR`     | PESQUISA  | -   | Sim   | __main | -     | targetInstance=ThgAudAuditor                                         |
 | 9 | Empresa Auditada | `CODEMP`        | PESQUISA  | -   | Nao   | __main | -     | targetInstance=Empresa                                              |
 | 10| Data Prevista    | `DTPREVISTA`    | DATA_HORA | -   | Nao   | __main | Datas | Data planejada para execucao                                        |
 | 11| Data Inicio      | `DTINICIO`      | DATA_HORA | -   | Nao   | __main | Datas | readOnly. Data real de inicio                                       |
@@ -45,10 +45,10 @@
 ## Tabelas Filhas
 | Tabela                  | Instancia filha       | Vinculo FK     | Descricao                     |
 |:------------------------|:----------------------|:---------------|:------------------------------|
-| `THGQMGAUDPLAN`         | `QmAudPlano`          | `CODAUD`  | Plano de auditoria — AUD-03   |
-| `THGQMGAUDCON`   | `QmAudConstatacao`    | `CODAUD`  | Constatacoes — AUD-05         |
-| `THGQMGAUDEVID`     | `QmAudEvidencia`      | `CODAUD`  | Evidencias — AUD-06           |
-| `THGQMGAUDPART`  | `QmAudParticipante`   | `CODAUD`  | Participantes — AUD-07        |
+| `THGQMGAUDPLAN`         | `ThgAudPlano`          | `CODAUD`  | Plano de auditoria — AUD-03   |
+| `THGQMGAUDCON`   | `ThgAudConstatacao`    | `CODAUD`  | Constatacoes — AUD-05         |
+| `THGQMGAUDEVID`     | `ThgAudEvidencia`      | `CODAUD`  | Evidencias — AUD-06           |
+| `THGQMGAUDPART`  | `ThgAudParticipante`   | `CODAUD`  | Participantes — AUD-07        |
 
 ## Vinculo critico com Modulo RNC
 - Campo `CODAUD` adicionado em `THGQMGREG` para rastreabilidade bidirecional
@@ -59,4 +59,4 @@
 ## Artefatos
 - [ ] `datadictionary/THGQMGAUD.xml` — 2 instancias
 - [ ] `dbscripts/V1.xml` — DDL THGQMGAUD, Listener BI (NUMAUDITORIA AUD-YYYY-NNNN)
-- [ ] `datadictionary/menu.xml` — QmAudConsulta e QmAudRegistro em pasta Auditoria
+- [ ] `datadictionary/menu.xml` — ThgAudConsulta e ThgAudRegistro em pasta Auditoria

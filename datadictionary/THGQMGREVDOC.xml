@@ -8,7 +8,7 @@
             <field name="CODREVDOC"/>
         </primaryKey>
         <instances>
-            <instance name="QmRncRevisaoDoc">
+            <instance name="ThgRncRevisaoDoc">
                 <description>Revisao de Documentos</description>
             </instance>
         </instances>

@@ -8,7 +8,7 @@
             <field name="CODFASE"/>
         </primaryKey>
         <instances>
-            <instance name="QmRncFase">
+            <instance name="ThgRncFase">
                 <description>Fases RNC</description>
             </instance>
         </instances>

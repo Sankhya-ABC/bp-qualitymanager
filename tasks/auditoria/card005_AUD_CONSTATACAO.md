@@ -13,7 +13,7 @@
 | Atributo  | Valor                    |
 |:----------|:-------------------------|
 | Nome      | `THGQMGAUDCON`    |
-| Instancia | `QmAudConstatacao`       |
+| Instancia | `ThgAudConstatacao`       |
 | Sequencia | AUTO (`CODCONST`)   |
 | Dual-DB   | Oracle + SQL Server      |
 
@@ -33,7 +33,7 @@
 ## Action Buttons
 | Botao     | Classe Java                       | Instancia          | Descricao                                                       |
 |:----------|:----------------------------------|:-------------------|:----------------------------------------------------------------|
-| Abrir NC  | `AbrirRncDeAuditoriaActionButton`  | `QmAudConstatacao` | TIPO=NM/MA: cria RNC com ORIGEM='A', CODAUD, prioridade auto |
+| Abrir NC  | `AbrirRncDeAuditoriaActionButton`  | `ThgAudConstatacao` | TIPO=NM/MA: cria RNC com ORIGEM='A', CODAUD, prioridade auto |
 
 ## Regras de Negocio
 1. TIPO=CF ou OB: sem NC automatica

@@ -18,15 +18,15 @@
 | Atributo  | Valor                  |
 |:----------|:-----------------------|
 | Nome      | `THGQMGDOC`     |
-| Instancia | `QmDocControle`        |
+| Instancia | `ThgDocControle`        |
 | Sequencia | AUTO (`CODDOC`)   |
 | Dual-DB   | Oracle + SQL Server    |
 
 ### Instancias da tela
 | Instancia       | Tipo       | Descricao                                  |
 |:----------------|:-----------|:-------------------------------------------|
-| `QmDocConsulta` | Lista/Grid | Visao de todos os documentos com filtros   |
-| `QmDocControle` | Formulario | Formulario completo de cadastro e gestao   |
+| `ThgDocConsulta` | Lista/Grid | Visao de todos os documentos com filtros   |
+| `ThgDocControle` | Formulario | Formulario completo de cadastro e gestao   |
 
 ---
 
@@ -55,9 +55,9 @@
 
 | Tabela filha         | Instancia filha     | Vinculo FK    | Descricao                              |
 |:---------------------|:--------------------|:--------------|:---------------------------------------|
-| `THGQMGARQ`    | `QmDocArquivo`      | `CODDOC` | Versoes fisicas — card DOC-02          |
-| `THGQMGHIST`  | `QmDocHistorico`    | `CODDOC` | Trilha de aprovacao — card DOC-03      |
-| `THGQMGIMP`   | `QmDocImpresso`     | `CODDOC` | Copias fisicas — card DOC-04           |
+| `THGQMGARQ`    | `ThgDocArquivo`      | `CODDOC` | Versoes fisicas — card DOC-02          |
+| `THGQMGHIST`  | `ThgDocHistorico`    | `CODDOC` | Trilha de aprovacao — card DOC-03      |
+| `THGQMGIMP`   | `ThgDocImpresso`     | `CODDOC` | Copias fisicas — card DOC-04           |
 
 ---
 
@@ -65,9 +65,9 @@
 
 | Botao               | Classe Java                        | Instancia       | Transacao | Descricao                               |
 |:--------------------|:-----------------------------------|:----------------|:----------|:----------------------------------------|
-| Marcar como Revisado| `MarcarRevisadoDocActionButton`    | `QmDocControle` | AUTOMATIC | STATUS P->R. Valida se tem arquivo      |
-| Aprovar Documento   | `AprovarDocumentoActionButton`     | `QmDocControle` | AUTOMATIC | STATUS R->A. Apenas documentos revisados|
-| Marcar Obsoleto     | `ObsoletoDocumentoActionButton`    | `QmDocControle` | AUTOMATIC | STATUS A->O. Bloqueia impressao         |
+| Marcar como Revisado| `MarcarRevisadoDocActionButton`    | `ThgDocControle` | AUTOMATIC | STATUS P->R. Valida se tem arquivo      |
+| Aprovar Documento   | `AprovarDocumentoActionButton`     | `ThgDocControle` | AUTOMATIC | STATUS R->A. Apenas documentos revisados|
+| Marcar Obsoleto     | `ObsoletoDocumentoActionButton`    | `ThgDocControle` | AUTOMATIC | STATUS A->O. Bloqueia impressao         |
 
 ---
 
@@ -97,4 +97,4 @@
 - [ ] `model/.../services/AtualizaDocumentosService.java`
 
 ### Menu
-- [ ] `datadictionary/menu.xml` — instancias QmDocConsulta e QmDocControle em pasta Documentos
+- [ ] `datadictionary/menu.xml` — instancias ThgDocConsulta e ThgDocControle em pasta Documentos

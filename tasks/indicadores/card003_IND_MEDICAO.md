@@ -13,7 +13,7 @@
 | Atributo  | Valor                |
 |:----------|:---------------------|
 | Nome      | `THGQMGMED`    |
-| Instancia | `QmIndMedicao`       |
+| Instancia | `ThgIndMedicao`       |
 | Sequencia | AUTO (`CODMEDICAO`)   |
 | Dual-DB   | Oracle + SQL Server  |
 
@@ -31,7 +31,7 @@
 ## Regras de Negocio
 1. Apos INSERT: MedicaoIndicadorListener atualiza THGQMGMETA.REALIZADO e ATINGIMENTO
 2. Historico de medicoes gera a tendencia no dashboard IND-05
-3. instanceName do listener: `QmIndMedicao` — copiar EXATAMENTE do XML
+3. instanceName do listener: `ThgIndMedicao` — copiar EXATAMENTE do XML
 
 ## Artefatos
 - [ ] `datadictionary/THGQMGMED.xml`

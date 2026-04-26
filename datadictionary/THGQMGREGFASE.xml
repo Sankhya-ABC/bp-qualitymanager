@@ -6,7 +6,7 @@
         <description>Historico de Fases RNC</description>
         <primaryKey><field name="CODREGFASE"/></primaryKey>
         <instances>
-            <instance name="QmRncRegFase"><description>Historico de Fases RNC</description></instance>
+            <instance name="ThgRncRegFase"><description>Historico de Fases RNC</description></instance>
         </instances>
         <fields>
             <field name="CODREGFASE" dataType="INTEIRO" readOnly="S" order="1" allowSearch="S" visibleOnSearch="S"><description>Cod. Registro Fase</description></field>

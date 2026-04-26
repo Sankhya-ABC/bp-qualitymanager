@@ -5,7 +5,7 @@
     <table name="THGQMGFAVAL" sequenceType="A" sequenceField="CODAVAL">
         <description>Avaliacao de Fornecedor</description>
         <primaryKey><field name="CODAVAL"/></primaryKey>
-        <instances><instance name="QmFornAvaliacao"><description>Avaliacao de Fornecedor</description></instance></instances>
+        <instances><instance name="ThgFornAvaliacao"><description>Avaliacao de Fornecedor</description></instance></instances>
         <fields>
             <field name="CODAVAL" dataType="INTEIRO" readOnly="S" order="1" allowSearch="S" visibleOnSearch="S"><description>Cod. Avaliacao</description></field>
             <field name="CODQUAL" dataType="INTEIRO" required="S" readOnly="S" UITabName="__main" order="2" allowSearch="S" visibleOnSearch="S"><description>Cod. Qualificacao</description></field>

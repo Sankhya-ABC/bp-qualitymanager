@@ -13,7 +13,7 @@
 | Atributo  | Valor               |
 |:----------|:--------------------|
 | Nome      | `THGQMGAUDPLAN`     |
-| Instancia | `QmAudPlano`        |
+| Instancia | `ThgAudPlano`        |
 | Sequencia | AUTO (`CODPLAN`)    |
 | Dual-DB   | Oracle + SQL Server |
 

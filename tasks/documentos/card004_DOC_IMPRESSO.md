@@ -15,8 +15,8 @@
 
 | Tabela                 | Instancia           | Sequencia      | Descricao                           |
 |:-----------------------|:--------------------|:---------------|:------------------------------------|
-| `THGQMGIMP`     | `QmDocImpresso`     | `CODIMP`   | Emissao de copia fisica controlada  |
-| `THGQMGUSIMPR` | `QmDocUsuImpresso`  | `CODIMPUSU`    | Usuarios que receberam copias       |
+| `THGQMGIMP`     | `ThgDocImpresso`     | `CODIMP`   | Emissao de copia fisica controlada  |
+| `THGQMGUSIMPR` | `ThgDocUsuImpresso`  | `CODIMPUSU`    | Usuarios que receberam copias       |
 
 ---
 
@@ -46,7 +46,7 @@
 
 1. Documento com STATUS='O' (Obsoleto) nao pode gerar novo impresso — validacao no action button
 2. Rastreabilidade ISO 7.5.3a — saber quantas copias existem fisicamente e com quem
-3. Tela e aba filha de QmDocControle (card DOC-01)
+3. Tela e aba filha de ThgDocControle (card DOC-01)
 
 ---
 

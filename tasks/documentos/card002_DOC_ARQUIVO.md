@@ -16,7 +16,7 @@
 | Atributo  | Valor                |
 |:----------|:---------------------|
 | Nome      | `THGQMGARQ`    |
-| Instancia | `QmDocArquivo`       |
+| Instancia | `ThgDocArquivo`       |
 | Sequencia | AUTO (`CODARQ`)   |
 | Dual-DB   | Oracle + SQL Server  |
 
@@ -42,7 +42,7 @@
 1. Pode existir multiplas versoes por documento — historico de versoes fica nesta tabela
 2. Versao mais recente define o VERSAOATUAL em THGQMGDOC ao ser aprovada
 3. Campo ARQUIVO usa dataType=ARQUIVO — armazenado no servidor de arquivos Sankhya
-4. Tela e aba filha de QmDocControle (card DOC-01)
+4. Tela e aba filha de ThgDocControle (card DOC-01)
 
 ---
 

@@ -12,9 +12,9 @@
 ## Tabelas
 | Tabela             | Instancia      | Sequencia      | Descricao                                  |
 |:-------------------|:---------------|:---------------|:-------------------------------------------|
-| `THGQMGATA`      | `QmAcrAta`     | `CODACR`        | Ata da analise critica pela direcao        |
-| `THGQMGENT`  | `QmAcrEntrada` | `CODENTRADA`    | Entradas obrigatorias da reuniao (§9.3.2)  |
-| `THGQMGSAI`    | `QmAcrSaida`   | `CODSAIDA`      | Decisoes e acoes resultantes (§9.3.3)      |
+| `THGQMGATA`      | `ThgAcrAta`     | `CODACR`        | Ata da analise critica pela direcao        |
+| `THGQMGENT`  | `ThgAcrEntrada` | `CODENTRADA`    | Entradas obrigatorias da reuniao (§9.3.2)  |
+| `THGQMGSAI`    | `ThgAcrSaida`   | `CODSAIDA`      | Decisoes e acoes resultantes (§9.3.3)      |
 
 ## Campos — THGQMGATA
 | # | Rotulo         | Coluna         | Tipo      | Tam | Obrig | Opcoes                                                   |
@@ -45,4 +45,4 @@
 - [ ] `datadictionary/THGQMGENT.xml`
 - [ ] `datadictionary/THGQMGSAI.xml`
 - [ ] `dbscripts/V1.xml` — DDL das 3 tabelas
-- [ ] `datadictionary/menu.xml` — QmAcrAta em pasta Indicadores
+- [ ] `datadictionary/menu.xml` — ThgAcrAta em pasta Indicadores

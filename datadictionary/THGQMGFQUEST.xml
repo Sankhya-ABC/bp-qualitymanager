@@ -6,9 +6,9 @@
         <description>Questionario de Fornecedor</description>
         <primaryKey><field name="CODQUEST"/></primaryKey>
         <instances>
-            <instance name="QmFornQuestionario">
+            <instance name="ThgFornQuestionario">
                 <description>Questionario de Fornecedor</description>
-                <relationShip><relation entityName="QmFornPergunta"><fields><field localName="CODQUEST" targetName="CODQUEST"/></fields></relation></relationShip>
+                <relationShip><relation entityName="ThgFornPergunta"><fields><field localName="CODQUEST" targetName="CODQUEST"/></fields></relation></relationShip>
             </instance>
         </instances>
         <fields>

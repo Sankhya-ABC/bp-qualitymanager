@@ -6,7 +6,7 @@
         <description>Documentos do Fornecedor</description>
         <primaryKey><field name="CODDOCFORN"/></primaryKey>
         <instances>
-            <instance name="QmFornDocumento"><description>Documentos do Fornecedor</description></instance>
+            <instance name="ThgFornDocumento"><description>Documentos do Fornecedor</description></instance>
         </instances>
         <fields>
             <field name="CODDOCFORN" dataType="INTEIRO" readOnly="S" order="1" allowSearch="S" visibleOnSearch="S"><description>Cod. Documento</description></field>

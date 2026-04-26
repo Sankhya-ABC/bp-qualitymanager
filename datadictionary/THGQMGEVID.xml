@@ -6,7 +6,7 @@
         <description>Evidencias</description>
         <primaryKey><field name="CODEVID"/></primaryKey>
         <instances>
-            <instance name="QmRncEvidencia"><description>Evidencias</description></instance>
+            <instance name="ThgRncEvidencia"><description>Evidencias</description></instance>
         </instances>
         <fields>
             <field name="CODEVID" dataType="INTEIRO" readOnly="S" order="1" allowSearch="S" visibleOnSearch="S"><description>Cod. Evidencia</description></field>

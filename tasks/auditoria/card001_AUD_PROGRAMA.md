@@ -15,7 +15,7 @@
 | Atributo  | Valor                  |
 |:----------|:-----------------------|
 | Nome      | `THGQMGAUDPROG`     |
-| Instancia | `QmAudPrograma`        |
+| Instancia | `ThgAudPrograma`        |
 | Sequencia | AUTO (`CODPROG`)    |
 | Dual-DB   | Oracle + SQL Server    |
 
@@ -32,7 +32,7 @@
 | 5 | Clausulas           | `CLAUSULAS`    | TEXTO     | 100 | Nao   | __main | -     | Clausulas a cobrir. Ex: 8.7, 10.2                                    |
 | 6 | Periodo Previsto    | `DTPREVISTA`   | DATA_HORA | -   | Sim   | __main | Datas | Data prevista para a auditoria                                       |
 | 7 | Status              | `STATUS`       | LISTA     | 1   | Nao   | __main | -     | readOnly. P=Planejada, A=Em andamento, C=Concluida, X=Cancelada      |
-| 8 | Auditor             | `CODAUDTOR`    | PESQUISA  | -   | Nao   | __main | -     | targetInstance=QmAudAuditor. Auditor responsavel                     |
+| 8 | Auditor             | `CODAUDTOR`    | PESQUISA  | -   | Nao   | __main | -     | targetInstance=ThgAudAuditor. Auditor responsavel                     |
 | 9 | Auditoria Gerada    | `CODAUD`  | INTEIRO   | -   | Nao   | __main | -     | readOnly. FK para THGQMGAUD quando iniciada                  |
 | 10| Observacoes         | `OBSERVACOES`  | TEXTO     | 300 | Nao   | __main | -     | Notas sobre o planejamento                                           |
 | 11| Criado por          | `CODUSU`       | PESQUISA  | -   | Nao   | __main | -     | readOnly. Auto: $ctx_usuario_logado. visivel=N                       |
@@ -59,4 +59,4 @@
 - [ ] `datadictionary/THGQMGAUDPROG.xml`
 
 ### Menu
-- [ ] `datadictionary/menu.xml` — QmAudPrograma em pasta Auditoria
+- [ ] `datadictionary/menu.xml` — ThgAudPrograma em pasta Auditoria

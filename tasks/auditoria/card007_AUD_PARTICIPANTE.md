@@ -13,7 +13,7 @@
 | Atributo  | Valor                     |
 |:----------|:--------------------------|
 | Nome      | `THGQMGAUDPART`    |
-| Instancia | `QmAudParticipante`       |
+| Instancia | `ThgAudParticipante`       |
 | Sequencia | AUTO (`CODPART`)   |
 | Dual-DB   | Oracle + SQL Server       |
 

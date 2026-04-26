@@ -5,7 +5,7 @@
     <table name="THGQMGARQ" sequenceType="A" sequenceField="CODARQ">
         <description>Arquivo Documento</description>
         <primaryKey><field name="CODARQ"/></primaryKey>
-        <instances><instance name="QmDocArquivo"><description>Arquivo Documento</description></instance></instances>
+        <instances><instance name="ThgDocArquivo"><description>Arquivo Documento</description></instance></instances>
         <fields>
             <field name="CODARQ" dataType="INTEIRO" readOnly="S" order="1" allowSearch="S" visibleOnSearch="S"><description>Cod. Arq</description></field>
             <field name="CODDOC" dataType="INTEIRO" required="S" readOnly="S" UITabName="__main" order="2" allowSearch="S" visibleOnSearch="S"><description>Cod. Doc</description></field>

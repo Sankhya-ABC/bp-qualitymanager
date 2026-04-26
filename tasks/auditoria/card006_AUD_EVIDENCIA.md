@@ -13,7 +13,7 @@
 | Atributo  | Valor                  |
 |:----------|:-----------------------|
 | Nome      | `THGQMGAUDEVID`    |
-| Instancia | `QmAudEvidencia`       |
+| Instancia | `ThgAudEvidencia`       |
 | Sequencia | AUTO (`CODEVAUD`)     |
 | Dual-DB   | Oracle + SQL Server    |
 

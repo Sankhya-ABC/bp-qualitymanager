@@ -5,7 +5,7 @@
     <table name="THGQMGATA" sequenceType="A" sequenceField="CODACR">
         <description>Ata ACR</description>
         <primaryKey><field name="CODACR"/></primaryKey>
-        <instances><instance name="QmAcrAta"><description>Ata ACR</description></instance></instances>
+        <instances><instance name="ThgAcrAta"><description>Ata ACR</description></instance></instances>
         <fields>
             <field name="CODACR" dataType="INTEIRO" readOnly="S" order="1" allowSearch="S" visibleOnSearch="S"><description>Cod.</description></field>
             <field name="NUMACR" dataType="TEXTO" size="20" readOnly="S" isPresentation="S" UITabName="__main" order="2" allowSearch="S" visibleOnSearch="S"><description>Numero</description></field>

@@ -16,7 +16,7 @@
 | Atributo  | Valor                  |
 |:----------|:-----------------------|
 | Nome      | `THGQMGREVDOC`   |
-| Instancia | `QmRncRevisaoDoc`       |
+| Instancia | `ThgRncRevisaoDoc`       |
 | Sequencia | AUTO (`CODREVDOC`)  |
 | Dual-DB   | Oracle + SQL Server    |
 
@@ -43,9 +43,9 @@
 
 | Botao        | Classe Java                          | Instancia        | Transacao | Descricao                              |
 |:-------------|:-------------------------------------|:-----------------|:----------|:---------------------------------------|
-| Mudar Fase   | `MudarFaseRevisaoDocActionButton`    | `QmRncRevisaoDoc` | AUTOMATIC | Avanca RNC para Fase 7 (Riscos)        |
-| Voltar Fase  | `VoltarFaseRevisaoDocActionButton`   | `QmRncRevisaoDoc` | AUTOMATIC | Retorna RNC para Fase 5 (Acoes Corret.)|
-| Cancelar RNC | `CancelarRncRevisaoDocActionButton`  | `QmRncRevisaoDoc` | AUTOMATIC | Cancela a RNC (STATUS='C')             |
+| Mudar Fase   | `MudarFaseRevisaoDocActionButton`    | `ThgRncRevisaoDoc` | AUTOMATIC | Avanca RNC para Fase 7 (Riscos)        |
+| Voltar Fase  | `VoltarFaseRevisaoDocActionButton`   | `ThgRncRevisaoDoc` | AUTOMATIC | Retorna RNC para Fase 5 (Acoes Corret.)|
+| Cancelar RNC | `CancelarRncRevisaoDocActionButton`  | `ThgRncRevisaoDoc` | AUTOMATIC | Cancela a RNC (STATUS='C')             |
 
 ---
 
@@ -72,4 +72,4 @@
 - [ ] `model/.../actionButtons/CancelarRncRevisaoDocActionButton.java`
 
 ### Menu
-- [x] `datadictionary/menu.xml` — instancia QmRncRevisaoDoc ja registrada como item 06
+- [x] `datadictionary/menu.xml` — instancia ThgRncRevisaoDoc ja registrada como item 06

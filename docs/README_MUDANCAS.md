@@ -21,14 +21,14 @@ ISO 9001 clausulas 6.3 (Planejamento de mudancas) e 8.5.6 (Controle de mudancas)
 
 | Tabela | Instance | Descricao |
 |:-------|:---------|:----------|
-| THGQMGGM | QmGmCadastro | Registro principal da mudanca |
-| THGQMGGMFASE | QmGmFase | Fases do workflow (dominio, 5 fases) |
-| THGQMGGMACAO | QmGmAcao | Acoes 5W2H |
-| THGQMGGMQUEM | QmGmQuem | Responsaveis por acao |
-| THGQMGGMQUEST | QmGmQuestionario | Questionario vinculado |
-| THGQMGGMPERG | QmGmPergunta | Respostas do questionario |
-| THGQMGGMAVAL | QmGmAvaliacao | Avaliacao de riscos |
-| THGQMGGMRESP | QmGmAprovacao | Aprovacao por responsavel |
+| THGQMGGM | ThgGmCadastro | Registro principal da mudanca |
+| THGQMGGMFASE | ThgGmFase | Fases do workflow (dominio, 5 fases) |
+| THGQMGGMACAO | ThgGmAcao | Acoes 5W2H |
+| THGQMGGMQUEM | ThgGmQuem | Responsaveis por acao |
+| THGQMGGMQUEST | ThgGmQuestionario | Questionario vinculado |
+| THGQMGGMPERG | ThgGmPergunta | Respostas do questionario |
+| THGQMGGMAVAL | ThgGmAvaliacao | Avaliacao de riscos |
+| THGQMGGMRESP | ThgGmAprovacao | Aprovacao por responsavel |
 
 ## Tipos de Mudanca
 

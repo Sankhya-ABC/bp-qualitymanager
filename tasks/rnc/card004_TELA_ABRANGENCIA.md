@@ -18,7 +18,7 @@
 | Atributo  | Valor                   |
 |:----------|:------------------------|
 | Nome      | `THGQMGABR`    |
-| Instancia | `QmRncAbrangencia`       |
+| Instancia | `ThgRncAbrangencia`       |
 | Sequencia | AUTO (`CODABR`)  |
 | Dual-DB   | Oracle + SQL Server     |
 
@@ -27,7 +27,7 @@
 | Atributo  | Valor              |
 |:----------|:-------------------|
 | Nome      | `THGQMGRNCQUEM`      |
-| Instancia | `QmRncQuem`         |
+| Instancia | `ThgRncQuem`         |
 | Sequencia | AUTO (`CODQUEM`)    |
 | Dual-DB   | Oracle + SQL Server|
 
@@ -65,7 +65,7 @@
 
 | Tabela filha    | Instancia filha | Vinculo FK       | Descricao                                          |
 |:----------------|:----------------|:-----------------|:---------------------------------------------------|
-| `THGQMGRNCQUEM`   | `QmRncQuem`      | `CODABR`  | Grid de responsaveis — quem deve agir na abrangencia |
+| `THGQMGRNCQUEM`   | `ThgRncQuem`      | `CODABR`  | Grid de responsaveis — quem deve agir na abrangencia |
 
 ---
 
@@ -73,10 +73,10 @@
 
 | Botao              | Classe Java                           | Instancia          | Transacao | Descricao                                        |
 |:-------------------|:--------------------------------------|:-------------------|:----------|:-------------------------------------------------|
-| Mudar Fase         | `MudarFaseAbrangenciaActionButton`    | `QmRncAbrangencia`  | AUTOMATIC | Avanca RNC para Fase 5 (Acoes Corretivas)        |
-| Voltar Fase        | `VoltarFaseAbrangenciaActionButton`   | `QmRncAbrangencia`  | AUTOMATIC | Retorna RNC para Fase 3 (Causa Raiz)             |
-| Cancelar RNC       | `CancelarRncAbrangenciaActionButton`  | `QmRncAbrangencia`  | AUTOMATIC | Cancela a RNC (STATUS='C')                       |
-| Enviar Notificacao | `NotificarQuemActionButton`           | `QmRncQuem`         | AUTOMATIC | Envia e-mail ao parceiro selecionado na grid     |
+| Mudar Fase         | `MudarFaseAbrangenciaActionButton`    | `ThgRncAbrangencia`  | AUTOMATIC | Avanca RNC para Fase 5 (Acoes Corretivas)        |
+| Voltar Fase        | `VoltarFaseAbrangenciaActionButton`   | `ThgRncAbrangencia`  | AUTOMATIC | Retorna RNC para Fase 3 (Causa Raiz)             |
+| Cancelar RNC       | `CancelarRncAbrangenciaActionButton`  | `ThgRncAbrangencia`  | AUTOMATIC | Cancela a RNC (STATUS='C')                       |
+| Enviar Notificacao | `NotificarQuemActionButton`           | `ThgRncQuem`         | AUTOMATIC | Envia e-mail ao parceiro selecionado na grid     |
 
 ---
 
@@ -109,8 +109,8 @@
 - [ ] `dbscripts/V1.xml` — DDL THGQMGABR + THGQMGRNCQUEM, triggers, sequences, FK entre elas
 
 ### Dicionario de Dados
-- [ ] `datadictionary/THGQMGABR.xml` — instancia QmRncAbrangencia, grupo 5W2H em __main
-- [ ] `datadictionary/THGQMGRNCQUEM.xml` — instancia QmRncQuem, relacionamento com Parceiro
+- [ ] `datadictionary/THGQMGABR.xml` — instancia ThgRncAbrangencia, grupo 5W2H em __main
+- [ ] `datadictionary/THGQMGRNCQUEM.xml` — instancia ThgRncQuem, relacionamento com Parceiro
 
 ### Backend Java
 - [ ] `model/.../actionButtons/MudarFaseAbrangenciaActionButton.java`
@@ -120,7 +120,7 @@
 - [ ] `model/.../services/NotificacaoRncService.java`
 
 ### Menu
-- [x] `datadictionary/menu.xml` — instancia QmRncAbrangencia ja registrada como item 04
+- [x] `datadictionary/menu.xml` — instancia ThgRncAbrangencia ja registrada como item 04
 
 ---
 
@@ -129,4 +129,4 @@
 - 5W2H fica em aba __main (diferente de Acoes Corretivas — card005 — que usa aba separada)
 - THGQMGRNCQUEM referencia TGFPAR via PESQUISA — sem CREATE TABLE FK
 - Notificacao usa TGFPAR.QM_EMAILQUESTIONARIO — campo adicionado na tabela nativa (Card FORN-08)
-- instanceName: `QmRncAbrangencia` e `QmRncQuem` — copiar exatamente do XML
+- instanceName: `ThgRncAbrangencia` e `ThgRncQuem` — copiar exatamente do XML

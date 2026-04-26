@@ -12,8 +12,8 @@
 ## Tabelas
 | Tabela                  | Instancia           | Sequencia       | Descricao                             |
 |:------------------------|:--------------------|:----------------|:--------------------------------------|
-| `THGQMGGMQUEST`   | `QmGmQuestionario`  | `CODAVAL`   | Questionario de avaliacao de impacto  |
-| `THGQMGGMPERG`       | `QmGmPergunta`      | `CODPERGGM` | Perguntas do questionario             |
+| `THGQMGGMQUEST`   | `ThgGmQuestionario`  | `CODAVAL`   | Questionario de avaliacao de impacto  |
+| `THGQMGGMPERG`       | `ThgGmPergunta`      | `CODPERGGM` | Perguntas do questionario             |
 
 ## Campos — THGQMGGMQUEST
 | # | Rotulo        | Coluna        | Tipo      | Tam | Obrig | Opcoes                                         |

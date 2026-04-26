@@ -16,15 +16,15 @@
 | Atributo  | Valor                     |
 |:----------|:--------------------------|
 | Nome      | `THGQMGQUAL`   |
-| Instancia | `QmFornQualificacao`      |
+| Instancia | `ThgFornQualificacao`      |
 | Sequencia | AUTO (`CODQUAL`)   |
 | Dual-DB   | Oracle + SQL Server       |
 
 ### Instancias da tela
 | Instancia            | Tipo       | Descricao                                      |
 |:---------------------|:-----------|:-----------------------------------------------|
-| `QmFornConsulta`     | Lista/Grid | Visao de todos os fornecedores qualificados    |
-| `QmFornQualificacao` | Formulario | Formulario completo de qualificacao            |
+| `ThgFornConsulta`     | Lista/Grid | Visao de todos os fornecedores qualificados    |
+| `ThgFornQualificacao` | Formulario | Formulario completo de qualificacao            |
 
 ---
 
@@ -52,10 +52,10 @@
 
 | Tabela filha          | Instancia filha       | Vinculo FK       | Descricao                        |
 |:----------------------|:----------------------|:-----------------|:---------------------------------|
-| `THGQMGFORNDOC`  | `QmFornDocumento`     | `CODQUAL` | Certificados e docs do fornecedor|
-| `THGQMGFAVAL`  | `QmFornAvaliacao`     | `CODQUAL` | Avaliacoes periodicas            |
-| `THGQMGREG`     | `QmFornNc`            | `CODPARC`        | NCs abertas vinculadas           |
-| `THGQMGFRESP`   | `QmFornResposta`      | `CODQUAL` | Respostas ao questionario        |
+| `THGQMGFORNDOC`  | `ThgFornDocumento`     | `CODQUAL` | Certificados e docs do fornecedor|
+| `THGQMGFAVAL`  | `ThgFornAvaliacao`     | `CODQUAL` | Avaliacoes periodicas            |
+| `THGQMGREG`     | `ThgFornNc`            | `CODPARC`        | NCs abertas vinculadas           |
+| `THGQMGFRESP`   | `ThgFornResposta`      | `CODQUAL` | Respostas ao questionario        |
 
 ---
 
@@ -63,9 +63,9 @@
 
 | Botao                  | Classe Java                           | Instancia            | Transacao | Descricao                                           |
 |:-----------------------|:--------------------------------------|:---------------------|:----------|:----------------------------------------------------|
-| Enviar Questionario    | `EnviarQuestionarioFornActionButton`  | `QmFornQualificacao` | AUTOMATIC | Gera URL tokenizada Base64 e envia ao QM_EMAILQUESTIONARIO |
-| Bloquear Fornecedor    | `BloquearFornecedorActionButton`      | `QmFornQualificacao` | AUTOMATIC | BLOQUEADO='S', STATUS='X', registra motivo, audit log |
-| Desbloquear Fornecedor | `DesbloquearFornecedorActionButton`   | `QmFornQualificacao` | AUTOMATIC | BLOQUEADO='N', STATUS recalculado, audit log         |
+| Enviar Questionario    | `EnviarQuestionarioFornActionButton`  | `ThgFornQualificacao` | AUTOMATIC | Gera URL tokenizada Base64 e envia ao QM_EMAILQUESTIONARIO |
+| Bloquear Fornecedor    | `BloquearFornecedorActionButton`      | `ThgFornQualificacao` | AUTOMATIC | BLOQUEADO='S', STATUS='X', registra motivo, audit log |
+| Desbloquear Fornecedor | `DesbloquearFornecedorActionButton`   | `ThgFornQualificacao` | AUTOMATIC | BLOQUEADO='N', STATUS recalculado, audit log         |
 
 ---
 
@@ -104,11 +104,11 @@
 - [ ] `model/.../actionButtons/EnviarQuestionarioFornActionButton.java`
 - [ ] `model/.../actionButtons/BloquearFornecedorActionButton.java`
 - [ ] `model/.../actionButtons/DesbloquearFornecedorActionButton.java`
-- [ ] `model/.../listeners/QualificacaoScoreListener.java` — instanceName: `QmFornResposta`
+- [ ] `model/.../listeners/QualificacaoScoreListener.java` — instanceName: `ThgFornResposta`
 - [ ] `model/.../services/ScoreFornBusinessService.java`
 
 ### Menu
-- [ ] `datadictionary/menu.xml` — instancias QmFornConsulta e QmFornQualificacao em pasta Fornecedores
+- [ ] `datadictionary/menu.xml` — instancias ThgFornConsulta e ThgFornQualificacao em pasta Fornecedores
 
 ---
 
@@ -116,5 +116,5 @@
 
 - CODPARC referencia TGFPAR via PESQUISA — sem FK no DDL
 - BLOQUEADO e PONTUACAO sao readOnly — nunca editados pelo usuario, apenas pelo sistema
-- instanceName do listener: `QmFornResposta` — precisa ser copiado EXATAMENTE do XML da tabela THGQMGFRESP
+- instanceName do listener: `ThgFornResposta` — precisa ser copiado EXATAMENTE do XML da tabela THGQMGFRESP
 - BigDecimal.divide() no calculo de score SEMPRE com escala 2 e RoundingMode.HALF_UP

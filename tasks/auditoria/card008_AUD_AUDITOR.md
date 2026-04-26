@@ -13,7 +13,7 @@
 | Atributo  | Valor               |
 |:----------|:--------------------|
 | Nome      | `THGQMGAUDTOR`   |
-| Instancia | `QmAudAuditor`      |
+| Instancia | `ThgAudAuditor`      |
 | Sequencia | AUTO (`CODAUDTOR`)  |
 | Dual-DB   | Oracle + SQL Server |
 
@@ -38,4 +38,4 @@
 ## Artefatos
 - [ ] `datadictionary/THGQMGAUDTOR.xml`
 - [ ] `dbscripts/V1.xml` — DDL THGQMGAUDTOR
-- [ ] `datadictionary/menu.xml` — QmAudAuditor em pasta Auditoria
+- [ ] `datadictionary/menu.xml` — ThgAudAuditor em pasta Auditoria

@@ -5,7 +5,7 @@
     <table name="THGQMGUSIMPR" sequenceType="A" sequenceField="CODIMPUSU">
         <description>Usu Impresso</description>
         <primaryKey><field name="CODIMPUSU"/></primaryKey>
-        <instances><instance name="QmDocUsuImpresso"><description>Usu Impresso</description></instance></instances>
+        <instances><instance name="ThgDocUsuImpresso"><description>Usu Impresso</description></instance></instances>
         <fields>
             <field name="CODIMPUSU" dataType="INTEIRO" readOnly="S" order="1" allowSearch="S" visibleOnSearch="S"><description>Cod.</description></field>
             <field name="CODIMP" dataType="INTEIRO" required="S" readOnly="S" UITabName="__main" order="2" allowSearch="S" visibleOnSearch="S"><description>Cod. Imp</description></field>

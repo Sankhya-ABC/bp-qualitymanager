@@ -8,7 +8,7 @@
             <field name="CODPRIO"/>
         </primaryKey>
         <instances>
-            <instance name="QmDomPrioridade">
+            <instance name="ThgDomPrioridade">
                 <description>Prioridades</description>
             </instance>
         </instances>

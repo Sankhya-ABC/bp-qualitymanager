@@ -13,7 +13,7 @@
 | Atributo  | Valor                  |
 |:----------|:-----------------------|
 | Nome      | `THGQMGGMAVAL`     |
-| Instancia | `QmGmAvaliacao`        |
+| Instancia | `ThgGmAvaliacao`        |
 | Sequencia | AUTO (`CODAVALRISCO`)   |
 | Dual-DB   | Oracle + SQL Server    |
 
@@ -33,8 +33,8 @@
 ## Action Buttons
 | Botao      | Classe Java                            | Instancia       | Descricao                           |
 |:-----------|:---------------------------------------|:----------------|:------------------------------------|
-| Mudar Fase | `MudarFaseAvaliacaoRiscoActionButton`  | `QmGmAvaliacao` | Avanca GM para Fase 5 (Aprovacao)   |
-| Voltar Fase| `VoltarFaseAvaliacaoRiscoActionButton` | `QmGmAvaliacao` | Retorna GM para Fase 3 (Acoes)      |
+| Mudar Fase | `MudarFaseAvaliacaoRiscoActionButton`  | `ThgGmAvaliacao` | Avanca GM para Fase 5 (Aprovacao)   |
+| Voltar Fase| `VoltarFaseAvaliacaoRiscoActionButton` | `ThgGmAvaliacao` | Retorna GM para Fase 3 (Acoes)      |
 
 ## Artefatos
 - [ ] `datadictionary/THGQMGGMAVAL.xml`

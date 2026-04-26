@@ -5,7 +5,7 @@
     <table name="THGQMGAUDPART" sequenceType="A" sequenceField="CODPART">
         <description>Participante</description>
         <primaryKey><field name="CODPART"/></primaryKey>
-        <instances><instance name="QmAudParticipante"><description>Participante</description></instance></instances>
+        <instances><instance name="ThgAudParticipante"><description>Participante</description></instance></instances>
         <fields>
             <field name="CODPART" dataType="INTEIRO" readOnly="S" order="1" allowSearch="S" visibleOnSearch="S"><description>Cod.</description></field>
             <field name="CODAUD" dataType="INTEIRO" required="S" readOnly="S" UITabName="__main" order="2" allowSearch="S" visibleOnSearch="S"><description>Cod. Aud</description></field>

@@ -5,7 +5,7 @@
     <table name="THGQMGGMRESP" sequenceType="A" sequenceField="CODRESPGM">
         <description>Aprovacao GM</description>
         <primaryKey><field name="CODRESPGM"/></primaryKey>
-        <instances><instance name="QmGmAprovacao"><description>Aprovacao GM</description></instance></instances>
+        <instances><instance name="ThgGmAprovacao"><description>Aprovacao GM</description></instance></instances>
         <fields>
             <field name="CODRESPGM" dataType="INTEIRO" readOnly="S" order="1" allowSearch="S" visibleOnSearch="S"><description>Cod.</description></field>
             <field name="CODGM" dataType="INTEIRO" required="S" readOnly="S" UITabName="__main" order="2" allowSearch="S" visibleOnSearch="S"><description>Cod. GM</description></field>

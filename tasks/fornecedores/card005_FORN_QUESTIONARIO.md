@@ -15,9 +15,9 @@
 
 | Tabela                    | Instancia            | Sequencia         | Descricao                         |
 |:--------------------------|:---------------------|:------------------|:----------------------------------|
-| `THGQMGFQUEST`   | `QmFornQuestionario` | `CODQUEST`  | Cabecalho do questionario         |
-| `THGQMGFPERG`       | `QmFornPergunta`     | `CODPERG`      | Perguntas do questionario         |
-| `THGQMGFRESP`       | `QmFornResposta`     | `CODRESPTA`      | Respostas do fornecedor           |
+| `THGQMGFQUEST`   | `ThgFornQuestionario` | `CODQUEST`  | Cabecalho do questionario         |
+| `THGQMGFPERG`       | `ThgFornPergunta`     | `CODPERG`      | Perguntas do questionario         |
+| `THGQMGFRESP`       | `ThgFornResposta`     | `CODRESPTA`      | Respostas do fornecedor           |
 
 ---
 
@@ -57,7 +57,7 @@
 2. Listener QualificacaoScoreListener acionado apos INSERT em THGQMGFRESP
 3. Calculo: SIM=1 ponto. Numerica: <10=0.15, 10-29=0.30, 30-49=0.45, 50-69=0.60, 70-89=0.75, >=90=0.90
 4. Score = (somaPontos / totalPerguntas) * 100 com BigDecimal HALF_UP escala 2
-5. instanceName do listener: `QmFornResposta` — copiar EXATAMENTE do XML da tabela de respostas
+5. instanceName do listener: `ThgFornResposta` — copiar EXATAMENTE do XML da tabela de respostas
 
 ---
 
@@ -72,8 +72,8 @@
 - [ ] `datadictionary/THGQMGFRESP.xml`
 
 ### Backend Java
-- [ ] `model/.../listeners/QualificacaoScoreListener.java` — instanceName: `QmFornResposta`
+- [ ] `model/.../listeners/QualificacaoScoreListener.java` — instanceName: `ThgFornResposta`
 - [ ] `model/.../services/ScoreFornBusinessService.java`
 
 ### Menu
-- [ ] `datadictionary/menu.xml` — QmFornQuestionario em pasta Fornecedores
+- [ ] `datadictionary/menu.xml` — ThgFornQuestionario em pasta Fornecedores

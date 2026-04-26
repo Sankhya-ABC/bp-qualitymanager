@@ -16,7 +16,7 @@
 | Atributo  | Valor                  |
 |:----------|:-----------------------|
 | Nome      | `THGQMGHIST`    |
-| Instancia | `QmDocHistorico`       |
+| Instancia | `ThgDocHistorico`       |
 | Sequencia | AUTO (`CODHIST`)   |
 | Dual-DB   | Oracle + SQL Server    |
 
@@ -41,7 +41,7 @@
 1. Registro criado automaticamente pelo AtualizaDocumentosService a cada mudanca de STATUS
 2. Tela e READ ONLY — nenhum campo editavel, nenhum action button
 3. Evidencia ISO 7.5.3 — trilha completa de quem aprovou e quando
-4. Tela e aba filha de QmDocControle (card DOC-01)
+4. Tela e aba filha de ThgDocControle (card DOC-01)
 
 ---
 

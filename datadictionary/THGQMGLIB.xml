@@ -6,7 +6,7 @@
         <description>Liberacao de Produto</description>
         <primaryKey><field name="CODLIB"/></primaryKey>
         <instances>
-            <instance name="QmRncLiberacao"><description>Liberacao de Produto</description></instance>
+            <instance name="ThgRncLiberacao"><description>Liberacao de Produto</description></instance>
         </instances>
         <fields>
             <field name="CODLIB" dataType="INTEIRO" readOnly="S" order="1" allowSearch="S" visibleOnSearch="S"><description>Cod. Liberacao</description></field>

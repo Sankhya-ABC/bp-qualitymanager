@@ -5,7 +5,7 @@
     <table name="THGQMGGMQUEM" sequenceType="A" sequenceField="CODQUEMGM">
         <description>Quem GM</description>
         <primaryKey><field name="CODQUEMGM"/></primaryKey>
-        <instances><instance name="QmGmQuem"><description>Quem GM</description></instance></instances>
+        <instances><instance name="ThgGmQuem"><description>Quem GM</description></instance></instances>
         <fields>
             <field name="CODQUEMGM" dataType="INTEIRO" readOnly="S" order="1" allowSearch="S" visibleOnSearch="S"><description>Cod.</description></field>
             <field name="CODACAOGM" dataType="INTEIRO" required="S" readOnly="S" UITabName="__main" order="2" allowSearch="S" visibleOnSearch="S"><description>Cod. Acao</description></field>

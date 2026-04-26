@@ -5,7 +5,7 @@
     <table name="THGQMGGMAVAL" sequenceType="A" sequenceField="CODAVALRISCO">
         <description>Aval Riscos GM</description>
         <primaryKey><field name="CODAVALRISCO"/></primaryKey>
-        <instances><instance name="QmGmAvaliacao"><description>Aval Riscos GM</description></instance></instances>
+        <instances><instance name="ThgGmAvaliacao"><description>Aval Riscos GM</description></instance></instances>
         <fields>
             <field name="CODAVALRISCO" dataType="INTEIRO" readOnly="S" order="1" allowSearch="S" visibleOnSearch="S"><description>Cod.</description></field>
             <field name="CODGM" dataType="INTEIRO" required="S" readOnly="S" UITabName="__main" order="2" allowSearch="S" visibleOnSearch="S"><description>Cod. GM</description></field>

@@ -5,7 +5,7 @@
     <table name="THGQMGAUDCHK" sequenceType="A" sequenceField="CODCHK">
         <description>Checklist</description>
         <primaryKey><field name="CODCHK"/></primaryKey>
-        <instances><instance name="QmAudChecklist"><description>Checklist</description></instance></instances>
+        <instances><instance name="ThgAudChecklist"><description>Checklist</description></instance></instances>
         <fields>
             <field name="CODCHK" dataType="INTEIRO" readOnly="S" order="1" allowSearch="S" visibleOnSearch="S"><description>Cod.</description></field>
             <field name="CODAUD" dataType="INTEIRO" required="S" readOnly="S" UITabName="__main" order="2" allowSearch="S" visibleOnSearch="S"><description>Cod. Aud</description></field>

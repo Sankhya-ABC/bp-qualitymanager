@@ -12,7 +12,7 @@ import br.com.hagious.qualitymanager.fornecedor.repository.RespostaRepository;
 import br.com.sankhya.studio.stereotypes.Component;
 import lombok.Log;
 
-import javax.inject.Inject;
+import com.google.inject.Inject;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.List;

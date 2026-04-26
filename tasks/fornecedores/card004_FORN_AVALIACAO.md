@@ -16,7 +16,7 @@
 | Atributo  | Valor                  |
 |:----------|:-----------------------|
 | Nome      | `THGQMGFAVAL`   |
-| Instancia | `QmFornAvaliacao`      |
+| Instancia | `ThgFornAvaliacao`      |
 | Sequencia | AUTO (`CODAVAL`)   |
 | Dual-DB   | Oracle + SQL Server    |
 
@@ -45,7 +45,7 @@
 1. SCORE_FINAL calculado automaticamente apos INSERT via AvaliacaoFornListener
 2. Formula: (NOTA_QUALIDADE * pesoQualidade + NOTA_PRAZO * pesoPrazo + ...) / somaTotal
 3. BigDecimal.divide() com escala 2 e HALF_UP — obrigatorio
-4. Tabela e aba filha de QmFornQualificacao (card FORN-01)
+4. Tabela e aba filha de ThgFornQualificacao (card FORN-01)
 
 ---
 
@@ -58,4 +58,4 @@
 - [ ] `datadictionary/THGQMGFAVAL.xml` — grupo Notas para os 4 campos de nota
 
 ### Backend Java
-- [ ] `model/.../listeners/AvaliacaoFornListener.java` — instanceName: `QmFornAvaliacao`
+- [ ] `model/.../listeners/AvaliacaoFornListener.java` — instanceName: `ThgFornAvaliacao`

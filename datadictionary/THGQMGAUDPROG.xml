@@ -5,7 +5,7 @@
     <table name="THGQMGAUDPROG" sequenceType="A" sequenceField="CODPROG">
         <description>Programa Aud</description>
         <primaryKey><field name="CODPROG"/></primaryKey>
-        <instances><instance name="QmAudPrograma"><description>Programa Aud</description></instance></instances>
+        <instances><instance name="ThgAudPrograma"><description>Programa Aud</description></instance></instances>
         <fields>
             <field name="CODPROG" dataType="INTEIRO" readOnly="S" order="1" allowSearch="S" visibleOnSearch="S"><description>Cod.</description></field>
             <field name="ANO" dataType="INTEIRO" required="S" UITabName="__main" order="2" allowSearch="S" visibleOnSearch="S"><description>Ano</description></field>

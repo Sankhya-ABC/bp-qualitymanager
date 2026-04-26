@@ -16,7 +16,7 @@
 | Atributo  | Valor                |
 |:----------|:---------------------|
 | Nome      | `THGQMGCRIT`  |
-| Instancia | `QmFornCriterio`     |
+| Instancia | `ThgFornCriterio`     |
 | Sequencia | AUTO (`CODCRIT`)  |
 | Dual-DB   | Oracle + SQL Server  |
 
@@ -61,4 +61,4 @@
 - [ ] `datadictionary/THGQMGCRIT.xml`
 
 ### Menu
-- [ ] `datadictionary/menu.xml` — QmFornCriterio em pasta Fornecedores > Configuracao
+- [ ] `datadictionary/menu.xml` — ThgFornCriterio em pasta Fornecedores > Configuracao

@@ -5,7 +5,7 @@
     <table name="THGQMGGM" sequenceType="A" sequenceField="CODGM">
         <description>Gestao Mudancas</description>
         <primaryKey><field name="CODGM"/></primaryKey>
-        <instances><instance name="QmGmCadastro"><description>Gestao Mudancas</description></instance></instances>
+        <instances><instance name="ThgGmCadastro"><description>Gestao Mudancas</description></instance></instances>
         <fields>
             <field name="CODGM" dataType="INTEIRO" readOnly="S" order="1" allowSearch="S" visibleOnSearch="S"><description>Cod. GM</description></field>
             <field name="NUMGM" dataType="TEXTO" size="20" readOnly="S" isPresentation="S" UITabName="__main" order="2" allowSearch="S" visibleOnSearch="S"><description>Numero</description></field>

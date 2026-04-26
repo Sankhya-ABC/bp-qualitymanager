@@ -16,14 +16,14 @@
 | Atributo  | Valor                  |
 |:----------|:-----------------------|
 | Nome      | `THGQMGCFG`   |
-| Instancia | `QmConfig`             |
+| Instancia | `ThgConfig`             |
 | Sequencia | AUTO (`CODCFG`)      |
 | Dual-DB   | Oracle + SQL Server    |
 
 ### Instancias da tela
 | Instancia   | Tipo       | Descricao                                 |
 |:------------|:-----------|:------------------------------------------|
-| `QmConfig`  | Formulario | Configuracao e ativacao de modulos por empresa |
+| `ThgConfig`  | Formulario | Configuracao e ativacao de modulos por empresa |
 
 ---
 
@@ -71,10 +71,10 @@
 - [x] `dbscripts/V1.xml` — DDL THGQMGCFG, Listener BI, sequence
 
 ### Dicionario de Dados
-- [x] `datadictionary/THGQMGCFG.xml` — instancia QmConfig, grupos Modulos e Parametros
+- [x] `datadictionary/THGQMGCFG.xml` — instancia ThgConfig, grupos Modulos e Parametros
 
 ### Menu
-- [x] `datadictionary/menu.xml` — instancia QmConfig registrada como item Configuracao
+- [x] `datadictionary/menu.xml` — instancia ThgConfig registrada como item Configuracao
 
 ---
 
@@ -83,4 +83,4 @@
 - Tabela criada pelo Auto DDL a partir do datadictionary — nao precisa de DDL manual
 - CODEMP referencia TSIEMP via PESQUISA — sem CREATE TABLE FK
 - Campos de auditoria (CODUSU, DHCREATE) preenchidos automaticamente via expression
-- instanceName: `QmConfig` — copiar exatamente do XML
+- instanceName: `ThgConfig` — copiar exatamente do XML

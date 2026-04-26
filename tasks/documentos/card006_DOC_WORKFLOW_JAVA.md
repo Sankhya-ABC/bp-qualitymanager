@@ -39,7 +39,7 @@ Logica:
 
 1. Fluxo de STATUS e obrigatorio: P->R->A — outros fluxos bloqueados com RncValidacaoException
 2. Toda mudanca de STATUS registra em THGQMGHIST e THGQMGLOG
-3. instanceName dos @ActionButton deve ser `QmDocControle` — copiar do XML
+3. instanceName dos @ActionButton deve ser `ThgDocControle` — copiar do XML
 
 ---
 

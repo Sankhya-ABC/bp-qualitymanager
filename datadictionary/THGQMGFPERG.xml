@@ -5,7 +5,7 @@
     <table name="THGQMGFPERG" sequenceType="A" sequenceField="CODPERG">
         <description>Perguntas do Questionario</description>
         <primaryKey><field name="CODPERG"/></primaryKey>
-        <instances><instance name="QmFornPergunta"><description>Perguntas do Questionario</description></instance></instances>
+        <instances><instance name="ThgFornPergunta"><description>Perguntas do Questionario</description></instance></instances>
         <fields>
             <field name="CODPERG" dataType="INTEIRO" readOnly="S" order="1" allowSearch="S" visibleOnSearch="S"><description>Cod. Pergunta</description></field>
             <field name="CODQUEST" dataType="INTEIRO" required="S" readOnly="S" UITabName="__main" order="2" allowSearch="S" visibleOnSearch="S"><description>Cod. Questionario</description></field>

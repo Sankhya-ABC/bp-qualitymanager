@@ -13,7 +13,7 @@
 | Atributo  | Valor                  |
 |:----------|:-----------------------|
 | Nome      | `THGQMGAUDCHK`    |
-| Instancia | `QmAudChecklist`       |
+| Instancia | `ThgAudChecklist`       |
 | Sequencia | AUTO (`CODCHK`)   |
 | Dual-DB   | Oracle + SQL Server    |
 

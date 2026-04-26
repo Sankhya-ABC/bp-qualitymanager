@@ -16,7 +16,7 @@
 | Atributo  | Valor                  |
 |:----------|:-----------------------|
 | Nome      | `THGQMGPERM`    |
-| Instancia | `QmDocPermissao`       |
+| Instancia | `ThgDocPermissao`       |
 | Sequencia | AUTO (`CODPERM`)   |
 | Dual-DB   | Oracle + SQL Server    |
 

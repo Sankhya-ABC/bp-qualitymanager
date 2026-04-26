@@ -5,7 +5,7 @@
     <table name="THGQMGAUDCON" sequenceType="A" sequenceField="CODCONST">
         <description>Constatacao</description>
         <primaryKey><field name="CODCONST"/></primaryKey>
-        <instances><instance name="QmAudConstatacao"><description>Constatacao</description></instance></instances>
+        <instances><instance name="ThgAudConstatacao"><description>Constatacao</description></instance></instances>
         <fields>
             <field name="CODCONST" dataType="INTEIRO" readOnly="S" order="1" allowSearch="S" visibleOnSearch="S"><description>Cod.</description></field>
             <field name="CODAUD" dataType="INTEIRO" required="S" readOnly="S" UITabName="__main" order="2" allowSearch="S" visibleOnSearch="S"><description>Cod. Aud</description></field>

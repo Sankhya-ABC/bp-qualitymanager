@@ -16,14 +16,14 @@
 | Atributo  | Valor               |
 |:----------|:--------------------|
 | Nome      | `THGQMGRNCFASE`       |
-| Instancia | `QmRncFase`          |
+| Instancia | `ThgRncFase`          |
 | Sequencia | MANUAL (`CODFASE`)   |
 | Dual-DB   | Oracle + SQL Server |
 
 ### Instancias da tela
 | Instancia  | Tipo       | Descricao                           |
 |:-----------|:-----------|:------------------------------------|
-| `QmRncFase` | Formulario | Cadastro das fases do workflow de NC|
+| `ThgRncFase` | Formulario | Cadastro das fases do workflow de NC|
 
 ---
 
@@ -70,10 +70,10 @@
 - [x] `dbscripts/V1.xml` — DDL THGQMGRNCFASE + INSERT dados iniciais das 10 fases
 
 ### Dicionario de Dados
-- [x] `datadictionary/THGQMGRNCFASE.xml` — instancia QmRncFase
+- [x] `datadictionary/THGQMGRNCFASE.xml` — instancia ThgRncFase
 
 ### Menu
-- [ ] `datadictionary/menu.xml` — adicionar QmRncFase em pasta Configuracao
+- [ ] `datadictionary/menu.xml` — adicionar ThgRncFase em pasta Configuracao
 
 ---
 
@@ -81,5 +81,5 @@
 
 - sequenceType=M (manual) — PK definida nos dados iniciais, nao gerada automaticamente
 - CODFASE e campo de FK em THGQMGREG (campo CODFASE)
-- instanceName: `QmRncFase` — copiar exatamente do XML
+- instanceName: `ThgRncFase` — copiar exatamente do XML
 - FaseRncBusinessService faz: `SELECT CODFASE FROM THGQMGRNCFASE WHERE CODFASE > :atual AND ATIVO='S' ORDER BY CODFASE`
