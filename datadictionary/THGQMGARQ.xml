@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<metadados xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="../.gradle/metadados.xsd">
+
+    <table name="THGQMGARQ" sequenceType="A" sequenceField="CODARQ">
+        <description>Arquivo Documento</description>
+        <primaryKey><field name="CODARQ"/></primaryKey>
+        <instances><instance name="QmDocArquivo"><description>Arquivo Documento</description></instance></instances>
+        <fields>
+            <field name="CODARQ" dataType="INTEIRO" readOnly="S" order="1" allowSearch="S" visibleOnSearch="S"><description>Cod. Arq</description></field>
+            <field name="CODDOC" dataType="INTEIRO" required="S" readOnly="S" UITabName="__main" order="2" allowSearch="S" visibleOnSearch="S"><description>Cod. Doc</description></field>
+            <field name="VERSAO" dataType="TEXTO" size="10" isPresentation="S" UITabName="__main" order="3" allowSearch="S" visibleOnSearch="S"><description>Versao</description></field>
+            <field name="DTVALIDADE" dataType="DATA_HORA" UITabName="__main" order="4" allowSearch="N" visibleOnSearch="N"><description>Validade</description></field>
+            <field name="COMENTARIO" dataType="TEXTO" size="4000" UITabName="__main" order="5" allowSearch="N" visibleOnSearch="N"><description>Comentario</description></field>
+            <field name="CODUSU" dataType="PESQUISA" targetInstance="Usuario" targetField="CODUSU" targetType="INTEIRO" readOnly="S" visible="N" order="98" allowSearch="N" visibleOnSearch="N"><description>Usuario</description></field>
+            <field name="DHCREATE" dataType="DATA_HORA" readOnly="S" visible="N" order="99" allowSearch="N" visibleOnSearch="N"><description>Criacao</description></field>
+        </fields>
+    </table>
+
+</metadados>

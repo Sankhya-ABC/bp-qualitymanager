@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<scripts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="../.gradle/scripts.xsd">
+
+    <sql nomeTabela="THGQMGUSIMPR" ordem="1" executar="SE_NAO_EXISTIR" tipoObjeto="TABLE" nomeObjeto="THGQMGUSIMPR" descricao="Criacao da tabela THGQMGUSIMPR">
+        <mssql>CREATE TABLE THGQMGUSIMPR (CODIMPUSU INT NOT NULL, CONSTRAINT PK_THGQMGUSIMPR PRIMARY KEY (CODIMPUSU))</mssql>
+        <oracle>CREATE TABLE THGQMGUSIMPR (CODIMPUSU NUMBER(10) NOT NULL, CONSTRAINT PK_THGQMGUSIMPR PRIMARY KEY (CODIMPUSU))</oracle>
+    </sql>
+    <sql nomeTabela="THGQMGUSIMPR" ordem="2" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODIMP" descricao="Adicionar campo CODIMP"><mssql>ALTER TABLE THGQMGUSIMPR ADD CODIMP INT</mssql><oracle>ALTER TABLE THGQMGUSIMPR ADD (CODIMP NUMBER(10))</oracle></sql>
+    <sql nomeTabela="THGQMGUSIMPR" ordem="3" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODPARC" descricao="Adicionar campo CODPARC"><mssql>ALTER TABLE THGQMGUSIMPR ADD CODPARC INT</mssql><oracle>ALTER TABLE THGQMGUSIMPR ADD (CODPARC NUMBER(10))</oracle></sql>
+
+</scripts>

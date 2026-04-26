@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<metadados xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="../.gradle/metadados.xsd">
+
+    <table name="THGQMGPERM" sequenceType="A" sequenceField="CODPERM">
+        <description>Permissao</description>
+        <primaryKey><field name="CODPERM"/></primaryKey>
+        <instances><instance name="QmDocPermissao"><description>Permissao</description></instance></instances>
+        <fields>
+            <field name="CODPERM" dataType="INTEIRO" readOnly="S" order="1" allowSearch="S" visibleOnSearch="S"><description>Cod. Perm</description></field>
+            <field name="CODDOC" dataType="INTEIRO" required="S" readOnly="S" UITabName="__main" order="2" allowSearch="S" visibleOnSearch="S"><description>Cod. Doc</description></field>
+            <field name="CODPARC" dataType="PESQUISA" targetInstance="Parceiro" targetField="CODPARC" targetType="INTEIRO" required="S" UITabName="__main" order="3" allowSearch="S" visibleOnSearch="S"><description>Parceiro</description></field>
+            <field name="PERM_LEITURA" dataType="CHECKBOX" UITabName="__main" order="4" allowSearch="N" visibleOnSearch="N"><description>Leitura</description></field>
+            <field name="PERM_REVISAO" dataType="CHECKBOX" UITabName="__main" order="5" allowSearch="N" visibleOnSearch="N"><description>Revisao</description></field>
+            <field name="PERM_APROVA" dataType="CHECKBOX" UITabName="__main" order="6" allowSearch="N" visibleOnSearch="N"><description>Aprovacao</description></field>
+            <field name="PERM_IMPRIME" dataType="CHECKBOX" UITabName="__main" order="7" allowSearch="N" visibleOnSearch="N"><description>Impressao</description></field>
+        </fields>
+    </table>
+
+</metadados>

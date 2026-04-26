@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<metadados xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="../.gradle/metadados.xsd">
+
+    <table name="THGQMGDOC" sequenceType="A" sequenceField="CODDOC">
+        <description>Controle de Documentos</description>
+        <primaryKey><field name="CODDOC"/></primaryKey>
+        <instances><instance name="QmDocControle"><description>Controle de Documentos</description></instance></instances>
+        <fields>
+            <field name="CODDOC" dataType="INTEIRO" readOnly="S" order="1" allowSearch="S" visibleOnSearch="S"><description>Cod. Documento</description></field>
+            <field name="CODIGODOC" dataType="TEXTO" size="50" UITabName="__main" order="2" allowSearch="S" visibleOnSearch="S"><description>Codigo</description></field>
+            <field name="TITULODOC" dataType="TEXTO" size="300" required="S" isPresentation="S" UITabName="__main" order="3" allowSearch="S" visibleOnSearch="S"><description>Titulo</description></field>
+            <field name="TIPODOC" dataType="LISTA" size="2" required="S" UITabName="__main" order="4" allowSearch="S" visibleOnSearch="S"><description>Tipo</description><fieldOptions><option value="PO">Procedimento</option><option value="IT">Instrucao</option><option value="MQ">Manual</option><option value="FO">Formulario</option><option value="PL">Politica</option><option value="OT">Outro</option></fieldOptions></field>
+            <field name="STATUS" dataType="LISTA" size="1" readOnly="S" UITabName="__main" order="5" allowSearch="S" visibleOnSearch="S"><description>Status</description><fieldOptions><option value="R">Rascunho</option><option value="V">Em revisao</option><option value="A">Aprovado</option><option value="O">Obsoleto</option></fieldOptions></field>
+            <field name="VERSAOATUAL" dataType="TEXTO" size="10" readOnly="S" UITabName="__main" order="6" allowSearch="N" visibleOnSearch="N"><description>Versao</description></field>
+            <field name="CODPARC" dataType="PESQUISA" targetInstance="Parceiro" targetField="CODPARC" targetType="INTEIRO" UITabName="__main" order="7" allowSearch="S" visibleOnSearch="S"><description>Responsavel</description></field>
+            <field name="CODPARC_APROV" dataType="PESQUISA" targetInstance="Parceiro" targetField="CODPARC" targetType="INTEIRO" UITabName="__main" order="8" allowSearch="N" visibleOnSearch="N"><description>Aprovador</description></field>
+            <field name="PROCESSO" dataType="TEXTO" size="100" UITabName="__main" order="8" allowSearch="N" visibleOnSearch="N"><description>Processo</description></field>
+            <field name="NORMAISO" dataType="LISTA" size="4" UITabName="__main" order="9" allowSearch="S" visibleOnSearch="S"><description>Norma ISO</description><fieldOptions><option value="9001">ISO 9001</option><option value="1400">ISO 14001</option><option value="4500">ISO 45001</option></fieldOptions></field>
+            <field name="CLAUSULAISO" dataType="TEXTO" size="20" UITabName="__main" order="10" allowSearch="N" visibleOnSearch="N"><description>Clausula</description></field>
+            <field name="DTVALIDADE" dataType="DATA_HORA" UITabName="__main" order="11" allowSearch="N" visibleOnSearch="N"><description>Validade</description></field>
+            <field name="CODUSU" dataType="PESQUISA" targetInstance="Usuario" targetField="CODUSU" targetType="INTEIRO" readOnly="S" visible="N" order="98" allowSearch="N" visibleOnSearch="N"><description>Usuario</description></field>
+            <field name="DHCREATE" dataType="DATA_HORA" readOnly="S" visible="N" order="99" allowSearch="N" visibleOnSearch="N"><description>Criacao</description></field>
+        </fields>
+    </table>
+
+</metadados>

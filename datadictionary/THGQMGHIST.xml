@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<metadados xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="../.gradle/metadados.xsd">
+
+    <table name="THGQMGHIST" sequenceType="A" sequenceField="CODHIST">
+        <description>Historico Documento</description>
+        <primaryKey><field name="CODHIST"/></primaryKey>
+        <instances><instance name="QmDocHistorico"><description>Historico Documento</description></instance></instances>
+        <fields>
+            <field name="CODHIST" dataType="INTEIRO" readOnly="S" order="1" allowSearch="S" visibleOnSearch="S"><description>Cod. Hist</description></field>
+            <field name="CODDOC" dataType="INTEIRO" required="S" readOnly="S" UITabName="__main" order="2" allowSearch="S" visibleOnSearch="S"><description>Cod. Doc</description></field>
+            <field name="STATUSANT" dataType="TEXTO" size="1" readOnly="S" UITabName="__main" order="3" allowSearch="N" visibleOnSearch="N"><description>Status Ant</description></field>
+            <field name="STATUSNOVO" dataType="TEXTO" size="1" readOnly="S" UITabName="__main" order="4" allowSearch="N" visibleOnSearch="N"><description>Status Novo</description></field>
+            <field name="JUSTIFICATIVA" dataType="TEXTO" size="300" readOnly="S" UITabName="__main" order="5" allowSearch="N" visibleOnSearch="N"><description>Justificativa</description></field>
+            <field name="CODUSU" dataType="PESQUISA" targetInstance="Usuario" targetField="CODUSU" targetType="INTEIRO" readOnly="S" visible="N" order="98" allowSearch="N" visibleOnSearch="N"><description>Usuario</description></field>
+            <field name="DHCREATE" dataType="DATA_HORA" readOnly="S" visible="N" order="99" allowSearch="N" visibleOnSearch="N"><description>Criacao</description></field>
+        </fields>
+    </table>
+
+</metadados>

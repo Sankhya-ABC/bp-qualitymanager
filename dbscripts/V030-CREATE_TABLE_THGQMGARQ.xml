@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<scripts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="../.gradle/scripts.xsd">
+
+    <sql nomeTabela="THGQMGARQ" ordem="1" executar="SE_NAO_EXISTIR" tipoObjeto="TABLE" nomeObjeto="THGQMGARQ" descricao="Criacao da tabela THGQMGARQ">
+        <mssql>CREATE TABLE THGQMGARQ (CODARQ INT NOT NULL, CONSTRAINT PK_THGQMGARQ PRIMARY KEY (CODARQ))</mssql>
+        <oracle>CREATE TABLE THGQMGARQ (CODARQ NUMBER(10) NOT NULL, CONSTRAINT PK_THGQMGARQ PRIMARY KEY (CODARQ))</oracle>
+    </sql>
+    <sql nomeTabela="THGQMGARQ" ordem="2" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODDOC" descricao="Adicionar campo CODDOC"><mssql>ALTER TABLE THGQMGARQ ADD CODDOC INT</mssql><oracle>ALTER TABLE THGQMGARQ ADD (CODDOC NUMBER(10))</oracle></sql>
+    <sql nomeTabela="THGQMGARQ" ordem="3" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="VERSAO" descricao="Adicionar campo VERSAO"><mssql>ALTER TABLE THGQMGARQ ADD VERSAO VARCHAR(10)</mssql><oracle>ALTER TABLE THGQMGARQ ADD (VERSAO VARCHAR2(10))</oracle></sql>
+    <sql nomeTabela="THGQMGARQ" ordem="4" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="DTVALIDADE" descricao="Adicionar campo DTVALIDADE"><mssql>ALTER TABLE THGQMGARQ ADD DTVALIDADE DATETIME</mssql><oracle>ALTER TABLE THGQMGARQ ADD (DTVALIDADE DATE)</oracle></sql>
+    <sql nomeTabela="THGQMGARQ" ordem="5" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="COMENTARIO" descricao="Adicionar campo COMENTARIO"><mssql>ALTER TABLE THGQMGARQ ADD COMENTARIO VARCHAR(4000)</mssql><oracle>ALTER TABLE THGQMGARQ ADD (COMENTARIO VARCHAR2(4000))</oracle></sql>
+    <sql nomeTabela="THGQMGARQ" ordem="6" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODUSU" descricao="Adicionar campo CODUSU"><mssql>ALTER TABLE THGQMGARQ ADD CODUSU INT</mssql><oracle>ALTER TABLE THGQMGARQ ADD (CODUSU NUMBER(10))</oracle></sql>
+    <sql nomeTabela="THGQMGARQ" ordem="7" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="DHCREATE" descricao="Adicionar campo DHCREATE"><mssql>ALTER TABLE THGQMGARQ ADD DHCREATE DATETIME</mssql><oracle>ALTER TABLE THGQMGARQ ADD (DHCREATE DATE)</oracle></sql>
+
+</scripts>

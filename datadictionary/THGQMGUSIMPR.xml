@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<metadados xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="../.gradle/metadados.xsd">
+
+    <table name="THGQMGUSIMPR" sequenceType="A" sequenceField="CODIMPUSU">
+        <description>Usu Impresso</description>
+        <primaryKey><field name="CODIMPUSU"/></primaryKey>
+        <instances><instance name="QmDocUsuImpresso"><description>Usu Impresso</description></instance></instances>
+        <fields>
+            <field name="CODIMPUSU" dataType="INTEIRO" readOnly="S" order="1" allowSearch="S" visibleOnSearch="S"><description>Cod.</description></field>
+            <field name="CODIMP" dataType="INTEIRO" required="S" readOnly="S" UITabName="__main" order="2" allowSearch="S" visibleOnSearch="S"><description>Cod. Imp</description></field>
+            <field name="CODPARC" dataType="PESQUISA" targetInstance="Parceiro" targetField="CODPARC" targetType="INTEIRO" required="S" UITabName="__main" order="3" allowSearch="S" visibleOnSearch="S"><description>Parceiro</description></field>
+        </fields>
+    </table>
+
+</metadados>

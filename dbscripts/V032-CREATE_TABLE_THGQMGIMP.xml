@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<scripts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="../.gradle/scripts.xsd">
+
+    <sql nomeTabela="THGQMGIMP" ordem="1" executar="SE_NAO_EXISTIR" tipoObjeto="TABLE" nomeObjeto="THGQMGIMP" descricao="Criacao da tabela THGQMGIMP">
+        <mssql>CREATE TABLE THGQMGIMP (CODIMP INT NOT NULL, CONSTRAINT PK_THGQMGIMP PRIMARY KEY (CODIMP))</mssql>
+        <oracle>CREATE TABLE THGQMGIMP (CODIMP NUMBER(10) NOT NULL, CONSTRAINT PK_THGQMGIMP PRIMARY KEY (CODIMP))</oracle>
+    </sql>
+    <sql nomeTabela="THGQMGIMP" ordem="2" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODDOC" descricao="Adicionar campo CODDOC"><mssql>ALTER TABLE THGQMGIMP ADD CODDOC INT</mssql><oracle>ALTER TABLE THGQMGIMP ADD (CODDOC NUMBER(10))</oracle></sql>
+    <sql nomeTabela="THGQMGIMP" ordem="3" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="VERSAO" descricao="Adicionar campo VERSAO"><mssql>ALTER TABLE THGQMGIMP ADD VERSAO VARCHAR(10)</mssql><oracle>ALTER TABLE THGQMGIMP ADD (VERSAO VARCHAR2(10))</oracle></sql>
+    <sql nomeTabela="THGQMGIMP" ordem="4" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="QTDECOPIAS" descricao="Adicionar campo QTDECOPIAS"><mssql>ALTER TABLE THGQMGIMP ADD QTDECOPIAS INT</mssql><oracle>ALTER TABLE THGQMGIMP ADD (QTDECOPIAS NUMBER(10))</oracle></sql>
+    <sql nomeTabela="THGQMGIMP" ordem="5" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="FINALIDADE" descricao="Adicionar campo FINALIDADE"><mssql>ALTER TABLE THGQMGIMP ADD FINALIDADE VARCHAR(200)</mssql><oracle>ALTER TABLE THGQMGIMP ADD (FINALIDADE VARCHAR2(200))</oracle></sql>
+    <sql nomeTabela="THGQMGIMP" ordem="6" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODUSU" descricao="Adicionar campo CODUSU"><mssql>ALTER TABLE THGQMGIMP ADD CODUSU INT</mssql><oracle>ALTER TABLE THGQMGIMP ADD (CODUSU NUMBER(10))</oracle></sql>
+    <sql nomeTabela="THGQMGIMP" ordem="7" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="DHCREATE" descricao="Adicionar campo DHCREATE"><mssql>ALTER TABLE THGQMGIMP ADD DHCREATE DATETIME</mssql><oracle>ALTER TABLE THGQMGIMP ADD (DHCREATE DATE)</oracle></sql>
+
+</scripts>

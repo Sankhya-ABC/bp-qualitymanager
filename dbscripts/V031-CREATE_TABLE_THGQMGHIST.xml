@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<scripts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="../.gradle/scripts.xsd">
+
+    <sql nomeTabela="THGQMGHIST" ordem="1" executar="SE_NAO_EXISTIR" tipoObjeto="TABLE" nomeObjeto="THGQMGHIST" descricao="Criacao da tabela THGQMGHIST">
+        <mssql>CREATE TABLE THGQMGHIST (CODHIST INT NOT NULL, CONSTRAINT PK_THGQMGHIST PRIMARY KEY (CODHIST))</mssql>
+        <oracle>CREATE TABLE THGQMGHIST (CODHIST NUMBER(10) NOT NULL, CONSTRAINT PK_THGQMGHIST PRIMARY KEY (CODHIST))</oracle>
+    </sql>
+    <sql nomeTabela="THGQMGHIST" ordem="2" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODDOC" descricao="Adicionar campo CODDOC"><mssql>ALTER TABLE THGQMGHIST ADD CODDOC INT</mssql><oracle>ALTER TABLE THGQMGHIST ADD (CODDOC NUMBER(10))</oracle></sql>
+    <sql nomeTabela="THGQMGHIST" ordem="3" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="STATUSANT" descricao="Adicionar campo STATUSANT"><mssql>ALTER TABLE THGQMGHIST ADD STATUSANT VARCHAR(1)</mssql><oracle>ALTER TABLE THGQMGHIST ADD (STATUSANT VARCHAR2(1))</oracle></sql>
+    <sql nomeTabela="THGQMGHIST" ordem="4" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="STATUSNOVO" descricao="Adicionar campo STATUSNOVO"><mssql>ALTER TABLE THGQMGHIST ADD STATUSNOVO VARCHAR(1)</mssql><oracle>ALTER TABLE THGQMGHIST ADD (STATUSNOVO VARCHAR2(1))</oracle></sql>
+    <sql nomeTabela="THGQMGHIST" ordem="5" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="JUSTIFICATIVA" descricao="Adicionar campo JUSTIFICATIVA"><mssql>ALTER TABLE THGQMGHIST ADD JUSTIFICATIVA VARCHAR(300)</mssql><oracle>ALTER TABLE THGQMGHIST ADD (JUSTIFICATIVA VARCHAR2(300))</oracle></sql>
+    <sql nomeTabela="THGQMGHIST" ordem="6" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODUSU" descricao="Adicionar campo CODUSU"><mssql>ALTER TABLE THGQMGHIST ADD CODUSU INT</mssql><oracle>ALTER TABLE THGQMGHIST ADD (CODUSU NUMBER(10))</oracle></sql>
+    <sql nomeTabela="THGQMGHIST" ordem="7" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="DHCREATE" descricao="Adicionar campo DHCREATE"><mssql>ALTER TABLE THGQMGHIST ADD DHCREATE DATETIME</mssql><oracle>ALTER TABLE THGQMGHIST ADD (DHCREATE DATE)</oracle></sql>
+
+</scripts>

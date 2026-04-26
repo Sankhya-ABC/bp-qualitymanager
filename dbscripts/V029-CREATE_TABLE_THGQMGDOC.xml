@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<scripts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="../.gradle/scripts.xsd">
+
+    <sql nomeTabela="THGQMGDOC" ordem="1" executar="SE_NAO_EXISTIR" tipoObjeto="TABLE" nomeObjeto="THGQMGDOC" descricao="Criacao da tabela THGQMGDOC">
+        <mssql>CREATE TABLE THGQMGDOC (CODDOC INT NOT NULL, CONSTRAINT PK_THGQMGDOC PRIMARY KEY (CODDOC))</mssql>
+        <oracle>CREATE TABLE THGQMGDOC (CODDOC NUMBER(10) NOT NULL, CONSTRAINT PK_THGQMGDOC PRIMARY KEY (CODDOC))</oracle>
+    </sql>
+    <sql nomeTabela="THGQMGDOC" ordem="2" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODIGODOC" descricao="Adicionar campo CODIGODOC"><mssql>ALTER TABLE THGQMGDOC ADD CODIGODOC VARCHAR(50)</mssql><oracle>ALTER TABLE THGQMGDOC ADD (CODIGODOC VARCHAR2(50))</oracle></sql>
+    <sql nomeTabela="THGQMGDOC" ordem="3" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="TITULODOC" descricao="Adicionar campo TITULODOC"><mssql>ALTER TABLE THGQMGDOC ADD TITULODOC VARCHAR(300)</mssql><oracle>ALTER TABLE THGQMGDOC ADD (TITULODOC VARCHAR2(300))</oracle></sql>
+    <sql nomeTabela="THGQMGDOC" ordem="4" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="TIPODOC" descricao="Adicionar campo TIPODOC"><mssql>ALTER TABLE THGQMGDOC ADD TIPODOC VARCHAR(2)</mssql><oracle>ALTER TABLE THGQMGDOC ADD (TIPODOC VARCHAR2(2))</oracle></sql>
+    <sql nomeTabela="THGQMGDOC" ordem="5" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="STATUS" descricao="Adicionar campo STATUS"><mssql>ALTER TABLE THGQMGDOC ADD STATUS VARCHAR(1)</mssql><oracle>ALTER TABLE THGQMGDOC ADD (STATUS VARCHAR2(1))</oracle></sql>
+    <sql nomeTabela="THGQMGDOC" ordem="6" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="VERSAOATUAL" descricao="Adicionar campo VERSAOATUAL"><mssql>ALTER TABLE THGQMGDOC ADD VERSAOATUAL VARCHAR(10)</mssql><oracle>ALTER TABLE THGQMGDOC ADD (VERSAOATUAL VARCHAR2(10))</oracle></sql>
+    <sql nomeTabela="THGQMGDOC" ordem="7" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODPARC" descricao="Adicionar campo CODPARC"><mssql>ALTER TABLE THGQMGDOC ADD CODPARC INT</mssql><oracle>ALTER TABLE THGQMGDOC ADD (CODPARC NUMBER(10))</oracle></sql>
+    <sql nomeTabela="THGQMGDOC" ordem="8" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODPARC_APROV" descricao="Adicionar campo CODPARC_APROV"><mssql>ALTER TABLE THGQMGDOC ADD CODPARC_APROV INT</mssql><oracle>ALTER TABLE THGQMGDOC ADD (CODPARC_APROV NUMBER(10))</oracle></sql>
+    <sql nomeTabela="THGQMGDOC" ordem="9" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="PROCESSO" descricao="Adicionar campo PROCESSO"><mssql>ALTER TABLE THGQMGDOC ADD PROCESSO VARCHAR(100)</mssql><oracle>ALTER TABLE THGQMGDOC ADD (PROCESSO VARCHAR2(100))</oracle></sql>
+    <sql nomeTabela="THGQMGDOC" ordem="10" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="NORMAISO" descricao="Adicionar campo NORMAISO"><mssql>ALTER TABLE THGQMGDOC ADD NORMAISO VARCHAR(4)</mssql><oracle>ALTER TABLE THGQMGDOC ADD (NORMAISO VARCHAR2(4))</oracle></sql>
+    <sql nomeTabela="THGQMGDOC" ordem="11" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CLAUSULAISO" descricao="Adicionar campo CLAUSULAISO"><mssql>ALTER TABLE THGQMGDOC ADD CLAUSULAISO VARCHAR(20)</mssql><oracle>ALTER TABLE THGQMGDOC ADD (CLAUSULAISO VARCHAR2(20))</oracle></sql>
+    <sql nomeTabela="THGQMGDOC" ordem="12" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="DTVALIDADE" descricao="Adicionar campo DTVALIDADE"><mssql>ALTER TABLE THGQMGDOC ADD DTVALIDADE DATETIME</mssql><oracle>ALTER TABLE THGQMGDOC ADD (DTVALIDADE DATE)</oracle></sql>
+    <sql nomeTabela="THGQMGDOC" ordem="13" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODUSU" descricao="Adicionar campo CODUSU"><mssql>ALTER TABLE THGQMGDOC ADD CODUSU INT</mssql><oracle>ALTER TABLE THGQMGDOC ADD (CODUSU NUMBER(10))</oracle></sql>
+    <sql nomeTabela="THGQMGDOC" ordem="14" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="DHCREATE" descricao="Adicionar campo DHCREATE"><mssql>ALTER TABLE THGQMGDOC ADD DHCREATE DATETIME</mssql><oracle>ALTER TABLE THGQMGDOC ADD (DHCREATE DATE)</oracle></sql>
+
+</scripts>

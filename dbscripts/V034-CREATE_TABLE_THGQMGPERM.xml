@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<scripts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="../.gradle/scripts.xsd">
+
+    <sql nomeTabela="THGQMGPERM" ordem="1" executar="SE_NAO_EXISTIR" tipoObjeto="TABLE" nomeObjeto="THGQMGPERM" descricao="Criacao da tabela THGQMGPERM">
+        <mssql>CREATE TABLE THGQMGPERM (CODPERM INT NOT NULL, CONSTRAINT PK_THGQMGPERM PRIMARY KEY (CODPERM))</mssql>
+        <oracle>CREATE TABLE THGQMGPERM (CODPERM NUMBER(10) NOT NULL, CONSTRAINT PK_THGQMGPERM PRIMARY KEY (CODPERM))</oracle>
+    </sql>
+    <sql nomeTabela="THGQMGPERM" ordem="2" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODDOC" descricao="Adicionar campo CODDOC"><mssql>ALTER TABLE THGQMGPERM ADD CODDOC INT</mssql><oracle>ALTER TABLE THGQMGPERM ADD (CODDOC NUMBER(10))</oracle></sql>
+    <sql nomeTabela="THGQMGPERM" ordem="3" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODPARC" descricao="Adicionar campo CODPARC"><mssql>ALTER TABLE THGQMGPERM ADD CODPARC INT</mssql><oracle>ALTER TABLE THGQMGPERM ADD (CODPARC NUMBER(10))</oracle></sql>
+    <sql nomeTabela="THGQMGPERM" ordem="4" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="PERM_LEITURA" descricao="Adicionar campo PERM_LEITURA"><mssql>ALTER TABLE THGQMGPERM ADD PERM_LEITURA CHAR(1)</mssql><oracle>ALTER TABLE THGQMGPERM ADD (PERM_LEITURA CHAR(1))</oracle></sql>
+    <sql nomeTabela="THGQMGPERM" ordem="5" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="PERM_REVISAO" descricao="Adicionar campo PERM_REVISAO"><mssql>ALTER TABLE THGQMGPERM ADD PERM_REVISAO CHAR(1)</mssql><oracle>ALTER TABLE THGQMGPERM ADD (PERM_REVISAO CHAR(1))</oracle></sql>
+    <sql nomeTabela="THGQMGPERM" ordem="6" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="PERM_APROVA" descricao="Adicionar campo PERM_APROVA"><mssql>ALTER TABLE THGQMGPERM ADD PERM_APROVA CHAR(1)</mssql><oracle>ALTER TABLE THGQMGPERM ADD (PERM_APROVA CHAR(1))</oracle></sql>
+    <sql nomeTabela="THGQMGPERM" ordem="7" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="PERM_IMPRIME" descricao="Adicionar campo PERM_IMPRIME"><mssql>ALTER TABLE THGQMGPERM ADD PERM_IMPRIME CHAR(1)</mssql><oracle>ALTER TABLE THGQMGPERM ADD (PERM_IMPRIME CHAR(1))</oracle></sql>
+
+</scripts>
