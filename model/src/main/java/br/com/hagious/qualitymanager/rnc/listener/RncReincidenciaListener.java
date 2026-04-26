@@ -12,12 +12,12 @@ import java.util.List;
 
 @Log
 @Component
-public class NcReincidenciaListener extends PersistenceEventAdapter {
+public class RncReincidenciaListener extends PersistenceEventAdapter {
 
     private final RegistroRncRepository registroRncRepository;
 
     @Inject
-    public NcReincidenciaListener(RegistroRncRepository registroRncRepository) {
+    public RncReincidenciaListener(RegistroRncRepository registroRncRepository) {
         this.registroRncRepository = registroRncRepository;
     }
 

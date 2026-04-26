@@ -77,7 +77,7 @@
 
 ### Backend Java
 - [ ] `model/.../actionButtons/NotificarRncActionButton.java`
-- [ ] `model/.../services/NotificacaoNcService.java` (metodo enviaNotificacaoPorFase)
+- [ ] `model/.../services/NotificacaoRncService.java` (metodo enviaNotificacaoPorFase)
 
 ### Menu
 - Nao aparece no menu — acessada como grid filha do Card 001 (Registro de RNC)

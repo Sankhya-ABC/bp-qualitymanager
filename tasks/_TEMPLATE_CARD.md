@@ -80,7 +80,7 @@
 |:-------------------|:--------------------------------------------|:--------------------------|
 | INSERT             | Preenche CODXXX via sequence, seta defaults  | Listener BI       |
 | Mudanca de STATUS  | Registra em THGQMGLOG               | BusinessService Java      |
-| Avanco de fase     | Atualiza FASEATUAL, registra historico       | FaseNcBusinessService     |
+| Avanco de fase     | Atualiza FASEATUAL, registra historico       | FaseRncBusinessService     |
 
 ---
 

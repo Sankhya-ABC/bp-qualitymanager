@@ -37,7 +37,7 @@ Logica:
 
 ## Regras Criticas
 
-1. Fluxo de STATUS e obrigatorio: P->R->A — outros fluxos bloqueados com NcValidacaoException
+1. Fluxo de STATUS e obrigatorio: P->R->A — outros fluxos bloqueados com RncValidacaoException
 2. Toda mudanca de STATUS registra em THGQMGHIST e THGQMGLOG
 3. instanceName dos @ActionButton deve ser `QmDocControle` — copiar do XML
 

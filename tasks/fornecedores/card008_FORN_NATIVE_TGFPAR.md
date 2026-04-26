@@ -35,7 +35,7 @@
 
 1. Prefixo `QM_` identifica todos os campos adicionados pelo QualityManager em tabelas nativas
 2. Campo visivel na aba Endereco do cadastro de Parceiros — nao cria tela separada
-3. Usado por: QuestionarioFornService (card FORN-07) e NotificacaoNcService (card RNC-13)
+3. Usado por: QuestionarioFornService (card FORN-07) e NotificacaoRncService (card RNC-13)
 4. Se vazio, o sistema usa o EMAIL padrao do parceiro como fallback
 
 ---

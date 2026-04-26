@@ -74,7 +74,7 @@
 1. Tela so e acessivel quando THGQMGREG.CODFASE = 5
 2. Campo DETALHEACAO e obrigatorio para avancar, exceto se NAOSEAPLICA='S'
 3. 5W2H na aba "Analise 5W2H" e opcional — complementa o detalhe principal
-4. Esta fase pode ser destino do DESVIO DE FLUXO: se ORIGEM da RNC for Riscos/Oportunidades, FaseNcBusinessService pula da Fase 3 direto para aqui (Fase 5)
+4. Esta fase pode ser destino do DESVIO DE FLUXO: se ORIGEM da RNC for Riscos/Oportunidades, FaseRncBusinessService pula da Fase 3 direto para aqui (Fase 5)
 5. Toda mudanca registra entrada em THGQMGLOG
 
 ---
@@ -85,8 +85,8 @@
 |:-----------------|:-----------------------------------------------------|:----------------------|
 | INSERT           | CODACCOR via sequence, DHCREATE=now()        | Listener BI   |
 | UPDATE           | DHALTER = SYSDATE/GETDATE()                          | Trigger BIU           |
-| Mudar Fase (btn) | CODFASE=6, registra THGQMGREGFASE, audit log       | FaseNcBusinessService |
-| Desvio de fluxo  | CODFASE=5 recebido diretamente da Fase 3 (Causa Raiz) | FaseNcBusinessService |
+| Mudar Fase (btn) | CODFASE=6, registra THGQMGREGFASE, audit log       | FaseRncBusinessService |
+| Desvio de fluxo  | CODFASE=5 recebido diretamente da Fase 3 (Causa Raiz) | FaseRncBusinessService |
 
 ---
 
@@ -114,4 +114,4 @@
 - 5W2H em aba SEPARADA "Analise 5W2H" — diferente do Card 004 (Abrangencia) que usa __main
 - DETALHEACAO usa dataType=HTML — editor rico de texto
 - instanceName: `QmRncAcaoCorretiva` — copiar exatamente do XML
-- Desvio de fluxo: FaseNcBusinessService deve receber CODFASE=5 como destino quando ORIGEM=Riscos/Oportunidades
+- Desvio de fluxo: FaseRncBusinessService deve receber CODFASE=5 como destino quando ORIGEM=Riscos/Oportunidades

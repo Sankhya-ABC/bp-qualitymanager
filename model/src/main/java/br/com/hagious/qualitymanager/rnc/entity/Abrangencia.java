@@ -63,5 +63,5 @@ public class Abrangencia {
             @Relationship(fromField = "CODABR", toField = "CODABR")
         }
     )
-    private List<NcQuem> quem;
+    private List<RncQuem> quem;
 }

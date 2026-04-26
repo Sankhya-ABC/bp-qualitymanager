@@ -1,7 +1,7 @@
 package br.com.hagious.qualitymanager.rnc.service;
 
-import br.com.hagious.qualitymanager.core.entity.FaseNc;
-import br.com.hagious.qualitymanager.core.repository.FaseNcRepository;
+import br.com.hagious.qualitymanager.core.entity.FaseRnc;
+import br.com.hagious.qualitymanager.core.repository.FaseRncRepository;
 import br.com.hagious.qualitymanager.core.service.AuditLogService;
 import br.com.hagious.qualitymanager.rnc.entity.RegistroFase;
 import br.com.hagious.qualitymanager.rnc.entity.RegistroRnc;
@@ -19,21 +19,21 @@ import java.util.Optional;
 
 @Log
 @Component
-public class FaseNcBusinessService {
+public class FaseRncBusinessService {
 
     private final RegistroRncRepository registroRncRepository;
     private final RegistroFaseRepository registroFaseRepository;
-    private final FaseNcRepository faseNcRepository;
+    private final FaseRncRepository faseRncRepository;
     private final AuditLogService auditLogService;
 
     @Inject
-    public FaseNcBusinessService(RegistroRncRepository registroRncRepository,
+    public FaseRncBusinessService(RegistroRncRepository registroRncRepository,
                                   RegistroFaseRepository registroFaseRepository,
-                                  FaseNcRepository faseNcRepository,
+                                  FaseRncRepository faseRncRepository,
                                   AuditLogService auditLogService) {
         this.registroRncRepository = registroRncRepository;
         this.registroFaseRepository = registroFaseRepository;
-        this.faseNcRepository = faseNcRepository;
+        this.faseRncRepository = faseRncRepository;
         this.auditLogService = auditLogService;
     }
 
@@ -75,12 +75,12 @@ public class FaseNcBusinessService {
         }
 
         // Busca proxima fase ativa apos a atual
-        List<FaseNc> todasFases = faseNcRepository.findAll();
+        List<FaseRnc> todasFases = faseRncRepository.findAll();
         BigDecimal proximaFase = faseAtual.add(BigDecimal.ONE);
 
         for (int candidata = atual + 1; candidata <= 10; candidata++) {
             boolean ativa = true;
-            for (FaseNc fase : todasFases) {
+            for (FaseRnc fase : todasFases) {
                 if (fase.getCodFase().intValue() == candidata && "N".equals(fase.getAtivo())) {
                     ativa = false;
                     break;

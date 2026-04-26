@@ -51,7 +51,7 @@ ISO 9001 clausulas 8.7 (Controle de saidas nao conformes) e 10.2 (Nao conformida
 
 ## Services
 
-### FaseNcBusinessService
+### FaseRncBusinessService
 Engine central do workflow. Metodos:
 - `avancarFase(rncId, origem)` — calcula proxima fase (com desvio e skip de inativas)
 - `retornarFase(rncId)` — volta uma fase (bloqueia se cancelada ou fase 1)
@@ -59,11 +59,11 @@ Engine central do workflow. Metodos:
 - `encerrarRnc(rncId)` — STATUS=E, DTENCERRAMENTO=now (eficacia verificada)
 - `reabrirParaFase5(rncId)` — volta pra fase 5 (verificacao ineficaz)
 
-### NcReincidenciaListener
+### RncReincidenciaListener
 Listener afterInsert em QmRncRegistro. Busca NCs anteriores com mesma ORIGEM+PROCESSO nao encerradas. Se encontrar, marca REINCIDENTE=S e vincula.
 
 ## Regras de Negocio
-1. STATUS e CODFASE gerenciados exclusivamente por FaseNcBusinessService
+1. STATUS e CODFASE gerenciados exclusivamente por FaseRncBusinessService
 2. Toda mudanca de STATUS/CODFASE registrada em THGQMGLOG
 3. RNC cancelada nao pode avancar/retornar de fase
 4. Verificacao eficaz (fase 10, RESULTADO=E) encerra RNC

@@ -21,7 +21,7 @@ para este servico. Nenhum action button contem SQL ou logica de negocio diretame
 
 ## Classes Java
 
-### BaseNcActionButton.java (abstrata — em services/)
+### BaseRncActionButton.java (abstrata — em services/)
 
 ```
 Pacote: br.com.bpabc.addon.qualitymanager.services
@@ -32,7 +32,7 @@ Tratamento de erro: QualityManagerException -> ctx.setMensagemRetorno(e.getMsgUs
 Log obrigatorio: [QM-NC] prefixo em todos os logs
 ```
 
-### FaseNcBusinessService.java (em services/)
+### FaseRncBusinessService.java (em services/)
 
 | Metodo                 | Parametros              | O que faz                                                                |
 |:-----------------------|:------------------------|:-------------------------------------------------------------------------|
@@ -54,7 +54,7 @@ SE proximaFase = 10 E resultado da eficacia = 'E':
     encerrarRnc(rncId)
 ```
 
-### NcReincidenciaListener.java (em listeners/)
+### RncReincidenciaListener.java (em listeners/)
 
 ```
 instanceName: "QmRncRegistro"  <- copiar EXATAMENTE do XML
@@ -63,7 +63,7 @@ Logica: busca RNCs anteriores com mesma ORIGEM+PROCESSO nao encerradas (STATUS !
         Se encontrar: REINCIDENTE='S', NCVINCULADA=CODRNC da mais recente anterior
 ```
 
-### NotificacaoNcService.java (em services/)
+### NotificacaoRncService.java (em services/)
 
 | Metodo                    | Parametros                  | O que faz                                                      |
 |:--------------------------|:----------------------------|:---------------------------------------------------------------|
@@ -75,7 +75,7 @@ Logica: busca RNCs anteriores com mesma ORIGEM+PROCESSO nao encerradas (STATUS !
 
 | Classe                   | Quando usar                                        |
 |:-------------------------|:---------------------------------------------------|
-| `NcValidacaoException`   | Campo obrigatorio nao preenchido, estado invalido  |
+| `RncValidacaoException`   | Campo obrigatorio nao preenchido, estado invalido  |
 | `FaseInvalidaException`  | Tentativa de mover RNC para fase invalida          |
 | `QualityManagerException`| Base — mensagemUsuario em PT-BR + causa tecnica no log |
 
@@ -83,7 +83,7 @@ Logica: busca RNCs anteriores com mesma ORIGEM+PROCESSO nao encerradas (STATUS !
 
 ## Regras criticas de implementacao
 
-1. NUNCA colocar SQL dentro de ActionButton — apenas chamada para FaseNcBusinessService
+1. NUNCA colocar SQL dentro de ActionButton — apenas chamada para FaseRncBusinessService
 2. BigDecimal.divide() SEMPRE com escala: `.divide(total, 2, RoundingMode.HALF_UP)`
 3. instanceName do @Listener DEVE ser copiado literalmente do XML — erro silencioso se errado
 4. Audit log OBRIGATORIO em toda mudanca de STATUS ou CODFASE via THGQMGLOG
@@ -96,11 +96,11 @@ Logica: busca RNCs anteriores com mesma ORIGEM+PROCESSO nao encerradas (STATUS !
 ## Artefatos
 
 ### Backend Java
-- [ ] `model/.../services/BaseNcActionButton.java` — classe abstrata base
-- [ ] `model/.../services/FaseNcBusinessService.java` — engine central
-- [ ] `model/.../services/NotificacaoNcService.java` — envio de e-mails
-- [ ] `model/.../listeners/NcReincidenciaListener.java` — deteccao de reincidencia
-- [ ] `model/.../exceptions/NcValidacaoException.java`
+- [ ] `model/.../services/BaseRncActionButton.java` — classe abstrata base
+- [ ] `model/.../services/FaseRncBusinessService.java` — engine central
+- [ ] `model/.../services/NotificacaoRncService.java` — envio de e-mails
+- [ ] `model/.../listeners/RncReincidenciaListener.java` — deteccao de reincidencia
+- [ ] `model/.../exceptions/RncValidacaoException.java`
 - [ ] `model/.../exceptions/FaseInvalidaException.java`
 - [ ] `model/.../exceptions/QualityManagerException.java` — ja criada no core
 

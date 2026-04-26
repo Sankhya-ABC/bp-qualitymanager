@@ -98,8 +98,8 @@
 |:-----------------|:----------------------------------------------------|:----------------------|
 | INSERT           | CODABR via sequence, DHCREATE=now()         | Listener BI   |
 | UPDATE           | DHALTER = SYSDATE/GETDATE()                         | Trigger BIU           |
-| Mudar Fase (btn) | CODFASE=5, registra THGQMGREGFASE, audit log      | FaseNcBusinessService |
-| Notificar (btn)  | Busca QM_EMAILQUESTIONARIO em TGFPAR, MSDFilaMensagem | NotificacaoNcService |
+| Mudar Fase (btn) | CODFASE=5, registra THGQMGREGFASE, audit log      | FaseRncBusinessService |
+| Notificar (btn)  | Busca QM_EMAILQUESTIONARIO em TGFPAR, MSDFilaMensagem | NotificacaoRncService |
 
 ---
 
@@ -117,7 +117,7 @@
 - [ ] `model/.../actionButtons/VoltarFaseAbrangenciaActionButton.java`
 - [ ] `model/.../actionButtons/CancelarRncAbrangenciaActionButton.java`
 - [ ] `model/.../actionButtons/NotificarQuemActionButton.java`
-- [ ] `model/.../services/NotificacaoNcService.java`
+- [ ] `model/.../services/NotificacaoRncService.java`
 
 ### Menu
 - [x] `datadictionary/menu.xml` — instancia QmRncAbrangencia ja registrada como item 04

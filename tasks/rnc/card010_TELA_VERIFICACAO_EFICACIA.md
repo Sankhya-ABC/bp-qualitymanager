@@ -60,8 +60,8 @@
 
 1. Tela so e acessivel quando THGQMGREG.CODFASE = 10
 2. RESULTADO e obrigatorio — nao pode avancar sem definir o resultado
-3. Se RESULTADO='E' (Eficaz): FaseNcBusinessService.encerrarRnc() — STATUS='E', DTENCERRAMENTO=now(), audit log
-4. Se RESULTADO='I' (Ineficaz): FaseNcBusinessService.reabrirParaFase5() — CODFASE=5, STATUS='P', nova acao corretiva obrigada
+3. Se RESULTADO='E' (Eficaz): FaseRncBusinessService.encerrarRnc() — STATUS='E', DTENCERRAMENTO=now(), audit log
+4. Se RESULTADO='I' (Ineficaz): FaseRncBusinessService.reabrirParaFase5() — CODFASE=5, STATUS='P', nova acao corretiva obrigada
 5. Se RESULTADO='P' (Parcialmente eficaz): gestor decide manualmente o proximo passo
 6. REINCIDENTE em THGQMGREG e verificado: se a RNC foi reaberta de Fase 10 para Fase 5, REINCIDENTE='S' na nova RNC gerada
 7. Evidencias desta fase usam ORIGEM=1 (Verificacao de Eficacia) em THGQMGEVID
@@ -73,9 +73,9 @@
 
 | Evento                   | O que acontece                                                   | Onde implementar             |
 |:-------------------------|:-----------------------------------------------------------------|:-----------------------------|
-| RESULTADO='E' + Encerrar | STATUS='E', DTENCERRAMENTO=now(), audit log "ENCERRADO_EFICAZ"   | FaseNcBusinessService        |
-| RESULTADO='I' + Reabrir  | CODFASE=5, STATUS='P', historico, audit log "REABERTO_INEFICAZ"   | FaseNcBusinessService        |
-| Encerramento             | REINCIDENTE verificado nas proximas NCs mesma origem+processo    | NcReincidenciaListener       |
+| RESULTADO='E' + Encerrar | STATUS='E', DTENCERRAMENTO=now(), audit log "ENCERRADO_EFICAZ"   | FaseRncBusinessService        |
+| RESULTADO='I' + Reabrir  | CODFASE=5, STATUS='P', historico, audit log "REABERTO_INEFICAZ"   | FaseRncBusinessService        |
+| Encerramento             | REINCIDENTE verificado nas proximas NCs mesma origem+processo    | RncReincidenciaListener       |
 
 ---
 

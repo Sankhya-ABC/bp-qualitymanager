@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @AllArgsConstructor
 @JapeEntity(entity = "QmRncQuem", table = "THGQMGRNCQUEM")
-public class NcQuem {
+public class RncQuem {
 
     @Id
     @Column(name = "CODQUEM")

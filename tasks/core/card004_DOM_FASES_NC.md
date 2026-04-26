@@ -33,7 +33,7 @@
 |:--|:-----------|:-----------|:---------|:----|:------|:-------|:------|:----------------------------------------------------------------|
 | 1 | Id Fase    | `CODFASE`   | INTEIRO  | -   | PK    | __main | -     | readOnly. Informado manualmente nos dados iniciais              |
 | 2 | Descricao  | `DESCFASE` | TEXTO    | 100 | Sim   | __main | -     | isPresentation=S. Nome exibido na tela de NC                   |
-| 3 | Ativo      | `ATIVO`    | CHECKBOX | 1   | Nao   | __main | -     | Default S. Se N, fase e pulada pelo FaseNcBusinessService       |
+| 3 | Ativo      | `ATIVO`    | CHECKBOX | 1   | Nao   | __main | -     | Default S. Se N, fase e pulada pelo FaseRncBusinessService       |
 
 ---
 
@@ -57,7 +57,7 @@
 ## Regras de Negocio
 
 1. Dados iniciais inseridos via V1.xml com verificacao: `IF COUNT(*) = 0 THEN INSERT`
-2. Fases com ATIVO='N' sao puladas pelo FaseNcBusinessService.avancarFase()
+2. Fases com ATIVO='N' sao puladas pelo FaseRncBusinessService.avancarFase()
 3. Empresa pode desativar fases que nao se aplicam ao seu processo (ex: Liberacao de Produto para empresas de servico)
 4. CODFASE=1 e sempre o inicio — nunca pode ser desativado
 5. CODFASE=10 e sempre o encerramento — nunca pode ser desativado
@@ -82,4 +82,4 @@
 - sequenceType=M (manual) — PK definida nos dados iniciais, nao gerada automaticamente
 - CODFASE e campo de FK em THGQMGREG (campo CODFASE)
 - instanceName: `QmRncFase` — copiar exatamente do XML
-- FaseNcBusinessService faz: `SELECT CODFASE FROM THGQMGRNCFASE WHERE CODFASE > :atual AND ATIVO='S' ORDER BY CODFASE`
+- FaseRncBusinessService faz: `SELECT CODFASE FROM THGQMGRNCFASE WHERE CODFASE > :atual AND ATIVO='S' ORDER BY CODFASE`

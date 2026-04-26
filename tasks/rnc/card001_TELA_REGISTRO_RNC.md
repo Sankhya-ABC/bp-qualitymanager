@@ -85,7 +85,7 @@
 6. REINCIDENTE e marcado automaticamente pelo sistema ao detectar NC anterior com mesma origem+processo nao encerrada
 7. Campo CODAUD so e visivel se ORIGEM = 'A' (Auditoria) — visibilidade condicional
 8. Ao atingir a Fase 10 com verificacao eficaz, STATUS muda para `E` e DTENCERRAMENTO e preenchida automaticamente
-9. RNC cancelada (STATUS='C') nao pode voltar para fase anterior — FaseNcBusinessService bloqueia
+9. RNC cancelada (STATUS='C') nao pode voltar para fase anterior — FaseRncBusinessService bloqueia
 10. Toda mudanca de STATUS ou CODFASE gera registro em THGQMGLOG
 
 ---
@@ -97,11 +97,11 @@
 | INSERT                  | CODRNC via sequence, NURNC=NC-YYYY-NNNN, CODFASE=1, STATUS='A'     | Listener BI (V1.xml) |
 | INSERT                  | DTPREVENCERRAR calculada pela prioridade                          | Listener BI |
 | UPDATE                  | DHALTER = SYSDATE/GETDATE()                                       | Listener BIU |
-| Mudar Fase (btn)        | CODFASE+1, registra em THGQMGREGFASE, grava THGQMGLOG | FaseNcBusinessService.avancarFase() |
-| Voltar Fase (btn)       | CODFASE-1, registra em THGQMGREGFASE, bloqueia se STATUS='C'   | FaseNcBusinessService.retornarFase() |
-| Cancelar RNC (btn)      | STATUS='C', DTENCERRAMENTO=now(), grava audit log                 | FaseNcBusinessService.cancelarRnc() |
-| Fase 10 + Eficaz        | STATUS='E', DTENCERRAMENTO=now(), grava audit log                 | FaseNcBusinessService.encerrarRnc() |
-| Reincidencia detectada  | REINCIDENTE='S', NCVINCULADA=CODRNC da NC anterior                  | NcReincidenciaListener         |
+| Mudar Fase (btn)        | CODFASE+1, registra em THGQMGREGFASE, grava THGQMGLOG | FaseRncBusinessService.avancarFase() |
+| Voltar Fase (btn)       | CODFASE-1, registra em THGQMGREGFASE, bloqueia se STATUS='C'   | FaseRncBusinessService.retornarFase() |
+| Cancelar RNC (btn)      | STATUS='C', DTENCERRAMENTO=now(), grava audit log                 | FaseRncBusinessService.cancelarRnc() |
+| Fase 10 + Eficaz        | STATUS='E', DTENCERRAMENTO=now(), grava audit log                 | FaseRncBusinessService.encerrarRnc() |
+| Reincidencia detectada  | REINCIDENTE='S', NCVINCULADA=CODRNC da NC anterior                  | RncReincidenciaListener         |
 
 ---
 
@@ -117,8 +117,8 @@
 - [ ] `model/.../actionButtons/MudarFaseRegistroActionButton.java`
 - [ ] `model/.../actionButtons/CancelarRncRegistroActionButton.java`
 - [ ] `model/.../actionButtons/NotificarRncActionButton.java`
-- [ ] `model/.../services/FaseNcBusinessService.java`
-- [ ] `model/.../listeners/NcReincidenciaListener.java`
+- [ ] `model/.../services/FaseRncBusinessService.java`
+- [ ] `model/.../listeners/RncReincidenciaListener.java`
 
 ### Menu
 - [x] `datadictionary/menu.xml` — instancias QmRncConsulta e QmRncRegistro ja registradas

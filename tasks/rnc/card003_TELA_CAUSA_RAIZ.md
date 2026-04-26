@@ -69,7 +69,7 @@ Nao possui tabelas filhas. Esta tela e uma aba filha da tela de Registro de RNC 
 3. Se NAOSEAPLICA='S', todos os campos 6M podem ficar vazios
 4. Os 6 campos M sao independentes entre si — nenhum e obrigatorio individualmente
 5. Toda mudanca registra entrada em THGQMGLOG
-6. Desvio de fluxo: se ORIGEM da RNC contiver "Riscos" ou "Oportunidades", FaseNcBusinessService pula da Fase 3 direto para a Fase 5 (Acoes Corretivas)
+6. Desvio de fluxo: se ORIGEM da RNC contiver "Riscos" ou "Oportunidades", FaseRncBusinessService pula da Fase 3 direto para a Fase 5 (Acoes Corretivas)
 
 ---
 
@@ -79,8 +79,8 @@ Nao possui tabelas filhas. Esta tela e uma aba filha da tela de Registro de RNC 
 |:-----------------|:-----------------------------------------------------|:--------------------|
 | INSERT           | CODCR via sequence, DHCREATE=now()            | Listener BI |
 | UPDATE           | DHALTER = SYSDATE/GETDATE()                          | Trigger BIU         |
-| Mudar Fase (btn) | CODFASE=4 (ou 5 se desvio por origem), reg. historico | FaseNcBusinessService |
-| Voltar Fase (btn)| CODFASE=2, registra historico                         | FaseNcBusinessService |
+| Mudar Fase (btn) | CODFASE=4 (ou 5 se desvio por origem), reg. historico | FaseRncBusinessService |
+| Voltar Fase (btn)| CODFASE=2, registra historico                         | FaseRncBusinessService |
 
 ---
 
@@ -106,5 +106,5 @@ Nao possui tabelas filhas. Esta tela e uma aba filha da tela de Registro de RNC 
 
 - Os 6 campos do Ishikawa (MAO_OBRA, METODO, MAQUINA, MEDIDA, MATERIAL, MEIO_AMBIENTE) usam dataType=HTML
 - Todos ficam na aba "Ishikawa 6M" — cada M em seu proprio grupo nomeado
-- Desvio de fluxo por origem: se TGQCADASTROS/THGQMGPRIO do tipo Riscos/Oportunidades — implementar em FaseNcBusinessService
+- Desvio de fluxo por origem: se TGQCADASTROS/THGQMGPRIO do tipo Riscos/Oportunidades — implementar em FaseRncBusinessService
 - instanceName: `QmRncCausaRaiz` — copiar exatamente do XML
