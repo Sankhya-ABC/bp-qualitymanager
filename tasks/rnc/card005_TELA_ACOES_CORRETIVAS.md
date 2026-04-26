@@ -3,7 +3,7 @@
 ## Identificacao
 | Atributo        | Valor                                          |
 |:----------------|:-----------------------------------------------|
-| Modulo          | RNC — Nao Conformidades                        |
+| Modulo          | RNC — Registro de Nao Conformidades                        |
 | Fase Roadmap    | Fase 1 — Core + Modulo NC/RNC                  |
 | ISO             | ABNT NBR ISO 9001:2015 — Clausula 10.2.1e      |
 | Ordem no modulo | 005 de 014                                     |
@@ -16,14 +16,14 @@
 | Atributo  | Valor                    |
 |:----------|:-------------------------|
 | Nome      | `THGQMGACCOR`  |
-| Instancia | `QmNcAcaoCorretiva`      |
+| Instancia | `QmRncAcaoCorretiva`      |
 | Sequencia | AUTO (`CODACCOR`) |
 | Dual-DB   | Oracle + SQL Server      |
 
 ### Instancias da tela
 | Instancia          | Tipo       | Descricao                                        |
 |:-------------------|:-----------|:-------------------------------------------------|
-| `QmNcAcaoCorretiva`| Formulario | Acao corretiva com detalhe + 5W2H em aba separada|
+| `QmRncAcaoCorretiva`| Formulario | Acao corretiva com detalhe + 5W2H em aba separada|
 
 ---
 
@@ -62,10 +62,10 @@
 
 | Botao              | Classe Java                            | Instancia           | Transacao | Descricao                                          |
 |:-------------------|:---------------------------------------|:--------------------|:----------|:---------------------------------------------------|
-| Mudar Fase         | `MudarFaseAcaoCorretivaActionButton`   | `QmNcAcaoCorretiva` | AUTOMATIC | Avanca RNC para Fase 6 (Revisao de Documentos)     |
-| Voltar Fase        | `VoltarFaseAcaoCorretivaActionButton`  | `QmNcAcaoCorretiva` | AUTOMATIC | Retorna RNC para Fase 4 (Abrangencia)              |
-| Cancelar RNC       | `CancelarRncAcaoCorretivaActionButton` | `QmNcAcaoCorretiva` | AUTOMATIC | Cancela a RNC (STATUS='C')                         |
-| Enviar Notificacao | `NotificarAcaoCorretivaActionButton`   | `QmNcAcaoCorretiva` | AUTOMATIC | Envia e-mail ao responsavel                        |
+| Mudar Fase         | `MudarFaseAcaoCorretivaActionButton`   | `QmRncAcaoCorretiva` | AUTOMATIC | Avanca RNC para Fase 6 (Revisao de Documentos)     |
+| Voltar Fase        | `VoltarFaseAcaoCorretivaActionButton`  | `QmRncAcaoCorretiva` | AUTOMATIC | Retorna RNC para Fase 4 (Abrangencia)              |
+| Cancelar RNC       | `CancelarRncAcaoCorretivaActionButton` | `QmRncAcaoCorretiva` | AUTOMATIC | Cancela a RNC (STATUS='C')                         |
+| Enviar Notificacao | `NotificarAcaoCorretivaActionButton`   | `QmRncAcaoCorretiva` | AUTOMATIC | Envia e-mail ao responsavel                        |
 
 ---
 
@@ -105,7 +105,7 @@
 - [ ] `model/.../actionButtons/NotificarAcaoCorretivaActionButton.java`
 
 ### Menu
-- [x] `datadictionary/menu.xml` — instancia QmNcAcaoCorretiva ja registrada como item 05
+- [x] `datadictionary/menu.xml` — instancia QmRncAcaoCorretiva ja registrada como item 05
 
 ---
 
@@ -113,5 +113,5 @@
 
 - 5W2H em aba SEPARADA "Analise 5W2H" — diferente do Card 004 (Abrangencia) que usa __main
 - DETALHEACAO usa dataType=HTML — editor rico de texto
-- instanceName: `QmNcAcaoCorretiva` — copiar exatamente do XML
+- instanceName: `QmRncAcaoCorretiva` — copiar exatamente do XML
 - Desvio de fluxo: FaseNcBusinessService deve receber CODFASE=5 como destino quando ORIGEM=Riscos/Oportunidades

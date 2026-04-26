@@ -6,7 +6,7 @@
         <description>Responsaveis da RNC</description>
         <primaryKey><field name="CODRESP"/></primaryKey>
         <instances>
-            <instance name="QmNcResponsavel"><description>Responsaveis da RNC</description></instance>
+            <instance name="QmRncResponsavel"><description>Responsaveis da RNC</description></instance>
         </instances>
         <fields>
             <field name="CODRESP" dataType="INTEIRO" readOnly="S" order="1" allowSearch="S" visibleOnSearch="S"><description>Cod. Responsavel</description></field>

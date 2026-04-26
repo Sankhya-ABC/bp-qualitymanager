@@ -8,7 +8,7 @@
             <field name="CODACCOR"/>
         </primaryKey>
         <instances>
-            <instance name="QmNcAcaoCorretiva">
+            <instance name="QmRncAcaoCorretiva">
                 <description>Acoes Corretivas</description>
             </instance>
         </instances>

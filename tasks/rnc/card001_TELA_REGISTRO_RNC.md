@@ -3,7 +3,7 @@
 ## Identificacao
 | Atributo        | Valor                                          |
 |:----------------|:-----------------------------------------------|
-| Modulo          | RNC — Nao Conformidades                        |
+| Modulo          | RNC — Registro de Nao Conformidades                        |
 | Fase Roadmap    | Fase 1 — Core + Modulo NC/RNC                  |
 | ISO             | ABNT NBR ISO 9001:2015 — Clausulas 8.7 + 10.2  |
 | Ordem no modulo | 001 de 014                                     |
@@ -16,15 +16,15 @@
 | Atributo  | Valor                |
 |:----------|:---------------------|
 | Nome      | `THGQMGREG`    |
-| Instancia | `QmNcRegistro`       |
+| Instancia | `QmRncRegistro`       |
 | Sequencia | AUTO (`CODRNC`)        |
 | Dual-DB   | Oracle + SQL Server  |
 
 ### Instancias da tela
 | Instancia      | Tipo       | Descricao                                              |
 |:---------------|:-----------|:-------------------------------------------------------|
-| `QmNcConsulta` | Lista/Grid | Visao de consulta com filtros por status, prioridade, responsavel, periodo |
-| `QmNcRegistro` | Formulario | Formulario completo de abertura da RNC                 |
+| `QmRncConsulta` | Lista/Grid | Visao de consulta com filtros por status, prioridade, responsavel, periodo |
+| `QmRncRegistro` | Formulario | Formulario completo de abertura da RNC                 |
 
 ---
 
@@ -60,8 +60,8 @@
 
 | Tabela filha           | Instancia filha     | Vinculo FK | Descricao                                        |
 |:-----------------------|:--------------------|:-----------|:-------------------------------------------------|
-| `THGQMGRESP`   | `QmNcResponsavel`   | `CODRNC`     | Responsaveis da RNC por fase — aparece como grid |
-| `THGQMGEVID`     | `QmNcEvidencia`     | `CODRNC`     | Arquivos/fotos vinculados a RNC                  |
+| `THGQMGRESP`   | `QmRncResponsavel`   | `CODRNC`     | Responsaveis da RNC por fase — aparece como grid |
+| `THGQMGEVID`     | `QmRncEvidencia`     | `CODRNC`     | Arquivos/fotos vinculados a RNC                  |
 
 ---
 
@@ -69,9 +69,9 @@
 
 | Botao              | Classe Java                       | Instancia           | Transacao | Descricao                                          |
 |:-------------------|:----------------------------------|:--------------------|:----------|:---------------------------------------------------|
-| Mudar Fase         | `MudarFaseRegistroActionButton`   | `QmNcRegistro`      | AUTOMATIC | Avanca para Fase 2 (Acoes Imediatas)               |
-| Cancelar RNC       | `CancelarRncRegistroActionButton` | `QmNcRegistro`      | AUTOMATIC | Marca STATUS='C', encerra workflow                 |
-| Enviar Notificacao | `NotificarRncActionButton`        | `QmNcResponsavel`   | AUTOMATIC | Envia e-mail ao responsavel via MSDFilaMensagem    |
+| Mudar Fase         | `MudarFaseRegistroActionButton`   | `QmRncRegistro`      | AUTOMATIC | Avanca para Fase 2 (Acoes Imediatas)               |
+| Cancelar RNC       | `CancelarRncRegistroActionButton` | `QmRncRegistro`      | AUTOMATIC | Marca STATUS='C', encerra workflow                 |
+| Enviar Notificacao | `NotificarRncActionButton`        | `QmRncResponsavel`   | AUTOMATIC | Envia e-mail ao responsavel via MSDFilaMensagem    |
 
 ---
 
@@ -111,7 +111,7 @@
 - [x] `dbscripts/V1.xml` — DDL THGQMGREG Oracle+SQL Server, Listener BI/BIU, indices, sequence
 
 ### Dicionario de Dados
-- [x] `datadictionary/THGQMGREG.xml` — instancias QmNcConsulta e QmNcRegistro, todos os campos, relacionamentos
+- [x] `datadictionary/THGQMGREG.xml` — instancias QmRncConsulta e QmRncRegistro, todos os campos, relacionamentos
 
 ### Backend Java
 - [ ] `model/.../actionButtons/MudarFaseRegistroActionButton.java`
@@ -121,7 +121,7 @@
 - [ ] `model/.../listeners/NcReincidenciaListener.java`
 
 ### Menu
-- [x] `datadictionary/menu.xml` — instancias QmNcConsulta e QmNcRegistro ja registradas
+- [x] `datadictionary/menu.xml` — instancias QmRncConsulta e QmRncRegistro ja registradas
 
 ---
 

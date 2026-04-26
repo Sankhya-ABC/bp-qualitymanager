@@ -3,7 +3,7 @@
 ## Identificacao
 | Atributo        | Valor                                           |
 |:----------------|:------------------------------------------------|
-| Modulo          | RNC — Nao Conformidades                         |
+| Modulo          | RNC — Registro de Nao Conformidades                         |
 | Fase Roadmap    | Fase 1 — Core + Modulo NC/RNC                   |
 | ISO             | ABNT NBR ISO 9001:2015 — Clausula 10.2.2        |
 | Ordem no modulo | 011 de 014                                      |
@@ -16,7 +16,7 @@
 | Atributo  | Valor                |
 |:----------|:---------------------|
 | Nome      | `THGQMGEVID`   |
-| Instancia | `QmNcEvidencia`      |
+| Instancia | `QmRncEvidencia`      |
 | Sequencia | AUTO (`CODEVID`) |
 | Dual-DB   | Oracle + SQL Server  |
 

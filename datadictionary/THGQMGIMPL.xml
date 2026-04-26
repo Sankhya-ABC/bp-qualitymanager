@@ -6,7 +6,7 @@
         <description>Implementacao</description>
         <primaryKey><field name="CODIMPL"/></primaryKey>
         <instances>
-            <instance name="QmNcImplementacao"><description>Implementacao</description></instance>
+            <instance name="QmRncImplementacao"><description>Implementacao</description></instance>
         </instances>
         <fields>
             <field name="CODIMPL" dataType="INTEIRO" readOnly="S" order="1" allowSearch="S" visibleOnSearch="S"><description>Cod. Implementacao</description></field>

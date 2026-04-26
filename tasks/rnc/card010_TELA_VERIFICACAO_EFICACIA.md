@@ -3,7 +3,7 @@
 ## Identificacao
 | Atributo        | Valor                                         |
 |:----------------|:----------------------------------------------|
-| Modulo          | RNC — Nao Conformidades                       |
+| Modulo          | RNC — Registro de Nao Conformidades                       |
 | Fase Roadmap    | Fase 1 — Core + Modulo NC/RNC                 |
 | ISO             | ABNT NBR ISO 9001:2015 — Clausula 10.2.1f     |
 | Ordem no modulo | 010 de 014                                    |
@@ -16,7 +16,7 @@
 | Atributo  | Valor                |
 |:----------|:---------------------|
 | Nome      | `THGQMGEFIC`    |
-| Instancia | `QmNcEficacia`       |
+| Instancia | `QmRncEficacia`       |
 | Sequencia | AUTO (`CODEFIC`)  |
 | Dual-DB   | Oracle + SQL Server  |
 
@@ -41,7 +41,7 @@
 
 | Tabela filha      | Instancia filha   | Vinculo FK        | Descricao                                              |
 |:------------------|:------------------|:------------------|:-------------------------------------------------------|
-| `THGQMGEVID`| `QmNcEvidencia`   | `CODRNC` + ORIGEM=1 | Evidencias de verificacao de eficacia (ORIGEM=1)       |
+| `THGQMGEVID`| `QmRncEvidencia`   | `CODRNC` + ORIGEM=1 | Evidencias de verificacao de eficacia (ORIGEM=1)       |
 
 ---
 
@@ -49,10 +49,10 @@
 
 | Botao              | Classe Java                        | Instancia      | Transacao | Descricao                                                          |
 |:-------------------|:-----------------------------------|:---------------|:----------|:-------------------------------------------------------------------|
-| Encerrar RNC       | `EncerrarRncEficaciaActionButton`  | `QmNcEficacia` | AUTOMATIC | Se RESULTADO='E': STATUS='E', DTENCERRAMENTO=now(). RNC encerrada  |
-| Reabrir para Fase 5| `ReabrirRncEficaciaActionButton`   | `QmNcEficacia` | AUTOMATIC | Se RESULTADO='I': CODFASE=5 (Acoes Corretivas). RNC reaberta        |
-| Voltar Fase        | `VoltarFaseEficaciaActionButton`   | `QmNcEficacia` | AUTOMATIC | Retorna RNC para Fase 9 (Liberacao de Produto)                     |
-| Cancelar RNC       | `CancelarRncEficaciaActionButton`  | `QmNcEficacia` | AUTOMATIC | Cancela a RNC (STATUS='C')                                         |
+| Encerrar RNC       | `EncerrarRncEficaciaActionButton`  | `QmRncEficacia` | AUTOMATIC | Se RESULTADO='E': STATUS='E', DTENCERRAMENTO=now(). RNC encerrada  |
+| Reabrir para Fase 5| `ReabrirRncEficaciaActionButton`   | `QmRncEficacia` | AUTOMATIC | Se RESULTADO='I': CODFASE=5 (Acoes Corretivas). RNC reaberta        |
+| Voltar Fase        | `VoltarFaseEficaciaActionButton`   | `QmRncEficacia` | AUTOMATIC | Retorna RNC para Fase 9 (Liberacao de Produto)                     |
+| Cancelar RNC       | `CancelarRncEficaciaActionButton`  | `QmRncEficacia` | AUTOMATIC | Cancela a RNC (STATUS='C')                                         |
 
 ---
 
@@ -94,7 +94,7 @@
 - [ ] `model/.../actionButtons/CancelarRncEficaciaActionButton.java`
 
 ### Menu
-- [x] `datadictionary/menu.xml` — instancia QmNcEficacia ja registrada como item 10
+- [x] `datadictionary/menu.xml` — instancia QmRncEficacia ja registrada como item 10
 
 ---
 
@@ -103,4 +103,4 @@
 - Esta e a UNICA fase que encerra a RNC automaticamente — sem esta fase, a RNC nunca fecha
 - RESULTADO='I' reinicia o ciclo a partir da Fase 5 — pode acontecer N vezes
 - Evidencias se dividem por ORIGEM: 1=Verificacao, 2=Implementacao — a grid filha filtra pelo ORIGEM correto
-- instanceName: `QmNcEficacia` — copiar exatamente do XML
+- instanceName: `QmRncEficacia` — copiar exatamente do XML

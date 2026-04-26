@@ -3,13 +3,13 @@
            xsi:noNamespaceSchemaLocation="../.gradle/metadados.xsd">
 
     <table name="THGQMGNCFASE" sequenceType="M">
-        <description>Fases NC</description>
+        <description>Fases RNC</description>
         <primaryKey>
             <field name="CODFASE"/>
         </primaryKey>
         <instances>
-            <instance name="QmNcFase">
-                <description>Fases NC</description>
+            <instance name="QmRncFase">
+                <description>Fases RNC</description>
             </instance>
         </instances>
         <fields>

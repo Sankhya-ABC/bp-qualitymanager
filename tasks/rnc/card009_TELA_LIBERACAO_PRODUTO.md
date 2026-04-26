@@ -3,7 +3,7 @@
 ## Identificacao
 | Atributo        | Valor                                         |
 |:----------------|:----------------------------------------------|
-| Modulo          | RNC — Nao Conformidades                       |
+| Modulo          | RNC — Registro de Nao Conformidades                       |
 | Fase Roadmap    | Fase 1 — Core + Modulo NC/RNC                 |
 | ISO             | ABNT NBR ISO 9001:2015 — Clausula 8.6         |
 | Ordem no modulo | 009 de 014                                    |
@@ -16,7 +16,7 @@
 | Atributo  | Valor                |
 |:----------|:---------------------|
 | Nome      | `THGQMGLIB`   |
-| Instancia | `QmNcLiberacao`      |
+| Instancia | `QmRncLiberacao`      |
 | Sequencia | AUTO (`CODLIB`) |
 | Dual-DB   | Oracle + SQL Server  |
 
@@ -45,9 +45,9 @@
 
 | Botao        | Classe Java                        | Instancia        | Transacao | Descricao                                     |
 |:-------------|:-----------------------------------|:-----------------|:----------|:----------------------------------------------|
-| Mudar Fase   | `MudarFaseLiberacaoActionButton`   | `QmNcLiberacao`  | AUTOMATIC | Avanca RNC para Fase 10 (Verificacao Eficacia) |
-| Voltar Fase  | `VoltarFaseLiberacaoActionButton`  | `QmNcLiberacao`  | AUTOMATIC | Retorna RNC para Fase 8 (Implementacao)        |
-| Cancelar RNC | `CancelarRncLiberacaoActionButton` | `QmNcLiberacao`  | AUTOMATIC | Cancela a RNC (STATUS='C')                     |
+| Mudar Fase   | `MudarFaseLiberacaoActionButton`   | `QmRncLiberacao`  | AUTOMATIC | Avanca RNC para Fase 10 (Verificacao Eficacia) |
+| Voltar Fase  | `VoltarFaseLiberacaoActionButton`  | `QmRncLiberacao`  | AUTOMATIC | Retorna RNC para Fase 8 (Implementacao)        |
+| Cancelar RNC | `CancelarRncLiberacaoActionButton` | `QmRncLiberacao`  | AUTOMATIC | Cancela a RNC (STATUS='C')                     |
 
 ---
 
@@ -75,4 +75,4 @@
 - [ ] `model/.../actionButtons/CancelarRncLiberacaoActionButton.java`
 
 ### Menu
-- [x] `datadictionary/menu.xml` — instancia QmNcLiberacao ja registrada como item 09
+- [x] `datadictionary/menu.xml` — instancia QmRncLiberacao ja registrada como item 09

@@ -3,7 +3,7 @@
 ## Identificacao
 | Atributo        | Valor                                          |
 |:----------------|:-----------------------------------------------|
-| Modulo          | RNC — Nao Conformidades                        |
+| Modulo          | RNC — Registro de Nao Conformidades                        |
 | Fase Roadmap    | Fase 1 — Core + Modulo NC/RNC                  |
 | ISO             | ABNT NBR ISO 9001:2015 — Clausula 10.2.1c      |
 | Ordem no modulo | 003 de 014                                     |
@@ -16,14 +16,14 @@
 | Atributo  | Valor                 |
 |:----------|:----------------------|
 | Nome      | `THGQMGCR`   |
-| Instancia | `QmNcCausaRaiz`       |
+| Instancia | `QmRncCausaRaiz`       |
 | Sequencia | AUTO (`CODCR`)  |
 | Dual-DB   | Oracle + SQL Server   |
 
 ### Instancias da tela
 | Instancia       | Tipo       | Descricao                               |
 |:----------------|:-----------|:----------------------------------------|
-| `QmNcCausaRaiz` | Formulario | Analise de causa raiz — Ishikawa 6M     |
+| `QmRncCausaRaiz` | Formulario | Analise de causa raiz — Ishikawa 6M     |
 
 ---
 
@@ -56,9 +56,9 @@ Nao possui tabelas filhas. Esta tela e uma aba filha da tela de Registro de RNC 
 
 | Botao              | Classe Java                        | Instancia       | Transacao | Descricao                                    |
 |:-------------------|:-----------------------------------|:----------------|:----------|:---------------------------------------------|
-| Mudar Fase         | `MudarFaseCausaRaizActionButton`   | `QmNcCausaRaiz` | AUTOMATIC | Avanca RNC para Fase 4 (Abrangencia)         |
-| Voltar Fase        | `VoltarFaseCausaRaizActionButton`  | `QmNcCausaRaiz` | AUTOMATIC | Retorna RNC para Fase 2 (Acoes Imediatas)    |
-| Cancelar RNC       | `CancelarRncCausaRaizActionButton` | `QmNcCausaRaiz` | AUTOMATIC | Cancela a RNC (STATUS='C')                   |
+| Mudar Fase         | `MudarFaseCausaRaizActionButton`   | `QmRncCausaRaiz` | AUTOMATIC | Avanca RNC para Fase 4 (Abrangencia)         |
+| Voltar Fase        | `VoltarFaseCausaRaizActionButton`  | `QmRncCausaRaiz` | AUTOMATIC | Retorna RNC para Fase 2 (Acoes Imediatas)    |
+| Cancelar RNC       | `CancelarRncCausaRaizActionButton` | `QmRncCausaRaiz` | AUTOMATIC | Cancela a RNC (STATUS='C')                   |
 
 ---
 
@@ -98,7 +98,7 @@ Nao possui tabelas filhas. Esta tela e uma aba filha da tela de Registro de RNC 
 - [ ] `model/.../actionButtons/CancelarRncCausaRaizActionButton.java`
 
 ### Menu
-- [x] `datadictionary/menu.xml` — instancia QmNcCausaRaiz ja registrada como item 03
+- [x] `datadictionary/menu.xml` — instancia QmRncCausaRaiz ja registrada como item 03
 
 ---
 
@@ -107,4 +107,4 @@ Nao possui tabelas filhas. Esta tela e uma aba filha da tela de Registro de RNC 
 - Os 6 campos do Ishikawa (MAO_OBRA, METODO, MAQUINA, MEDIDA, MATERIAL, MEIO_AMBIENTE) usam dataType=HTML
 - Todos ficam na aba "Ishikawa 6M" — cada M em seu proprio grupo nomeado
 - Desvio de fluxo por origem: se TGQCADASTROS/THGQMGPRIO do tipo Riscos/Oportunidades — implementar em FaseNcBusinessService
-- instanceName: `QmNcCausaRaiz` — copiar exatamente do XML
+- instanceName: `QmRncCausaRaiz` — copiar exatamente do XML

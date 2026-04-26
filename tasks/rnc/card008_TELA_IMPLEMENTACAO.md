@@ -3,7 +3,7 @@
 ## Identificacao
 | Atributo        | Valor                                         |
 |:----------------|:----------------------------------------------|
-| Modulo          | RNC — Nao Conformidades                       |
+| Modulo          | RNC — Registro de Nao Conformidades                       |
 | Fase Roadmap    | Fase 1 — Core + Modulo NC/RNC                 |
 | ISO             | ABNT NBR ISO 9001:2015 — Clausula 10.2.1f     |
 | Ordem no modulo | 008 de 014                                    |
@@ -16,7 +16,7 @@
 | Atributo  | Valor                   |
 |:----------|:------------------------|
 | Nome      | `THGQMGIMPL`  |
-| Instancia | `QmNcImplementacao`     |
+| Instancia | `QmRncImplementacao`     |
 | Sequencia | AUTO (`CODIMPL`)|
 | Dual-DB   | Oracle + SQL Server     |
 
@@ -42,7 +42,7 @@
 
 | Tabela filha     | Instancia filha   | Vinculo FK        | Descricao                                            |
 |:-----------------|:------------------|:------------------|:-----------------------------------------------------|
-| `THGQMGEVID`| `QmNcEvidencia`  | `CODRNC` + ORIGEM=2 | Evidencias de implementacao (ORIGEM=2 nesta fase)    |
+| `THGQMGEVID`| `QmRncEvidencia`  | `CODRNC` + ORIGEM=2 | Evidencias de implementacao (ORIGEM=2 nesta fase)    |
 
 ---
 
@@ -50,10 +50,10 @@
 
 | Botao              | Classe Java                           | Instancia           | Transacao | Descricao                                       |
 |:-------------------|:--------------------------------------|:--------------------|:----------|:------------------------------------------------|
-| Mudar Fase         | `MudarFaseImplementacaoActionButton`  | `QmNcImplementacao` | AUTOMATIC | Avanca RNC para Fase 9 (Liberacao de Produto)   |
-| Voltar Fase        | `VoltarFaseImplementacaoActionButton` | `QmNcImplementacao` | AUTOMATIC | Retorna RNC para Fase 7 (Riscos)                |
-| Cancelar RNC       | `CancelarRncImplementacaoActionButton`| `QmNcImplementacao` | AUTOMATIC | Cancela a RNC (STATUS='C')                      |
-| Enviar Notificacao | `NotificarImplementacaoActionButton`  | `QmNcImplementacao` | AUTOMATIC | Envia e-mail ao responsavel                     |
+| Mudar Fase         | `MudarFaseImplementacaoActionButton`  | `QmRncImplementacao` | AUTOMATIC | Avanca RNC para Fase 9 (Liberacao de Produto)   |
+| Voltar Fase        | `VoltarFaseImplementacaoActionButton` | `QmRncImplementacao` | AUTOMATIC | Retorna RNC para Fase 7 (Riscos)                |
+| Cancelar RNC       | `CancelarRncImplementacaoActionButton`| `QmRncImplementacao` | AUTOMATIC | Cancela a RNC (STATUS='C')                      |
+| Enviar Notificacao | `NotificarImplementacaoActionButton`  | `QmRncImplementacao` | AUTOMATIC | Envia e-mail ao responsavel                     |
 
 ---
 
@@ -81,4 +81,4 @@
 - [ ] `model/.../actionButtons/NotificarImplementacaoActionButton.java`
 
 ### Menu
-- [x] `datadictionary/menu.xml` — instancia QmNcImplementacao ja registrada como item 08
+- [x] `datadictionary/menu.xml` — instancia QmRncImplementacao ja registrada como item 08

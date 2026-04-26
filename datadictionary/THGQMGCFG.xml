@@ -21,7 +21,7 @@
                 <description>Empresa</description>
             </field>
             <field name="MODNCATIVO" dataType="CHECKBOX" UITabName="__main" UIGroupName="Modulos" order="3" allowSearch="N" visibleOnSearch="N">
-                <description>Modulo NC ativo</description>
+                <description>Modulo RNC ativo</description>
                 <expression><![CDATA[if ($col_MODNCATIVO == null) { return "S"; } else { return $col_MODNCATIVO; }]]></expression>
             </field>
             <field name="MODFORNATIVO" dataType="CHECKBOX" UITabName="__main" UIGroupName="Modulos" order="4" allowSearch="N" visibleOnSearch="N">

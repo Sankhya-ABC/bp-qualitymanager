@@ -3,7 +3,7 @@
 ## Identificacao
 | Atributo        | Valor                                         |
 |:----------------|:----------------------------------------------|
-| Modulo          | RNC — Nao Conformidades                       |
+| Modulo          | RNC — Registro de Nao Conformidades                       |
 | Fase Roadmap    | Fase 1 — Core + Modulo NC/RNC                 |
 | ISO             | ABNT NBR ISO 9001:2015 — Clausula 10.2        |
 | Ordem no modulo | 012 de 014                                    |
@@ -16,7 +16,7 @@
 | Atributo  | Valor                   |
 |:----------|:------------------------|
 | Nome      | `THGQMGRESP`    |
-| Instancia | `QmNcResponsavel`       |
+| Instancia | `QmRncResponsavel`       |
 | Sequencia | AUTO (`CODRESP`)  |
 | Dual-DB   | Oracle + SQL Server     |
 
@@ -38,7 +38,7 @@
 
 | Botao              | Classe Java                    | Instancia          | Transacao | Descricao                                         |
 |:-------------------|:-------------------------------|:-------------------|:----------|:--------------------------------------------------|
-| Enviar Notificacao | `NotificarRncActionButton`     | `QmNcResponsavel`  | AUTOMATIC | Envia e-mail ao parceiro. Usa EMAIL de TGFPAR     |
+| Enviar Notificacao | `NotificarRncActionButton`     | `QmRncResponsavel`  | AUTOMATIC | Envia e-mail ao parceiro. Usa EMAIL de TGFPAR     |
 
 ---
 
@@ -73,7 +73,7 @@
 - [ ] `dbscripts/V1.xml` — DDL THGQMGRESP, Listener BI, sequence
 
 ### Dicionario de Dados
-- [ ] `datadictionary/THGQMGRESP.xml` — instancia QmNcResponsavel, relacao com Parceiro
+- [ ] `datadictionary/THGQMGRESP.xml` — instancia QmRncResponsavel, relacao com Parceiro
 
 ### Backend Java
 - [ ] `model/.../actionButtons/NotificarRncActionButton.java`

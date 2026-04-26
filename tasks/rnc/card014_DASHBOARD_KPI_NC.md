@@ -1,9 +1,9 @@
-# Card 014 — Dashboard KPI de Nao Conformidades
+# Card 014 — Dashboard KPI de Registro de Nao Conformidades
 
 ## Identificacao
 | Atributo        | Valor                                         |
 |:----------------|:----------------------------------------------|
-| Modulo          | RNC — Nao Conformidades                       |
+| Modulo          | RNC — Registro de Nao Conformidades                       |
 | Fase Roadmap    | Fase 1 — Core + Modulo NC/RNC                 |
 | ISO             | ABNT NBR ISO 9001:2015 — Clausula 9.1         |
 | Ordem no modulo | 014 de 014                                    |

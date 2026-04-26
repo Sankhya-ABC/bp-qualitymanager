@@ -3,7 +3,7 @@
 ## Identificacao
 | Atributo        | Valor                                         |
 |:----------------|:----------------------------------------------|
-| Modulo          | RNC — Nao Conformidades                       |
+| Modulo          | RNC — Registro de Nao Conformidades                       |
 | Fase Roadmap    | Fase 1 — Core + Modulo NC/RNC                 |
 | ISO             | ABNT NBR ISO 9001:2015 — Clausulas 8.7 + 10.2 |
 | Ordem no modulo | 013 de 014                                    |
@@ -57,7 +57,7 @@ SE proximaFase = 10 E resultado da eficacia = 'E':
 ### NcReincidenciaListener.java (em listeners/)
 
 ```
-instanceName: "QmNcRegistro"  <- copiar EXATAMENTE do XML
+instanceName: "QmRncRegistro"  <- copiar EXATAMENTE do XML
 Evento: afterInsert
 Logica: busca RNCs anteriores com mesma ORIGEM+PROCESSO nao encerradas (STATUS != 'E' e != 'C')
         Se encontrar: REINCIDENTE='S', NCVINCULADA=CODRNC da mais recente anterior

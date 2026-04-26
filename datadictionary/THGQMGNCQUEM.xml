@@ -8,7 +8,7 @@
             <field name="CODQUEM"/>
         </primaryKey>
         <instances>
-            <instance name="QmNcQuem">
+            <instance name="QmRncQuem">
                 <description>Quem</description>
             </instance>
         </instances>

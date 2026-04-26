@@ -23,7 +23,7 @@
             <field name="MODULO" dataType="LISTA" size="10" required="S" readOnly="S" isPresentation="S" UITabName="__main" order="3" allowSearch="S" visibleOnSearch="S">
                 <description>Modulo</description>
                 <fieldOptions>
-                    <option value="NC">Nao Conformidades</option>
+                    <option value="NC">Registro de Nao Conformidades</option>
                     <option value="FORN">Fornecedores</option>
                     <option value="DOC">Documentos</option>
                     <option value="GM">Gestao Mudancas</option>

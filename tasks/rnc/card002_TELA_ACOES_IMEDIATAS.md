@@ -3,7 +3,7 @@
 ## Identificacao
 | Atributo        | Valor                                          |
 |:----------------|:-----------------------------------------------|
-| Modulo          | RNC — Nao Conformidades                        |
+| Modulo          | RNC — Registro de Nao Conformidades                        |
 | Fase Roadmap    | Fase 1 — Core + Modulo NC/RNC                  |
 | ISO             | ABNT NBR ISO 9001:2015 — Clausula 10.2.1b      |
 | Ordem no modulo | 002 de 014                                     |
@@ -16,14 +16,14 @@
 | Atributo  | Valor                    |
 |:----------|:-------------------------|
 | Nome      | `THGQMGACIM`   |
-| Instancia | `QmNcAcaoImediata`       |
+| Instancia | `QmRncAcaoImediata`       |
 | Sequencia | AUTO (`CODACIM`)  |
 | Dual-DB   | Oracle + SQL Server      |
 
 ### Instancias da tela
 | Instancia           | Tipo       | Descricao                                     |
 |:--------------------|:-----------|:----------------------------------------------|
-| `QmNcAcaoImediata`  | Formulario | Acao imediata vinculada a RNC — aba filha      |
+| `QmRncAcaoImediata`  | Formulario | Acao imediata vinculada a RNC — aba filha      |
 
 ---
 
@@ -52,10 +52,10 @@ Nao possui tabelas filhas. Esta tela e uma aba filha da tela de Registro de RNC 
 
 | Botao              | Classe Java                          | Instancia          | Transacao | Descricao                                       |
 |:-------------------|:-------------------------------------|:-------------------|:----------|:------------------------------------------------|
-| Mudar Fase         | `MudarFaseAcaoImediataActionButton`  | `QmNcAcaoImediata` | AUTOMATIC | Avanca RNC para Fase 3 (Causa Raiz)             |
-| Voltar Fase        | `VoltarFaseAcaoImediataActionButton` | `QmNcAcaoImediata` | AUTOMATIC | Retorna RNC para Fase 1 (Registro)              |
-| Cancelar RNC       | `CancelarRncAcaoImediataActionButton`| `QmNcAcaoImediata` | AUTOMATIC | Cancela a RNC (STATUS='C')                      |
-| Enviar Notificacao | `NotificarAcaoImediataActionButton`  | `QmNcAcaoImediata` | AUTOMATIC | Envia e-mail ao responsavel via MSDFilaMensagem |
+| Mudar Fase         | `MudarFaseAcaoImediataActionButton`  | `QmRncAcaoImediata` | AUTOMATIC | Avanca RNC para Fase 3 (Causa Raiz)             |
+| Voltar Fase        | `VoltarFaseAcaoImediataActionButton` | `QmRncAcaoImediata` | AUTOMATIC | Retorna RNC para Fase 1 (Registro)              |
+| Cancelar RNC       | `CancelarRncAcaoImediataActionButton`| `QmRncAcaoImediata` | AUTOMATIC | Cancela a RNC (STATUS='C')                      |
+| Enviar Notificacao | `NotificarAcaoImediataActionButton`  | `QmRncAcaoImediata` | AUTOMATIC | Envia e-mail ao responsavel via MSDFilaMensagem |
 
 ---
 
@@ -96,14 +96,14 @@ Nao possui tabelas filhas. Esta tela e uma aba filha da tela de Registro de RNC 
 - [ ] `model/.../actionButtons/NotificarAcaoImediataActionButton.java`
 
 ### Menu
-- [x] `datadictionary/menu.xml` — instancia QmNcAcaoImediata ja registrada como item 02
+- [x] `datadictionary/menu.xml` — instancia QmRncAcaoImediata ja registrada como item 02
 
 ---
 
 ## Observacoes Tecnicas
 
-- Tela e aba filha de QmNcRegistro — exibida dentro do formulario de RNC
+- Tela e aba filha de QmRncRegistro — exibida dentro do formulario de RNC
 - Campo ACAODETALHE usa dataType=HTML — editor rico de texto
 - CODRNC e readOnly — preenchido automaticamente pela relacao pai-filho
 - Grupo "Dados da Acao" agrupa: DTPRAZO, ACAODETALHE, CODUSU, DHCREATE
-- instanceName dos @ActionButton: `QmNcAcaoImediata` — copiar exatamente do XML
+- instanceName dos @ActionButton: `QmRncAcaoImediata` — copiar exatamente do XML

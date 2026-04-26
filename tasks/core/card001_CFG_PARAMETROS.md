@@ -33,7 +33,7 @@
 |:--|:-----------------------------|:-----------------|:---------|:----|:------|:-------|:-----------|:------------------------------------------------------|
 | 1 | Id Config                    | `CODCFG`       | INTEIRO  | -   | PK    | __main | -          | readOnly, auto sequence                               |
 | 2 | Empresa                      | `CODEMP`         | PESQUISA | -   | Sim   | __main | -          | targetInstance=Empresa. UNIQUE — uma config por empresa |
-| 3 | Modulo NC ativo              | `MODNCATIVO`   | CHECKBOX | 1   | Nao   | __main | Modulos    | Default S. Liga/desliga modulo RNC inteiro            |
+| 3 | Modulo RNC ativo              | `MODNCATIVO`   | CHECKBOX | 1   | Nao   | __main | Modulos    | Default S. Liga/desliga modulo RNC inteiro            |
 | 4 | Modulo Fornecedores ativo    | `MODFORNATIVO` | CHECKBOX | 1   | Nao   | __main | Modulos    | Default N                                             |
 | 5 | Modulo Documentos ativo      | `MODDOCATIVO`  | CHECKBOX | 1   | Nao   | __main | Modulos    | Default N                                             |
 | 6 | Modulo Gestao Mudancas ativo | `MODGMATIVO`   | CHECKBOX | 1   | Nao   | __main | Modulos    | Default N                                             |

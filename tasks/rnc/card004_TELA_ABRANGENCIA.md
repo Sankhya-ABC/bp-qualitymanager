@@ -3,7 +3,7 @@
 ## Identificacao
 | Atributo        | Valor                                          |
 |:----------------|:-----------------------------------------------|
-| Modulo          | RNC — Nao Conformidades                        |
+| Modulo          | RNC — Registro de Nao Conformidades                        |
 | Fase Roadmap    | Fase 1 — Core + Modulo NC/RNC                  |
 | ISO             | ABNT NBR ISO 9001:2015 — Clausula 10.2.1d      |
 | Ordem no modulo | 004 de 014                                     |
@@ -18,7 +18,7 @@
 | Atributo  | Valor                   |
 |:----------|:------------------------|
 | Nome      | `THGQMGABR`    |
-| Instancia | `QmNcAbrangencia`       |
+| Instancia | `QmRncAbrangencia`       |
 | Sequencia | AUTO (`CODABR`)  |
 | Dual-DB   | Oracle + SQL Server     |
 
@@ -27,7 +27,7 @@
 | Atributo  | Valor              |
 |:----------|:-------------------|
 | Nome      | `THGQMGNCQUEM`      |
-| Instancia | `QmNcQuem`         |
+| Instancia | `QmRncQuem`         |
 | Sequencia | AUTO (`CODQUEM`)    |
 | Dual-DB   | Oracle + SQL Server|
 
@@ -65,7 +65,7 @@
 
 | Tabela filha    | Instancia filha | Vinculo FK       | Descricao                                          |
 |:----------------|:----------------|:-----------------|:---------------------------------------------------|
-| `THGQMGNCQUEM`   | `QmNcQuem`      | `CODABR`  | Grid de responsaveis — quem deve agir na abrangencia |
+| `THGQMGNCQUEM`   | `QmRncQuem`      | `CODABR`  | Grid de responsaveis — quem deve agir na abrangencia |
 
 ---
 
@@ -73,10 +73,10 @@
 
 | Botao              | Classe Java                           | Instancia          | Transacao | Descricao                                        |
 |:-------------------|:--------------------------------------|:-------------------|:----------|:-------------------------------------------------|
-| Mudar Fase         | `MudarFaseAbrangenciaActionButton`    | `QmNcAbrangencia`  | AUTOMATIC | Avanca RNC para Fase 5 (Acoes Corretivas)        |
-| Voltar Fase        | `VoltarFaseAbrangenciaActionButton`   | `QmNcAbrangencia`  | AUTOMATIC | Retorna RNC para Fase 3 (Causa Raiz)             |
-| Cancelar RNC       | `CancelarRncAbrangenciaActionButton`  | `QmNcAbrangencia`  | AUTOMATIC | Cancela a RNC (STATUS='C')                       |
-| Enviar Notificacao | `NotificarQuemActionButton`           | `QmNcQuem`         | AUTOMATIC | Envia e-mail ao parceiro selecionado na grid     |
+| Mudar Fase         | `MudarFaseAbrangenciaActionButton`    | `QmRncAbrangencia`  | AUTOMATIC | Avanca RNC para Fase 5 (Acoes Corretivas)        |
+| Voltar Fase        | `VoltarFaseAbrangenciaActionButton`   | `QmRncAbrangencia`  | AUTOMATIC | Retorna RNC para Fase 3 (Causa Raiz)             |
+| Cancelar RNC       | `CancelarRncAbrangenciaActionButton`  | `QmRncAbrangencia`  | AUTOMATIC | Cancela a RNC (STATUS='C')                       |
+| Enviar Notificacao | `NotificarQuemActionButton`           | `QmRncQuem`         | AUTOMATIC | Envia e-mail ao parceiro selecionado na grid     |
 
 ---
 
@@ -109,8 +109,8 @@
 - [ ] `dbscripts/V1.xml` — DDL THGQMGABR + THGQMGNCQUEM, triggers, sequences, FK entre elas
 
 ### Dicionario de Dados
-- [ ] `datadictionary/THGQMGABR.xml` — instancia QmNcAbrangencia, grupo 5W2H em __main
-- [ ] `datadictionary/THGQMGNCQUEM.xml` — instancia QmNcQuem, relacionamento com Parceiro
+- [ ] `datadictionary/THGQMGABR.xml` — instancia QmRncAbrangencia, grupo 5W2H em __main
+- [ ] `datadictionary/THGQMGNCQUEM.xml` — instancia QmRncQuem, relacionamento com Parceiro
 
 ### Backend Java
 - [ ] `model/.../actionButtons/MudarFaseAbrangenciaActionButton.java`
@@ -120,7 +120,7 @@
 - [ ] `model/.../services/NotificacaoNcService.java`
 
 ### Menu
-- [x] `datadictionary/menu.xml` — instancia QmNcAbrangencia ja registrada como item 04
+- [x] `datadictionary/menu.xml` — instancia QmRncAbrangencia ja registrada como item 04
 
 ---
 
@@ -129,4 +129,4 @@
 - 5W2H fica em aba __main (diferente de Acoes Corretivas — card005 — que usa aba separada)
 - THGQMGNCQUEM referencia TGFPAR via PESQUISA — sem CREATE TABLE FK
 - Notificacao usa TGFPAR.QM_EMAILQUESTIONARIO — campo adicionado na tabela nativa (Card FORN-08)
-- instanceName: `QmNcAbrangencia` e `QmNcQuem` — copiar exatamente do XML
+- instanceName: `QmRncAbrangencia` e `QmRncQuem` — copiar exatamente do XML

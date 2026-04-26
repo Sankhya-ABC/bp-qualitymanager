@@ -6,7 +6,7 @@
         <description>Riscos e Oportunidades</description>
         <primaryKey><field name="CODRISCO"/></primaryKey>
         <instances>
-            <instance name="QmNcRisco"><description>Riscos e Oportunidades</description></instance>
+            <instance name="QmRncRisco"><description>Riscos e Oportunidades</description></instance>
         </instances>
         <fields>
             <field name="CODRISCO" dataType="INTEIRO" readOnly="S" order="1" allowSearch="S" visibleOnSearch="S"><description>Cod. Risco</description></field>

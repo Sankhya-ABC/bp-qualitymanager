@@ -33,7 +33,7 @@
 |:--|:----------------|:-----------------|:----------|:-----|:------|:--------|:-------|:--------------------------------------------------------------------|
 | 1 | Id Log          | `CODLOG`          | INTEIRO   | -    | PK    | __main  | -      | readOnly, auto sequence                                             |
 | 2 | Data/Hora       | `DTREGISTRO`     | DATA_HORA | -    | Sim   | __main  | -      | readOnly. Auto: $ctx_dh_atual                                       |
-| 3 | Modulo          | `MODULO`         | LISTA     | 10   | Sim   | __main  | -      | readOnly. NC=Nao Conformidades, FORN=Fornecedores, DOC=Documentos, GM=Gestao Mudancas, AUD=Auditoria, CORE=Core |
+| 3 | Modulo          | `MODULO`         | LISTA     | 10   | Sim   | __main  | -      | readOnly. NC=Registro de Nao Conformidades, FORN=Fornecedores, DOC=Documentos, GM=Gestao Mudancas, AUD=Auditoria, CORE=Core |
 | 4 | Entidade        | `ENTIDADE`       | TEXTO     | 50   | Sim   | __main  | -      | readOnly. Nome da tabela afetada. Ex: THGQMGREG               |
 | 5 | ID do registro  | `IDENTIDADE`     | INTEIRO   | -    | Sim   | __main  | -      | readOnly. PK do registro afetado                                    |
 | 6 | Acao            | `ACAO`           | TEXTO     | 40   | Sim   | __main  | -      | readOnly. isPresentation=S. Ex: INSERT, UPDATE_STATUS, AVANCAR_FASE, CANCELAR, ENCERRAR |

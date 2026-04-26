@@ -3,7 +3,7 @@
 ## Identificacao
 | Atributo        | Valor                                         |
 |:----------------|:----------------------------------------------|
-| Modulo          | RNC — Nao Conformidades                       |
+| Modulo          | RNC — Registro de Nao Conformidades                       |
 | Fase Roadmap    | Fase 1 — Core + Modulo NC/RNC                 |
 | ISO             | ABNT NBR ISO 9001:2015 — Clausula 6.1         |
 | Ordem no modulo | 007 de 014                                    |
@@ -16,7 +16,7 @@
 | Atributo  | Valor               |
 |:----------|:--------------------|
 | Nome      | `THGQMGRISCO`      |
-| Instancia | `QmNcRisco`         |
+| Instancia | `QmRncRisco`         |
 | Sequencia | AUTO (`CODRISCO`)    |
 | Dual-DB   | Oracle + SQL Server |
 
@@ -46,9 +46,9 @@
 
 | Botao        | Classe Java                         | Instancia   | Transacao | Descricao                                |
 |:-------------|:------------------------------------|:------------|:----------|:-----------------------------------------|
-| Mudar Fase   | `MudarFaseRiscoActionButton`        | `QmNcRisco` | AUTOMATIC | Avanca RNC para Fase 8 (Implementacao)   |
-| Voltar Fase  | `VoltarFaseRiscoActionButton`       | `QmNcRisco` | AUTOMATIC | Retorna RNC para Fase 6 (Revisao Doc)    |
-| Cancelar RNC | `CancelarRncRiscoActionButton`      | `QmNcRisco` | AUTOMATIC | Cancela a RNC (STATUS='C')               |
+| Mudar Fase   | `MudarFaseRiscoActionButton`        | `QmRncRisco` | AUTOMATIC | Avanca RNC para Fase 8 (Implementacao)   |
+| Voltar Fase  | `VoltarFaseRiscoActionButton`       | `QmRncRisco` | AUTOMATIC | Retorna RNC para Fase 6 (Revisao Doc)    |
+| Cancelar RNC | `CancelarRncRiscoActionButton`      | `QmRncRisco` | AUTOMATIC | Cancela a RNC (STATUS='C')               |
 
 ---
 
@@ -76,4 +76,4 @@
 - [ ] `model/.../actionButtons/CancelarRncRiscoActionButton.java`
 
 ### Menu
-- [x] `datadictionary/menu.xml` — instancia QmNcRisco ja registrada como item 07
+- [x] `datadictionary/menu.xml` — instancia QmRncRisco ja registrada como item 07

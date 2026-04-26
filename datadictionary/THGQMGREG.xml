@@ -8,18 +8,18 @@
             <field name="CODRNC"/>
         </primaryKey>
         <instances>
-            <instance name="QmNcConsulta">
+            <instance name="QmRncConsulta">
                 <description>Consulta de NCs</description>
             </instance>
-            <instance name="QmNcRegistro">
+            <instance name="QmRncRegistro">
                 <description>Registro de RNC</description>
                 <relationShip>
-                    <relation entityName="QmNcResponsavel">
+                    <relation entityName="QmRncResponsavel">
                         <fields>
                             <field localName="CODRNC" targetName="CODRNC"/>
                         </fields>
                     </relation>
-                    <relation entityName="QmNcEvidencia">
+                    <relation entityName="QmRncEvidencia">
                         <fields>
                             <field localName="CODRNC" targetName="CODRNC"/>
                         </fields>

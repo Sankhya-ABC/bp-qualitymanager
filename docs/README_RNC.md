@@ -1,4 +1,4 @@
-# Modulo RNC — Nao Conformidades
+# Modulo RNC — Registro de Nao Conformidades
 
 ISO 9001 clausulas 8.7 (Controle de saidas nao conformes) e 10.2 (Nao conformidade e acao corretiva).
 
@@ -19,20 +19,20 @@ ISO 9001 clausulas 8.7 (Controle de saidas nao conformes) e 10.2 (Nao conformida
 
 | Tabela | Instance | Descricao | Fase |
 |:-------|:---------|:----------|:-----|
-| THGQMGREG | QmNcRegistro | Registro principal da RNC | 1 |
-| THGQMGACIM | QmNcAcaoImediata | Acoes imediatas | 2 |
-| THGQMGCR | QmNcCausaRaiz | Causa raiz (Ishikawa 6M) | 3 |
-| THGQMGABR | QmNcAbrangencia | Abrangencia 5W2H | 4 |
-| THGQMGNCQUEM | QmNcQuem | Responsaveis da abrangencia | 4 |
-| THGQMGACCOR | QmNcAcaoCorretiva | Acoes corretivas 5W2H | 5 |
-| THGQMGREVDOC | QmNcRevisaoDoc | Revisao de documentos | 6 |
-| THGQMGRISCO | QmNcRisco | Riscos e oportunidades | 7 |
-| THGQMGIMPL | QmNcImplementacao | Implementacao | 8 |
-| THGQMGLIB | QmNcLiberacao | Liberacao de produto | 9 |
-| THGQMGEFIC | QmNcEficacia | Verificacao de eficacia | 10 |
-| THGQMGEVID | QmNcEvidencia | Evidencias (fotos, docs) | 8+10 |
-| THGQMGRESP | QmNcResponsavel | Responsaveis por fase | Todas |
-| THGQMGREGFASE | QmNcRegFase | Historico de transicoes | — |
+| THGQMGREG | QmRncRegistro | Registro principal da RNC | 1 |
+| THGQMGACIM | QmRncAcaoImediata | Acoes imediatas | 2 |
+| THGQMGCR | QmRncCausaRaiz | Causa raiz (Ishikawa 6M) | 3 |
+| THGQMGABR | QmRncAbrangencia | Abrangencia 5W2H | 4 |
+| THGQMGNCQUEM | QmRncQuem | Responsaveis da abrangencia | 4 |
+| THGQMGACCOR | QmRncAcaoCorretiva | Acoes corretivas 5W2H | 5 |
+| THGQMGREVDOC | QmRncRevisaoDoc | Revisao de documentos | 6 |
+| THGQMGRISCO | QmRncRisco | Riscos e oportunidades | 7 |
+| THGQMGIMPL | QmRncImplementacao | Implementacao | 8 |
+| THGQMGLIB | QmRncLiberacao | Liberacao de produto | 9 |
+| THGQMGEFIC | QmRncEficacia | Verificacao de eficacia | 10 |
+| THGQMGEVID | QmRncEvidencia | Evidencias (fotos, docs) | 8+10 |
+| THGQMGRESP | QmRncResponsavel | Responsaveis por fase | Todas |
+| THGQMGREGFASE | QmRncRegFase | Historico de transicoes | — |
 
 ## Campos Principais (THGQMGREG)
 
@@ -60,7 +60,7 @@ Engine central do workflow. Metodos:
 - `reabrirParaFase5(rncId)` — volta pra fase 5 (verificacao ineficaz)
 
 ### NcReincidenciaListener
-Listener afterInsert em QmNcRegistro. Busca NCs anteriores com mesma ORIGEM+PROCESSO nao encerradas. Se encontrar, marca REINCIDENTE=S e vincula.
+Listener afterInsert em QmRncRegistro. Busca NCs anteriores com mesma ORIGEM+PROCESSO nao encerradas. Se encontrar, marca REINCIDENTE=S e vincula.
 
 ## Regras de Negocio
 1. STATUS e CODFASE gerenciados exclusivamente por FaseNcBusinessService

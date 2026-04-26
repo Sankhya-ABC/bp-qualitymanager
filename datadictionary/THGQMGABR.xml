@@ -8,10 +8,10 @@
             <field name="CODABR"/>
         </primaryKey>
         <instances>
-            <instance name="QmNcAbrangencia">
+            <instance name="QmRncAbrangencia">
                 <description>Abrangencia</description>
                 <relationShip>
-                    <relation entityName="QmNcQuem">
+                    <relation entityName="QmRncQuem">
                         <fields>
                             <field localName="CODABR" targetName="CODABR"/>
                         </fields>

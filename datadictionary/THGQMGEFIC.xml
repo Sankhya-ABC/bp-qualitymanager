@@ -6,7 +6,7 @@
         <description>Verificacao de Eficacia</description>
         <primaryKey><field name="CODEFIC"/></primaryKey>
         <instances>
-            <instance name="QmNcEficacia"><description>Verificacao de Eficacia</description></instance>
+            <instance name="QmRncEficacia"><description>Verificacao de Eficacia</description></instance>
         </instances>
         <fields>
             <field name="CODEFIC" dataType="INTEIRO" readOnly="S" order="1" allowSearch="S" visibleOnSearch="S"><description>Cod. Eficacia</description></field>

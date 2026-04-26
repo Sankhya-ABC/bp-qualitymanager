@@ -3,7 +3,7 @@
 ## Identificacao
 | Atributo        | Valor                                         |
 |:----------------|:----------------------------------------------|
-| Modulo          | RNC — Nao Conformidades                       |
+| Modulo          | RNC — Registro de Nao Conformidades                       |
 | Fase Roadmap    | Fase 1 — Core + Modulo NC/RNC                 |
 | ISO             | ABNT NBR ISO 9001:2015 — Clausulas 7.5 + 10.2 |
 | Ordem no modulo | 006 de 014                                    |
@@ -16,7 +16,7 @@
 | Atributo  | Valor                  |
 |:----------|:-----------------------|
 | Nome      | `THGQMGREVDOC`   |
-| Instancia | `QmNcRevisaoDoc`       |
+| Instancia | `QmRncRevisaoDoc`       |
 | Sequencia | AUTO (`CODREVDOC`)  |
 | Dual-DB   | Oracle + SQL Server    |
 
@@ -43,9 +43,9 @@
 
 | Botao        | Classe Java                          | Instancia        | Transacao | Descricao                              |
 |:-------------|:-------------------------------------|:-----------------|:----------|:---------------------------------------|
-| Mudar Fase   | `MudarFaseRevisaoDocActionButton`    | `QmNcRevisaoDoc` | AUTOMATIC | Avanca RNC para Fase 7 (Riscos)        |
-| Voltar Fase  | `VoltarFaseRevisaoDocActionButton`   | `QmNcRevisaoDoc` | AUTOMATIC | Retorna RNC para Fase 5 (Acoes Corret.)|
-| Cancelar RNC | `CancelarRncRevisaoDocActionButton`  | `QmNcRevisaoDoc` | AUTOMATIC | Cancela a RNC (STATUS='C')             |
+| Mudar Fase   | `MudarFaseRevisaoDocActionButton`    | `QmRncRevisaoDoc` | AUTOMATIC | Avanca RNC para Fase 7 (Riscos)        |
+| Voltar Fase  | `VoltarFaseRevisaoDocActionButton`   | `QmRncRevisaoDoc` | AUTOMATIC | Retorna RNC para Fase 5 (Acoes Corret.)|
+| Cancelar RNC | `CancelarRncRevisaoDocActionButton`  | `QmRncRevisaoDoc` | AUTOMATIC | Cancela a RNC (STATUS='C')             |
 
 ---
 
@@ -72,4 +72,4 @@
 - [ ] `model/.../actionButtons/CancelarRncRevisaoDocActionButton.java`
 
 ### Menu
-- [x] `datadictionary/menu.xml` — instancia QmNcRevisaoDoc ja registrada como item 06
+- [x] `datadictionary/menu.xml` — instancia QmRncRevisaoDoc ja registrada como item 06

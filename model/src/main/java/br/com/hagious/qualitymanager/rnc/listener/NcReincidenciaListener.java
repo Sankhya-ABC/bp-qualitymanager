@@ -23,7 +23,7 @@ public class NcReincidenciaListener extends PersistenceEventAdapter {
 
     @Override
     public String getInstanceName() {
-        return "QmNcRegistro";
+        return "QmRncRegistro";
     }
 
     @Override

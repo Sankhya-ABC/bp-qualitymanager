@@ -9,7 +9,7 @@ Tabelas transversais que suportam todos os modulos do QualityManager.
 |:------|:-----|:----------|
 | CODCFG | PK AUTO | Cod. configuracao |
 | CODEMP | PESQUISA | Empresa (UNIQUE - uma config por empresa) |
-| MODNCATIVO | CHECKBOX | Modulo NC ativo (default S) |
+| MODNCATIVO | CHECKBOX | Modulo RNC ativo (default S) |
 | MODFORNATIVO | CHECKBOX | Modulo Fornecedores ativo (default N) |
 | MODDOCATIVO | CHECKBOX | Modulo Documentos ativo (default N) |
 | MODGMATIVO | CHECKBOX | Modulo Gestao Mudancas ativo (default N) |
@@ -46,10 +46,10 @@ Tabelas transversais que suportam todos os modulos do QualityManager.
 
 **Instance:** `QmDomPrioridade` — sequenceType=M (manual)
 
-### THGQMGNCFASE — Fases NC (Dominio)
+### THGQMGNCFASE — Fases RNC (Dominio)
 10 fases do workflow RNC: Registro, Acoes Imediatas, Causa Raiz, Abrangencia, Acoes Corretivas, Revisao Documentos, Riscos/Oportunidades, Implementacao, Liberacao Produto, Verificacao Eficacia.
 
-**Instance:** `QmNcFase` — sequenceType=M (manual), fases desativaveis (ATIVO=N)
+**Instance:** `QmRncFase` — sequenceType=M (manual), fases desativaveis (ATIVO=N)
 
 ## Services
 

@@ -8,7 +8,7 @@
             <field name="CODACIM"/>
         </primaryKey>
         <instances>
-            <instance name="QmNcAcaoImediata">
+            <instance name="QmRncAcaoImediata">
                 <description>Acoes Imediatas</description>
             </instance>
         </instances>
