@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<metadados xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="../.gradle/metadados.xsd">
+
+    <table name="THGQMGAUDCHK" sequenceType="A" sequenceField="CODCHK">
+        <description>Checklist</description>
+        <primaryKey><field name="CODCHK"/></primaryKey>
+        <instances><instance name="QmAudChecklist"><description>Checklist</description></instance></instances>
+        <fields>
+            <field name="CODCHK" dataType="INTEIRO" readOnly="S" order="1" allowSearch="S" visibleOnSearch="S"><description>Cod.</description></field>
+            <field name="CODAUD" dataType="INTEIRO" required="S" readOnly="S" UITabName="__main" order="2" allowSearch="S" visibleOnSearch="S"><description>Cod. Aud</description></field>
+            <field name="NORMAISO" dataType="LISTA" size="4" UITabName="__main" order="3" allowSearch="S" visibleOnSearch="S"><description>Norma</description><fieldOptions><option value="9001">ISO 9001</option><option value="1400">ISO 14001</option><option value="4500">ISO 45001</option></fieldOptions></field>
+            <field name="CLAUSULA" dataType="TEXTO" size="20" UITabName="__main" order="4" allowSearch="N" visibleOnSearch="N"><description>Clausula</description></field>
+            <field name="PERGUNTA" dataType="TEXTO" size="500" isPresentation="S" UITabName="__main" order="5" allowSearch="S" visibleOnSearch="S"><description>Pergunta</description></field>
+            <field name="RESULTADO" dataType="LISTA" size="2" UITabName="__main" order="6" allowSearch="S" visibleOnSearch="S"><description>Resultado</description><fieldOptions><option value="C">Conforme</option><option value="NC">Nao Conforme</option><option value="OM">Oport. Melhoria</option><option value="NA">N/A</option></fieldOptions></field>
+            <field name="EVIDENCIA" dataType="TEXTO" size="500" UITabName="__main" order="7" allowSearch="N" visibleOnSearch="N"><description>Evidencia</description></field>
+            <field name="CODUSU" dataType="PESQUISA" targetInstance="Usuario" targetField="CODUSU" targetType="INTEIRO" readOnly="S" visible="N" order="98" allowSearch="N" visibleOnSearch="N"><description>Usuario</description></field>
+            <field name="DHRESPOSTA" dataType="DATA_HORA" readOnly="S" order="99" allowSearch="N" visibleOnSearch="N"><description>Data Resp</description></field>
+        </fields>
+    </table>
+
+</metadados>

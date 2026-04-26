@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<scripts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="../.gradle/scripts.xsd">
+
+    <sql nomeTabela="THGQMGAUDCHK" ordem="1" executar="SE_NAO_EXISTIR" tipoObjeto="TABLE" nomeObjeto="THGQMGAUDCHK" descricao="Criacao da tabela THGQMGAUDCHK">
+        <mssql>CREATE TABLE THGQMGAUDCHK (CODCHK INT NOT NULL, CONSTRAINT PK_THGQMGAUDCHK PRIMARY KEY (CODCHK))</mssql>
+        <oracle>CREATE TABLE THGQMGAUDCHK (CODCHK NUMBER(10) NOT NULL, CONSTRAINT PK_THGQMGAUDCHK PRIMARY KEY (CODCHK))</oracle>
+    </sql>
+    <sql nomeTabela="THGQMGAUDCHK" ordem="2" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODAUD" descricao="Adicionar campo CODAUD"><mssql>ALTER TABLE THGQMGAUDCHK ADD CODAUD INT</mssql><oracle>ALTER TABLE THGQMGAUDCHK ADD (CODAUD NUMBER(10))</oracle></sql>
+    <sql nomeTabela="THGQMGAUDCHK" ordem="3" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="NORMAISO" descricao="Adicionar campo NORMAISO"><mssql>ALTER TABLE THGQMGAUDCHK ADD NORMAISO VARCHAR(4)</mssql><oracle>ALTER TABLE THGQMGAUDCHK ADD (NORMAISO VARCHAR2(4))</oracle></sql>
+    <sql nomeTabela="THGQMGAUDCHK" ordem="4" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CLAUSULA" descricao="Adicionar campo CLAUSULA"><mssql>ALTER TABLE THGQMGAUDCHK ADD CLAUSULA VARCHAR(20)</mssql><oracle>ALTER TABLE THGQMGAUDCHK ADD (CLAUSULA VARCHAR2(20))</oracle></sql>
+    <sql nomeTabela="THGQMGAUDCHK" ordem="5" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="PERGUNTA" descricao="Adicionar campo PERGUNTA"><mssql>ALTER TABLE THGQMGAUDCHK ADD PERGUNTA VARCHAR(500)</mssql><oracle>ALTER TABLE THGQMGAUDCHK ADD (PERGUNTA VARCHAR2(500))</oracle></sql>
+    <sql nomeTabela="THGQMGAUDCHK" ordem="6" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="RESULTADO" descricao="Adicionar campo RESULTADO"><mssql>ALTER TABLE THGQMGAUDCHK ADD RESULTADO VARCHAR(2)</mssql><oracle>ALTER TABLE THGQMGAUDCHK ADD (RESULTADO VARCHAR2(2))</oracle></sql>
+    <sql nomeTabela="THGQMGAUDCHK" ordem="7" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="EVIDENCIA" descricao="Adicionar campo EVIDENCIA"><mssql>ALTER TABLE THGQMGAUDCHK ADD EVIDENCIA VARCHAR(500)</mssql><oracle>ALTER TABLE THGQMGAUDCHK ADD (EVIDENCIA VARCHAR2(500))</oracle></sql>
+    <sql nomeTabela="THGQMGAUDCHK" ordem="8" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODUSU" descricao="Adicionar campo CODUSU"><mssql>ALTER TABLE THGQMGAUDCHK ADD CODUSU INT</mssql><oracle>ALTER TABLE THGQMGAUDCHK ADD (CODUSU NUMBER(10))</oracle></sql>
+    <sql nomeTabela="THGQMGAUDCHK" ordem="9" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="DHRESPOSTA" descricao="Adicionar campo DHRESPOSTA"><mssql>ALTER TABLE THGQMGAUDCHK ADD DHRESPOSTA DATETIME</mssql><oracle>ALTER TABLE THGQMGAUDCHK ADD (DHRESPOSTA DATE)</oracle></sql>
+
+</scripts>

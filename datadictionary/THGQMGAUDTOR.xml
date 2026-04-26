@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<metadados xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="../.gradle/metadados.xsd">
+
+    <table name="THGQMGAUDTOR" sequenceType="A" sequenceField="CODAUDTOR">
+        <description>Auditores</description>
+        <primaryKey><field name="CODAUDTOR"/></primaryKey>
+        <instances><instance name="QmAudAuditor"><description>Auditores</description></instance></instances>
+        <fields>
+            <field name="CODAUDTOR" dataType="INTEIRO" readOnly="S" order="1" allowSearch="S" visibleOnSearch="S"><description>Cod.</description></field>
+            <field name="CODPARC" dataType="PESQUISA" targetInstance="Parceiro" targetField="CODPARC" targetType="INTEIRO" required="S" isPresentation="S" UITabName="__main" order="2" allowSearch="S" visibleOnSearch="S"><description>Parceiro</description></field>
+            <field name="TIPO" dataType="LISTA" size="1" UITabName="__main" order="3" allowSearch="S" visibleOnSearch="S"><description>Tipo</description><fieldOptions><option value="I">Interno</option><option value="E">Externo</option></fieldOptions></field>
+            <field name="NORMASAUDIT" dataType="TEXTO" size="100" UITabName="__main" order="4" allowSearch="N" visibleOnSearch="N"><description>Normas</description></field>
+            <field name="FORMACAO" dataType="TEXTO" size="300" UITabName="__main" order="5" allowSearch="N" visibleOnSearch="N"><description>Formacao</description></field>
+            <field name="NRCERTIFICADO" dataType="TEXTO" size="100" UITabName="__main" order="6" allowSearch="N" visibleOnSearch="N"><description>Certificado</description></field>
+            <field name="DTVALCERTIF" dataType="DATA_HORA" UITabName="__main" order="7" allowSearch="N" visibleOnSearch="N"><description>Validade</description></field>
+            <field name="ATIVO" dataType="CHECKBOX" UITabName="__main" order="8" allowSearch="N" visibleOnSearch="N"><description>Ativo</description></field>
+            <field name="CODUSU" dataType="PESQUISA" targetInstance="Usuario" targetField="CODUSU" targetType="INTEIRO" readOnly="S" visible="N" order="98" allowSearch="N" visibleOnSearch="N"><description>Usuario</description></field>
+        </fields>
+    </table>
+
+</metadados>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<scripts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="../.gradle/scripts.xsd">
+
+    <sql nomeTabela="THGQMGAUDEVID" ordem="1" executar="SE_NAO_EXISTIR" tipoObjeto="TABLE" nomeObjeto="THGQMGAUDEVID" descricao="Criacao da tabela THGQMGAUDEVID">
+        <mssql>CREATE TABLE THGQMGAUDEVID (CODEVAUD INT NOT NULL, CONSTRAINT PK_THGQMGAUDEVID PRIMARY KEY (CODEVAUD))</mssql>
+        <oracle>CREATE TABLE THGQMGAUDEVID (CODEVAUD NUMBER(10) NOT NULL, CONSTRAINT PK_THGQMGAUDEVID PRIMARY KEY (CODEVAUD))</oracle>
+    </sql>
+    <sql nomeTabela="THGQMGAUDEVID" ordem="2" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODAUD" descricao="Adicionar campo CODAUD"><mssql>ALTER TABLE THGQMGAUDEVID ADD CODAUD INT</mssql><oracle>ALTER TABLE THGQMGAUDEVID ADD (CODAUD NUMBER(10))</oracle></sql>
+    <sql nomeTabela="THGQMGAUDEVID" ordem="3" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="DESCRICAO" descricao="Adicionar campo DESCRICAO"><mssql>ALTER TABLE THGQMGAUDEVID ADD DESCRICAO VARCHAR(300)</mssql><oracle>ALTER TABLE THGQMGAUDEVID ADD (DESCRICAO VARCHAR2(300))</oracle></sql>
+    <sql nomeTabela="THGQMGAUDEVID" ordem="4" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="TIPOEVIDENCIA" descricao="Adicionar campo TIPOEVIDENCIA"><mssql>ALTER TABLE THGQMGAUDEVID ADD TIPOEVIDENCIA VARCHAR(1)</mssql><oracle>ALTER TABLE THGQMGAUDEVID ADD (TIPOEVIDENCIA VARCHAR2(1))</oracle></sql>
+    <sql nomeTabela="THGQMGAUDEVID" ordem="5" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODUSU" descricao="Adicionar campo CODUSU"><mssql>ALTER TABLE THGQMGAUDEVID ADD CODUSU INT</mssql><oracle>ALTER TABLE THGQMGAUDEVID ADD (CODUSU NUMBER(10))</oracle></sql>
+    <sql nomeTabela="THGQMGAUDEVID" ordem="6" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="DHCREATE" descricao="Adicionar campo DHCREATE"><mssql>ALTER TABLE THGQMGAUDEVID ADD DHCREATE DATETIME</mssql><oracle>ALTER TABLE THGQMGAUDEVID ADD (DHCREATE DATE)</oracle></sql>
+
+</scripts>

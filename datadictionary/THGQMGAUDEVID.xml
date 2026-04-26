@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<metadados xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="../.gradle/metadados.xsd">
+
+    <table name="THGQMGAUDEVID" sequenceType="A" sequenceField="CODEVAUD">
+        <description>Evidencia Aud</description>
+        <primaryKey><field name="CODEVAUD"/></primaryKey>
+        <instances><instance name="QmAudEvidencia"><description>Evidencia Aud</description></instance></instances>
+        <fields>
+            <field name="CODEVAUD" dataType="INTEIRO" readOnly="S" order="1" allowSearch="S" visibleOnSearch="S"><description>Cod.</description></field>
+            <field name="CODAUD" dataType="INTEIRO" required="S" readOnly="S" UITabName="__main" order="2" allowSearch="S" visibleOnSearch="S"><description>Cod. Aud</description></field>
+            <field name="DESCRICAO" dataType="TEXTO" size="300" isPresentation="S" UITabName="__main" order="3" allowSearch="S" visibleOnSearch="S"><description>Descricao</description></field>
+            <field name="TIPOEVIDENCIA" dataType="LISTA" size="1" UITabName="__main" order="4" allowSearch="N" visibleOnSearch="N"><description>Tipo</description><fieldOptions><option value="F">Foto</option><option value="D">Documento</option><option value="R">Registro</option></fieldOptions></field>
+            <field name="CODUSU" dataType="PESQUISA" targetInstance="Usuario" targetField="CODUSU" targetType="INTEIRO" readOnly="S" visible="N" order="98" allowSearch="N" visibleOnSearch="N"><description>Usuario</description></field>
+            <field name="DHCREATE" dataType="DATA_HORA" readOnly="S" visible="N" order="99" allowSearch="N" visibleOnSearch="N"><description>Criacao</description></field>
+        </fields>
+    </table>
+
+</metadados>

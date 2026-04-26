@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<metadados xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="../.gradle/metadados.xsd">
+
+    <table name="THGQMGAUD" sequenceType="A" sequenceField="CODAUD">
+        <description>Registro Auditoria</description>
+        <primaryKey><field name="CODAUD"/></primaryKey>
+        <instances><instance name="QmAudRegistro"><description>Registro Auditoria</description></instance></instances>
+        <fields>
+            <field name="CODAUD" dataType="INTEIRO" readOnly="S" order="1" allowSearch="S" visibleOnSearch="S"><description>Cod.</description></field>
+            <field name="NUMAUDITORIA" dataType="TEXTO" size="20" readOnly="S" isPresentation="S" UITabName="__main" order="2" allowSearch="S" visibleOnSearch="S"><description>Numero</description></field>
+            <field name="TIPO" dataType="LISTA" size="1" required="S" UITabName="__main" order="3" allowSearch="S" visibleOnSearch="S"><description>Tipo</description><fieldOptions><option value="I">Interna</option><option value="E">Externa</option><option value="F">Fornecedor</option></fieldOptions></field>
+            <field name="NORMAISO" dataType="LISTA" size="4" UITabName="__main" order="4" allowSearch="S" visibleOnSearch="S"><description>Norma</description><fieldOptions><option value="9001">ISO 9001</option><option value="1400">ISO 14001</option><option value="4500">ISO 45001</option></fieldOptions></field>
+            <field name="ESCOPO" dataType="TEXTO" size="500" UITabName="__main" order="5" allowSearch="N" visibleOnSearch="N"><description>Escopo</description></field>
+            <field name="PROCESSO" dataType="TEXTO" size="200" UITabName="__main" order="6" allowSearch="N" visibleOnSearch="N"><description>Processo</description></field>
+            <field name="STATUS" dataType="LISTA" size="1" readOnly="S" UITabName="__main" order="7" allowSearch="S" visibleOnSearch="S"><description>Status</description><fieldOptions><option value="P">Planejada</option><option value="E">Em andamento</option><option value="C">Concluida</option><option value="X">Cancelada</option></fieldOptions></field>
+            <field name="CODAUDTOR" dataType="INTEIRO" UITabName="__main" order="8" allowSearch="N" visibleOnSearch="N"><description>Auditor</description></field>
+            <field name="CODEMP" dataType="INTEIRO" UITabName="__main" order="9" allowSearch="N" visibleOnSearch="N"><description>Empresa</description></field>
+            <field name="DTPREVISTA" dataType="DATA_HORA" UITabName="__main" order="10" allowSearch="N" visibleOnSearch="N"><description>Prevista</description></field>
+            <field name="DTINICIO" dataType="DATA_HORA" UITabName="__main" order="11" allowSearch="N" visibleOnSearch="N"><description>Inicio</description></field>
+            <field name="DTCONCLUSAO" dataType="DATA_HORA" UITabName="__main" order="12" allowSearch="N" visibleOnSearch="N"><description>Conclusao</description></field>
+            <field name="CODPROG" dataType="INTEIRO" UITabName="__main" order="13" allowSearch="N" visibleOnSearch="N"><description>Programa</description></field>
+            <field name="CODUSU" dataType="PESQUISA" targetInstance="Usuario" targetField="CODUSU" targetType="INTEIRO" readOnly="S" visible="N" order="98" allowSearch="N" visibleOnSearch="N"><description>Usuario</description></field>
+            <field name="DHCREATE" dataType="DATA_HORA" readOnly="S" visible="N" order="99" allowSearch="N" visibleOnSearch="N"><description>Criacao</description></field>
+        </fields>
+    </table>
+
+</metadados>

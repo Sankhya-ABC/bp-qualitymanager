@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<scripts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="../.gradle/scripts.xsd">
+
+    <sql nomeTabela="THGQMGAUDPART" ordem="1" executar="SE_NAO_EXISTIR" tipoObjeto="TABLE" nomeObjeto="THGQMGAUDPART" descricao="Criacao da tabela THGQMGAUDPART">
+        <mssql>CREATE TABLE THGQMGAUDPART (CODPART INT NOT NULL, CONSTRAINT PK_THGQMGAUDPART PRIMARY KEY (CODPART))</mssql>
+        <oracle>CREATE TABLE THGQMGAUDPART (CODPART NUMBER(10) NOT NULL, CONSTRAINT PK_THGQMGAUDPART PRIMARY KEY (CODPART))</oracle>
+    </sql>
+    <sql nomeTabela="THGQMGAUDPART" ordem="2" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODAUD" descricao="Adicionar campo CODAUD"><mssql>ALTER TABLE THGQMGAUDPART ADD CODAUD INT</mssql><oracle>ALTER TABLE THGQMGAUDPART ADD (CODAUD NUMBER(10))</oracle></sql>
+    <sql nomeTabela="THGQMGAUDPART" ordem="3" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="TIPOREUNIAO" descricao="Adicionar campo TIPOREUNIAO"><mssql>ALTER TABLE THGQMGAUDPART ADD TIPOREUNIAO VARCHAR(1)</mssql><oracle>ALTER TABLE THGQMGAUDPART ADD (TIPOREUNIAO VARCHAR2(1))</oracle></sql>
+    <sql nomeTabela="THGQMGAUDPART" ordem="4" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODPARC" descricao="Adicionar campo CODPARC"><mssql>ALTER TABLE THGQMGAUDPART ADD CODPARC INT</mssql><oracle>ALTER TABLE THGQMGAUDPART ADD (CODPARC NUMBER(10))</oracle></sql>
+    <sql nomeTabela="THGQMGAUDPART" ordem="5" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="FUNCAO" descricao="Adicionar campo FUNCAO"><mssql>ALTER TABLE THGQMGAUDPART ADD FUNCAO VARCHAR(100)</mssql><oracle>ALTER TABLE THGQMGAUDPART ADD (FUNCAO VARCHAR2(100))</oracle></sql>
+    <sql nomeTabela="THGQMGAUDPART" ordem="6" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="PRESENCA" descricao="Adicionar campo PRESENCA"><mssql>ALTER TABLE THGQMGAUDPART ADD PRESENCA CHAR(1)</mssql><oracle>ALTER TABLE THGQMGAUDPART ADD (PRESENCA CHAR(1))</oracle></sql>
+    <sql nomeTabela="THGQMGAUDPART" ordem="7" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="DHCREATE" descricao="Adicionar campo DHCREATE"><mssql>ALTER TABLE THGQMGAUDPART ADD DHCREATE DATETIME</mssql><oracle>ALTER TABLE THGQMGAUDPART ADD (DHCREATE DATE)</oracle></sql>
+
+</scripts>

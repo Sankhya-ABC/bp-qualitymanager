@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<metadados xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="../.gradle/metadados.xsd">
+
+    <table name="THGQMGAUDPLAN" sequenceType="A" sequenceField="CODPLAN">
+        <description>Plano Aud</description>
+        <primaryKey><field name="CODPLAN"/></primaryKey>
+        <instances><instance name="QmAudPlano"><description>Plano Aud</description></instance></instances>
+        <fields>
+            <field name="CODPLAN" dataType="INTEIRO" readOnly="S" order="1" allowSearch="S" visibleOnSearch="S"><description>Cod.</description></field>
+            <field name="CODAUD" dataType="INTEIRO" required="S" readOnly="S" UITabName="__main" order="2" allowSearch="S" visibleOnSearch="S"><description>Cod. Aud</description></field>
+            <field name="ATIVIDADE" dataType="TEXTO" size="300" isPresentation="S" UITabName="__main" order="3" allowSearch="S" visibleOnSearch="S"><description>Atividade</description></field>
+            <field name="CODPARC" dataType="PESQUISA" targetInstance="Parceiro" targetField="CODPARC" targetType="INTEIRO" UITabName="__main" order="4" allowSearch="N" visibleOnSearch="N"><description>Resp</description></field>
+            <field name="DTINICIO" dataType="DATA_HORA" UITabName="__main" order="5" allowSearch="N" visibleOnSearch="N"><description>Inicio</description></field>
+            <field name="DTFIM" dataType="DATA_HORA" UITabName="__main" order="6" allowSearch="N" visibleOnSearch="N"><description>Fim</description></field>
+            <field name="CLAUSULAS" dataType="TEXTO" size="100" UITabName="__main" order="7" allowSearch="N" visibleOnSearch="N"><description>Clausulas</description></field>
+            <field name="LOCAL" dataType="TEXTO" size="200" UITabName="__main" order="8" allowSearch="N" visibleOnSearch="N"><description>Local</description></field>
+            <field name="CODUSU" dataType="PESQUISA" targetInstance="Usuario" targetField="CODUSU" targetType="INTEIRO" readOnly="S" visible="N" order="98" allowSearch="N" visibleOnSearch="N"><description>Usuario</description></field>
+        </fields>
+    </table>
+
+</metadados>

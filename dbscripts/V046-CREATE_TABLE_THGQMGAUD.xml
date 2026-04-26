@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<scripts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="../.gradle/scripts.xsd">
+
+    <sql nomeTabela="THGQMGAUD" ordem="1" executar="SE_NAO_EXISTIR" tipoObjeto="TABLE" nomeObjeto="THGQMGAUD" descricao="Criacao da tabela THGQMGAUD">
+        <mssql>CREATE TABLE THGQMGAUD (CODAUD INT NOT NULL, CONSTRAINT PK_THGQMGAUD PRIMARY KEY (CODAUD))</mssql>
+        <oracle>CREATE TABLE THGQMGAUD (CODAUD NUMBER(10) NOT NULL, CONSTRAINT PK_THGQMGAUD PRIMARY KEY (CODAUD))</oracle>
+    </sql>
+    <sql nomeTabela="THGQMGAUD" ordem="2" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="NUMAUDITORIA" descricao="Adicionar campo NUMAUDITORIA"><mssql>ALTER TABLE THGQMGAUD ADD NUMAUDITORIA VARCHAR(20)</mssql><oracle>ALTER TABLE THGQMGAUD ADD (NUMAUDITORIA VARCHAR2(20))</oracle></sql>
+    <sql nomeTabela="THGQMGAUD" ordem="3" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="TIPO" descricao="Adicionar campo TIPO"><mssql>ALTER TABLE THGQMGAUD ADD TIPO VARCHAR(1)</mssql><oracle>ALTER TABLE THGQMGAUD ADD (TIPO VARCHAR2(1))</oracle></sql>
+    <sql nomeTabela="THGQMGAUD" ordem="4" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="NORMAISO" descricao="Adicionar campo NORMAISO"><mssql>ALTER TABLE THGQMGAUD ADD NORMAISO VARCHAR(4)</mssql><oracle>ALTER TABLE THGQMGAUD ADD (NORMAISO VARCHAR2(4))</oracle></sql>
+    <sql nomeTabela="THGQMGAUD" ordem="5" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="ESCOPO" descricao="Adicionar campo ESCOPO"><mssql>ALTER TABLE THGQMGAUD ADD ESCOPO VARCHAR(500)</mssql><oracle>ALTER TABLE THGQMGAUD ADD (ESCOPO VARCHAR2(500))</oracle></sql>
+    <sql nomeTabela="THGQMGAUD" ordem="6" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="PROCESSO" descricao="Adicionar campo PROCESSO"><mssql>ALTER TABLE THGQMGAUD ADD PROCESSO VARCHAR(200)</mssql><oracle>ALTER TABLE THGQMGAUD ADD (PROCESSO VARCHAR2(200))</oracle></sql>
+    <sql nomeTabela="THGQMGAUD" ordem="7" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="STATUS" descricao="Adicionar campo STATUS"><mssql>ALTER TABLE THGQMGAUD ADD STATUS VARCHAR(1)</mssql><oracle>ALTER TABLE THGQMGAUD ADD (STATUS VARCHAR2(1))</oracle></sql>
+    <sql nomeTabela="THGQMGAUD" ordem="8" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODAUDTOR" descricao="Adicionar campo CODAUDTOR"><mssql>ALTER TABLE THGQMGAUD ADD CODAUDTOR INT</mssql><oracle>ALTER TABLE THGQMGAUD ADD (CODAUDTOR NUMBER(10))</oracle></sql>
+    <sql nomeTabela="THGQMGAUD" ordem="9" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODEMP" descricao="Adicionar campo CODEMP"><mssql>ALTER TABLE THGQMGAUD ADD CODEMP INT</mssql><oracle>ALTER TABLE THGQMGAUD ADD (CODEMP NUMBER(10))</oracle></sql>
+    <sql nomeTabela="THGQMGAUD" ordem="10" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="DTPREVISTA" descricao="Adicionar campo DTPREVISTA"><mssql>ALTER TABLE THGQMGAUD ADD DTPREVISTA DATETIME</mssql><oracle>ALTER TABLE THGQMGAUD ADD (DTPREVISTA DATE)</oracle></sql>
+    <sql nomeTabela="THGQMGAUD" ordem="11" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="DTINICIO" descricao="Adicionar campo DTINICIO"><mssql>ALTER TABLE THGQMGAUD ADD DTINICIO DATETIME</mssql><oracle>ALTER TABLE THGQMGAUD ADD (DTINICIO DATE)</oracle></sql>
+    <sql nomeTabela="THGQMGAUD" ordem="12" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="DTCONCLUSAO" descricao="Adicionar campo DTCONCLUSAO"><mssql>ALTER TABLE THGQMGAUD ADD DTCONCLUSAO DATETIME</mssql><oracle>ALTER TABLE THGQMGAUD ADD (DTCONCLUSAO DATE)</oracle></sql>
+    <sql nomeTabela="THGQMGAUD" ordem="13" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODPROG" descricao="Adicionar campo CODPROG"><mssql>ALTER TABLE THGQMGAUD ADD CODPROG INT</mssql><oracle>ALTER TABLE THGQMGAUD ADD (CODPROG NUMBER(10))</oracle></sql>
+    <sql nomeTabela="THGQMGAUD" ordem="14" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODUSU" descricao="Adicionar campo CODUSU"><mssql>ALTER TABLE THGQMGAUD ADD CODUSU INT</mssql><oracle>ALTER TABLE THGQMGAUD ADD (CODUSU NUMBER(10))</oracle></sql>
+    <sql nomeTabela="THGQMGAUD" ordem="15" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="DHCREATE" descricao="Adicionar campo DHCREATE"><mssql>ALTER TABLE THGQMGAUD ADD DHCREATE DATETIME</mssql><oracle>ALTER TABLE THGQMGAUD ADD (DHCREATE DATE)</oracle></sql>
+
+</scripts>

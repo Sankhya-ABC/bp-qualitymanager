@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<scripts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="../.gradle/scripts.xsd">
+
+    <sql nomeTabela="THGQMGAUDTOR" ordem="1" executar="SE_NAO_EXISTIR" tipoObjeto="TABLE" nomeObjeto="THGQMGAUDTOR" descricao="Criacao da tabela THGQMGAUDTOR">
+        <mssql>CREATE TABLE THGQMGAUDTOR (CODAUDTOR INT NOT NULL, CONSTRAINT PK_THGQMGAUDTOR PRIMARY KEY (CODAUDTOR))</mssql>
+        <oracle>CREATE TABLE THGQMGAUDTOR (CODAUDTOR NUMBER(10) NOT NULL, CONSTRAINT PK_THGQMGAUDTOR PRIMARY KEY (CODAUDTOR))</oracle>
+    </sql>
+    <sql nomeTabela="THGQMGAUDTOR" ordem="2" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODPARC" descricao="Adicionar campo CODPARC"><mssql>ALTER TABLE THGQMGAUDTOR ADD CODPARC INT</mssql><oracle>ALTER TABLE THGQMGAUDTOR ADD (CODPARC NUMBER(10))</oracle></sql>
+    <sql nomeTabela="THGQMGAUDTOR" ordem="3" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="TIPO" descricao="Adicionar campo TIPO"><mssql>ALTER TABLE THGQMGAUDTOR ADD TIPO VARCHAR(1)</mssql><oracle>ALTER TABLE THGQMGAUDTOR ADD (TIPO VARCHAR2(1))</oracle></sql>
+    <sql nomeTabela="THGQMGAUDTOR" ordem="4" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="NORMASAUDIT" descricao="Adicionar campo NORMASAUDIT"><mssql>ALTER TABLE THGQMGAUDTOR ADD NORMASAUDIT VARCHAR(100)</mssql><oracle>ALTER TABLE THGQMGAUDTOR ADD (NORMASAUDIT VARCHAR2(100))</oracle></sql>
+    <sql nomeTabela="THGQMGAUDTOR" ordem="5" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="FORMACAO" descricao="Adicionar campo FORMACAO"><mssql>ALTER TABLE THGQMGAUDTOR ADD FORMACAO VARCHAR(300)</mssql><oracle>ALTER TABLE THGQMGAUDTOR ADD (FORMACAO VARCHAR2(300))</oracle></sql>
+    <sql nomeTabela="THGQMGAUDTOR" ordem="6" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="NRCERTIFICADO" descricao="Adicionar campo NRCERTIFICADO"><mssql>ALTER TABLE THGQMGAUDTOR ADD NRCERTIFICADO VARCHAR(100)</mssql><oracle>ALTER TABLE THGQMGAUDTOR ADD (NRCERTIFICADO VARCHAR2(100))</oracle></sql>
+    <sql nomeTabela="THGQMGAUDTOR" ordem="7" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="DTVALCERTIF" descricao="Adicionar campo DTVALCERTIF"><mssql>ALTER TABLE THGQMGAUDTOR ADD DTVALCERTIF DATETIME</mssql><oracle>ALTER TABLE THGQMGAUDTOR ADD (DTVALCERTIF DATE)</oracle></sql>
+    <sql nomeTabela="THGQMGAUDTOR" ordem="8" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="ATIVO" descricao="Adicionar campo ATIVO"><mssql>ALTER TABLE THGQMGAUDTOR ADD ATIVO CHAR(1)</mssql><oracle>ALTER TABLE THGQMGAUDTOR ADD (ATIVO CHAR(1))</oracle></sql>
+    <sql nomeTabela="THGQMGAUDTOR" ordem="9" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODUSU" descricao="Adicionar campo CODUSU"><mssql>ALTER TABLE THGQMGAUDTOR ADD CODUSU INT</mssql><oracle>ALTER TABLE THGQMGAUDTOR ADD (CODUSU NUMBER(10))</oracle></sql>
+
+</scripts>

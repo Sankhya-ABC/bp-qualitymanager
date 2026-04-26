@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<scripts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="../.gradle/scripts.xsd">
+
+    <sql nomeTabela="THGQMGAUDPLAN" ordem="1" executar="SE_NAO_EXISTIR" tipoObjeto="TABLE" nomeObjeto="THGQMGAUDPLAN" descricao="Criacao da tabela THGQMGAUDPLAN">
+        <mssql>CREATE TABLE THGQMGAUDPLAN (CODPLAN INT NOT NULL, CONSTRAINT PK_THGQMGAUDPLAN PRIMARY KEY (CODPLAN))</mssql>
+        <oracle>CREATE TABLE THGQMGAUDPLAN (CODPLAN NUMBER(10) NOT NULL, CONSTRAINT PK_THGQMGAUDPLAN PRIMARY KEY (CODPLAN))</oracle>
+    </sql>
+    <sql nomeTabela="THGQMGAUDPLAN" ordem="2" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODAUD" descricao="Adicionar campo CODAUD"><mssql>ALTER TABLE THGQMGAUDPLAN ADD CODAUD INT</mssql><oracle>ALTER TABLE THGQMGAUDPLAN ADD (CODAUD NUMBER(10))</oracle></sql>
+    <sql nomeTabela="THGQMGAUDPLAN" ordem="3" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="ATIVIDADE" descricao="Adicionar campo ATIVIDADE"><mssql>ALTER TABLE THGQMGAUDPLAN ADD ATIVIDADE VARCHAR(300)</mssql><oracle>ALTER TABLE THGQMGAUDPLAN ADD (ATIVIDADE VARCHAR2(300))</oracle></sql>
+    <sql nomeTabela="THGQMGAUDPLAN" ordem="4" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODPARC" descricao="Adicionar campo CODPARC"><mssql>ALTER TABLE THGQMGAUDPLAN ADD CODPARC INT</mssql><oracle>ALTER TABLE THGQMGAUDPLAN ADD (CODPARC NUMBER(10))</oracle></sql>
+    <sql nomeTabela="THGQMGAUDPLAN" ordem="5" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="DTINICIO" descricao="Adicionar campo DTINICIO"><mssql>ALTER TABLE THGQMGAUDPLAN ADD DTINICIO DATETIME</mssql><oracle>ALTER TABLE THGQMGAUDPLAN ADD (DTINICIO DATE)</oracle></sql>
+    <sql nomeTabela="THGQMGAUDPLAN" ordem="6" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="DTFIM" descricao="Adicionar campo DTFIM"><mssql>ALTER TABLE THGQMGAUDPLAN ADD DTFIM DATETIME</mssql><oracle>ALTER TABLE THGQMGAUDPLAN ADD (DTFIM DATE)</oracle></sql>
+    <sql nomeTabela="THGQMGAUDPLAN" ordem="7" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CLAUSULAS" descricao="Adicionar campo CLAUSULAS"><mssql>ALTER TABLE THGQMGAUDPLAN ADD CLAUSULAS VARCHAR(100)</mssql><oracle>ALTER TABLE THGQMGAUDPLAN ADD (CLAUSULAS VARCHAR2(100))</oracle></sql>
+    <sql nomeTabela="THGQMGAUDPLAN" ordem="8" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="LOCAL" descricao="Adicionar campo LOCAL"><mssql>ALTER TABLE THGQMGAUDPLAN ADD LOCAL VARCHAR(200)</mssql><oracle>ALTER TABLE THGQMGAUDPLAN ADD (LOCAL VARCHAR2(200))</oracle></sql>
+    <sql nomeTabela="THGQMGAUDPLAN" ordem="9" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODUSU" descricao="Adicionar campo CODUSU"><mssql>ALTER TABLE THGQMGAUDPLAN ADD CODUSU INT</mssql><oracle>ALTER TABLE THGQMGAUDPLAN ADD (CODUSU NUMBER(10))</oracle></sql>
+
+</scripts>

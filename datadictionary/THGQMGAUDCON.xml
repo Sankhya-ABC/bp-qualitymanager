@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<metadados xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="../.gradle/metadados.xsd">
+
+    <table name="THGQMGAUDCON" sequenceType="A" sequenceField="CODCONST">
+        <description>Constatacao</description>
+        <primaryKey><field name="CODCONST"/></primaryKey>
+        <instances><instance name="QmAudConstatacao"><description>Constatacao</description></instance></instances>
+        <fields>
+            <field name="CODCONST" dataType="INTEIRO" readOnly="S" order="1" allowSearch="S" visibleOnSearch="S"><description>Cod.</description></field>
+            <field name="CODAUD" dataType="INTEIRO" required="S" readOnly="S" UITabName="__main" order="2" allowSearch="S" visibleOnSearch="S"><description>Cod. Aud</description></field>
+            <field name="TIPO" dataType="LISTA" size="2" UITabName="__main" order="3" allowSearch="S" visibleOnSearch="S"><description>Tipo</description><fieldOptions><option value="NM">NC Maior</option><option value="Nm">NC Menor</option><option value="OM">Oport. Melhoria</option></fieldOptions></field>
+            <field name="CLAUSULAISO" dataType="TEXTO" size="20" UITabName="__main" order="4" allowSearch="N" visibleOnSearch="N"><description>Clausula</description></field>
+            <field name="DESCRICAO" dataType="TEXTO" size="4000" UITabName="__main" order="5" allowSearch="N" visibleOnSearch="N"><description>Descricao</description></field>
+            <field name="EVIDENCIA" dataType="TEXTO" size="500" UITabName="__main" order="6" allowSearch="N" visibleOnSearch="N"><description>Evidencia</description></field>
+            <field name="CODRNC" dataType="INTEIRO" UITabName="__main" order="7" allowSearch="N" visibleOnSearch="N"><description>RNC</description></field>
+            <field name="CODUSU" dataType="PESQUISA" targetInstance="Usuario" targetField="CODUSU" targetType="INTEIRO" readOnly="S" visible="N" order="98" allowSearch="N" visibleOnSearch="N"><description>Usuario</description></field>
+            <field name="DHCREATE" dataType="DATA_HORA" readOnly="S" visible="N" order="99" allowSearch="N" visibleOnSearch="N"><description>Criacao</description></field>
+        </fields>
+    </table>
+
+</metadados>

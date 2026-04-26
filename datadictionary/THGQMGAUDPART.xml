@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<metadados xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="../.gradle/metadados.xsd">
+
+    <table name="THGQMGAUDPART" sequenceType="A" sequenceField="CODPART">
+        <description>Participante</description>
+        <primaryKey><field name="CODPART"/></primaryKey>
+        <instances><instance name="QmAudParticipante"><description>Participante</description></instance></instances>
+        <fields>
+            <field name="CODPART" dataType="INTEIRO" readOnly="S" order="1" allowSearch="S" visibleOnSearch="S"><description>Cod.</description></field>
+            <field name="CODAUD" dataType="INTEIRO" required="S" readOnly="S" UITabName="__main" order="2" allowSearch="S" visibleOnSearch="S"><description>Cod. Aud</description></field>
+            <field name="TIPOREUNIAO" dataType="LISTA" size="1" UITabName="__main" order="3" allowSearch="N" visibleOnSearch="N"><description>Tipo</description><fieldOptions><option value="A">Abertura</option><option value="E">Encerramento</option></fieldOptions></field>
+            <field name="CODPARC" dataType="PESQUISA" targetInstance="Parceiro" targetField="CODPARC" targetType="INTEIRO" required="S" UITabName="__main" order="4" allowSearch="S" visibleOnSearch="S"><description>Parceiro</description></field>
+            <field name="FUNCAO" dataType="TEXTO" size="100" UITabName="__main" order="5" allowSearch="N" visibleOnSearch="N"><description>Funcao</description></field>
+            <field name="PRESENCA" dataType="CHECKBOX" UITabName="__main" order="6" allowSearch="N" visibleOnSearch="N"><description>Presenca</description></field>
+            <field name="DHCREATE" dataType="DATA_HORA" readOnly="S" visible="N" order="99" allowSearch="N" visibleOnSearch="N"><description>Criacao</description></field>
+        </fields>
+    </table>
+
+</metadados>

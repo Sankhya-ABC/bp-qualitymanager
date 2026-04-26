@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<scripts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="../.gradle/scripts.xsd">
+
+    <sql nomeTabela="THGQMGAUDCON" ordem="1" executar="SE_NAO_EXISTIR" tipoObjeto="TABLE" nomeObjeto="THGQMGAUDCON" descricao="Criacao da tabela THGQMGAUDCON">
+        <mssql>CREATE TABLE THGQMGAUDCON (CODCONST INT NOT NULL, CONSTRAINT PK_THGQMGAUDCON PRIMARY KEY (CODCONST))</mssql>
+        <oracle>CREATE TABLE THGQMGAUDCON (CODCONST NUMBER(10) NOT NULL, CONSTRAINT PK_THGQMGAUDCON PRIMARY KEY (CODCONST))</oracle>
+    </sql>
+    <sql nomeTabela="THGQMGAUDCON" ordem="2" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODAUD" descricao="Adicionar campo CODAUD"><mssql>ALTER TABLE THGQMGAUDCON ADD CODAUD INT</mssql><oracle>ALTER TABLE THGQMGAUDCON ADD (CODAUD NUMBER(10))</oracle></sql>
+    <sql nomeTabela="THGQMGAUDCON" ordem="3" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="TIPO" descricao="Adicionar campo TIPO"><mssql>ALTER TABLE THGQMGAUDCON ADD TIPO VARCHAR(2)</mssql><oracle>ALTER TABLE THGQMGAUDCON ADD (TIPO VARCHAR2(2))</oracle></sql>
+    <sql nomeTabela="THGQMGAUDCON" ordem="4" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CLAUSULAISO" descricao="Adicionar campo CLAUSULAISO"><mssql>ALTER TABLE THGQMGAUDCON ADD CLAUSULAISO VARCHAR(20)</mssql><oracle>ALTER TABLE THGQMGAUDCON ADD (CLAUSULAISO VARCHAR2(20))</oracle></sql>
+    <sql nomeTabela="THGQMGAUDCON" ordem="5" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="DESCRICAO" descricao="Adicionar campo DESCRICAO"><mssql>ALTER TABLE THGQMGAUDCON ADD DESCRICAO VARCHAR(4000)</mssql><oracle>ALTER TABLE THGQMGAUDCON ADD (DESCRICAO VARCHAR2(4000))</oracle></sql>
+    <sql nomeTabela="THGQMGAUDCON" ordem="6" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="EVIDENCIA" descricao="Adicionar campo EVIDENCIA"><mssql>ALTER TABLE THGQMGAUDCON ADD EVIDENCIA VARCHAR(500)</mssql><oracle>ALTER TABLE THGQMGAUDCON ADD (EVIDENCIA VARCHAR2(500))</oracle></sql>
+    <sql nomeTabela="THGQMGAUDCON" ordem="7" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODRNC" descricao="Adicionar campo CODRNC"><mssql>ALTER TABLE THGQMGAUDCON ADD CODRNC INT</mssql><oracle>ALTER TABLE THGQMGAUDCON ADD (CODRNC NUMBER(10))</oracle></sql>
+    <sql nomeTabela="THGQMGAUDCON" ordem="8" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODUSU" descricao="Adicionar campo CODUSU"><mssql>ALTER TABLE THGQMGAUDCON ADD CODUSU INT</mssql><oracle>ALTER TABLE THGQMGAUDCON ADD (CODUSU NUMBER(10))</oracle></sql>
+    <sql nomeTabela="THGQMGAUDCON" ordem="9" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="DHCREATE" descricao="Adicionar campo DHCREATE"><mssql>ALTER TABLE THGQMGAUDCON ADD DHCREATE DATETIME</mssql><oracle>ALTER TABLE THGQMGAUDCON ADD (DHCREATE DATE)</oracle></sql>
+
+</scripts>
