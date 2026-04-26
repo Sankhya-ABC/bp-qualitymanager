@@ -7,7 +7,7 @@
 | Fase Roadmap    | Fase 1 — Core + Modulo NC/RNC                  |
 | ISO             | ABNT NBR ISO 9001:2015 — Clausulas 8.7 + 10.2  |
 | Ordem no modulo | 001 de 014                                     |
-| Depende de      | CORE-03 (THGQMGPRIO), CORE-04 (THGQMGNCFASE) |
+| Depende de      | CORE-03 (THGQMGPRIO), CORE-04 (THGQMGRNCFASE) |
 
 ---
 
@@ -35,7 +35,7 @@
 | 1 | N RNC               | `CODRNC`          | INTEIRO    | -   | PK    | __main        | -              | readOnly, auto sequence SEQ_THGQMGREG                      |
 | 2 | Numero RNC           | `NURNC`         | TEXTO      | 20  | Nao   | __main        | -              | readOnly, gerado pelo trigger: NC-YYYY-NNNN. isPresentation=S     |
 | 3 | Status               | `STATUS`        | LISTA      | 1   | Nao   | __main        | -              | readOnly. A=Aberta, P=Em andamento, E=Encerrada, C=Cancelada, X=Nao procedente |
-| 4 | Fase Atual           | `CODFASE`        | INTEIRO    | -   | Nao   | __main        | -              | readOnly. Default 1. FK para THGQMGNCFASE                          |
+| 4 | Fase Atual           | `CODFASE`        | INTEIRO    | -   | Nao   | __main        | -              | readOnly. Default 1. FK para THGQMGRNCFASE                          |
 | 5 | Origem               | `ORIGEM`        | LISTA      | 2   | Sim   | __main        | Identificacao  | C=Cliente, F=Fornecedor, I=Interno, A=Auditoria, O=Outro          |
 | 6 | Prioridade           | `PRIORIDADE`    | LISTA      | 1   | Sim   | __main        | Identificacao  | 1=Simples (prazo 30d), 2=Prioritario (prazo 15d), 3=Critico (prazo 5d) |
 | 7 | Tipo                 | `TIPONC`        | LISTA      | 2   | Sim   | __main        | Identificacao  | P=Produto, S=Servico, PR=Processo, SG=Sistema de Gestao           |

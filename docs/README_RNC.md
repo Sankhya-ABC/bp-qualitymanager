@@ -13,7 +13,7 @@ ISO 9001 clausulas 8.7 (Controle de saidas nao conformes) e 10.2 (Nao conformida
 ```
 
 **Desvio de fluxo:** Se ORIGEM=Auditoria ou Outro, fase 4 (Abrangencia) e pulada.
-**Fases desativaveis:** Empresa pode desativar fases nao aplicaveis em THGQMGNCFASE.
+**Fases desativaveis:** Empresa pode desativar fases nao aplicaveis em THGQMGRNCFASE.
 
 ## Tabelas
 
@@ -23,7 +23,7 @@ ISO 9001 clausulas 8.7 (Controle de saidas nao conformes) e 10.2 (Nao conformida
 | THGQMGACIM | QmRncAcaoImediata | Acoes imediatas | 2 |
 | THGQMGCR | QmRncCausaRaiz | Causa raiz (Ishikawa 6M) | 3 |
 | THGQMGABR | QmRncAbrangencia | Abrangencia 5W2H | 4 |
-| THGQMGNCQUEM | QmRncQuem | Responsaveis da abrangencia | 4 |
+| THGQMGRNCQUEM | QmRncQuem | Responsaveis da abrangencia | 4 |
 | THGQMGACCOR | QmRncAcaoCorretiva | Acoes corretivas 5W2H | 5 |
 | THGQMGREVDOC | QmRncRevisaoDoc | Revisao de documentos | 6 |
 | THGQMGRISCO | QmRncRisco | Riscos e oportunidades | 7 |
@@ -41,7 +41,7 @@ ISO 9001 clausulas 8.7 (Controle de saidas nao conformes) e 10.2 (Nao conformida
 | CODRNC | PK AUTO | Identificador |
 | NURNC | TEXTO(20) | Formato NC-YYYY-NNNN (gerado automaticamente) |
 | STATUS | LISTA | A=Aberta, P=Andamento, E=Encerrada, C=Cancelada, X=Nao procedente |
-| CODFASE | INTEIRO | FK para THGQMGNCFASE (1-10) |
+| CODFASE | INTEIRO | FK para THGQMGRNCFASE (1-10) |
 | ORIGEM | LISTA | C=Cliente, F=Fornecedor, I=Interno, A=Auditoria, O=Outro |
 | PRIORIDADE | LISTA | 1=Simples, 2=Prioritario, 3=Critico |
 | TIPONC | LISTA | P=Produto, S=Servico, PR=Processo, SG=Sist. Gestao |

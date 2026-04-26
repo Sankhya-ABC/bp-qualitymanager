@@ -46,7 +46,7 @@ Tabelas transversais que suportam todos os modulos do QualityManager.
 
 **Instance:** `QmDomPrioridade` — sequenceType=M (manual)
 
-### THGQMGNCFASE — Fases RNC (Dominio)
+### THGQMGRNCFASE — Fases RNC (Dominio)
 10 fases do workflow RNC: Registro, Acoes Imediatas, Causa Raiz, Abrangencia, Acoes Corretivas, Revisao Documentos, Riscos/Oportunidades, Implementacao, Liberacao Produto, Verificacao Eficacia.
 
 **Instance:** `QmRncFase` — sequenceType=M (manual), fases desativaveis (ATIVO=N)
@@ -58,5 +58,5 @@ Servico central de audit log. Metodo `registrar(modulo, entidade, idEntidade, ac
 
 ## Artefatos
 - dbscripts: V001-V006
-- datadictionary: THGQMGCFG, THGQMGLOG, THGQMGPRIO, THGQMGNCFASE
+- datadictionary: THGQMGCFG, THGQMGLOG, THGQMGPRIO, THGQMGRNCFASE
 - Java: 4 entities, 4 repositories, 1 service (AuditLogService)

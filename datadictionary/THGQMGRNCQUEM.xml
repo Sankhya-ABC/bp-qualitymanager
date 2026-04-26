@@ -2,7 +2,7 @@
 <metadados xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:noNamespaceSchemaLocation="../.gradle/metadados.xsd">
 
-    <table name="THGQMGNCQUEM" sequenceType="A" sequenceField="CODQUEM">
+    <table name="THGQMGRNCQUEM" sequenceType="A" sequenceField="CODQUEM">
         <description>Quem</description>
         <primaryKey>
             <field name="CODQUEM"/>

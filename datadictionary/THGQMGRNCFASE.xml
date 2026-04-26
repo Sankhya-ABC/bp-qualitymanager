@@ -2,7 +2,7 @@
 <metadados xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:noNamespaceSchemaLocation="../.gradle/metadados.xsd">
 
-    <table name="THGQMGNCFASE" sequenceType="M">
+    <table name="THGQMGRNCFASE" sequenceType="M">
         <description>Fases RNC</description>
         <primaryKey>
             <field name="CODFASE"/>

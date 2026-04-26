@@ -22,11 +22,11 @@
 | Sequencia | AUTO (`CODABR`)  |
 | Dual-DB   | Oracle + SQL Server     |
 
-### THGQMGNCQUEM — responsaveis da abrangencia (grid filho)
+### THGQMGRNCQUEM — responsaveis da abrangencia (grid filho)
 
 | Atributo  | Valor              |
 |:----------|:-------------------|
-| Nome      | `THGQMGNCQUEM`      |
+| Nome      | `THGQMGRNCQUEM`      |
 | Instancia | `QmRncQuem`         |
 | Sequencia | AUTO (`CODQUEM`)    |
 | Dual-DB   | Oracle + SQL Server|
@@ -50,7 +50,7 @@
 | 11| Criado em      | `DHCREATE`     | DATA_HORA | -   | Nao   | __main  | -     | readOnly. Auto: $ctx_dh_atual. visivel=N            |
 | 12| Alterado em    | `DHALTER`       | DATA_HORA | -   | Nao   | __main  | -     | readOnly. Trigger BIU. visivel=N                    |
 
-## Campos — THGQMGNCQUEM (grid filho da abrangencia)
+## Campos — THGQMGRNCQUEM (grid filho da abrangencia)
 
 | # | Rotulo      | Coluna          | Tipo     | Tam | Obrig | Aba     | Grupo | Opcoes / Comportamento                           |
 |:--|:------------|:----------------|:---------|:----|:------|:--------|:------|:-------------------------------------------------|
@@ -65,7 +65,7 @@
 
 | Tabela filha    | Instancia filha | Vinculo FK       | Descricao                                          |
 |:----------------|:----------------|:-----------------|:---------------------------------------------------|
-| `THGQMGNCQUEM`   | `QmRncQuem`      | `CODABR`  | Grid de responsaveis — quem deve agir na abrangencia |
+| `THGQMGRNCQUEM`   | `QmRncQuem`      | `CODABR`  | Grid de responsaveis — quem deve agir na abrangencia |
 
 ---
 
@@ -84,7 +84,7 @@
 
 1. Tela so e acessivel quando THGQMGREG.CODFASE = 4
 2. Ao menos um campo 5W2H deve ser preenchido para avancar, exceto se NAOSEAPLICA='S'
-3. Grid THGQMGNCQUEM pode ter multiplos responsaveis (N registros por CODABR)
+3. Grid THGQMGRNCQUEM pode ter multiplos responsaveis (N registros por CODABR)
 4. ENVIAREMAIL='S' na grid aciona o botao Enviar Notificacao para aquele parceiro
 5. O botao Notificar usa TGFPAR.QM_EMAILQUESTIONARIO como e-mail de destino
 6. Toda mudanca registra entrada em THGQMGLOG
@@ -106,11 +106,11 @@
 ## Artefatos
 
 ### Banco de Dados
-- [ ] `dbscripts/V1.xml` — DDL THGQMGABR + THGQMGNCQUEM, triggers, sequences, FK entre elas
+- [ ] `dbscripts/V1.xml` — DDL THGQMGABR + THGQMGRNCQUEM, triggers, sequences, FK entre elas
 
 ### Dicionario de Dados
 - [ ] `datadictionary/THGQMGABR.xml` — instancia QmRncAbrangencia, grupo 5W2H em __main
-- [ ] `datadictionary/THGQMGNCQUEM.xml` — instancia QmRncQuem, relacionamento com Parceiro
+- [ ] `datadictionary/THGQMGRNCQUEM.xml` — instancia QmRncQuem, relacionamento com Parceiro
 
 ### Backend Java
 - [ ] `model/.../actionButtons/MudarFaseAbrangenciaActionButton.java`
@@ -127,6 +127,6 @@
 ## Observacoes Tecnicas
 
 - 5W2H fica em aba __main (diferente de Acoes Corretivas — card005 — que usa aba separada)
-- THGQMGNCQUEM referencia TGFPAR via PESQUISA — sem CREATE TABLE FK
+- THGQMGRNCQUEM referencia TGFPAR via PESQUISA — sem CREATE TABLE FK
 - Notificacao usa TGFPAR.QM_EMAILQUESTIONARIO — campo adicionado na tabela nativa (Card FORN-08)
 - instanceName: `QmRncAbrangencia` e `QmRncQuem` — copiar exatamente do XML

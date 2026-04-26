@@ -12,7 +12,7 @@ import java.math.BigDecimal;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@JapeEntity(entity = "QmRncQuem", table = "THGQMGNCQUEM")
+@JapeEntity(entity = "QmRncQuem", table = "THGQMGRNCQUEM")
 public class NcQuem {
 
     @Id

@@ -15,7 +15,7 @@
 
 | Atributo  | Valor               |
 |:----------|:--------------------|
-| Nome      | `THGQMGNCFASE`       |
+| Nome      | `THGQMGRNCFASE`       |
 | Instancia | `QmRncFase`          |
 | Sequencia | MANUAL (`CODFASE`)   |
 | Dual-DB   | Oracle + SQL Server |
@@ -67,10 +67,10 @@
 ## Artefatos
 
 ### Banco de Dados
-- [x] `dbscripts/V1.xml` — DDL THGQMGNCFASE + INSERT dados iniciais das 10 fases
+- [x] `dbscripts/V1.xml` — DDL THGQMGRNCFASE + INSERT dados iniciais das 10 fases
 
 ### Dicionario de Dados
-- [x] `datadictionary/THGQMGNCFASE.xml` — instancia QmRncFase
+- [x] `datadictionary/THGQMGRNCFASE.xml` — instancia QmRncFase
 
 ### Menu
 - [ ] `datadictionary/menu.xml` — adicionar QmRncFase em pasta Configuracao
@@ -82,4 +82,4 @@
 - sequenceType=M (manual) — PK definida nos dados iniciais, nao gerada automaticamente
 - CODFASE e campo de FK em THGQMGREG (campo CODFASE)
 - instanceName: `QmRncFase` — copiar exatamente do XML
-- FaseNcBusinessService faz: `SELECT CODFASE FROM THGQMGNCFASE WHERE CODFASE > :atual AND ATIVO='S' ORDER BY CODFASE`
+- FaseNcBusinessService faz: `SELECT CODFASE FROM THGQMGRNCFASE WHERE CODFASE > :atual AND ATIVO='S' ORDER BY CODFASE`
