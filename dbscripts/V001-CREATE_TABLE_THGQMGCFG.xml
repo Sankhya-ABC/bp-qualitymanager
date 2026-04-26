@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<scripts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="../.gradle/scripts.xsd">
+
+    <sql nomeTabela="THGQMGCFG" ordem="1" executar="SE_NAO_EXISTIR"
+         tipoObjeto="TABLE" nomeObjeto="THGQMGCFG"
+         descricao="Criacao da tabela THGQMGCFG">
+        <mssql>
+            CREATE TABLE THGQMGCFG (
+            CODCFG INT NOT NULL,
+            CONSTRAINT PK_THGQMGCFG PRIMARY KEY (CODCFG)
+            )
+        </mssql>
+        <oracle>
+            CREATE TABLE THGQMGCFG (
+            CODCFG NUMBER(10) NOT NULL,
+            CONSTRAINT PK_THGQMGCFG PRIMARY KEY (CODCFG)
+            )
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGCFG" ordem="2" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="CODEMP"
+         descricao="Adicionar campo CODEMP na tabela THGQMGCFG">
+        <mssql>
+            ALTER TABLE THGQMGCFG ADD CODEMP INT
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGCFG ADD (CODEMP NUMBER(10))
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGCFG" ordem="3" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="MODNCATIVO"
+         descricao="Adicionar campo MODNCATIVO na tabela THGQMGCFG">
+        <mssql>
+            ALTER TABLE THGQMGCFG ADD MODNCATIVO CHAR(1)
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGCFG ADD (MODNCATIVO CHAR(1))
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGCFG" ordem="4" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="MODFORNATIVO"
+         descricao="Adicionar campo MODFORNATIVO na tabela THGQMGCFG">
+        <mssql>
+            ALTER TABLE THGQMGCFG ADD MODFORNATIVO CHAR(1)
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGCFG ADD (MODFORNATIVO CHAR(1))
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGCFG" ordem="5" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="MODDOCATIVO"
+         descricao="Adicionar campo MODDOCATIVO na tabela THGQMGCFG">
+        <mssql>
+            ALTER TABLE THGQMGCFG ADD MODDOCATIVO CHAR(1)
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGCFG ADD (MODDOCATIVO CHAR(1))
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGCFG" ordem="6" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="MODGMATIVO"
+         descricao="Adicionar campo MODGMATIVO na tabela THGQMGCFG">
+        <mssql>
+            ALTER TABLE THGQMGCFG ADD MODGMATIVO CHAR(1)
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGCFG ADD (MODGMATIVO CHAR(1))
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGCFG" ordem="7" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="MODAUDATIVO"
+         descricao="Adicionar campo MODAUDATIVO na tabela THGQMGCFG">
+        <mssql>
+            ALTER TABLE THGQMGCFG ADD MODAUDATIVO CHAR(1)
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGCFG ADD (MODAUDATIVO CHAR(1))
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGCFG" ordem="8" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="MODINDATIVO"
+         descricao="Adicionar campo MODINDATIVO na tabela THGQMGCFG">
+        <mssql>
+            ALTER TABLE THGQMGCFG ADD MODINDATIVO CHAR(1)
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGCFG ADD (MODINDATIVO CHAR(1))
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGCFG" ordem="9" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="EMAILNOTIF"
+         descricao="Adicionar campo EMAILNOTIF na tabela THGQMGCFG">
+        <mssql>
+            ALTER TABLE THGQMGCFG ADD EMAILNOTIF VARCHAR(100)
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGCFG ADD (EMAILNOTIF VARCHAR2(100))
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGCFG" ordem="10" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="DIASAVISO_DOC"
+         descricao="Adicionar campo DIASAVISO_DOC na tabela THGQMGCFG">
+        <mssql>
+            ALTER TABLE THGQMGCFG ADD DIASAVISO_DOC INT
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGCFG ADD (DIASAVISO_DOC NUMBER(10))
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGCFG" ordem="11" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="DIASRESP_FORN"
+         descricao="Adicionar campo DIASRESP_FORN na tabela THGQMGCFG">
+        <mssql>
+            ALTER TABLE THGQMGCFG ADD DIASRESP_FORN INT
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGCFG ADD (DIASRESP_FORN NUMBER(10))
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGCFG" ordem="12" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="CODUSU"
+         descricao="Adicionar campo CODUSU na tabela THGQMGCFG">
+        <mssql>
+            ALTER TABLE THGQMGCFG ADD CODUSU INT
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGCFG ADD (CODUSU NUMBER(10))
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGCFG" ordem="13" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="DHCREATE"
+         descricao="Adicionar campo DHCREATE na tabela THGQMGCFG">
+        <mssql>
+            ALTER TABLE THGQMGCFG ADD DHCREATE DATETIME
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGCFG ADD (DHCREATE DATE)
+        </oracle>
+    </sql>
+
+</scripts>

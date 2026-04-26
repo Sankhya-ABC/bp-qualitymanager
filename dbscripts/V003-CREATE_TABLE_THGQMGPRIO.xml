@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<scripts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="../.gradle/scripts.xsd">
+
+    <sql nomeTabela="THGQMGPRIO" ordem="1" executar="SE_NAO_EXISTIR"
+         tipoObjeto="TABLE" nomeObjeto="THGQMGPRIO"
+         descricao="Criacao da tabela THGQMGPRIO">
+        <mssql>
+            CREATE TABLE THGQMGPRIO (
+            CODPRIO INT NOT NULL,
+            CONSTRAINT PK_THGQMGPRIO PRIMARY KEY (CODPRIO)
+            )
+        </mssql>
+        <oracle>
+            CREATE TABLE THGQMGPRIO (
+            CODPRIO NUMBER(10) NOT NULL,
+            CONSTRAINT PK_THGQMGPRIO PRIMARY KEY (CODPRIO)
+            )
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGPRIO" ordem="2" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="DESCRICAO"
+         descricao="Adicionar campo DESCRICAO na tabela THGQMGPRIO">
+        <mssql>
+            ALTER TABLE THGQMGPRIO ADD DESCRICAO VARCHAR(50)
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGPRIO ADD (DESCRICAO VARCHAR2(50))
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGPRIO" ordem="3" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="PRAZODIAS"
+         descricao="Adicionar campo PRAZODIAS na tabela THGQMGPRIO">
+        <mssql>
+            ALTER TABLE THGQMGPRIO ADD PRAZODIAS INT
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGPRIO ADD (PRAZODIAS NUMBER(10))
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGPRIO" ordem="4" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="ATIVO"
+         descricao="Adicionar campo ATIVO na tabela THGQMGPRIO">
+        <mssql>
+            ALTER TABLE THGQMGPRIO ADD ATIVO CHAR(1)
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGPRIO ADD (ATIVO CHAR(1))
+        </oracle>
+    </sql>
+
+</scripts>

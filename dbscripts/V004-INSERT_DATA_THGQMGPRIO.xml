@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<scripts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="../.gradle/scripts.xsd">
+
+    <sql nomeTabela="THGQMGPRIO" ordem="1" executar="SEMPRE"
+         tipoObjeto="TABLE" nomeObjeto="INSERT_THGQMGPRIO_1"
+         descricao="Inserir prioridade Simples">
+        <mssql>
+            INSERT INTO THGQMGPRIO (CODPRIO, DESCRICAO, PRAZODIAS, ATIVO)
+            SELECT 1, 'Simples', 30, 'S'
+            WHERE NOT EXISTS (SELECT 1 FROM THGQMGPRIO WHERE CODPRIO = 1)
+        </mssql>
+        <oracle>
+            INSERT INTO THGQMGPRIO (CODPRIO, DESCRICAO, PRAZODIAS, ATIVO)
+            SELECT 1, 'Simples', 30, 'S' FROM DUAL
+            WHERE NOT EXISTS (SELECT 1 FROM THGQMGPRIO WHERE CODPRIO = 1)
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGPRIO" ordem="2" executar="SEMPRE"
+         tipoObjeto="TABLE" nomeObjeto="INSERT_THGQMGPRIO_2"
+         descricao="Inserir prioridade Prioritario">
+        <mssql>
+            INSERT INTO THGQMGPRIO (CODPRIO, DESCRICAO, PRAZODIAS, ATIVO)
+            SELECT 2, 'Prioritario', 15, 'S'
+            WHERE NOT EXISTS (SELECT 1 FROM THGQMGPRIO WHERE CODPRIO = 2)
+        </mssql>
+        <oracle>
+            INSERT INTO THGQMGPRIO (CODPRIO, DESCRICAO, PRAZODIAS, ATIVO)
+            SELECT 2, 'Prioritario', 15, 'S' FROM DUAL
+            WHERE NOT EXISTS (SELECT 1 FROM THGQMGPRIO WHERE CODPRIO = 2)
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGPRIO" ordem="3" executar="SEMPRE"
+         tipoObjeto="TABLE" nomeObjeto="INSERT_THGQMGPRIO_3"
+         descricao="Inserir prioridade Critico">
+        <mssql>
+            INSERT INTO THGQMGPRIO (CODPRIO, DESCRICAO, PRAZODIAS, ATIVO)
+            SELECT 3, 'Critico', 5, 'S'
+            WHERE NOT EXISTS (SELECT 1 FROM THGQMGPRIO WHERE CODPRIO = 3)
+        </mssql>
+        <oracle>
+            INSERT INTO THGQMGPRIO (CODPRIO, DESCRICAO, PRAZODIAS, ATIVO)
+            SELECT 3, 'Critico', 5, 'S' FROM DUAL
+            WHERE NOT EXISTS (SELECT 1 FROM THGQMGPRIO WHERE CODPRIO = 3)
+        </oracle>
+    </sql>
+
+</scripts>

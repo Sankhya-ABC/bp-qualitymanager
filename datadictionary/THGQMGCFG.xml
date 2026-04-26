@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<metadados xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="../.gradle/metadados.xsd">
+
+    <table name="THGQMGCFG" sequenceType="A" sequenceField="CODCFG">
+        <description>Configuracao do Add-on</description>
+        <primaryKey>
+            <field name="CODCFG"/>
+        </primaryKey>
+        <instances>
+            <instance name="QmConfig">
+                <description>Configuracao</description>
+            </instance>
+        </instances>
+        <fields>
+            <field name="CODCFG" dataType="INTEIRO" readOnly="S" order="1" allowSearch="S" visibleOnSearch="S">
+                <description>Cod. Configuracao</description>
+            </field>
+            <field name="CODEMP" dataType="PESQUISA" targetInstance="Empresa" targetField="CODEMP" targetType="INTEIRO"
+                   required="S" UITabName="__main" order="2" allowSearch="S" visibleOnSearch="S">
+                <description>Empresa</description>
+            </field>
+            <field name="MODNCATIVO" dataType="CHECKBOX" UITabName="__main" UIGroupName="Modulos" order="3" allowSearch="N" visibleOnSearch="N">
+                <description>Modulo NC ativo</description>
+                <expression><![CDATA[if ($col_MODNCATIVO == null) { return "S"; } else { return $col_MODNCATIVO; }]]></expression>
+            </field>
+            <field name="MODFORNATIVO" dataType="CHECKBOX" UITabName="__main" UIGroupName="Modulos" order="4" allowSearch="N" visibleOnSearch="N">
+                <description>Modulo Fornecedores ativo</description>
+                <expression><![CDATA[if ($col_MODFORNATIVO == null) { return "N"; } else { return $col_MODFORNATIVO; }]]></expression>
+            </field>
+            <field name="MODDOCATIVO" dataType="CHECKBOX" UITabName="__main" UIGroupName="Modulos" order="5" allowSearch="N" visibleOnSearch="N">
+                <description>Modulo Documentos ativo</description>
+                <expression><![CDATA[if ($col_MODDOCATIVO == null) { return "N"; } else { return $col_MODDOCATIVO; }]]></expression>
+            </field>
+            <field name="MODGMATIVO" dataType="CHECKBOX" UITabName="__main" UIGroupName="Modulos" order="6" allowSearch="N" visibleOnSearch="N">
+                <description>Modulo Gestao Mudancas ativo</description>
+                <expression><![CDATA[if ($col_MODGMATIVO == null) { return "N"; } else { return $col_MODGMATIVO; }]]></expression>
+            </field>
+            <field name="MODAUDATIVO" dataType="CHECKBOX" UITabName="__main" UIGroupName="Modulos" order="7" allowSearch="N" visibleOnSearch="N">
+                <description>Modulo Auditoria ativo</description>
+                <expression><![CDATA[if ($col_MODAUDATIVO == null) { return "N"; } else { return $col_MODAUDATIVO; }]]></expression>
+            </field>
+            <field name="MODINDATIVO" dataType="CHECKBOX" UITabName="__main" UIGroupName="Modulos" order="8" allowSearch="N" visibleOnSearch="N">
+                <description>Modulo Indicadores ativo</description>
+                <expression><![CDATA[if ($col_MODINDATIVO == null) { return "N"; } else { return $col_MODINDATIVO; }]]></expression>
+            </field>
+            <field name="EMAILNOTIF" dataType="TEXTO" size="100" UITabName="__main" UIGroupName="Parametros" order="9" allowSearch="N" visibleOnSearch="N">
+                <description>E-mail de notificacao</description>
+            </field>
+            <field name="DIASAVISO_DOC" dataType="INTEIRO" UITabName="__main" UIGroupName="Parametros" order="10" allowSearch="N" visibleOnSearch="N">
+                <description>Dias aviso doc a vencer</description>
+                <expression><![CDATA[if ($col_DIASAVISO_DOC == null) { return 30; } else { return $col_DIASAVISO_DOC; }]]></expression>
+            </field>
+            <field name="DIASRESP_FORN" dataType="INTEIRO" UITabName="__main" UIGroupName="Parametros" order="11" allowSearch="N" visibleOnSearch="N">
+                <description>Prazo resposta fornecedor (dias)</description>
+                <expression><![CDATA[if ($col_DIASRESP_FORN == null) { return 10; } else { return $col_DIASRESP_FORN; }]]></expression>
+            </field>
+            <field name="CODUSU" dataType="PESQUISA" targetInstance="Usuario" targetField="CODUSU" targetType="INTEIRO"
+                   readOnly="S" visible="N" UITabName="__main" order="12" allowSearch="N" visibleOnSearch="N">
+                <description>Criado por</description>
+                <expression><![CDATA[return $ctx_usuario_logado;]]></expression>
+            </field>
+            <field name="DHCREATE" dataType="DATA_HORA" readOnly="S" visible="N" UITabName="__main" order="13" allowSearch="N" visibleOnSearch="N">
+                <description>Data/Hora Criacao</description>
+                <expression><![CDATA[if ($col_DHCREATE == null) { return $ctx_dh_atual; } else { return $col_DHCREATE; }]]></expression>
+            </field>
+        </fields>
+    </table>
+
+</metadados>

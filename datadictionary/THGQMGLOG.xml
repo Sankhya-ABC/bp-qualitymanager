@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<metadados xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="../.gradle/metadados.xsd">
+
+    <table name="THGQMGLOG" sequenceType="A" sequenceField="CODLOG">
+        <description>Log de Auditoria</description>
+        <primaryKey>
+            <field name="CODLOG"/>
+        </primaryKey>
+        <instances>
+            <instance name="QmLogAuditoria">
+                <description>Log de Auditoria</description>
+            </instance>
+        </instances>
+        <fields>
+            <field name="CODLOG" dataType="INTEIRO" readOnly="S" order="1" allowSearch="S" visibleOnSearch="S">
+                <description>Cod. Log</description>
+            </field>
+            <field name="DTREGISTRO" dataType="DATA_HORA" required="S" readOnly="S" UITabName="__main" order="2" allowSearch="S" visibleOnSearch="S">
+                <description>Data/Hora</description>
+                <expression><![CDATA[return $ctx_dh_atual;]]></expression>
+            </field>
+            <field name="MODULO" dataType="LISTA" size="10" required="S" readOnly="S" isPresentation="S" UITabName="__main" order="3" allowSearch="S" visibleOnSearch="S">
+                <description>Modulo</description>
+                <fieldOptions>
+                    <option value="NC">Nao Conformidades</option>
+                    <option value="FORN">Fornecedores</option>
+                    <option value="DOC">Documentos</option>
+                    <option value="GM">Gestao Mudancas</option>
+                    <option value="AUD">Auditoria</option>
+                    <option value="CORE">Core</option>
+                </fieldOptions>
+            </field>
+            <field name="ENTIDADE" dataType="TEXTO" size="50" required="S" readOnly="S" UITabName="__main" order="4" allowSearch="S" visibleOnSearch="S">
+                <description>Entidade</description>
+            </field>
+            <field name="IDENTIDADE" dataType="INTEIRO" required="S" readOnly="S" UITabName="__main" order="5" allowSearch="N" visibleOnSearch="N">
+                <description>ID do registro</description>
+            </field>
+            <field name="ACAO" dataType="TEXTO" size="40" required="S" readOnly="S" isPresentation="S" UITabName="__main" order="6" allowSearch="S" visibleOnSearch="S">
+                <description>Acao</description>
+            </field>
+            <field name="CAMPO_ALTERADO" dataType="TEXTO" size="60" readOnly="S" UITabName="__main" order="7" allowSearch="N" visibleOnSearch="N">
+                <description>Campo alterado</description>
+            </field>
+            <field name="VALOR_ANTERIOR" dataType="TEXTO" size="2000" readOnly="S" UITabName="Detalhe" order="8" allowSearch="N" visibleOnSearch="N">
+                <description>Valor anterior</description>
+            </field>
+            <field name="VALOR_NOVO" dataType="TEXTO" size="2000" readOnly="S" UITabName="Detalhe" order="9" allowSearch="N" visibleOnSearch="N">
+                <description>Valor novo</description>
+            </field>
+            <field name="DESCRICAO" dataType="TEXTO" size="500" readOnly="S" UITabName="__main" order="10" allowSearch="N" visibleOnSearch="N">
+                <description>Descricao</description>
+            </field>
+            <field name="CODUSU" dataType="PESQUISA" targetInstance="Usuario" targetField="CODUSU" targetType="INTEIRO"
+                   required="S" readOnly="S" UITabName="__main" order="11" allowSearch="S" visibleOnSearch="S">
+                <description>Usuario</description>
+                <expression><![CDATA[return $ctx_usuario_logado;]]></expression>
+            </field>
+        </fields>
+    </table>
+
+</metadados>

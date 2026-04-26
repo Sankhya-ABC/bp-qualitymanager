@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<metadados xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="../.gradle/metadados.xsd">
+
+    <table name="THGQMGNCFASE" sequenceType="M">
+        <description>Fases NC</description>
+        <primaryKey>
+            <field name="CODFASE"/>
+        </primaryKey>
+        <instances>
+            <instance name="QmNcFase">
+                <description>Fases NC</description>
+            </instance>
+        </instances>
+        <fields>
+            <field name="CODFASE" dataType="INTEIRO" readOnly="S" order="1" allowSearch="S" visibleOnSearch="S">
+                <description>Cod. Fase</description>
+            </field>
+            <field name="DESCFASE" dataType="TEXTO" size="100" required="S" isPresentation="S" UITabName="__main" order="2" allowSearch="S" visibleOnSearch="S">
+                <description>Descricao da Fase</description>
+            </field>
+            <field name="ATIVO" dataType="CHECKBOX" UITabName="__main" order="3" allowSearch="N" visibleOnSearch="N">
+                <description>Ativo</description>
+                <expression><![CDATA[if ($col_ATIVO == null) { return "S"; } else { return $col_ATIVO; }]]></expression>
+            </field>
+        </fields>
+    </table>
+
+</metadados>

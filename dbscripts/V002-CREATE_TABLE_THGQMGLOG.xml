@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<scripts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="../.gradle/scripts.xsd">
+
+    <sql nomeTabela="THGQMGLOG" ordem="1" executar="SE_NAO_EXISTIR"
+         tipoObjeto="TABLE" nomeObjeto="THGQMGLOG"
+         descricao="Criacao da tabela THGQMGLOG">
+        <mssql>
+            CREATE TABLE THGQMGLOG (
+            CODLOG INT NOT NULL,
+            CONSTRAINT PK_THGQMGLOG PRIMARY KEY (CODLOG)
+            )
+        </mssql>
+        <oracle>
+            CREATE TABLE THGQMGLOG (
+            CODLOG NUMBER(10) NOT NULL,
+            CONSTRAINT PK_THGQMGLOG PRIMARY KEY (CODLOG)
+            )
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGLOG" ordem="2" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="DTREGISTRO"
+         descricao="Adicionar campo DTREGISTRO na tabela THGQMGLOG">
+        <mssql>
+            ALTER TABLE THGQMGLOG ADD DTREGISTRO DATETIME
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGLOG ADD (DTREGISTRO DATE)
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGLOG" ordem="3" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="MODULO"
+         descricao="Adicionar campo MODULO na tabela THGQMGLOG">
+        <mssql>
+            ALTER TABLE THGQMGLOG ADD MODULO VARCHAR(10)
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGLOG ADD (MODULO VARCHAR2(10))
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGLOG" ordem="4" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="ENTIDADE"
+         descricao="Adicionar campo ENTIDADE na tabela THGQMGLOG">
+        <mssql>
+            ALTER TABLE THGQMGLOG ADD ENTIDADE VARCHAR(50)
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGLOG ADD (ENTIDADE VARCHAR2(50))
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGLOG" ordem="5" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="IDENTIDADE"
+         descricao="Adicionar campo IDENTIDADE na tabela THGQMGLOG">
+        <mssql>
+            ALTER TABLE THGQMGLOG ADD IDENTIDADE INT
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGLOG ADD (IDENTIDADE NUMBER(10))
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGLOG" ordem="6" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="ACAO"
+         descricao="Adicionar campo ACAO na tabela THGQMGLOG">
+        <mssql>
+            ALTER TABLE THGQMGLOG ADD ACAO VARCHAR(40)
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGLOG ADD (ACAO VARCHAR2(40))
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGLOG" ordem="7" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="CAMPO_ALTERADO"
+         descricao="Adicionar campo CAMPO_ALTERADO na tabela THGQMGLOG">
+        <mssql>
+            ALTER TABLE THGQMGLOG ADD CAMPO_ALTERADO VARCHAR(60)
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGLOG ADD (CAMPO_ALTERADO VARCHAR2(60))
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGLOG" ordem="8" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="VALOR_ANTERIOR"
+         descricao="Adicionar campo VALOR_ANTERIOR na tabela THGQMGLOG">
+        <mssql>
+            ALTER TABLE THGQMGLOG ADD VALOR_ANTERIOR VARCHAR(2000)
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGLOG ADD (VALOR_ANTERIOR VARCHAR2(2000))
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGLOG" ordem="9" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="VALOR_NOVO"
+         descricao="Adicionar campo VALOR_NOVO na tabela THGQMGLOG">
+        <mssql>
+            ALTER TABLE THGQMGLOG ADD VALOR_NOVO VARCHAR(2000)
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGLOG ADD (VALOR_NOVO VARCHAR2(2000))
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGLOG" ordem="10" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="DESCRICAO"
+         descricao="Adicionar campo DESCRICAO na tabela THGQMGLOG">
+        <mssql>
+            ALTER TABLE THGQMGLOG ADD DESCRICAO VARCHAR(500)
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGLOG ADD (DESCRICAO VARCHAR2(500))
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGLOG" ordem="11" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="CODUSU"
+         descricao="Adicionar campo CODUSU na tabela THGQMGLOG">
+        <mssql>
+            ALTER TABLE THGQMGLOG ADD CODUSU INT
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGLOG ADD (CODUSU NUMBER(10))
+        </oracle>
+    </sql>
+
+</scripts>
