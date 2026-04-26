@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<scripts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="../.gradle/scripts.xsd">
+
+    <sql nomeTabela="THGQMGREG" ordem="1" executar="SE_NAO_EXISTIR"
+         tipoObjeto="TABLE" nomeObjeto="THGQMGREG"
+         descricao="Criacao da tabela THGQMGREG">
+        <mssql>
+            CREATE TABLE THGQMGREG (
+            CODRNC INT NOT NULL,
+            CONSTRAINT PK_THGQMGREG PRIMARY KEY (CODRNC)
+            )
+        </mssql>
+        <oracle>
+            CREATE TABLE THGQMGREG (
+            CODRNC NUMBER(10) NOT NULL,
+            CONSTRAINT PK_THGQMGREG PRIMARY KEY (CODRNC)
+            )
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGREG" ordem="2" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="NURNC"
+         descricao="Adicionar campo NURNC na tabela THGQMGREG">
+        <mssql>
+            ALTER TABLE THGQMGREG ADD NURNC VARCHAR(20)
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGREG ADD (NURNC VARCHAR2(20))
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGREG" ordem="3" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="STATUS"
+         descricao="Adicionar campo STATUS na tabela THGQMGREG">
+        <mssql>
+            ALTER TABLE THGQMGREG ADD STATUS VARCHAR(1)
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGREG ADD (STATUS VARCHAR2(1))
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGREG" ordem="4" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="CODFASE"
+         descricao="Adicionar campo CODFASE na tabela THGQMGREG">
+        <mssql>
+            ALTER TABLE THGQMGREG ADD CODFASE INT
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGREG ADD (CODFASE NUMBER(10))
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGREG" ordem="5" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="ORIGEM"
+         descricao="Adicionar campo ORIGEM na tabela THGQMGREG">
+        <mssql>
+            ALTER TABLE THGQMGREG ADD ORIGEM VARCHAR(2)
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGREG ADD (ORIGEM VARCHAR2(2))
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGREG" ordem="6" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="PRIORIDADE"
+         descricao="Adicionar campo PRIORIDADE na tabela THGQMGREG">
+        <mssql>
+            ALTER TABLE THGQMGREG ADD PRIORIDADE VARCHAR(1)
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGREG ADD (PRIORIDADE VARCHAR2(1))
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGREG" ordem="7" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="TIPONC"
+         descricao="Adicionar campo TIPONC na tabela THGQMGREG">
+        <mssql>
+            ALTER TABLE THGQMGREG ADD TIPONC VARCHAR(2)
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGREG ADD (TIPONC VARCHAR2(2))
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGREG" ordem="8" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="CODPARC"
+         descricao="Adicionar campo CODPARC na tabela THGQMGREG">
+        <mssql>
+            ALTER TABLE THGQMGREG ADD CODPARC INT
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGREG ADD (CODPARC NUMBER(10))
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGREG" ordem="9" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="NUNOTA"
+         descricao="Adicionar campo NUNOTA na tabela THGQMGREG">
+        <mssql>
+            ALTER TABLE THGQMGREG ADD NUNOTA INT
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGREG ADD (NUNOTA NUMBER(10))
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGREG" ordem="10" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="PROCESSO"
+         descricao="Adicionar campo PROCESSO na tabela THGQMGREG">
+        <mssql>
+            ALTER TABLE THGQMGREG ADD PROCESSO VARCHAR(100)
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGREG ADD (PROCESSO VARCHAR2(100))
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGREG" ordem="11" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="DTREGISTRO"
+         descricao="Adicionar campo DTREGISTRO na tabela THGQMGREG">
+        <mssql>
+            ALTER TABLE THGQMGREG ADD DTREGISTRO DATETIME
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGREG ADD (DTREGISTRO DATE)
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGREG" ordem="12" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="DTPREVENCERRAR"
+         descricao="Adicionar campo DTPREVENCERRAR na tabela THGQMGREG">
+        <mssql>
+            ALTER TABLE THGQMGREG ADD DTPREVENCERRAR DATETIME
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGREG ADD (DTPREVENCERRAR DATE)
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGREG" ordem="13" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="DTENCERRAMENTO"
+         descricao="Adicionar campo DTENCERRAMENTO na tabela THGQMGREG">
+        <mssql>
+            ALTER TABLE THGQMGREG ADD DTENCERRAMENTO DATETIME
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGREG ADD (DTENCERRAMENTO DATE)
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGREG" ordem="14" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="DETALHAMENTO"
+         descricao="Adicionar campo DETALHAMENTO na tabela THGQMGREG">
+        <mssql>
+            ALTER TABLE THGQMGREG ADD DETALHAMENTO VARCHAR(4000)
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGREG ADD (DETALHAMENTO VARCHAR2(4000))
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGREG" ordem="15" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="REINCIDENTE"
+         descricao="Adicionar campo REINCIDENTE na tabela THGQMGREG">
+        <mssql>
+            ALTER TABLE THGQMGREG ADD REINCIDENTE CHAR(1)
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGREG ADD (REINCIDENTE CHAR(1))
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGREG" ordem="16" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="NAOPROCEDENTE"
+         descricao="Adicionar campo NAOPROCEDENTE na tabela THGQMGREG">
+        <mssql>
+            ALTER TABLE THGQMGREG ADD NAOPROCEDENTE CHAR(1)
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGREG ADD (NAOPROCEDENTE CHAR(1))
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGREG" ordem="17" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="NCVINCULADA"
+         descricao="Adicionar campo NCVINCULADA na tabela THGQMGREG">
+        <mssql>
+            ALTER TABLE THGQMGREG ADD NCVINCULADA INT
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGREG ADD (NCVINCULADA NUMBER(10))
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGREG" ordem="18" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="CODAUD"
+         descricao="Adicionar campo CODAUD na tabela THGQMGREG">
+        <mssql>
+            ALTER TABLE THGQMGREG ADD CODAUD INT
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGREG ADD (CODAUD NUMBER(10))
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGREG" ordem="19" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="CODUSU"
+         descricao="Adicionar campo CODUSU na tabela THGQMGREG">
+        <mssql>
+            ALTER TABLE THGQMGREG ADD CODUSU INT
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGREG ADD (CODUSU NUMBER(10))
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGREG" ordem="20" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="DHCREATE"
+         descricao="Adicionar campo DHCREATE na tabela THGQMGREG">
+        <mssql>
+            ALTER TABLE THGQMGREG ADD DHCREATE DATETIME
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGREG ADD (DHCREATE DATE)
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGREG" ordem="21" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="DHALTER"
+         descricao="Adicionar campo DHALTER na tabela THGQMGREG">
+        <mssql>
+            ALTER TABLE THGQMGREG ADD DHALTER DATETIME
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGREG ADD (DHALTER DATE)
+        </oracle>
+    </sql>
+
+</scripts>

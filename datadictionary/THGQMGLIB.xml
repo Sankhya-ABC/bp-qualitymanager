@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<metadados xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="../.gradle/metadados.xsd">
+
+    <table name="THGQMGLIB" sequenceType="A" sequenceField="CODLIB">
+        <description>Liberacao de Produto</description>
+        <primaryKey><field name="CODLIB"/></primaryKey>
+        <instances>
+            <instance name="QmNcLiberacao"><description>Liberacao de Produto</description></instance>
+        </instances>
+        <fields>
+            <field name="CODLIB" dataType="INTEIRO" readOnly="S" order="1" allowSearch="S" visibleOnSearch="S"><description>Cod. Liberacao</description></field>
+            <field name="CODRNC" dataType="INTEIRO" required="S" readOnly="S" UITabName="__main" order="2" allowSearch="S" visibleOnSearch="S"><description>Cod. RNC</description></field>
+            <field name="PRODUTO" dataType="TEXTO" size="200" UITabName="__main" order="3" allowSearch="N" visibleOnSearch="N"><description>Produto ou lote</description></field>
+            <field name="QUANTIDADE" dataType="DECIMAL" nuCasasDecimais="2" UITabName="__main" order="4" allowSearch="N" visibleOnSearch="N"><description>Quantidade</description></field>
+            <field name="UNIDADE" dataType="TEXTO" size="20" UITabName="__main" order="5" allowSearch="N" visibleOnSearch="N"><description>Unidade de medida</description></field>
+            <field name="DECISAO" dataType="LISTA" size="1" UITabName="__main" order="6" allowSearch="S" visibleOnSearch="S"><description>Decisao</description><fieldOptions><option value="L">Liberado</option><option value="R">Retido</option><option value="D">Descartado</option><option value="V">Devolvido ao fornecedor</option></fieldOptions></field>
+            <field name="JUSTIFICATIVA" dataType="TEXTO" size="4000" UITabName="__main" order="7" allowSearch="N" visibleOnSearch="N"><description>Justificativa</description></field>
+            <field name="CODPARC" dataType="PESQUISA" targetInstance="Parceiro" targetField="CODPARC" targetType="INTEIRO" UITabName="__main" order="8" allowSearch="N" visibleOnSearch="N"><description>Autorizador</description></field>
+            <field name="DTLIBERACAO" dataType="DATA_HORA" UITabName="__main" order="9" allowSearch="N" visibleOnSearch="N"><description>Data liberacao</description></field>
+            <field name="NAOSEAPLICA" dataType="CHECKBOX" UITabName="__main" order="10" allowSearch="N" visibleOnSearch="N"><description>Nao se aplica</description></field>
+            <field name="CODUSU" dataType="PESQUISA" targetInstance="Usuario" targetField="CODUSU" targetType="INTEIRO" readOnly="S" visible="N" order="11" allowSearch="N" visibleOnSearch="N"><description>Usuario</description><expression><![CDATA[return $ctx_usuario_logado;]]></expression></field>
+            <field name="DHCREATE" dataType="DATA_HORA" readOnly="S" visible="N" order="12" allowSearch="N" visibleOnSearch="N"><description>Data/Hora Criacao</description><expression><![CDATA[if ($col_DHCREATE == null) { return $ctx_dh_atual; } else { return $col_DHCREATE; }]]></expression></field>
+        </fields>
+    </table>
+
+</metadados>

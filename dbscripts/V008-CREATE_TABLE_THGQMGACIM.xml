@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<scripts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="../.gradle/scripts.xsd">
+
+    <sql nomeTabela="THGQMGACIM" ordem="1" executar="SE_NAO_EXISTIR"
+         tipoObjeto="TABLE" nomeObjeto="THGQMGACIM"
+         descricao="Criacao da tabela THGQMGACIM">
+        <mssql>
+            CREATE TABLE THGQMGACIM (
+            CODACIM INT NOT NULL,
+            CONSTRAINT PK_THGQMGACIM PRIMARY KEY (CODACIM)
+            )
+        </mssql>
+        <oracle>
+            CREATE TABLE THGQMGACIM (
+            CODACIM NUMBER(10) NOT NULL,
+            CONSTRAINT PK_THGQMGACIM PRIMARY KEY (CODACIM)
+            )
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGACIM" ordem="2" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="CODRNC"
+         descricao="Adicionar campo CODRNC na tabela THGQMGACIM">
+        <mssql>
+            ALTER TABLE THGQMGACIM ADD CODRNC INT
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGACIM ADD (CODRNC NUMBER(10))
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGACIM" ordem="3" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="DTPRAZO"
+         descricao="Adicionar campo DTPRAZO na tabela THGQMGACIM">
+        <mssql>
+            ALTER TABLE THGQMGACIM ADD DTPRAZO DATETIME
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGACIM ADD (DTPRAZO DATE)
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGACIM" ordem="4" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="ACAODETALHE"
+         descricao="Adicionar campo ACAODETALHE na tabela THGQMGACIM">
+        <mssql>
+            ALTER TABLE THGQMGACIM ADD ACAODETALHE VARCHAR(4000)
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGACIM ADD (ACAODETALHE VARCHAR2(4000))
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGACIM" ordem="5" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="NAOSEAPLICA"
+         descricao="Adicionar campo NAOSEAPLICA na tabela THGQMGACIM">
+        <mssql>
+            ALTER TABLE THGQMGACIM ADD NAOSEAPLICA CHAR(1)
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGACIM ADD (NAOSEAPLICA CHAR(1))
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGACIM" ordem="6" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="CODUSU"
+         descricao="Adicionar campo CODUSU na tabela THGQMGACIM">
+        <mssql>
+            ALTER TABLE THGQMGACIM ADD CODUSU INT
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGACIM ADD (CODUSU NUMBER(10))
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGACIM" ordem="7" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="DHCREATE"
+         descricao="Adicionar campo DHCREATE na tabela THGQMGACIM">
+        <mssql>
+            ALTER TABLE THGQMGACIM ADD DHCREATE DATETIME
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGACIM ADD (DHCREATE DATE)
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGACIM" ordem="8" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="DHALTER"
+         descricao="Adicionar campo DHALTER na tabela THGQMGACIM">
+        <mssql>
+            ALTER TABLE THGQMGACIM ADD DHALTER DATETIME
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGACIM ADD (DHALTER DATE)
+        </oracle>
+    </sql>
+
+</scripts>

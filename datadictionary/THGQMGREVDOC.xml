@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<metadados xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="../.gradle/metadados.xsd">
+
+    <table name="THGQMGREVDOC" sequenceType="A" sequenceField="CODREVDOC">
+        <description>Revisao de Documentos</description>
+        <primaryKey>
+            <field name="CODREVDOC"/>
+        </primaryKey>
+        <instances>
+            <instance name="QmNcRevisaoDoc">
+                <description>Revisao de Documentos</description>
+            </instance>
+        </instances>
+        <fields>
+            <field name="CODREVDOC" dataType="INTEIRO" readOnly="S" order="1" allowSearch="S" visibleOnSearch="S">
+                <description>Cod. Revisao Doc</description>
+            </field>
+            <field name="CODRNC" dataType="INTEIRO" required="S" readOnly="S" UITabName="__main" order="2" allowSearch="S" visibleOnSearch="S">
+                <description>Cod. RNC</description>
+            </field>
+            <field name="DOCUMENTO" dataType="TEXTO" size="200" UITabName="__main" order="3" allowSearch="S" visibleOnSearch="S">
+                <description>Documento</description>
+            </field>
+            <field name="MOTIVO" dataType="TEXTO" size="4000" UITabName="__main" order="4" allowSearch="S" visibleOnSearch="S">
+                <description>Motivo da revisao</description>
+            </field>
+            <field name="CODPARC" dataType="PESQUISA" targetInstance="Parceiro" targetField="CODPARC" targetType="INTEIRO"
+                   UITabName="__main" order="5" allowSearch="S" visibleOnSearch="S">
+                <description>Responsavel</description>
+            </field>
+            <field name="DTPRAZO" dataType="DATA_HORA" UITabName="__main" order="6" allowSearch="S" visibleOnSearch="S">
+                <description>Prazo</description>
+            </field>
+            <field name="NAOSEAPLICA" dataType="CHECKBOX" UITabName="__main" order="7" allowSearch="S" visibleOnSearch="S">
+                <description>Nao se aplica</description>
+            </field>
+            <field name="CODUSU" dataType="PESQUISA" targetInstance="Usuario" targetField="CODUSU" targetType="INTEIRO"
+                   readOnly="S" visible="N" order="8" allowSearch="N" visibleOnSearch="N">
+                <description>Criado por</description>
+                <expression><![CDATA[return $ctx_usuario_logado;]]></expression>
+            </field>
+            <field name="DHCREATE" dataType="DATA_HORA" readOnly="S" visible="N" order="9" allowSearch="N" visibleOnSearch="N">
+                <description>Data/Hora Criacao</description>
+                <expression><![CDATA[if ($col_DHCREATE == null) { return $ctx_dh_atual; } else { return $col_DHCREATE; }]]></expression>
+            </field>
+            <field name="DHALTER" dataType="DATA_HORA" readOnly="S" visible="N" order="10" allowSearch="N" visibleOnSearch="N">
+                <description>Data/Hora Alteracao</description>
+                <expression><![CDATA[return $ctx_dh_atual;]]></expression>
+            </field>
+        </fields>
+    </table>
+
+</metadados>

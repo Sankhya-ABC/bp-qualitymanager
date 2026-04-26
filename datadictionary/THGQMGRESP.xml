@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<metadados xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="../.gradle/metadados.xsd">
+
+    <table name="THGQMGRESP" sequenceType="A" sequenceField="CODRESP">
+        <description>Responsaveis da RNC</description>
+        <primaryKey><field name="CODRESP"/></primaryKey>
+        <instances>
+            <instance name="QmNcResponsavel"><description>Responsaveis da RNC</description></instance>
+        </instances>
+        <fields>
+            <field name="CODRESP" dataType="INTEIRO" readOnly="S" order="1" allowSearch="S" visibleOnSearch="S"><description>Cod. Responsavel</description></field>
+            <field name="CODRNC" dataType="INTEIRO" required="S" readOnly="S" UITabName="__main" order="2" allowSearch="S" visibleOnSearch="S"><description>Cod. RNC</description></field>
+            <field name="ORIGEM" dataType="LISTA" size="1" required="S" UITabName="__main" order="3" allowSearch="S" visibleOnSearch="S"><description>Fase</description><fieldOptions><option value="A">Registro</option><option value="B">Acoes Imediatas</option><option value="C">Causa Raiz</option><option value="D">Acoes Corretivas</option><option value="E">Implementacao</option><option value="F">Verificacao Eficacia</option><option value="H">Riscos e Oportunidades</option><option value="I">Liberacao de Produto</option></fieldOptions></field>
+            <field name="CODPARC" dataType="PESQUISA" targetInstance="Parceiro" targetField="CODPARC" targetType="INTEIRO" required="S" UITabName="__main" order="4" allowSearch="S" visibleOnSearch="S"><description>Responsavel</description></field>
+            <field name="ENVIAREMAIL" dataType="CHECKBOX" UITabName="__main" order="5" allowSearch="N" visibleOnSearch="N"><description>Enviar e-mail</description></field>
+        </fields>
+    </table>
+
+</metadados>

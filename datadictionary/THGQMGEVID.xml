@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<metadados xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="../.gradle/metadados.xsd">
+
+    <table name="THGQMGEVID" sequenceType="A" sequenceField="CODEVID">
+        <description>Evidencias</description>
+        <primaryKey><field name="CODEVID"/></primaryKey>
+        <instances>
+            <instance name="QmNcEvidencia"><description>Evidencias</description></instance>
+        </instances>
+        <fields>
+            <field name="CODEVID" dataType="INTEIRO" readOnly="S" order="1" allowSearch="S" visibleOnSearch="S"><description>Cod. Evidencia</description></field>
+            <field name="CODRNC" dataType="INTEIRO" required="S" readOnly="S" UITabName="__main" order="2" allowSearch="S" visibleOnSearch="S"><description>Cod. RNC</description></field>
+            <field name="ORIGEM" dataType="LISTA" size="1" required="S" UITabName="__main" order="3" allowSearch="S" visibleOnSearch="S"><description>Origem</description><fieldOptions><option value="1">Verificacao de Eficacia</option><option value="2">Implementacao</option></fieldOptions></field>
+            <field name="DESCRICAO" dataType="TEXTO" size="300" UITabName="__main" order="4" allowSearch="N" visibleOnSearch="N"><description>Descricao</description></field>
+            <field name="CODUSU" dataType="PESQUISA" targetInstance="Usuario" targetField="CODUSU" targetType="INTEIRO" readOnly="S" visible="N" order="5" allowSearch="N" visibleOnSearch="N"><description>Usuario</description><expression><![CDATA[return $ctx_usuario_logado;]]></expression></field>
+            <field name="DHCREATE" dataType="DATA_HORA" readOnly="S" UITabName="__main" order="6" allowSearch="N" visibleOnSearch="N"><description>Data/Hora Criacao</description><expression><![CDATA[if ($col_DHCREATE == null) { return $ctx_dh_atual; } else { return $col_DHCREATE; }]]></expression></field>
+        </fields>
+    </table>
+
+</metadados>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<scripts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="../.gradle/scripts.xsd">
+
+    <sql nomeTabela="THGQMGLIB" ordem="1" executar="SE_NAO_EXISTIR" tipoObjeto="TABLE" nomeObjeto="THGQMGLIB" descricao="Criacao da tabela THGQMGLIB">
+        <mssql>CREATE TABLE THGQMGLIB (CODLIB INT NOT NULL, CONSTRAINT PK_THGQMGLIB PRIMARY KEY (CODLIB))</mssql>
+        <oracle>CREATE TABLE THGQMGLIB (CODLIB NUMBER(10) NOT NULL, CONSTRAINT PK_THGQMGLIB PRIMARY KEY (CODLIB))</oracle>
+    </sql>
+    <sql nomeTabela="THGQMGLIB" ordem="2" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODRNC" descricao="Adicionar campo CODRNC">
+        <mssql>ALTER TABLE THGQMGLIB ADD CODRNC INT</mssql>
+        <oracle>ALTER TABLE THGQMGLIB ADD (CODRNC NUMBER(10))</oracle>
+    </sql>
+    <sql nomeTabela="THGQMGLIB" ordem="3" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="PRODUTO" descricao="Adicionar campo PRODUTO">
+        <mssql>ALTER TABLE THGQMGLIB ADD PRODUTO VARCHAR(200)</mssql>
+        <oracle>ALTER TABLE THGQMGLIB ADD (PRODUTO VARCHAR2(200))</oracle>
+    </sql>
+    <sql nomeTabela="THGQMGLIB" ordem="4" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="QUANTIDADE" descricao="Adicionar campo QUANTIDADE">
+        <mssql>ALTER TABLE THGQMGLIB ADD QUANTIDADE DECIMAL(18,2)</mssql>
+        <oracle>ALTER TABLE THGQMGLIB ADD (QUANTIDADE NUMBER(18,2))</oracle>
+    </sql>
+    <sql nomeTabela="THGQMGLIB" ordem="5" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="UNIDADE" descricao="Adicionar campo UNIDADE">
+        <mssql>ALTER TABLE THGQMGLIB ADD UNIDADE VARCHAR(20)</mssql>
+        <oracle>ALTER TABLE THGQMGLIB ADD (UNIDADE VARCHAR2(20))</oracle>
+    </sql>
+    <sql nomeTabela="THGQMGLIB" ordem="6" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="DECISAO" descricao="Adicionar campo DECISAO">
+        <mssql>ALTER TABLE THGQMGLIB ADD DECISAO VARCHAR(1)</mssql>
+        <oracle>ALTER TABLE THGQMGLIB ADD (DECISAO VARCHAR2(1))</oracle>
+    </sql>
+    <sql nomeTabela="THGQMGLIB" ordem="7" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="JUSTIFICATIVA" descricao="Adicionar campo JUSTIFICATIVA">
+        <mssql>ALTER TABLE THGQMGLIB ADD JUSTIFICATIVA VARCHAR(4000)</mssql>
+        <oracle>ALTER TABLE THGQMGLIB ADD (JUSTIFICATIVA VARCHAR2(4000))</oracle>
+    </sql>
+    <sql nomeTabela="THGQMGLIB" ordem="8" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODPARC" descricao="Adicionar campo CODPARC">
+        <mssql>ALTER TABLE THGQMGLIB ADD CODPARC INT</mssql>
+        <oracle>ALTER TABLE THGQMGLIB ADD (CODPARC NUMBER(10))</oracle>
+    </sql>
+    <sql nomeTabela="THGQMGLIB" ordem="9" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="DTLIBERACAO" descricao="Adicionar campo DTLIBERACAO">
+        <mssql>ALTER TABLE THGQMGLIB ADD DTLIBERACAO DATETIME</mssql>
+        <oracle>ALTER TABLE THGQMGLIB ADD (DTLIBERACAO DATE)</oracle>
+    </sql>
+    <sql nomeTabela="THGQMGLIB" ordem="10" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="NAOSEAPLICA" descricao="Adicionar campo NAOSEAPLICA">
+        <mssql>ALTER TABLE THGQMGLIB ADD NAOSEAPLICA CHAR(1)</mssql>
+        <oracle>ALTER TABLE THGQMGLIB ADD (NAOSEAPLICA CHAR(1))</oracle>
+    </sql>
+    <sql nomeTabela="THGQMGLIB" ordem="11" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODUSU" descricao="Adicionar campo CODUSU">
+        <mssql>ALTER TABLE THGQMGLIB ADD CODUSU INT</mssql>
+        <oracle>ALTER TABLE THGQMGLIB ADD (CODUSU NUMBER(10))</oracle>
+    </sql>
+    <sql nomeTabela="THGQMGLIB" ordem="12" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="DHCREATE" descricao="Adicionar campo DHCREATE">
+        <mssql>ALTER TABLE THGQMGLIB ADD DHCREATE DATETIME</mssql>
+        <oracle>ALTER TABLE THGQMGLIB ADD (DHCREATE DATE)</oracle>
+    </sql>
+
+</scripts>

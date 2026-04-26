@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<metadados xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="../.gradle/metadados.xsd">
+
+    <table name="THGQMGCR" sequenceType="A" sequenceField="CODCR">
+        <description>Causa Raiz</description>
+        <primaryKey>
+            <field name="CODCR"/>
+        </primaryKey>
+        <instances>
+            <instance name="QmNcCausaRaiz">
+                <description>Causa Raiz</description>
+            </instance>
+        </instances>
+        <fields>
+            <field name="CODCR" dataType="INTEIRO" readOnly="S" order="1" allowSearch="S" visibleOnSearch="S">
+                <description>Cod. Causa Raiz</description>
+            </field>
+            <field name="CODRNC" dataType="INTEIRO" required="S" readOnly="S" UITabName="__main" order="2" allowSearch="S" visibleOnSearch="S">
+                <description>Cod. RNC</description>
+            </field>
+            <field name="MAO_OBRA" dataType="TEXTO" size="4000" UITabName="Ishikawa 6M" order="3" allowSearch="N" visibleOnSearch="N">
+                <description>Mao de Obra</description>
+            </field>
+            <field name="METODO" dataType="TEXTO" size="4000" UITabName="Ishikawa 6M" order="4" allowSearch="N" visibleOnSearch="N">
+                <description>Metodo</description>
+            </field>
+            <field name="MAQUINA" dataType="TEXTO" size="4000" UITabName="Ishikawa 6M" order="5" allowSearch="N" visibleOnSearch="N">
+                <description>Maquina</description>
+            </field>
+            <field name="MEDIDA" dataType="TEXTO" size="4000" UITabName="Ishikawa 6M" order="6" allowSearch="N" visibleOnSearch="N">
+                <description>Medida</description>
+            </field>
+            <field name="MATERIAL" dataType="TEXTO" size="4000" UITabName="Ishikawa 6M" order="7" allowSearch="N" visibleOnSearch="N">
+                <description>Material</description>
+            </field>
+            <field name="MEIO_AMBIENTE" dataType="TEXTO" size="4000" UITabName="Ishikawa 6M" order="8" allowSearch="N" visibleOnSearch="N">
+                <description>Meio Ambiente</description>
+            </field>
+            <field name="NAOSEAPLICA" dataType="CHECKBOX" UITabName="__main" order="9" allowSearch="N" visibleOnSearch="N">
+                <description>Nao se aplica</description>
+            </field>
+            <field name="CODUSU" dataType="PESQUISA" targetInstance="Usuario" targetField="CODUSU" targetType="INTEIRO"
+                   readOnly="S" visible="N" order="10" allowSearch="N" visibleOnSearch="N">
+                <description>Criado por</description>
+                <expression><![CDATA[return $ctx_usuario_logado;]]></expression>
+            </field>
+            <field name="DHCREATE" dataType="DATA_HORA" readOnly="S" visible="N" order="11" allowSearch="N" visibleOnSearch="N">
+                <description>Data/Hora Criacao</description>
+                <expression><![CDATA[if ($col_DHCREATE == null) { return $ctx_dh_atual; } else { return $col_DHCREATE; }]]></expression>
+            </field>
+            <field name="DHALTER" dataType="DATA_HORA" readOnly="S" visible="N" order="12" allowSearch="N" visibleOnSearch="N">
+                <description>Data/Hora Alteracao</description>
+                <expression><![CDATA[return $ctx_dh_atual;]]></expression>
+            </field>
+        </fields>
+    </table>
+
+</metadados>

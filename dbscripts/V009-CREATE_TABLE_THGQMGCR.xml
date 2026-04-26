@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<scripts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="../.gradle/scripts.xsd">
+
+    <sql nomeTabela="THGQMGCR" ordem="1" executar="SE_NAO_EXISTIR"
+         tipoObjeto="TABLE" nomeObjeto="THGQMGCR"
+         descricao="Criacao da tabela THGQMGCR">
+        <mssql>
+            CREATE TABLE THGQMGCR (
+            CODCR INT NOT NULL,
+            CONSTRAINT PK_THGQMGCR PRIMARY KEY (CODCR)
+            )
+        </mssql>
+        <oracle>
+            CREATE TABLE THGQMGCR (
+            CODCR NUMBER(10) NOT NULL,
+            CONSTRAINT PK_THGQMGCR PRIMARY KEY (CODCR)
+            )
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGCR" ordem="2" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="CODRNC"
+         descricao="Adicionar campo CODRNC na tabela THGQMGCR">
+        <mssql>
+            ALTER TABLE THGQMGCR ADD CODRNC INT
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGCR ADD (CODRNC NUMBER(10))
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGCR" ordem="3" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="MAO_OBRA"
+         descricao="Adicionar campo MAO_OBRA na tabela THGQMGCR">
+        <mssql>
+            ALTER TABLE THGQMGCR ADD MAO_OBRA VARCHAR(4000)
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGCR ADD (MAO_OBRA VARCHAR2(4000))
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGCR" ordem="4" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="METODO"
+         descricao="Adicionar campo METODO na tabela THGQMGCR">
+        <mssql>
+            ALTER TABLE THGQMGCR ADD METODO VARCHAR(4000)
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGCR ADD (METODO VARCHAR2(4000))
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGCR" ordem="5" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="MAQUINA"
+         descricao="Adicionar campo MAQUINA na tabela THGQMGCR">
+        <mssql>
+            ALTER TABLE THGQMGCR ADD MAQUINA VARCHAR(4000)
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGCR ADD (MAQUINA VARCHAR2(4000))
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGCR" ordem="6" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="MEDIDA"
+         descricao="Adicionar campo MEDIDA na tabela THGQMGCR">
+        <mssql>
+            ALTER TABLE THGQMGCR ADD MEDIDA VARCHAR(4000)
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGCR ADD (MEDIDA VARCHAR2(4000))
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGCR" ordem="7" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="MATERIAL"
+         descricao="Adicionar campo MATERIAL na tabela THGQMGCR">
+        <mssql>
+            ALTER TABLE THGQMGCR ADD MATERIAL VARCHAR(4000)
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGCR ADD (MATERIAL VARCHAR2(4000))
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGCR" ordem="8" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="MEIO_AMBIENTE"
+         descricao="Adicionar campo MEIO_AMBIENTE na tabela THGQMGCR">
+        <mssql>
+            ALTER TABLE THGQMGCR ADD MEIO_AMBIENTE VARCHAR(4000)
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGCR ADD (MEIO_AMBIENTE VARCHAR2(4000))
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGCR" ordem="9" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="NAOSEAPLICA"
+         descricao="Adicionar campo NAOSEAPLICA na tabela THGQMGCR">
+        <mssql>
+            ALTER TABLE THGQMGCR ADD NAOSEAPLICA CHAR(1)
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGCR ADD (NAOSEAPLICA CHAR(1))
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGCR" ordem="10" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="CODUSU"
+         descricao="Adicionar campo CODUSU na tabela THGQMGCR">
+        <mssql>
+            ALTER TABLE THGQMGCR ADD CODUSU INT
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGCR ADD (CODUSU NUMBER(10))
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGCR" ordem="11" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="DHCREATE"
+         descricao="Adicionar campo DHCREATE na tabela THGQMGCR">
+        <mssql>
+            ALTER TABLE THGQMGCR ADD DHCREATE DATETIME
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGCR ADD (DHCREATE DATE)
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGCR" ordem="12" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="DHALTER"
+         descricao="Adicionar campo DHALTER na tabela THGQMGCR">
+        <mssql>
+            ALTER TABLE THGQMGCR ADD DHALTER DATETIME
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGCR ADD (DHALTER DATE)
+        </oracle>
+    </sql>
+
+</scripts>

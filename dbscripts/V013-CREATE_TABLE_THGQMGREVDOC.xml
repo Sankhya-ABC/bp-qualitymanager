@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<scripts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="../.gradle/scripts.xsd">
+
+    <sql nomeTabela="THGQMGREVDOC" ordem="1" executar="SE_NAO_EXISTIR"
+         tipoObjeto="TABLE" nomeObjeto="THGQMGREVDOC"
+         descricao="Criacao da tabela THGQMGREVDOC">
+        <mssql>
+            CREATE TABLE THGQMGREVDOC (
+            CODREVDOC INT NOT NULL,
+            CONSTRAINT PK_THGQMGREVDOC PRIMARY KEY (CODREVDOC)
+            )
+        </mssql>
+        <oracle>
+            CREATE TABLE THGQMGREVDOC (
+            CODREVDOC NUMBER(10) NOT NULL,
+            CONSTRAINT PK_THGQMGREVDOC PRIMARY KEY (CODREVDOC)
+            )
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGREVDOC" ordem="2" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="CODRNC"
+         descricao="Adicionar campo CODRNC na tabela THGQMGREVDOC">
+        <mssql>
+            ALTER TABLE THGQMGREVDOC ADD CODRNC INT
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGREVDOC ADD (CODRNC NUMBER(10))
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGREVDOC" ordem="3" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="DOCUMENTO"
+         descricao="Adicionar campo DOCUMENTO na tabela THGQMGREVDOC">
+        <mssql>
+            ALTER TABLE THGQMGREVDOC ADD DOCUMENTO VARCHAR(200)
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGREVDOC ADD (DOCUMENTO VARCHAR2(200))
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGREVDOC" ordem="4" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="MOTIVO"
+         descricao="Adicionar campo MOTIVO na tabela THGQMGREVDOC">
+        <mssql>
+            ALTER TABLE THGQMGREVDOC ADD MOTIVO VARCHAR(4000)
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGREVDOC ADD (MOTIVO VARCHAR2(4000))
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGREVDOC" ordem="5" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="CODPARC"
+         descricao="Adicionar campo CODPARC na tabela THGQMGREVDOC">
+        <mssql>
+            ALTER TABLE THGQMGREVDOC ADD CODPARC INT
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGREVDOC ADD (CODPARC NUMBER(10))
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGREVDOC" ordem="6" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="DTPRAZO"
+         descricao="Adicionar campo DTPRAZO na tabela THGQMGREVDOC">
+        <mssql>
+            ALTER TABLE THGQMGREVDOC ADD DTPRAZO DATETIME
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGREVDOC ADD (DTPRAZO DATE)
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGREVDOC" ordem="7" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="NAOSEAPLICA"
+         descricao="Adicionar campo NAOSEAPLICA na tabela THGQMGREVDOC">
+        <mssql>
+            ALTER TABLE THGQMGREVDOC ADD NAOSEAPLICA CHAR(1)
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGREVDOC ADD (NAOSEAPLICA CHAR(1))
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGREVDOC" ordem="8" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="CODUSU"
+         descricao="Adicionar campo CODUSU na tabela THGQMGREVDOC">
+        <mssql>
+            ALTER TABLE THGQMGREVDOC ADD CODUSU INT
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGREVDOC ADD (CODUSU NUMBER(10))
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGREVDOC" ordem="9" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="DHCREATE"
+         descricao="Adicionar campo DHCREATE na tabela THGQMGREVDOC">
+        <mssql>
+            ALTER TABLE THGQMGREVDOC ADD DHCREATE DATETIME
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGREVDOC ADD (DHCREATE DATE)
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGREVDOC" ordem="10" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="DHALTER"
+         descricao="Adicionar campo DHALTER na tabela THGQMGREVDOC">
+        <mssql>
+            ALTER TABLE THGQMGREVDOC ADD DHALTER DATETIME
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGREVDOC ADD (DHALTER DATE)
+        </oracle>
+    </sql>
+
+</scripts>

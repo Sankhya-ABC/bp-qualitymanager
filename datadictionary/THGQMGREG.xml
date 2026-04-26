@@ -3,38 +3,53 @@
            xsi:noNamespaceSchemaLocation="../.gradle/metadados.xsd">
 
     <table name="THGQMGREG" sequenceType="A" sequenceField="CODRNC">
-        <description>Registro de RNC</description>
+        <description>Registro RNC</description>
         <primaryKey>
             <field name="CODRNC"/>
         </primaryKey>
         <instances>
+            <instance name="QmNcConsulta">
+                <description>Consulta de NCs</description>
+            </instance>
             <instance name="QmNcRegistro">
                 <description>Registro de RNC</description>
+                <relationShip>
+                    <relation entityName="QmNcResponsavel">
+                        <fields>
+                            <field localName="CODRNC" targetName="CODRNC"/>
+                        </fields>
+                    </relation>
+                    <relation entityName="QmNcEvidencia">
+                        <fields>
+                            <field localName="CODRNC" targetName="CODRNC"/>
+                        </fields>
+                    </relation>
+                </relationShip>
             </instance>
         </instances>
         <fields>
             <field name="CODRNC" dataType="INTEIRO" readOnly="S" order="1" allowSearch="S" visibleOnSearch="S">
                 <description>Cod. RNC</description>
             </field>
-            <field name="NURNC" dataType="INTEIRO" order="2" allowSearch="S" visibleOnSearch="S" isPresentation="S">
+            <field name="NURNC" dataType="TEXTO" size="20" readOnly="S" isPresentation="S" order="2" allowSearch="S" visibleOnSearch="S">
                 <description>Numero RNC</description>
             </field>
-            <field name="STATUS" dataType="LISTA" size="20" UITabName="__main" order="3" allowSearch="S" visibleOnSearch="S">
+            <field name="STATUS" dataType="LISTA" size="1" readOnly="S" UITabName="__main" order="3" allowSearch="S" visibleOnSearch="S">
                 <description>Status</description>
                 <fieldOptions>
-                    <option value="P">Pendente</option>
-                    <option value="C">Concluido</option>
+                    <option value="A">Aberta</option>
+                    <option value="P">Em andamento</option>
+                    <option value="E">Encerrada</option>
+                    <option value="C">Cancelada</option>
+                    <option value="X">Nao procedente</option>
                 </fieldOptions>
+                <expression><![CDATA[if ($col_STATUS == null) { return "A"; } else { return $col_STATUS; }]]></expression>
             </field>
-            <field name="FASEATUAL" dataType="LISTA" size="1" UITabName="__main" order="4" allowSearch="S" visibleOnSearch="S">
-                <description>Fase Atual</description>
-                <fieldOptions>
-                    <option value="0">Inicial</option>
-                    <option value="1">Inicializado</option>
-                    <option value="2">Finalizado</option>
-                </fieldOptions>
+            <field name="CODFASE" dataType="INTEIRO" readOnly="S" UITabName="__main" order="4" allowSearch="N" visibleOnSearch="N">
+                <description>Cod. Fase</description>
+                <expression><![CDATA[if ($col_CODFASE == null) { return 1; } else { return $col_CODFASE; }]]></expression>
             </field>
-            <field name="ORIGEM" dataType="LISTA" size="1" UITabName="__main" order="5" allowSearch="S" visibleOnSearch="S">
+            <field name="ORIGEM" dataType="LISTA" size="2" required="S" UITabName="__main" UIGroupName="Identificacao" order="5" allowSearch="S" visibleOnSearch="S">
                 <description>Origem</description>
                 <fieldOptions>
                     <option value="C">Cliente</option>
@@ -44,28 +59,70 @@
                     <option value="O">Outro</option>
                 </fieldOptions>
             </field>
+            <field name="PRIORIDADE" dataType="LISTA" size="1" required="S" UITabName="__main" UIGroupName="Identificacao" order="6" allowSearch="S" visibleOnSearch="S">
+                <description>Prioridade</description>
+                <fieldOptions>
+                    <option value="1">Simples</option>
+                    <option value="2">Prioritario</option>
+                    <option value="3">Critico</option>
+                </fieldOptions>
+            </field>
+            <field name="TIPONC" dataType="LISTA" size="2" required="S" UITabName="__main" UIGroupName="Identificacao" order="7" allowSearch="S" visibleOnSearch="S">
+                <description>Tipo NC</description>
+                <fieldOptions>
+                    <option value="P">Produto</option>
+                    <option value="S">Servico</option>
+                    <option value="PR">Processo</option>
+                    <option value="SG">Sistema de Gestao</option>
+                </fieldOptions>
+            </field>
             <field name="CODPARC" dataType="PESQUISA" targetInstance="Parceiro" targetField="CODPARC" targetType="INTEIRO"
-                   UITabName="__main" order="6" allowSearch="S" visibleOnSearch="S">
+                   UITabName="__main" UIGroupName="Identificacao" order="8" allowSearch="S" visibleOnSearch="S">
                 <description>Cod. Parceiro</description>
             </field>
-            <field name="ATIVO" dataType="CHECKBOX" UITabName="__main" order="99" allowSearch="N" visibleOnSearch="N">
-                <description>Ativo</description>
-                <expression><![CDATA[if ($col_ATIVO == null) { return "S"; } else { return $col_ATIVO; }]]></expression>
+            <field name="NUNOTA" dataType="INTEIRO" UITabName="__main" UIGroupName="Identificacao" order="9" allowSearch="N" visibleOnSearch="N">
+                <description>Nu. Unico Nota</description>
             </field>
-            <field name="CODUSU" dataType="PESQUISA" targetInstance="Usuario" targetField="CODUSU" targetType="INTEIRO"
-                   readOnly="S" UITabName="Outras Informacoes" order="99" allowSearch="N" visibleOnSearch="N">
-                <description>Cod. Usuario</description>
-                <expression><![CDATA[return $ctx_usuario_logado;]]></expression>
+            <field name="PROCESSO" dataType="TEXTO" size="100" UITabName="__main" UIGroupName="Identificacao" order="10" allowSearch="N" visibleOnSearch="N">
+                <description>Processo</description>
             </field>
-            <field name="DHALTER" dataType="DATA_HORA" readOnly="S" UITabName="Outras Informacoes" order="99"
-                   allowSearch="N" visibleOnSearch="N">
-                <description>Data/Hora Alteracao</description>
+            <field name="DTREGISTRO" dataType="DATA_HORA" readOnly="S" UITabName="__main" UIGroupName="Datas" order="11" allowSearch="S" visibleOnSearch="S">
+                <description>Data Registro</description>
                 <expression><![CDATA[return $ctx_dh_atual;]]></expression>
             </field>
-            <field name="DHCREATE" dataType="DATA_HORA" readOnly="S" UITabName="Outras Informacoes" order="99"
-                   allowSearch="N" visibleOnSearch="N">
+            <field name="DTPREVENCERRAR" dataType="DATA_HORA" UITabName="__main" UIGroupName="Datas" order="12" allowSearch="N" visibleOnSearch="N">
+                <description>Data Prev. Encerramento</description>
+            </field>
+            <field name="DTENCERRAMENTO" dataType="DATA_HORA" readOnly="S" UITabName="__main" UIGroupName="Datas" order="13" allowSearch="N" visibleOnSearch="N">
+                <description>Data Encerramento</description>
+            </field>
+            <field name="DETALHAMENTO" dataType="TEXTO" size="4000" required="S" UITabName="Detalhamento" order="14" allowSearch="N" visibleOnSearch="N">
+                <description>Detalhamento</description>
+            </field>
+            <field name="REINCIDENTE" dataType="CHECKBOX" readOnly="S" UITabName="__main" order="15" allowSearch="N" visibleOnSearch="N">
+                <description>Reincidente</description>
+            </field>
+            <field name="NAOPROCEDENTE" dataType="CHECKBOX" UITabName="__main" order="16" allowSearch="N" visibleOnSearch="N">
+                <description>Nao Procedente</description>
+            </field>
+            <field name="NCVINCULADA" dataType="INTEIRO" UITabName="__main" order="17" allowSearch="N" visibleOnSearch="N">
+                <description>NC Vinculada</description>
+            </field>
+            <field name="CODAUD" dataType="INTEIRO" UITabName="__main" order="18" allowSearch="N" visibleOnSearch="N">
+                <description>Cod. Auditoria</description>
+            </field>
+            <field name="CODUSU" dataType="PESQUISA" targetInstance="Usuario" targetField="CODUSU" targetType="INTEIRO"
+                   readOnly="S" visible="N" UITabName="__main" order="19" allowSearch="N" visibleOnSearch="N">
+                <description>Criado por</description>
+                <expression><![CDATA[return $ctx_usuario_logado;]]></expression>
+            </field>
+            <field name="DHCREATE" dataType="DATA_HORA" readOnly="S" visible="N" UITabName="__main" order="20" allowSearch="N" visibleOnSearch="N">
                 <description>Data/Hora Criacao</description>
                 <expression><![CDATA[if ($col_DHCREATE == null) { return $ctx_dh_atual; } else { return $col_DHCREATE; }]]></expression>
+            </field>
+            <field name="DHALTER" dataType="DATA_HORA" readOnly="S" visible="N" UITabName="__main" order="21" allowSearch="N" visibleOnSearch="N">
+                <description>Data/Hora Alteracao</description>
+                <expression><![CDATA[return $ctx_dh_atual;]]></expression>
             </field>
         </fields>
     </table>

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<scripts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="../.gradle/scripts.xsd">
+
+    <sql nomeTabela="THGQMGABR" ordem="1" executar="SE_NAO_EXISTIR"
+         tipoObjeto="TABLE" nomeObjeto="THGQMGABR"
+         descricao="Criacao da tabela THGQMGABR">
+        <mssql>
+            CREATE TABLE THGQMGABR (
+            CODABR INT NOT NULL,
+            CONSTRAINT PK_THGQMGABR PRIMARY KEY (CODABR)
+            )
+        </mssql>
+        <oracle>
+            CREATE TABLE THGQMGABR (
+            CODABR NUMBER(10) NOT NULL,
+            CONSTRAINT PK_THGQMGABR PRIMARY KEY (CODABR)
+            )
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGABR" ordem="2" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="CODRNC"
+         descricao="Adicionar campo CODRNC na tabela THGQMGABR">
+        <mssql>
+            ALTER TABLE THGQMGABR ADD CODRNC INT
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGABR ADD (CODRNC NUMBER(10))
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGABR" ordem="3" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="OQUE"
+         descricao="Adicionar campo OQUE na tabela THGQMGABR">
+        <mssql>
+            ALTER TABLE THGQMGABR ADD OQUE VARCHAR(500)
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGABR ADD (OQUE VARCHAR2(500))
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGABR" ordem="4" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="COMO"
+         descricao="Adicionar campo COMO na tabela THGQMGABR">
+        <mssql>
+            ALTER TABLE THGQMGABR ADD COMO VARCHAR(500)
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGABR ADD (COMO VARCHAR2(500))
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGABR" ordem="5" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="ONDE"
+         descricao="Adicionar campo ONDE na tabela THGQMGABR">
+        <mssql>
+            ALTER TABLE THGQMGABR ADD ONDE VARCHAR(500)
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGABR ADD (ONDE VARCHAR2(500))
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGABR" ordem="6" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="PORQUE"
+         descricao="Adicionar campo PORQUE na tabela THGQMGABR">
+        <mssql>
+            ALTER TABLE THGQMGABR ADD PORQUE VARCHAR(500)
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGABR ADD (PORQUE VARCHAR2(500))
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGABR" ordem="7" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="QUANDO"
+         descricao="Adicionar campo QUANDO na tabela THGQMGABR">
+        <mssql>
+            ALTER TABLE THGQMGABR ADD QUANDO DATETIME
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGABR ADD (QUANDO DATE)
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGABR" ordem="8" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="QUANTO"
+         descricao="Adicionar campo QUANTO na tabela THGQMGABR">
+        <mssql>
+            ALTER TABLE THGQMGABR ADD QUANTO VARCHAR(200)
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGABR ADD (QUANTO VARCHAR2(200))
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGABR" ordem="9" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="NAOSEAPLICA"
+         descricao="Adicionar campo NAOSEAPLICA na tabela THGQMGABR">
+        <mssql>
+            ALTER TABLE THGQMGABR ADD NAOSEAPLICA CHAR(1)
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGABR ADD (NAOSEAPLICA CHAR(1))
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGABR" ordem="10" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="CODUSU"
+         descricao="Adicionar campo CODUSU na tabela THGQMGABR">
+        <mssql>
+            ALTER TABLE THGQMGABR ADD CODUSU INT
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGABR ADD (CODUSU NUMBER(10))
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGABR" ordem="11" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="DHCREATE"
+         descricao="Adicionar campo DHCREATE na tabela THGQMGABR">
+        <mssql>
+            ALTER TABLE THGQMGABR ADD DHCREATE DATETIME
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGABR ADD (DHCREATE DATE)
+        </oracle>
+    </sql>
+
+    <sql nomeTabela="THGQMGABR" ordem="12" executar="SE_NAO_EXISTIR"
+         tipoObjeto="COLUMN" nomeObjeto="DHALTER"
+         descricao="Adicionar campo DHALTER na tabela THGQMGABR">
+        <mssql>
+            ALTER TABLE THGQMGABR ADD DHALTER DATETIME
+        </mssql>
+        <oracle>
+            ALTER TABLE THGQMGABR ADD (DHALTER DATE)
+        </oracle>
+    </sql>
+
+</scripts>

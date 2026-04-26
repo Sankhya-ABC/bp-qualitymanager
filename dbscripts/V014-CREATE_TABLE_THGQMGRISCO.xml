@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<scripts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="../.gradle/scripts.xsd">
+
+    <sql nomeTabela="THGQMGRISCO" ordem="1" executar="SE_NAO_EXISTIR"
+         tipoObjeto="TABLE" nomeObjeto="THGQMGRISCO"
+         descricao="Criacao da tabela THGQMGRISCO">
+        <mssql>CREATE TABLE THGQMGRISCO (CODRISCO INT NOT NULL, CONSTRAINT PK_THGQMGRISCO PRIMARY KEY (CODRISCO))</mssql>
+        <oracle>CREATE TABLE THGQMGRISCO (CODRISCO NUMBER(10) NOT NULL, CONSTRAINT PK_THGQMGRISCO PRIMARY KEY (CODRISCO))</oracle>
+    </sql>
+    <sql nomeTabela="THGQMGRISCO" ordem="2" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODRNC" descricao="Adicionar campo CODRNC">
+        <mssql>ALTER TABLE THGQMGRISCO ADD CODRNC INT</mssql>
+        <oracle>ALTER TABLE THGQMGRISCO ADD (CODRNC NUMBER(10))</oracle>
+    </sql>
+    <sql nomeTabela="THGQMGRISCO" ordem="3" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="TIPORISCO" descricao="Adicionar campo TIPORISCO">
+        <mssql>ALTER TABLE THGQMGRISCO ADD TIPORISCO VARCHAR(1)</mssql>
+        <oracle>ALTER TABLE THGQMGRISCO ADD (TIPORISCO VARCHAR2(1))</oracle>
+    </sql>
+    <sql nomeTabela="THGQMGRISCO" ordem="4" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="OQUE" descricao="Adicionar campo OQUE">
+        <mssql>ALTER TABLE THGQMGRISCO ADD OQUE VARCHAR(500)</mssql>
+        <oracle>ALTER TABLE THGQMGRISCO ADD (OQUE VARCHAR2(500))</oracle>
+    </sql>
+    <sql nomeTabela="THGQMGRISCO" ordem="5" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="COMO" descricao="Adicionar campo COMO">
+        <mssql>ALTER TABLE THGQMGRISCO ADD COMO VARCHAR(500)</mssql>
+        <oracle>ALTER TABLE THGQMGRISCO ADD (COMO VARCHAR2(500))</oracle>
+    </sql>
+    <sql nomeTabela="THGQMGRISCO" ordem="6" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="ONDE" descricao="Adicionar campo ONDE">
+        <mssql>ALTER TABLE THGQMGRISCO ADD ONDE VARCHAR(500)</mssql>
+        <oracle>ALTER TABLE THGQMGRISCO ADD (ONDE VARCHAR2(500))</oracle>
+    </sql>
+    <sql nomeTabela="THGQMGRISCO" ordem="7" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="PORQUE" descricao="Adicionar campo PORQUE">
+        <mssql>ALTER TABLE THGQMGRISCO ADD PORQUE VARCHAR(500)</mssql>
+        <oracle>ALTER TABLE THGQMGRISCO ADD (PORQUE VARCHAR2(500))</oracle>
+    </sql>
+    <sql nomeTabela="THGQMGRISCO" ordem="8" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="QUANDO" descricao="Adicionar campo QUANDO">
+        <mssql>ALTER TABLE THGQMGRISCO ADD QUANDO DATETIME</mssql>
+        <oracle>ALTER TABLE THGQMGRISCO ADD (QUANDO DATE)</oracle>
+    </sql>
+    <sql nomeTabela="THGQMGRISCO" ordem="9" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="QUANTO" descricao="Adicionar campo QUANTO">
+        <mssql>ALTER TABLE THGQMGRISCO ADD QUANTO VARCHAR(200)</mssql>
+        <oracle>ALTER TABLE THGQMGRISCO ADD (QUANTO VARCHAR2(200))</oracle>
+    </sql>
+    <sql nomeTabela="THGQMGRISCO" ordem="10" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="NAOSEAPLICA" descricao="Adicionar campo NAOSEAPLICA">
+        <mssql>ALTER TABLE THGQMGRISCO ADD NAOSEAPLICA CHAR(1)</mssql>
+        <oracle>ALTER TABLE THGQMGRISCO ADD (NAOSEAPLICA CHAR(1))</oracle>
+    </sql>
+    <sql nomeTabela="THGQMGRISCO" ordem="11" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODUSU" descricao="Adicionar campo CODUSU">
+        <mssql>ALTER TABLE THGQMGRISCO ADD CODUSU INT</mssql>
+        <oracle>ALTER TABLE THGQMGRISCO ADD (CODUSU NUMBER(10))</oracle>
+    </sql>
+    <sql nomeTabela="THGQMGRISCO" ordem="12" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="DHCREATE" descricao="Adicionar campo DHCREATE">
+        <mssql>ALTER TABLE THGQMGRISCO ADD DHCREATE DATETIME</mssql>
+        <oracle>ALTER TABLE THGQMGRISCO ADD (DHCREATE DATE)</oracle>
+    </sql>
+    <sql nomeTabela="THGQMGRISCO" ordem="13" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="DHALTER" descricao="Adicionar campo DHALTER">
+        <mssql>ALTER TABLE THGQMGRISCO ADD DHALTER DATETIME</mssql>
+        <oracle>ALTER TABLE THGQMGRISCO ADD (DHALTER DATE)</oracle>
+    </sql>
+
+</scripts>

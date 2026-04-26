@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<scripts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="../.gradle/scripts.xsd">
+
+    <sql nomeTabela="THGQMGEFIC" ordem="1" executar="SE_NAO_EXISTIR" tipoObjeto="TABLE" nomeObjeto="THGQMGEFIC" descricao="Criacao da tabela THGQMGEFIC">
+        <mssql>CREATE TABLE THGQMGEFIC (CODEFIC INT NOT NULL, CONSTRAINT PK_THGQMGEFIC PRIMARY KEY (CODEFIC))</mssql>
+        <oracle>CREATE TABLE THGQMGEFIC (CODEFIC NUMBER(10) NOT NULL, CONSTRAINT PK_THGQMGEFIC PRIMARY KEY (CODEFIC))</oracle>
+    </sql>
+    <sql nomeTabela="THGQMGEFIC" ordem="2" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODRNC" descricao="Adicionar campo CODRNC"><mssql>ALTER TABLE THGQMGEFIC ADD CODRNC INT</mssql><oracle>ALTER TABLE THGQMGEFIC ADD (CODRNC NUMBER(10))</oracle></sql>
+    <sql nomeTabela="THGQMGEFIC" ordem="3" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="RESULTADO" descricao="Adicionar campo RESULTADO"><mssql>ALTER TABLE THGQMGEFIC ADD RESULTADO VARCHAR(1)</mssql><oracle>ALTER TABLE THGQMGEFIC ADD (RESULTADO VARCHAR2(1))</oracle></sql>
+    <sql nomeTabela="THGQMGEFIC" ordem="4" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="DESCRICAO" descricao="Adicionar campo DESCRICAO"><mssql>ALTER TABLE THGQMGEFIC ADD DESCRICAO VARCHAR(4000)</mssql><oracle>ALTER TABLE THGQMGEFIC ADD (DESCRICAO VARCHAR2(4000))</oracle></sql>
+    <sql nomeTabela="THGQMGEFIC" ordem="5" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODPARC" descricao="Adicionar campo CODPARC"><mssql>ALTER TABLE THGQMGEFIC ADD CODPARC INT</mssql><oracle>ALTER TABLE THGQMGEFIC ADD (CODPARC NUMBER(10))</oracle></sql>
+    <sql nomeTabela="THGQMGEFIC" ordem="6" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="DTVERIFICACAO" descricao="Adicionar campo DTVERIFICACAO"><mssql>ALTER TABLE THGQMGEFIC ADD DTVERIFICACAO DATETIME</mssql><oracle>ALTER TABLE THGQMGEFIC ADD (DTVERIFICACAO DATE)</oracle></sql>
+    <sql nomeTabela="THGQMGEFIC" ordem="7" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODUSU" descricao="Adicionar campo CODUSU"><mssql>ALTER TABLE THGQMGEFIC ADD CODUSU INT</mssql><oracle>ALTER TABLE THGQMGEFIC ADD (CODUSU NUMBER(10))</oracle></sql>
+    <sql nomeTabela="THGQMGEFIC" ordem="8" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="DHCREATE" descricao="Adicionar campo DHCREATE"><mssql>ALTER TABLE THGQMGEFIC ADD DHCREATE DATETIME</mssql><oracle>ALTER TABLE THGQMGEFIC ADD (DHCREATE DATE)</oracle></sql>
+
+</scripts>

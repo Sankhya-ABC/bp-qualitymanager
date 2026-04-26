@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<scripts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="../.gradle/scripts.xsd">
+
+    <sql nomeTabela="THGQMGREGFASE" ordem="1" executar="SE_NAO_EXISTIR" tipoObjeto="TABLE" nomeObjeto="THGQMGREGFASE" descricao="Criacao da tabela THGQMGREGFASE - historico de fases">
+        <mssql>CREATE TABLE THGQMGREGFASE (CODREGFASE INT NOT NULL, CONSTRAINT PK_THGQMGREGFASE PRIMARY KEY (CODREGFASE))</mssql>
+        <oracle>CREATE TABLE THGQMGREGFASE (CODREGFASE NUMBER(10) NOT NULL, CONSTRAINT PK_THGQMGREGFASE PRIMARY KEY (CODREGFASE))</oracle>
+    </sql>
+    <sql nomeTabela="THGQMGREGFASE" ordem="2" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODRNC" descricao="Adicionar campo CODRNC"><mssql>ALTER TABLE THGQMGREGFASE ADD CODRNC INT</mssql><oracle>ALTER TABLE THGQMGREGFASE ADD (CODRNC NUMBER(10))</oracle></sql>
+    <sql nomeTabela="THGQMGREGFASE" ordem="3" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODFASEDE" descricao="Adicionar campo CODFASEDE - fase origem"><mssql>ALTER TABLE THGQMGREGFASE ADD CODFASEDE INT</mssql><oracle>ALTER TABLE THGQMGREGFASE ADD (CODFASEDE NUMBER(10))</oracle></sql>
+    <sql nomeTabela="THGQMGREGFASE" ordem="4" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODFASEPARA" descricao="Adicionar campo CODFASEPARA - fase destino"><mssql>ALTER TABLE THGQMGREGFASE ADD CODFASEPARA INT</mssql><oracle>ALTER TABLE THGQMGREGFASE ADD (CODFASEPARA NUMBER(10))</oracle></sql>
+    <sql nomeTabela="THGQMGREGFASE" ordem="5" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="DHTRANSICAO" descricao="Adicionar campo DHTRANSICAO"><mssql>ALTER TABLE THGQMGREGFASE ADD DHTRANSICAO DATETIME</mssql><oracle>ALTER TABLE THGQMGREGFASE ADD (DHTRANSICAO DATE)</oracle></sql>
+    <sql nomeTabela="THGQMGREGFASE" ordem="6" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODUSU" descricao="Adicionar campo CODUSU"><mssql>ALTER TABLE THGQMGREGFASE ADD CODUSU INT</mssql><oracle>ALTER TABLE THGQMGREGFASE ADD (CODUSU NUMBER(10))</oracle></sql>
+
+</scripts>

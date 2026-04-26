@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<scripts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="../.gradle/scripts.xsd">
+
+    <sql nomeTabela="THGQMGRESP" ordem="1" executar="SE_NAO_EXISTIR" tipoObjeto="TABLE" nomeObjeto="THGQMGRESP" descricao="Criacao da tabela THGQMGRESP">
+        <mssql>CREATE TABLE THGQMGRESP (CODRESP INT NOT NULL, CONSTRAINT PK_THGQMGRESP PRIMARY KEY (CODRESP))</mssql>
+        <oracle>CREATE TABLE THGQMGRESP (CODRESP NUMBER(10) NOT NULL, CONSTRAINT PK_THGQMGRESP PRIMARY KEY (CODRESP))</oracle>
+    </sql>
+    <sql nomeTabela="THGQMGRESP" ordem="2" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODRNC" descricao="Adicionar campo CODRNC"><mssql>ALTER TABLE THGQMGRESP ADD CODRNC INT</mssql><oracle>ALTER TABLE THGQMGRESP ADD (CODRNC NUMBER(10))</oracle></sql>
+    <sql nomeTabela="THGQMGRESP" ordem="3" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="ORIGEM" descricao="Adicionar campo ORIGEM"><mssql>ALTER TABLE THGQMGRESP ADD ORIGEM VARCHAR(1)</mssql><oracle>ALTER TABLE THGQMGRESP ADD (ORIGEM VARCHAR2(1))</oracle></sql>
+    <sql nomeTabela="THGQMGRESP" ordem="4" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODPARC" descricao="Adicionar campo CODPARC"><mssql>ALTER TABLE THGQMGRESP ADD CODPARC INT</mssql><oracle>ALTER TABLE THGQMGRESP ADD (CODPARC NUMBER(10))</oracle></sql>
+    <sql nomeTabela="THGQMGRESP" ordem="5" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="ENVIAREMAIL" descricao="Adicionar campo ENVIAREMAIL"><mssql>ALTER TABLE THGQMGRESP ADD ENVIAREMAIL CHAR(1)</mssql><oracle>ALTER TABLE THGQMGRESP ADD (ENVIAREMAIL CHAR(1))</oracle></sql>
+
+</scripts>
