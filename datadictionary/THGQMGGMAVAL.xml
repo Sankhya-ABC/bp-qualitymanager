@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<metadados xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="../.gradle/metadados.xsd">
+
+    <table name="THGQMGGMAVAL" sequenceType="A" sequenceField="CODAVALRISCO">
+        <description>Aval Riscos GM</description>
+        <primaryKey><field name="CODAVALRISCO"/></primaryKey>
+        <instances><instance name="QmGmAvaliacao"><description>Aval Riscos GM</description></instance></instances>
+        <fields>
+            <field name="CODAVALRISCO" dataType="INTEIRO" readOnly="S" order="1" allowSearch="S" visibleOnSearch="S"><description>Cod.</description></field>
+            <field name="CODGM" dataType="INTEIRO" required="S" readOnly="S" UITabName="__main" order="2" allowSearch="S" visibleOnSearch="S"><description>Cod. GM</description></field>
+            <field name="CODACAOGM" dataType="INTEIRO" UITabName="__main" order="3" allowSearch="N" visibleOnSearch="N"><description>Cod. Acao</description></field>
+            <field name="RISCO" dataType="TEXTO" size="4000" UITabName="__main" order="4" allowSearch="N" visibleOnSearch="N"><description>Risco</description></field>
+            <field name="PROBABILIDADE" dataType="LISTA" size="1" UITabName="__main" order="5" allowSearch="N" visibleOnSearch="N"><description>Prob</description><fieldOptions><option value="B">Baixa</option><option value="M">Media</option><option value="A">Alta</option></fieldOptions></field>
+            <field name="IMPACTO" dataType="LISTA" size="1" UITabName="__main" order="6" allowSearch="N" visibleOnSearch="N"><description>Impacto</description><fieldOptions><option value="B">Baixo</option><option value="M">Medio</option><option value="A">Alto</option></fieldOptions></field>
+            <field name="NIVELRISCO" dataType="LISTA" size="1" readOnly="S" UITabName="__main" order="7" allowSearch="N" visibleOnSearch="N"><description>Nivel</description><fieldOptions><option value="B">Baixo</option><option value="M">Medio</option><option value="A">Alto</option><option value="C">Critico</option></fieldOptions></field>
+            <field name="MITIGACAO" dataType="TEXTO" size="4000" UITabName="__main" order="8" allowSearch="N" visibleOnSearch="N"><description>Mitigacao</description></field>
+            <field name="CODUSU" dataType="PESQUISA" targetInstance="Usuario" targetField="CODUSU" targetType="INTEIRO" readOnly="S" visible="N" order="98" allowSearch="N" visibleOnSearch="N"><description>Usuario</description></field>
+        </fields>
+    </table>
+
+</metadados>

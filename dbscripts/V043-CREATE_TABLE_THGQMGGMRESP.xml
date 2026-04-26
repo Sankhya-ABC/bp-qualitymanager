@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<scripts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="../.gradle/scripts.xsd">
+
+    <sql nomeTabela="THGQMGGMRESP" ordem="1" executar="SE_NAO_EXISTIR" tipoObjeto="TABLE" nomeObjeto="THGQMGGMRESP" descricao="Criacao da tabela THGQMGGMRESP">
+        <mssql>CREATE TABLE THGQMGGMRESP (CODRESPGM INT NOT NULL, CONSTRAINT PK_THGQMGGMRESP PRIMARY KEY (CODRESPGM))</mssql>
+        <oracle>CREATE TABLE THGQMGGMRESP (CODRESPGM NUMBER(10) NOT NULL, CONSTRAINT PK_THGQMGGMRESP PRIMARY KEY (CODRESPGM))</oracle>
+    </sql>
+    <sql nomeTabela="THGQMGGMRESP" ordem="2" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODGM" descricao="Adicionar campo CODGM"><mssql>ALTER TABLE THGQMGGMRESP ADD CODGM INT</mssql><oracle>ALTER TABLE THGQMGGMRESP ADD (CODGM NUMBER(10))</oracle></sql>
+    <sql nomeTabela="THGQMGGMRESP" ordem="3" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODPARC" descricao="Adicionar campo CODPARC"><mssql>ALTER TABLE THGQMGGMRESP ADD CODPARC INT</mssql><oracle>ALTER TABLE THGQMGGMRESP ADD (CODPARC NUMBER(10))</oracle></sql>
+    <sql nomeTabela="THGQMGGMRESP" ordem="4" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="STATUS" descricao="Adicionar campo STATUS"><mssql>ALTER TABLE THGQMGGMRESP ADD STATUS VARCHAR(1)</mssql><oracle>ALTER TABLE THGQMGGMRESP ADD (STATUS VARCHAR2(1))</oracle></sql>
+    <sql nomeTabela="THGQMGGMRESP" ordem="5" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="JUSTIFICATIVA" descricao="Adicionar campo JUSTIFICATIVA"><mssql>ALTER TABLE THGQMGGMRESP ADD JUSTIFICATIVA VARCHAR(500)</mssql><oracle>ALTER TABLE THGQMGGMRESP ADD (JUSTIFICATIVA VARCHAR2(500))</oracle></sql>
+    <sql nomeTabela="THGQMGGMRESP" ordem="6" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="DTDECISAO" descricao="Adicionar campo DTDECISAO"><mssql>ALTER TABLE THGQMGGMRESP ADD DTDECISAO DATETIME</mssql><oracle>ALTER TABLE THGQMGGMRESP ADD (DTDECISAO DATE)</oracle></sql>
+
+</scripts>

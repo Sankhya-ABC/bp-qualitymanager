@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<scripts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="../.gradle/scripts.xsd">
+
+    <sql nomeTabela="THGQMGGMAVAL" ordem="1" executar="SE_NAO_EXISTIR" tipoObjeto="TABLE" nomeObjeto="THGQMGGMAVAL" descricao="Criacao da tabela THGQMGGMAVAL">
+        <mssql>CREATE TABLE THGQMGGMAVAL (CODAVALRISCO INT NOT NULL, CONSTRAINT PK_THGQMGGMAVAL PRIMARY KEY (CODAVALRISCO))</mssql>
+        <oracle>CREATE TABLE THGQMGGMAVAL (CODAVALRISCO NUMBER(10) NOT NULL, CONSTRAINT PK_THGQMGGMAVAL PRIMARY KEY (CODAVALRISCO))</oracle>
+    </sql>
+    <sql nomeTabela="THGQMGGMAVAL" ordem="2" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODGM" descricao="Adicionar campo CODGM"><mssql>ALTER TABLE THGQMGGMAVAL ADD CODGM INT</mssql><oracle>ALTER TABLE THGQMGGMAVAL ADD (CODGM NUMBER(10))</oracle></sql>
+    <sql nomeTabela="THGQMGGMAVAL" ordem="3" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODACAOGM" descricao="Adicionar campo CODACAOGM"><mssql>ALTER TABLE THGQMGGMAVAL ADD CODACAOGM INT</mssql><oracle>ALTER TABLE THGQMGGMAVAL ADD (CODACAOGM NUMBER(10))</oracle></sql>
+    <sql nomeTabela="THGQMGGMAVAL" ordem="4" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="RISCO" descricao="Adicionar campo RISCO"><mssql>ALTER TABLE THGQMGGMAVAL ADD RISCO VARCHAR(4000)</mssql><oracle>ALTER TABLE THGQMGGMAVAL ADD (RISCO VARCHAR2(4000))</oracle></sql>
+    <sql nomeTabela="THGQMGGMAVAL" ordem="5" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="PROBABILIDADE" descricao="Adicionar campo PROBABILIDADE"><mssql>ALTER TABLE THGQMGGMAVAL ADD PROBABILIDADE VARCHAR(1)</mssql><oracle>ALTER TABLE THGQMGGMAVAL ADD (PROBABILIDADE VARCHAR2(1))</oracle></sql>
+    <sql nomeTabela="THGQMGGMAVAL" ordem="6" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="IMPACTO" descricao="Adicionar campo IMPACTO"><mssql>ALTER TABLE THGQMGGMAVAL ADD IMPACTO VARCHAR(1)</mssql><oracle>ALTER TABLE THGQMGGMAVAL ADD (IMPACTO VARCHAR2(1))</oracle></sql>
+    <sql nomeTabela="THGQMGGMAVAL" ordem="7" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="NIVELRISCO" descricao="Adicionar campo NIVELRISCO"><mssql>ALTER TABLE THGQMGGMAVAL ADD NIVELRISCO VARCHAR(1)</mssql><oracle>ALTER TABLE THGQMGGMAVAL ADD (NIVELRISCO VARCHAR2(1))</oracle></sql>
+    <sql nomeTabela="THGQMGGMAVAL" ordem="8" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="MITIGACAO" descricao="Adicionar campo MITIGACAO"><mssql>ALTER TABLE THGQMGGMAVAL ADD MITIGACAO VARCHAR(4000)</mssql><oracle>ALTER TABLE THGQMGGMAVAL ADD (MITIGACAO VARCHAR2(4000))</oracle></sql>
+    <sql nomeTabela="THGQMGGMAVAL" ordem="9" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODUSU" descricao="Adicionar campo CODUSU"><mssql>ALTER TABLE THGQMGGMAVAL ADD CODUSU INT</mssql><oracle>ALTER TABLE THGQMGGMAVAL ADD (CODUSU NUMBER(10))</oracle></sql>
+
+</scripts>

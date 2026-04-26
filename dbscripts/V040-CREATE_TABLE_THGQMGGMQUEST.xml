@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<scripts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="../.gradle/scripts.xsd">
+
+    <sql nomeTabela="THGQMGGMQUEST" ordem="1" executar="SE_NAO_EXISTIR" tipoObjeto="TABLE" nomeObjeto="THGQMGGMQUEST" descricao="Criacao da tabela THGQMGGMQUEST">
+        <mssql>CREATE TABLE THGQMGGMQUEST (CODAVAL INT NOT NULL, CONSTRAINT PK_THGQMGGMQUEST PRIMARY KEY (CODAVAL))</mssql>
+        <oracle>CREATE TABLE THGQMGGMQUEST (CODAVAL NUMBER(10) NOT NULL, CONSTRAINT PK_THGQMGGMQUEST PRIMARY KEY (CODAVAL))</oracle>
+    </sql>
+    <sql nomeTabela="THGQMGGMQUEST" ordem="2" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODGM" descricao="Adicionar campo CODGM"><mssql>ALTER TABLE THGQMGGMQUEST ADD CODGM INT</mssql><oracle>ALTER TABLE THGQMGGMQUEST ADD (CODGM NUMBER(10))</oracle></sql>
+    <sql nomeTabela="THGQMGGMQUEST" ordem="3" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODQUEST" descricao="Adicionar campo CODQUEST"><mssql>ALTER TABLE THGQMGGMQUEST ADD CODQUEST INT</mssql><oracle>ALTER TABLE THGQMGGMQUEST ADD (CODQUEST NUMBER(10))</oracle></sql>
+    <sql nomeTabela="THGQMGGMQUEST" ordem="4" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="ORIGEM" descricao="Adicionar campo ORIGEM"><mssql>ALTER TABLE THGQMGGMQUEST ADD ORIGEM INT</mssql><oracle>ALTER TABLE THGQMGGMQUEST ADD (ORIGEM NUMBER(10))</oracle></sql>
+    <sql nomeTabela="THGQMGGMQUEST" ordem="5" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="DHCREATE" descricao="Adicionar campo DHCREATE"><mssql>ALTER TABLE THGQMGGMQUEST ADD DHCREATE DATETIME</mssql><oracle>ALTER TABLE THGQMGGMQUEST ADD (DHCREATE DATE)</oracle></sql>
+
+</scripts>

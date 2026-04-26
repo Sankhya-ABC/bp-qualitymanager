@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<metadados xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="../.gradle/metadados.xsd">
+
+    <table name="THGQMGGMFASE" sequenceType="M">
+        <description>Fases GM</description>
+        <primaryKey><field name="CODFASEGM"/></primaryKey>
+        <instances><instance name="QmGmFase"><description>Fases GM</description></instance></instances>
+        <fields>
+            <field name="CODFASEGM" dataType="INTEIRO" readOnly="S" order="1" allowSearch="S" visibleOnSearch="S"><description>Cod. Fase</description></field>
+            <field name="DESCFASEGM" dataType="TEXTO" size="100" required="S" isPresentation="S" UITabName="__main" order="2" allowSearch="S" visibleOnSearch="S"><description>Descricao</description></field>
+            <field name="ATIVO" dataType="CHECKBOX" UITabName="__main" order="3" allowSearch="N" visibleOnSearch="N"><description>Ativo</description></field>
+        </fields>
+    </table>
+
+</metadados>

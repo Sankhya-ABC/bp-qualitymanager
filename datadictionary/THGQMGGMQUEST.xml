@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<metadados xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="../.gradle/metadados.xsd">
+
+    <table name="THGQMGGMQUEST" sequenceType="A" sequenceField="CODAVAL">
+        <description>Quest GM</description>
+        <primaryKey><field name="CODAVAL"/></primaryKey>
+        <instances><instance name="QmGmQuestionario"><description>Quest GM</description></instance></instances>
+        <fields>
+            <field name="CODAVAL" dataType="INTEIRO" readOnly="S" order="1" allowSearch="S" visibleOnSearch="S"><description>Cod.</description></field>
+            <field name="CODGM" dataType="INTEIRO" required="S" readOnly="S" UITabName="__main" order="2" allowSearch="S" visibleOnSearch="S"><description>Cod. GM</description></field>
+            <field name="CODQUEST" dataType="INTEIRO" UITabName="__main" order="3" allowSearch="N" visibleOnSearch="N"><description>Quest</description></field>
+            <field name="ORIGEM" dataType="INTEIRO" UITabName="__main" order="4" allowSearch="N" visibleOnSearch="N"><description>Origem</description></field>
+            <field name="DHCREATE" dataType="DATA_HORA" readOnly="S" visible="N" order="99" allowSearch="N" visibleOnSearch="N"><description>Criacao</description></field>
+        </fields>
+    </table>
+
+</metadados>

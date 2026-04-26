@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<scripts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="../.gradle/scripts.xsd">
+
+    <sql nomeTabela="THGQMGGMQUEM" ordem="1" executar="SE_NAO_EXISTIR" tipoObjeto="TABLE" nomeObjeto="THGQMGGMQUEM" descricao="Criacao da tabela THGQMGGMQUEM">
+        <mssql>CREATE TABLE THGQMGGMQUEM (CODQUEMGM INT NOT NULL, CONSTRAINT PK_THGQMGGMQUEM PRIMARY KEY (CODQUEMGM))</mssql>
+        <oracle>CREATE TABLE THGQMGGMQUEM (CODQUEMGM NUMBER(10) NOT NULL, CONSTRAINT PK_THGQMGGMQUEM PRIMARY KEY (CODQUEMGM))</oracle>
+    </sql>
+    <sql nomeTabela="THGQMGGMQUEM" ordem="2" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODACAOGM" descricao="Adicionar campo CODACAOGM"><mssql>ALTER TABLE THGQMGGMQUEM ADD CODACAOGM INT</mssql><oracle>ALTER TABLE THGQMGGMQUEM ADD (CODACAOGM NUMBER(10))</oracle></sql>
+    <sql nomeTabela="THGQMGGMQUEM" ordem="3" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODPARC" descricao="Adicionar campo CODPARC"><mssql>ALTER TABLE THGQMGGMQUEM ADD CODPARC INT</mssql><oracle>ALTER TABLE THGQMGGMQUEM ADD (CODPARC NUMBER(10))</oracle></sql>
+
+</scripts>

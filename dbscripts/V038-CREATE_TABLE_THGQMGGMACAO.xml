@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<scripts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="../.gradle/scripts.xsd">
+
+    <sql nomeTabela="THGQMGGMACAO" ordem="1" executar="SE_NAO_EXISTIR" tipoObjeto="TABLE" nomeObjeto="THGQMGGMACAO" descricao="Criacao da tabela THGQMGGMACAO">
+        <mssql>CREATE TABLE THGQMGGMACAO (CODACAOGM INT NOT NULL, CONSTRAINT PK_THGQMGGMACAO PRIMARY KEY (CODACAOGM))</mssql>
+        <oracle>CREATE TABLE THGQMGGMACAO (CODACAOGM NUMBER(10) NOT NULL, CONSTRAINT PK_THGQMGGMACAO PRIMARY KEY (CODACAOGM))</oracle>
+    </sql>
+    <sql nomeTabela="THGQMGGMACAO" ordem="2" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODGM" descricao="Adicionar campo CODGM"><mssql>ALTER TABLE THGQMGGMACAO ADD CODGM INT</mssql><oracle>ALTER TABLE THGQMGGMACAO ADD (CODGM NUMBER(10))</oracle></sql>
+    <sql nomeTabela="THGQMGGMACAO" ordem="3" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="OQUE" descricao="Adicionar campo OQUE"><mssql>ALTER TABLE THGQMGGMACAO ADD OQUE VARCHAR(500)</mssql><oracle>ALTER TABLE THGQMGGMACAO ADD (OQUE VARCHAR2(500))</oracle></sql>
+    <sql nomeTabela="THGQMGGMACAO" ordem="4" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="COMO" descricao="Adicionar campo COMO"><mssql>ALTER TABLE THGQMGGMACAO ADD COMO VARCHAR(500)</mssql><oracle>ALTER TABLE THGQMGGMACAO ADD (COMO VARCHAR2(500))</oracle></sql>
+    <sql nomeTabela="THGQMGGMACAO" ordem="5" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="ONDE" descricao="Adicionar campo ONDE"><mssql>ALTER TABLE THGQMGGMACAO ADD ONDE VARCHAR(500)</mssql><oracle>ALTER TABLE THGQMGGMACAO ADD (ONDE VARCHAR2(500))</oracle></sql>
+    <sql nomeTabela="THGQMGGMACAO" ordem="6" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="PORQUE" descricao="Adicionar campo PORQUE"><mssql>ALTER TABLE THGQMGGMACAO ADD PORQUE VARCHAR(500)</mssql><oracle>ALTER TABLE THGQMGGMACAO ADD (PORQUE VARCHAR2(500))</oracle></sql>
+    <sql nomeTabela="THGQMGGMACAO" ordem="7" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="QUANDO" descricao="Adicionar campo QUANDO"><mssql>ALTER TABLE THGQMGGMACAO ADD QUANDO DATETIME</mssql><oracle>ALTER TABLE THGQMGGMACAO ADD (QUANDO DATE)</oracle></sql>
+    <sql nomeTabela="THGQMGGMACAO" ordem="8" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="QUANTO" descricao="Adicionar campo QUANTO"><mssql>ALTER TABLE THGQMGGMACAO ADD QUANTO VARCHAR(200)</mssql><oracle>ALTER TABLE THGQMGGMACAO ADD (QUANTO VARCHAR2(200))</oracle></sql>
+    <sql nomeTabela="THGQMGGMACAO" ordem="9" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="NAOSEAPLICA" descricao="Adicionar campo NAOSEAPLICA"><mssql>ALTER TABLE THGQMGGMACAO ADD NAOSEAPLICA CHAR(1)</mssql><oracle>ALTER TABLE THGQMGGMACAO ADD (NAOSEAPLICA CHAR(1))</oracle></sql>
+    <sql nomeTabela="THGQMGGMACAO" ordem="10" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODUSU" descricao="Adicionar campo CODUSU"><mssql>ALTER TABLE THGQMGGMACAO ADD CODUSU INT</mssql><oracle>ALTER TABLE THGQMGGMACAO ADD (CODUSU NUMBER(10))</oracle></sql>
+    <sql nomeTabela="THGQMGGMACAO" ordem="11" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="DHCREATE" descricao="Adicionar campo DHCREATE"><mssql>ALTER TABLE THGQMGGMACAO ADD DHCREATE DATETIME</mssql><oracle>ALTER TABLE THGQMGGMACAO ADD (DHCREATE DATE)</oracle></sql>
+
+</scripts>

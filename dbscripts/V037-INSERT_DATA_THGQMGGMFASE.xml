@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<scripts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="../.gradle/scripts.xsd">
+
+    <sql nomeTabela="THGQMGGMFASE" ordem="1" executar="SEMPRE" tipoObjeto="TABLE" nomeObjeto="INSERT_THGQMGGMFASE_1" descricao="Inserir fase 1 Cadastro">
+        <mssql>INSERT INTO THGQMGGMFASE (CODFASEGM, DESCFASEGM, ATIVO) SELECT 1, 'Cadastro', 'S' WHERE NOT EXISTS (SELECT 1 FROM THGQMGGMFASE WHERE CODFASEGM = 1)</mssql>
+        <oracle>INSERT INTO THGQMGGMFASE (CODFASEGM, DESCFASEGM, ATIVO) SELECT 1, 'Cadastro', 'S' FROM DUAL WHERE NOT EXISTS (SELECT 1 FROM THGQMGGMFASE WHERE CODFASEGM = 1)</oracle>
+    </sql>
+    <sql nomeTabela="THGQMGGMFASE" ordem="2" executar="SEMPRE" tipoObjeto="TABLE" nomeObjeto="INSERT_THGQMGGMFASE_2" descricao="Inserir fase 2 Questionario">
+        <mssql>INSERT INTO THGQMGGMFASE (CODFASEGM, DESCFASEGM, ATIVO) SELECT 2, 'Questionario', 'S' WHERE NOT EXISTS (SELECT 1 FROM THGQMGGMFASE WHERE CODFASEGM = 2)</mssql>
+        <oracle>INSERT INTO THGQMGGMFASE (CODFASEGM, DESCFASEGM, ATIVO) SELECT 2, 'Questionario', 'S' FROM DUAL WHERE NOT EXISTS (SELECT 1 FROM THGQMGGMFASE WHERE CODFASEGM = 2)</oracle>
+    </sql>
+    <sql nomeTabela="THGQMGGMFASE" ordem="3" executar="SEMPRE" tipoObjeto="TABLE" nomeObjeto="INSERT_THGQMGGMFASE_3" descricao="Inserir fase 3 Acoes">
+        <mssql>INSERT INTO THGQMGGMFASE (CODFASEGM, DESCFASEGM, ATIVO) SELECT 3, 'Acoes', 'S' WHERE NOT EXISTS (SELECT 1 FROM THGQMGGMFASE WHERE CODFASEGM = 3)</mssql>
+        <oracle>INSERT INTO THGQMGGMFASE (CODFASEGM, DESCFASEGM, ATIVO) SELECT 3, 'Acoes', 'S' FROM DUAL WHERE NOT EXISTS (SELECT 1 FROM THGQMGGMFASE WHERE CODFASEGM = 3)</oracle>
+    </sql>
+    <sql nomeTabela="THGQMGGMFASE" ordem="4" executar="SEMPRE" tipoObjeto="TABLE" nomeObjeto="INSERT_THGQMGGMFASE_4" descricao="Inserir fase 4 Avaliacao">
+        <mssql>INSERT INTO THGQMGGMFASE (CODFASEGM, DESCFASEGM, ATIVO) SELECT 4, 'Avaliacao de Riscos', 'S' WHERE NOT EXISTS (SELECT 1 FROM THGQMGGMFASE WHERE CODFASEGM = 4)</mssql>
+        <oracle>INSERT INTO THGQMGGMFASE (CODFASEGM, DESCFASEGM, ATIVO) SELECT 4, 'Avaliacao de Riscos', 'S' FROM DUAL WHERE NOT EXISTS (SELECT 1 FROM THGQMGGMFASE WHERE CODFASEGM = 4)</oracle>
+    </sql>
+    <sql nomeTabela="THGQMGGMFASE" ordem="5" executar="SEMPRE" tipoObjeto="TABLE" nomeObjeto="INSERT_THGQMGGMFASE_5" descricao="Inserir fase 5 Aprovacao">
+        <mssql>INSERT INTO THGQMGGMFASE (CODFASEGM, DESCFASEGM, ATIVO) SELECT 5, 'Aprovacao', 'S' WHERE NOT EXISTS (SELECT 1 FROM THGQMGGMFASE WHERE CODFASEGM = 5)</mssql>
+        <oracle>INSERT INTO THGQMGGMFASE (CODFASEGM, DESCFASEGM, ATIVO) SELECT 5, 'Aprovacao', 'S' FROM DUAL WHERE NOT EXISTS (SELECT 1 FROM THGQMGGMFASE WHERE CODFASEGM = 5)</oracle>
+    </sql>
+
+</scripts>

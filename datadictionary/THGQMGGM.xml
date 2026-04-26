@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<metadados xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="../.gradle/metadados.xsd">
+
+    <table name="THGQMGGM" sequenceType="A" sequenceField="CODGM">
+        <description>Gestao Mudancas</description>
+        <primaryKey><field name="CODGM"/></primaryKey>
+        <instances><instance name="QmGmCadastro"><description>Gestao Mudancas</description></instance></instances>
+        <fields>
+            <field name="CODGM" dataType="INTEIRO" readOnly="S" order="1" allowSearch="S" visibleOnSearch="S"><description>Cod. GM</description></field>
+            <field name="NUMGM" dataType="TEXTO" size="20" readOnly="S" isPresentation="S" UITabName="__main" order="2" allowSearch="S" visibleOnSearch="S"><description>Numero</description></field>
+            <field name="STATUS" dataType="LISTA" size="1" readOnly="S" UITabName="__main" order="3" allowSearch="S" visibleOnSearch="S"><description>Status</description><fieldOptions><option value="A">Aberta</option><option value="P">Em andamento</option><option value="C">Concluida</option><option value="X">Cancelada</option></fieldOptions></field>
+            <field name="CODFASE" dataType="INTEIRO" readOnly="S" UITabName="__main" order="4" allowSearch="N" visibleOnSearch="N"><description>Fase</description></field>
+            <field name="PROCESSO" dataType="TEXTO" size="200" UITabName="__main" order="5" allowSearch="N" visibleOnSearch="N"><description>Processo</description></field>
+            <field name="TIPOMUDANCA" dataType="LISTA" size="2" required="S" UITabName="__main" order="6" allowSearch="S" visibleOnSearch="S"><description>Tipo</description><fieldOptions><option value="PR">Processo</option><option value="PD">Produto</option><option value="SI">Sistema</option><option value="EQ">Equipamento</option></fieldOptions></field>
+            <field name="SITUACAOATUAL" dataType="TEXTO" size="4000" UITabName="Descricao" order="7" allowSearch="N" visibleOnSearch="N"><description>Situacao Atual</description></field>
+            <field name="PROPOSTA" dataType="TEXTO" size="4000" UITabName="Descricao" order="8" allowSearch="N" visibleOnSearch="N"><description>Proposta</description></field>
+            <field name="JUSTIFICATIVA" dataType="TEXTO" size="4000" UITabName="Descricao" order="9" allowSearch="N" visibleOnSearch="N"><description>Justificativa</description></field>
+            <field name="CODPARC" dataType="PESQUISA" targetInstance="Parceiro" targetField="CODPARC" targetType="INTEIRO" UITabName="__main" order="10" allowSearch="N" visibleOnSearch="N"><description>Responsavel</description></field>
+            <field name="DTPREVISTA" dataType="DATA_HORA" UITabName="__main" order="11" allowSearch="N" visibleOnSearch="N"><description>Prevista</description></field>
+            <field name="DTIMPL" dataType="DATA_HORA" UITabName="__main" order="12" allowSearch="N" visibleOnSearch="N"><description>Implementacao</description></field>
+            <field name="CODUSU" dataType="PESQUISA" targetInstance="Usuario" targetField="CODUSU" targetType="INTEIRO" readOnly="S" visible="N" order="98" allowSearch="N" visibleOnSearch="N"><description>Usuario</description></field>
+            <field name="DHCREATE" dataType="DATA_HORA" readOnly="S" visible="N" order="99" allowSearch="N" visibleOnSearch="N"><description>Criacao</description></field>
+        </fields>
+    </table>
+
+</metadados>

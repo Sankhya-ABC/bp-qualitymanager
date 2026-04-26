@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<scripts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="../.gradle/scripts.xsd">
+
+    <sql nomeTabela="THGQMGGMFASE" ordem="1" executar="SE_NAO_EXISTIR" tipoObjeto="TABLE" nomeObjeto="THGQMGGMFASE" descricao="Criacao da tabela THGQMGGMFASE">
+        <mssql>CREATE TABLE THGQMGGMFASE (CODFASEGM INT NOT NULL, CONSTRAINT PK_THGQMGGMFASE PRIMARY KEY (CODFASEGM))</mssql>
+        <oracle>CREATE TABLE THGQMGGMFASE (CODFASEGM NUMBER(10) NOT NULL, CONSTRAINT PK_THGQMGGMFASE PRIMARY KEY (CODFASEGM))</oracle>
+    </sql>
+    <sql nomeTabela="THGQMGGMFASE" ordem="2" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="DESCFASEGM" descricao="Adicionar campo DESCFASEGM"><mssql>ALTER TABLE THGQMGGMFASE ADD DESCFASEGM VARCHAR(100)</mssql><oracle>ALTER TABLE THGQMGGMFASE ADD (DESCFASEGM VARCHAR2(100))</oracle></sql>
+    <sql nomeTabela="THGQMGGMFASE" ordem="3" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="ATIVO" descricao="Adicionar campo ATIVO"><mssql>ALTER TABLE THGQMGGMFASE ADD ATIVO CHAR(1)</mssql><oracle>ALTER TABLE THGQMGGMFASE ADD (ATIVO CHAR(1))</oracle></sql>
+
+</scripts>

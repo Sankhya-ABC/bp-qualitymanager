@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<scripts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="../.gradle/scripts.xsd">
+
+    <sql nomeTabela="THGQMGGM" ordem="1" executar="SE_NAO_EXISTIR" tipoObjeto="TABLE" nomeObjeto="THGQMGGM" descricao="Criacao da tabela THGQMGGM">
+        <mssql>CREATE TABLE THGQMGGM (CODGM INT NOT NULL, CONSTRAINT PK_THGQMGGM PRIMARY KEY (CODGM))</mssql>
+        <oracle>CREATE TABLE THGQMGGM (CODGM NUMBER(10) NOT NULL, CONSTRAINT PK_THGQMGGM PRIMARY KEY (CODGM))</oracle>
+    </sql>
+    <sql nomeTabela="THGQMGGM" ordem="2" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="NUMGM" descricao="Adicionar campo NUMGM"><mssql>ALTER TABLE THGQMGGM ADD NUMGM VARCHAR(20)</mssql><oracle>ALTER TABLE THGQMGGM ADD (NUMGM VARCHAR2(20))</oracle></sql>
+    <sql nomeTabela="THGQMGGM" ordem="3" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="STATUS" descricao="Adicionar campo STATUS"><mssql>ALTER TABLE THGQMGGM ADD STATUS VARCHAR(1)</mssql><oracle>ALTER TABLE THGQMGGM ADD (STATUS VARCHAR2(1))</oracle></sql>
+    <sql nomeTabela="THGQMGGM" ordem="4" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODFASE" descricao="Adicionar campo CODFASE"><mssql>ALTER TABLE THGQMGGM ADD CODFASE INT</mssql><oracle>ALTER TABLE THGQMGGM ADD (CODFASE NUMBER(10))</oracle></sql>
+    <sql nomeTabela="THGQMGGM" ordem="5" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="PROCESSO" descricao="Adicionar campo PROCESSO"><mssql>ALTER TABLE THGQMGGM ADD PROCESSO VARCHAR(200)</mssql><oracle>ALTER TABLE THGQMGGM ADD (PROCESSO VARCHAR2(200))</oracle></sql>
+    <sql nomeTabela="THGQMGGM" ordem="6" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="TIPOMUDANCA" descricao="Adicionar campo TIPOMUDANCA"><mssql>ALTER TABLE THGQMGGM ADD TIPOMUDANCA VARCHAR(2)</mssql><oracle>ALTER TABLE THGQMGGM ADD (TIPOMUDANCA VARCHAR2(2))</oracle></sql>
+    <sql nomeTabela="THGQMGGM" ordem="7" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="SITUACAOATUAL" descricao="Adicionar campo SITUACAOATUAL"><mssql>ALTER TABLE THGQMGGM ADD SITUACAOATUAL VARCHAR(4000)</mssql><oracle>ALTER TABLE THGQMGGM ADD (SITUACAOATUAL VARCHAR2(4000))</oracle></sql>
+    <sql nomeTabela="THGQMGGM" ordem="8" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="PROPOSTA" descricao="Adicionar campo PROPOSTA"><mssql>ALTER TABLE THGQMGGM ADD PROPOSTA VARCHAR(4000)</mssql><oracle>ALTER TABLE THGQMGGM ADD (PROPOSTA VARCHAR2(4000))</oracle></sql>
+    <sql nomeTabela="THGQMGGM" ordem="9" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="JUSTIFICATIVA" descricao="Adicionar campo JUSTIFICATIVA"><mssql>ALTER TABLE THGQMGGM ADD JUSTIFICATIVA VARCHAR(4000)</mssql><oracle>ALTER TABLE THGQMGGM ADD (JUSTIFICATIVA VARCHAR2(4000))</oracle></sql>
+    <sql nomeTabela="THGQMGGM" ordem="10" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODPARC" descricao="Adicionar campo CODPARC"><mssql>ALTER TABLE THGQMGGM ADD CODPARC INT</mssql><oracle>ALTER TABLE THGQMGGM ADD (CODPARC NUMBER(10))</oracle></sql>
+    <sql nomeTabela="THGQMGGM" ordem="11" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="DTPREVISTA" descricao="Adicionar campo DTPREVISTA"><mssql>ALTER TABLE THGQMGGM ADD DTPREVISTA DATETIME</mssql><oracle>ALTER TABLE THGQMGGM ADD (DTPREVISTA DATE)</oracle></sql>
+    <sql nomeTabela="THGQMGGM" ordem="12" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="DTIMPL" descricao="Adicionar campo DTIMPL"><mssql>ALTER TABLE THGQMGGM ADD DTIMPL DATETIME</mssql><oracle>ALTER TABLE THGQMGGM ADD (DTIMPL DATE)</oracle></sql>
+    <sql nomeTabela="THGQMGGM" ordem="13" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODUSU" descricao="Adicionar campo CODUSU"><mssql>ALTER TABLE THGQMGGM ADD CODUSU INT</mssql><oracle>ALTER TABLE THGQMGGM ADD (CODUSU NUMBER(10))</oracle></sql>
+    <sql nomeTabela="THGQMGGM" ordem="14" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="DHCREATE" descricao="Adicionar campo DHCREATE"><mssql>ALTER TABLE THGQMGGM ADD DHCREATE DATETIME</mssql><oracle>ALTER TABLE THGQMGGM ADD (DHCREATE DATE)</oracle></sql>
+
+</scripts>

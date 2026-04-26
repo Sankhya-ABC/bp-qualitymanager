@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<metadados xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="../.gradle/metadados.xsd">
+
+    <table name="THGQMGGMPERG" sequenceType="A" sequenceField="CODPERGGM">
+        <description>Perg GM</description>
+        <primaryKey><field name="CODPERGGM"/></primaryKey>
+        <instances><instance name="QmGmPergunta"><description>Perg GM</description></instance></instances>
+        <fields>
+            <field name="CODPERGGM" dataType="INTEIRO" readOnly="S" order="1" allowSearch="S" visibleOnSearch="S"><description>Cod.</description></field>
+            <field name="CODAVAL" dataType="INTEIRO" required="S" readOnly="S" UITabName="__main" order="2" allowSearch="S" visibleOnSearch="S"><description>Cod. Aval</description></field>
+            <field name="CODPERG" dataType="INTEIRO" UITabName="__main" order="3" allowSearch="N" visibleOnSearch="N"><description>Perg</description></field>
+            <field name="RESPOSTA" dataType="TEXTO" size="200" UITabName="__main" order="4" allowSearch="N" visibleOnSearch="N"><description>Resposta</description></field>
+        </fields>
+    </table>
+
+</metadados>

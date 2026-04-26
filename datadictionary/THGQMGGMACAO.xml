@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<metadados xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="../.gradle/metadados.xsd">
+
+    <table name="THGQMGGMACAO" sequenceType="A" sequenceField="CODACAOGM">
+        <description>Acoes GM</description>
+        <primaryKey><field name="CODACAOGM"/></primaryKey>
+        <instances><instance name="QmGmAcao"><description>Acoes GM</description></instance></instances>
+        <fields>
+            <field name="CODACAOGM" dataType="INTEIRO" readOnly="S" order="1" allowSearch="S" visibleOnSearch="S"><description>Cod. Acao</description></field>
+            <field name="CODGM" dataType="INTEIRO" required="S" readOnly="S" UITabName="__main" order="2" allowSearch="S" visibleOnSearch="S"><description>Cod. GM</description></field>
+            <field name="OQUE" dataType="TEXTO" size="500" UITabName="__main" UIGroupName="5W2H" order="3" allowSearch="N" visibleOnSearch="N"><description>O que</description></field>
+            <field name="COMO" dataType="TEXTO" size="500" UITabName="__main" UIGroupName="5W2H" order="4" allowSearch="N" visibleOnSearch="N"><description>Como</description></field>
+            <field name="ONDE" dataType="TEXTO" size="500" UITabName="__main" UIGroupName="5W2H" order="5" allowSearch="N" visibleOnSearch="N"><description>Onde</description></field>
+            <field name="PORQUE" dataType="TEXTO" size="500" UITabName="__main" UIGroupName="5W2H" order="6" allowSearch="N" visibleOnSearch="N"><description>Por que</description></field>
+            <field name="QUANDO" dataType="DATA_HORA" UITabName="__main" UIGroupName="5W2H" order="7" allowSearch="N" visibleOnSearch="N"><description>Quando</description></field>
+            <field name="QUANTO" dataType="TEXTO" size="200" UITabName="__main" UIGroupName="5W2H" order="8" allowSearch="N" visibleOnSearch="N"><description>Quanto</description></field>
+            <field name="NAOSEAPLICA" dataType="CHECKBOX" UITabName="__main" order="9" allowSearch="N" visibleOnSearch="N"><description>Nao se aplica</description></field>
+            <field name="CODUSU" dataType="PESQUISA" targetInstance="Usuario" targetField="CODUSU" targetType="INTEIRO" readOnly="S" visible="N" order="98" allowSearch="N" visibleOnSearch="N"><description>Usuario</description></field>
+            <field name="DHCREATE" dataType="DATA_HORA" readOnly="S" visible="N" order="99" allowSearch="N" visibleOnSearch="N"><description>Criacao</description></field>
+        </fields>
+    </table>
+
+</metadados>
