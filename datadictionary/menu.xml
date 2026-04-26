@@ -6,6 +6,172 @@
           description="QualityManager"
           icon="/$ctx/assets/icon.png">
 
+        <!-- ═══════════════════════════════════════════════════
+             MODULO: Nao Conformidades
+             ISO 9001 §8.7 + §10.2
+        ════════════════════════════════════════════════════ -->
+        <folder id="hagious.qualitymanager.nc"
+                description="Nao Conformidades">
+
+            <dynamicForm id="hagious.qualitymanager.nc.consulta"
+                         instance="QmNcConsulta"
+                         description="Consulta de NCs"/>
+
+            <dynamicForm id="hagious.qualitymanager.nc.registro"
+                         instance="QmNcRegistro"
+                         description="01. Registro de NC"/>
+
+            <dynamicForm id="hagious.qualitymanager.nc.acaoimediata"
+                         instance="QmNcAcaoImediata"
+                         description="02. Acoes Imediatas"/>
+
+            <dynamicForm id="hagious.qualitymanager.nc.causaraiz"
+                         instance="QmNcCausaRaiz"
+                         description="03. Causa Raiz"/>
+
+            <dynamicForm id="hagious.qualitymanager.nc.abrangencia"
+                         instance="QmNcAbrangencia"
+                         description="04. Abrangencia"/>
+
+            <dynamicForm id="hagious.qualitymanager.nc.acaocorretiva"
+                         instance="QmNcAcaoCorretiva"
+                         description="05. Acoes Corretivas"/>
+
+            <dynamicForm id="hagious.qualitymanager.nc.revisaodoc"
+                         instance="QmNcRevisaoDoc"
+                         description="06. Revisao de Documentos"/>
+
+            <dynamicForm id="hagious.qualitymanager.nc.risco"
+                         instance="QmNcRisco"
+                         description="07. Riscos e Oportunidades"/>
+
+            <dynamicForm id="hagious.qualitymanager.nc.implementacao"
+                         instance="QmNcImplementacao"
+                         description="08. Implementacao"/>
+
+            <dynamicForm id="hagious.qualitymanager.nc.liberacao"
+                         instance="QmNcLiberacao"
+                         description="09. Liberacao de Produto"/>
+
+            <dynamicForm id="hagious.qualitymanager.nc.eficacia"
+                         instance="QmNcEficacia"
+                         description="10. Verificacao de Eficacia"/>
+
+        </folder>
+
+        <!-- ═══════════════════════════════════════════════════
+             MODULO: Fornecedores
+             ISO 9001 §8.4
+        ════════════════════════════════════════════════════ -->
+        <folder id="hagious.qualitymanager.forn"
+                description="Fornecedores">
+
+            <dynamicForm id="hagious.qualitymanager.forn.consulta"
+                         instance="QmFornConsulta"
+                         description="Consulta de Fornecedores"/>
+
+            <dynamicForm id="hagious.qualitymanager.forn.qualificacao"
+                         instance="QmFornQualificacao"
+                         description="Qualificacao"/>
+
+            <dynamicForm id="hagious.qualitymanager.forn.criterios"
+                         instance="QmFornCriterio"
+                         description="Criterios de Avaliacao"/>
+
+            <dynamicForm id="hagious.qualitymanager.forn.questionario"
+                         instance="QmFornQuestionario"
+                         description="Questionarios"/>
+
+        </folder>
+
+        <!-- ═══════════════════════════════════════════════════
+             MODULO: Documentos
+             ISO 9001 §7.5
+        ════════════════════════════════════════════════════ -->
+        <folder id="hagious.qualitymanager.doc"
+                description="Documentos">
+
+            <dynamicForm id="hagious.qualitymanager.doc.controle"
+                         instance="QmDocControle"
+                         description="Controle de Documentos"/>
+
+        </folder>
+
+        <!-- ═══════════════════════════════════════════════════
+             MODULO: Gestao de Mudancas
+             ISO 9001 §6.3 + §8.5.6
+        ════════════════════════════════════════════════════ -->
+        <folder id="hagious.qualitymanager.gm"
+                description="Gestao de Mudancas">
+
+            <dynamicForm id="hagious.qualitymanager.gm.cadastro"
+                         instance="QmGmCadastro"
+                         description="Cadastro de Mudancas"/>
+
+        </folder>
+
+        <!-- ═══════════════════════════════════════════════════
+             MODULO: Auditoria
+             ISO 9001 §9.2
+        ════════════════════════════════════════════════════ -->
+        <folder id="hagious.qualitymanager.aud"
+                description="Auditoria">
+
+            <dynamicForm id="hagious.qualitymanager.aud.programa"
+                         instance="QmAudPrograma"
+                         description="Programa de Auditoria"/>
+
+            <dynamicForm id="hagious.qualitymanager.aud.registro"
+                         instance="QmAudRegistro"
+                         description="Registro de Auditoria"/>
+
+            <dynamicForm id="hagious.qualitymanager.aud.auditores"
+                         instance="QmAudAuditor"
+                         description="Auditores"/>
+
+        </folder>
+
+        <!-- ═══════════════════════════════════════════════════
+             MODULO: Indicadores
+             ISO 9001 §9.1 + §9.3
+        ════════════════════════════════════════════════════ -->
+        <folder id="hagious.qualitymanager.ind"
+                description="Indicadores">
+
+            <dynamicForm id="hagious.qualitymanager.ind.indicador"
+                         instance="QmIndIndicador"
+                         description="Indicadores"/>
+
+            <dynamicForm id="hagious.qualitymanager.ind.ata"
+                         instance="QmAcrAta"
+                         description="Analise Critica"/>
+
+        </folder>
+
+        <!-- ═══════════════════════════════════════════════════
+             Configuracao e Parametrizacao
+        ════════════════════════════════════════════════════ -->
+        <folder id="hagious.qualitymanager.config"
+                description="Configuracao">
+
+            <dynamicForm id="hagious.qualitymanager.config.parametros"
+                         instance="QmConfig"
+                         description="Configuracao"/>
+
+            <dynamicForm id="hagious.qualitymanager.config.prioridades"
+                         instance="QmDomPrioridade"
+                         description="Prioridades"/>
+
+            <dynamicForm id="hagious.qualitymanager.config.fases"
+                         instance="QmNcFase"
+                         description="Fases NC"/>
+
+            <dynamicForm id="hagious.qualitymanager.config.log"
+                         instance="QmLogAuditoria"
+                         description="Log de Auditoria"/>
+
+        </folder>
+
     </menu>
 
 </metadados>
