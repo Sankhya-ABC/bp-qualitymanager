@@ -10,50 +10,50 @@
              MODULO: Registro de Nao Conformidades
              ISO 9001 §8.7 + §10.2
         ════════════════════════════════════════════════════ -->
-        <folder id="hagious.qualitymanager.nc"
+        <folder id="hagious.qualitymanager.rnc"
                 description="Registro de Nao Conformidades">
 
-            <dynamicForm id="hagious.qualitymanager.nc.consulta"
+            <dynamicForm id="hagious.qualitymanager.rnc.consulta"
                          instance="QmRncConsulta"
                          description="Consulta de NCs"/>
 
-            <dynamicForm id="hagious.qualitymanager.nc.registro"
+            <dynamicForm id="hagious.qualitymanager.rnc.registro"
                          instance="QmRncRegistro"
                          description="01. Registro de NC"/>
 
-            <dynamicForm id="hagious.qualitymanager.nc.acaoimediata"
+            <dynamicForm id="hagious.qualitymanager.rnc.acaoimediata"
                          instance="QmRncAcaoImediata"
                          description="02. Acoes Imediatas"/>
 
-            <dynamicForm id="hagious.qualitymanager.nc.causaraiz"
+            <dynamicForm id="hagious.qualitymanager.rnc.causaraiz"
                          instance="QmRncCausaRaiz"
                          description="03. Causa Raiz"/>
 
-            <dynamicForm id="hagious.qualitymanager.nc.abrangencia"
+            <dynamicForm id="hagious.qualitymanager.rnc.abrangencia"
                          instance="QmRncAbrangencia"
                          description="04. Abrangencia"/>
 
-            <dynamicForm id="hagious.qualitymanager.nc.acaocorretiva"
+            <dynamicForm id="hagious.qualitymanager.rnc.acaocorretiva"
                          instance="QmRncAcaoCorretiva"
                          description="05. Acoes Corretivas"/>
 
-            <dynamicForm id="hagious.qualitymanager.nc.revisaodoc"
+            <dynamicForm id="hagious.qualitymanager.rnc.revisaodoc"
                          instance="QmRncRevisaoDoc"
                          description="06. Revisao de Documentos"/>
 
-            <dynamicForm id="hagious.qualitymanager.nc.risco"
+            <dynamicForm id="hagious.qualitymanager.rnc.risco"
                          instance="QmRncRisco"
                          description="07. Riscos e Oportunidades"/>
 
-            <dynamicForm id="hagious.qualitymanager.nc.implementacao"
+            <dynamicForm id="hagious.qualitymanager.rnc.implementacao"
                          instance="QmRncImplementacao"
                          description="08. Implementacao"/>
 
-            <dynamicForm id="hagious.qualitymanager.nc.liberacao"
+            <dynamicForm id="hagious.qualitymanager.rnc.liberacao"
                          instance="QmRncLiberacao"
                          description="09. Liberacao de Produto"/>
 
-            <dynamicForm id="hagious.qualitymanager.nc.eficacia"
+            <dynamicForm id="hagious.qualitymanager.rnc.eficacia"
                          instance="QmRncEficacia"
                          description="10. Verificacao de Eficacia"/>
 
