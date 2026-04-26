@@ -30,3 +30,9 @@ datadictionary/*.xsd
 .settings
 **/.ant/
 build/
+
+# Claude Code
+.claude/
+
+# Backup de testes
+backup/
