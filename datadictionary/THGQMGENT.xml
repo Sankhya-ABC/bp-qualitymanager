@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<metadados xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="../.gradle/metadados.xsd">
+
+    <table name="THGQMGENT" sequenceType="A" sequenceField="CODENTRADA">
+        <description>Entrada ACR</description>
+        <primaryKey><field name="CODENTRADA"/></primaryKey>
+        <instances><instance name="QmAcrEntrada"><description>Entrada ACR</description></instance></instances>
+        <fields>
+            <field name="CODENTRADA" dataType="INTEIRO" readOnly="S" order="1" allowSearch="S" visibleOnSearch="S"><description>Cod.</description></field>
+            <field name="CODACR" dataType="INTEIRO" required="S" readOnly="S" UITabName="__main" order="2" allowSearch="S" visibleOnSearch="S"><description>Cod. Ata</description></field>
+            <field name="DESCRICAO" dataType="TEXTO" size="500" isPresentation="S" UITabName="__main" order="3" allowSearch="S" visibleOnSearch="S"><description>Descricao</description></field>
+            <field name="CODUSU" dataType="PESQUISA" targetInstance="Usuario" targetField="CODUSU" targetType="INTEIRO" readOnly="S" visible="N" order="98" allowSearch="N" visibleOnSearch="N"><description>Usuario</description></field>
+        </fields>
+    </table>
+
+</metadados>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<metadados xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="../.gradle/metadados.xsd">
+
+    <table name="THGQMGMETA" sequenceType="A" sequenceField="CODMETA">
+        <description>Meta</description>
+        <primaryKey><field name="CODMETA"/></primaryKey>
+        <instances><instance name="QmIndMeta"><description>Meta</description></instance></instances>
+        <fields>
+            <field name="CODMETA" dataType="INTEIRO" readOnly="S" order="1" allowSearch="S" visibleOnSearch="S"><description>Cod.</description></field>
+            <field name="CODIND" dataType="INTEIRO" required="S" readOnly="S" UITabName="__main" order="2" allowSearch="S" visibleOnSearch="S"><description>Cod. Ind</description></field>
+            <field name="PERIODO" dataType="TEXTO" size="10" isPresentation="S" UITabName="__main" order="3" allowSearch="S" visibleOnSearch="S"><description>Periodo</description></field>
+            <field name="META" dataType="DECIMAL" nuCasasDecimais="2" UITabName="__main" order="4" allowSearch="N" visibleOnSearch="N"><description>Meta</description></field>
+            <field name="REALIZADO" dataType="DECIMAL" nuCasasDecimais="2" readOnly="S" UITabName="__main" order="5" allowSearch="N" visibleOnSearch="N"><description>Realizado</description></field>
+            <field name="ATINGIMENTO" dataType="DECIMAL" nuCasasDecimais="2" readOnly="S" UITabName="__main" order="6" allowSearch="N" visibleOnSearch="N"><description>Atingimento</description></field>
+            <field name="STATUS" dataType="LISTA" size="1" readOnly="S" UITabName="__main" order="7" allowSearch="S" visibleOnSearch="S"><description>Status</description><fieldOptions><option value="A">Atingida</option><option value="N">Nao atingida</option><option value="P">Parcial</option></fieldOptions></field>
+            <field name="OBSERVACOES" dataType="TEXTO" size="300" UITabName="__main" order="8" allowSearch="N" visibleOnSearch="N"><description>Obs</description></field>
+            <field name="CODUSU" dataType="PESQUISA" targetInstance="Usuario" targetField="CODUSU" targetType="INTEIRO" readOnly="S" visible="N" order="98" allowSearch="N" visibleOnSearch="N"><description>Usuario</description></field>
+        </fields>
+    </table>
+
+</metadados>

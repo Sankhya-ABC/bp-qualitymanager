@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<scripts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="../.gradle/scripts.xsd">
+
+    <sql nomeTabela="THGQMGATA" ordem="1" executar="SE_NAO_EXISTIR" tipoObjeto="TABLE" nomeObjeto="THGQMGATA" descricao="Criacao da tabela THGQMGATA">
+        <mssql>CREATE TABLE THGQMGATA (CODACR INT NOT NULL, CONSTRAINT PK_THGQMGATA PRIMARY KEY (CODACR))</mssql>
+        <oracle>CREATE TABLE THGQMGATA (CODACR NUMBER(10) NOT NULL, CONSTRAINT PK_THGQMGATA PRIMARY KEY (CODACR))</oracle>
+    </sql>
+    <sql nomeTabela="THGQMGATA" ordem="2" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="NUMACR" descricao="Adicionar campo NUMACR"><mssql>ALTER TABLE THGQMGATA ADD NUMACR VARCHAR(20)</mssql><oracle>ALTER TABLE THGQMGATA ADD (NUMACR VARCHAR2(20))</oracle></sql>
+    <sql nomeTabela="THGQMGATA" ordem="3" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="PERIODO" descricao="Adicionar campo PERIODO"><mssql>ALTER TABLE THGQMGATA ADD PERIODO VARCHAR(10)</mssql><oracle>ALTER TABLE THGQMGATA ADD (PERIODO VARCHAR2(10))</oracle></sql>
+    <sql nomeTabela="THGQMGATA" ordem="4" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="DTREUNIAO" descricao="Adicionar campo DTREUNIAO"><mssql>ALTER TABLE THGQMGATA ADD DTREUNIAO DATETIME</mssql><oracle>ALTER TABLE THGQMGATA ADD (DTREUNIAO DATE)</oracle></sql>
+    <sql nomeTabela="THGQMGATA" ordem="5" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="LOCAL" descricao="Adicionar campo LOCAL"><mssql>ALTER TABLE THGQMGATA ADD LOCAL VARCHAR(200)</mssql><oracle>ALTER TABLE THGQMGATA ADD (LOCAL VARCHAR2(200))</oracle></sql>
+    <sql nomeTabela="THGQMGATA" ordem="6" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="STATUS" descricao="Adicionar campo STATUS"><mssql>ALTER TABLE THGQMGATA ADD STATUS VARCHAR(1)</mssql><oracle>ALTER TABLE THGQMGATA ADD (STATUS VARCHAR2(1))</oracle></sql>
+    <sql nomeTabela="THGQMGATA" ordem="7" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CONCLUSAO" descricao="Adicionar campo CONCLUSAO"><mssql>ALTER TABLE THGQMGATA ADD CONCLUSAO VARCHAR(4000)</mssql><oracle>ALTER TABLE THGQMGATA ADD (CONCLUSAO VARCHAR2(4000))</oracle></sql>
+    <sql nomeTabela="THGQMGATA" ordem="8" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODUSU" descricao="Adicionar campo CODUSU"><mssql>ALTER TABLE THGQMGATA ADD CODUSU INT</mssql><oracle>ALTER TABLE THGQMGATA ADD (CODUSU NUMBER(10))</oracle></sql>
+    <sql nomeTabela="THGQMGATA" ordem="9" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="DHCREATE" descricao="Adicionar campo DHCREATE"><mssql>ALTER TABLE THGQMGATA ADD DHCREATE DATETIME</mssql><oracle>ALTER TABLE THGQMGATA ADD (DHCREATE DATE)</oracle></sql>
+
+</scripts>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<scripts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="../.gradle/scripts.xsd">
+
+    <sql nomeTabela="THGQMGENT" ordem="1" executar="SE_NAO_EXISTIR" tipoObjeto="TABLE" nomeObjeto="THGQMGENT" descricao="Criacao da tabela THGQMGENT">
+        <mssql>CREATE TABLE THGQMGENT (CODENTRADA INT NOT NULL, CONSTRAINT PK_THGQMGENT PRIMARY KEY (CODENTRADA))</mssql>
+        <oracle>CREATE TABLE THGQMGENT (CODENTRADA NUMBER(10) NOT NULL, CONSTRAINT PK_THGQMGENT PRIMARY KEY (CODENTRADA))</oracle>
+    </sql>
+    <sql nomeTabela="THGQMGENT" ordem="2" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODACR" descricao="Adicionar campo CODACR"><mssql>ALTER TABLE THGQMGENT ADD CODACR INT</mssql><oracle>ALTER TABLE THGQMGENT ADD (CODACR NUMBER(10))</oracle></sql>
+    <sql nomeTabela="THGQMGENT" ordem="3" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="DESCRICAO" descricao="Adicionar campo DESCRICAO"><mssql>ALTER TABLE THGQMGENT ADD DESCRICAO VARCHAR(500)</mssql><oracle>ALTER TABLE THGQMGENT ADD (DESCRICAO VARCHAR2(500))</oracle></sql>
+    <sql nomeTabela="THGQMGENT" ordem="4" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODUSU" descricao="Adicionar campo CODUSU"><mssql>ALTER TABLE THGQMGENT ADD CODUSU INT</mssql><oracle>ALTER TABLE THGQMGENT ADD (CODUSU NUMBER(10))</oracle></sql>
+
+</scripts>

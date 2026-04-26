@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<scripts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="../.gradle/scripts.xsd">
+
+    <sql nomeTabela="THGQMGMED" ordem="1" executar="SE_NAO_EXISTIR" tipoObjeto="TABLE" nomeObjeto="THGQMGMED" descricao="Criacao da tabela THGQMGMED">
+        <mssql>CREATE TABLE THGQMGMED (CODMEDICAO INT NOT NULL, CONSTRAINT PK_THGQMGMED PRIMARY KEY (CODMEDICAO))</mssql>
+        <oracle>CREATE TABLE THGQMGMED (CODMEDICAO NUMBER(10) NOT NULL, CONSTRAINT PK_THGQMGMED PRIMARY KEY (CODMEDICAO))</oracle>
+    </sql>
+    <sql nomeTabela="THGQMGMED" ordem="2" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODIND" descricao="Adicionar campo CODIND"><mssql>ALTER TABLE THGQMGMED ADD CODIND INT</mssql><oracle>ALTER TABLE THGQMGMED ADD (CODIND NUMBER(10))</oracle></sql>
+    <sql nomeTabela="THGQMGMED" ordem="3" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="PERIODO" descricao="Adicionar campo PERIODO"><mssql>ALTER TABLE THGQMGMED ADD PERIODO VARCHAR(10)</mssql><oracle>ALTER TABLE THGQMGMED ADD (PERIODO VARCHAR2(10))</oracle></sql>
+    <sql nomeTabela="THGQMGMED" ordem="4" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="VALOR" descricao="Adicionar campo VALOR"><mssql>ALTER TABLE THGQMGMED ADD VALOR DECIMAL(18,2)</mssql><oracle>ALTER TABLE THGQMGMED ADD (VALOR NUMBER(18,2))</oracle></sql>
+    <sql nomeTabela="THGQMGMED" ordem="5" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="OBSERVACOES" descricao="Adicionar campo OBSERVACOES"><mssql>ALTER TABLE THGQMGMED ADD OBSERVACOES VARCHAR(300)</mssql><oracle>ALTER TABLE THGQMGMED ADD (OBSERVACOES VARCHAR2(300))</oracle></sql>
+    <sql nomeTabela="THGQMGMED" ordem="6" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODUSU" descricao="Adicionar campo CODUSU"><mssql>ALTER TABLE THGQMGMED ADD CODUSU INT</mssql><oracle>ALTER TABLE THGQMGMED ADD (CODUSU NUMBER(10))</oracle></sql>
+    <sql nomeTabela="THGQMGMED" ordem="7" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="DHCREATE" descricao="Adicionar campo DHCREATE"><mssql>ALTER TABLE THGQMGMED ADD DHCREATE DATETIME</mssql><oracle>ALTER TABLE THGQMGMED ADD (DHCREATE DATE)</oracle></sql>
+
+</scripts>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<metadados xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="../.gradle/metadados.xsd">
+
+    <table name="THGQMGMED" sequenceType="A" sequenceField="CODMEDICAO">
+        <description>Medicao</description>
+        <primaryKey><field name="CODMEDICAO"/></primaryKey>
+        <instances><instance name="QmIndMedicao"><description>Medicao</description></instance></instances>
+        <fields>
+            <field name="CODMEDICAO" dataType="INTEIRO" readOnly="S" order="1" allowSearch="S" visibleOnSearch="S"><description>Cod.</description></field>
+            <field name="CODIND" dataType="INTEIRO" required="S" readOnly="S" UITabName="__main" order="2" allowSearch="S" visibleOnSearch="S"><description>Cod. Ind</description></field>
+            <field name="PERIODO" dataType="TEXTO" size="10" isPresentation="S" UITabName="__main" order="3" allowSearch="S" visibleOnSearch="S"><description>Periodo</description></field>
+            <field name="VALOR" dataType="DECIMAL" nuCasasDecimais="2" required="S" UITabName="__main" order="4" allowSearch="N" visibleOnSearch="N"><description>Valor</description></field>
+            <field name="OBSERVACOES" dataType="TEXTO" size="300" UITabName="__main" order="5" allowSearch="N" visibleOnSearch="N"><description>Obs</description></field>
+            <field name="CODUSU" dataType="PESQUISA" targetInstance="Usuario" targetField="CODUSU" targetType="INTEIRO" readOnly="S" visible="N" order="98" allowSearch="N" visibleOnSearch="N"><description>Usuario</description></field>
+            <field name="DHCREATE" dataType="DATA_HORA" readOnly="S" visible="N" order="99" allowSearch="N" visibleOnSearch="N"><description>Criacao</description></field>
+        </fields>
+    </table>
+
+</metadados>

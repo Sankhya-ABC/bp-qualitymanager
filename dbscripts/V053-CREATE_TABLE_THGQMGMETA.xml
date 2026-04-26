@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<scripts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="../.gradle/scripts.xsd">
+
+    <sql nomeTabela="THGQMGMETA" ordem="1" executar="SE_NAO_EXISTIR" tipoObjeto="TABLE" nomeObjeto="THGQMGMETA" descricao="Criacao da tabela THGQMGMETA">
+        <mssql>CREATE TABLE THGQMGMETA (CODMETA INT NOT NULL, CONSTRAINT PK_THGQMGMETA PRIMARY KEY (CODMETA))</mssql>
+        <oracle>CREATE TABLE THGQMGMETA (CODMETA NUMBER(10) NOT NULL, CONSTRAINT PK_THGQMGMETA PRIMARY KEY (CODMETA))</oracle>
+    </sql>
+    <sql nomeTabela="THGQMGMETA" ordem="2" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODIND" descricao="Adicionar campo CODIND"><mssql>ALTER TABLE THGQMGMETA ADD CODIND INT</mssql><oracle>ALTER TABLE THGQMGMETA ADD (CODIND NUMBER(10))</oracle></sql>
+    <sql nomeTabela="THGQMGMETA" ordem="3" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="PERIODO" descricao="Adicionar campo PERIODO"><mssql>ALTER TABLE THGQMGMETA ADD PERIODO VARCHAR(10)</mssql><oracle>ALTER TABLE THGQMGMETA ADD (PERIODO VARCHAR2(10))</oracle></sql>
+    <sql nomeTabela="THGQMGMETA" ordem="4" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="META" descricao="Adicionar campo META"><mssql>ALTER TABLE THGQMGMETA ADD META DECIMAL(18,2)</mssql><oracle>ALTER TABLE THGQMGMETA ADD (META NUMBER(18,2))</oracle></sql>
+    <sql nomeTabela="THGQMGMETA" ordem="5" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="REALIZADO" descricao="Adicionar campo REALIZADO"><mssql>ALTER TABLE THGQMGMETA ADD REALIZADO DECIMAL(18,2)</mssql><oracle>ALTER TABLE THGQMGMETA ADD (REALIZADO NUMBER(18,2))</oracle></sql>
+    <sql nomeTabela="THGQMGMETA" ordem="6" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="ATINGIMENTO" descricao="Adicionar campo ATINGIMENTO"><mssql>ALTER TABLE THGQMGMETA ADD ATINGIMENTO DECIMAL(18,2)</mssql><oracle>ALTER TABLE THGQMGMETA ADD (ATINGIMENTO NUMBER(18,2))</oracle></sql>
+    <sql nomeTabela="THGQMGMETA" ordem="7" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="STATUS" descricao="Adicionar campo STATUS"><mssql>ALTER TABLE THGQMGMETA ADD STATUS VARCHAR(1)</mssql><oracle>ALTER TABLE THGQMGMETA ADD (STATUS VARCHAR2(1))</oracle></sql>
+    <sql nomeTabela="THGQMGMETA" ordem="8" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="OBSERVACOES" descricao="Adicionar campo OBSERVACOES"><mssql>ALTER TABLE THGQMGMETA ADD OBSERVACOES VARCHAR(300)</mssql><oracle>ALTER TABLE THGQMGMETA ADD (OBSERVACOES VARCHAR2(300))</oracle></sql>
+    <sql nomeTabela="THGQMGMETA" ordem="9" executar="SE_NAO_EXISTIR" tipoObjeto="COLUMN" nomeObjeto="CODUSU" descricao="Adicionar campo CODUSU"><mssql>ALTER TABLE THGQMGMETA ADD CODUSU INT</mssql><oracle>ALTER TABLE THGQMGMETA ADD (CODUSU NUMBER(10))</oracle></sql>
+
+</scripts>

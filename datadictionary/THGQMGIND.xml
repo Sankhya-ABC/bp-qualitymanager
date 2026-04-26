@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<metadados xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="../.gradle/metadados.xsd">
+
+    <table name="THGQMGIND" sequenceType="A" sequenceField="CODIND">
+        <description>Indicadores</description>
+        <primaryKey><field name="CODIND"/></primaryKey>
+        <instances><instance name="QmIndIndicador"><description>Indicadores</description></instance></instances>
+        <fields>
+            <field name="CODIND" dataType="INTEIRO" readOnly="S" order="1" allowSearch="S" visibleOnSearch="S"><description>Cod.</description></field>
+            <field name="CODIGO" dataType="TEXTO" size="20" UITabName="__main" order="2" allowSearch="S" visibleOnSearch="S"><description>Codigo</description></field>
+            <field name="NOME" dataType="TEXTO" size="200" required="S" isPresentation="S" UITabName="__main" order="3" allowSearch="S" visibleOnSearch="S"><description>Nome</description></field>
+            <field name="PROCESSO" dataType="TEXTO" size="200" UITabName="__main" order="4" allowSearch="N" visibleOnSearch="N"><description>Processo</description></field>
+            <field name="TIPO" dataType="LISTA" size="1" UITabName="__main" order="5" allowSearch="S" visibleOnSearch="S"><description>Tipo</description><fieldOptions><option value="E">Eficacia</option><option value="F">Eficiencia</option><option value="P">Produtividade</option></fieldOptions></field>
+            <field name="NORMAISO" dataType="LISTA" size="4" UITabName="__main" order="6" allowSearch="S" visibleOnSearch="S"><description>Norma</description><fieldOptions><option value="9001">ISO 9001</option><option value="1400">ISO 14001</option><option value="4500">ISO 45001</option></fieldOptions></field>
+            <field name="CLAUSULAISO" dataType="TEXTO" size="20" UITabName="__main" order="7" allowSearch="N" visibleOnSearch="N"><description>Clausula</description></field>
+            <field name="UNIDADE" dataType="TEXTO" size="30" UITabName="__main" order="8" allowSearch="N" visibleOnSearch="N"><description>Unidade</description></field>
+            <field name="FREQUENCIA" dataType="LISTA" size="1" UITabName="__main" order="9" allowSearch="N" visibleOnSearch="N"><description>Freq</description><fieldOptions><option value="M">Mensal</option><option value="T">Trimestral</option><option value="S">Semestral</option><option value="A">Anual</option></fieldOptions></field>
+            <field name="FORMULA" dataType="TEXTO" size="500" UITabName="__main" order="10" allowSearch="N" visibleOnSearch="N"><description>Formula</description></field>
+            <field name="CODPARC" dataType="PESQUISA" targetInstance="Parceiro" targetField="CODPARC" targetType="INTEIRO" UITabName="__main" order="11" allowSearch="N" visibleOnSearch="N"><description>Responsavel</description></field>
+            <field name="METAPADRAO" dataType="DECIMAL" nuCasasDecimais="2" UITabName="__main" order="12" allowSearch="N" visibleOnSearch="N"><description>Meta Padrao</description></field>
+            <field name="SENTIDO" dataType="LISTA" size="1" UITabName="__main" order="13" allowSearch="N" visibleOnSearch="N"><description>Sentido</description><fieldOptions><option value="C">Maior melhor</option><option value="B">Menor melhor</option></fieldOptions></field>
+            <field name="ATIVO" dataType="CHECKBOX" UITabName="__main" order="14" allowSearch="N" visibleOnSearch="N"><description>Ativo</description></field>
+            <field name="CODUSU" dataType="PESQUISA" targetInstance="Usuario" targetField="CODUSU" targetType="INTEIRO" readOnly="S" visible="N" order="98" allowSearch="N" visibleOnSearch="N"><description>Usuario</description></field>
+            <field name="DHCREATE" dataType="DATA_HORA" readOnly="S" visible="N" order="99" allowSearch="N" visibleOnSearch="N"><description>Criacao</description></field>
+        </fields>
+    </table>
+
+</metadados>
